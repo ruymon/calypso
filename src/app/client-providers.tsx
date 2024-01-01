@@ -10,6 +10,7 @@ const themeConfig: ThemeConfigType = {
   defaultTheme: 'dark',
   disableTransitionOnChange: true,
   enableSystem: false,
+  storageKey: 'theme',
 }
 
 interface ClientProvidersProps {

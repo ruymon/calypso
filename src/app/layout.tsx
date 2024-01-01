@@ -1,10 +1,21 @@
 import { cn } from '@/lib/utils';
+
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
+import { Tektur as FontLogo } from 'next/font/google';
+
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { ClientProviders } from './client-providers';
-import './globals.css';
+
+import '@/styles/colors.css';
+import '@/styles/globals.css';
+
+const fontLogo = FontLogo({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-logo',
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +29,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={cn("min-h-screen bg-background antialiased flex", GeistSans.variable, GeistMono.variable)}>
+      <body className={cn("min-h-screen h-full flex", GeistSans.variable, GeistMono.variable, fontLogo.variable)}>
         <ClientProviders>
           {children}
         </ClientProviders>

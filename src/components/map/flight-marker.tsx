@@ -8,7 +8,6 @@ import { FlightPlan } from "../flight-plan";
 import { Badge } from "../ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
 import { Progress } from "../ui/progress";
-import { Separator } from "../ui/separator";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
@@ -31,7 +30,7 @@ export function MapFlightMarker(data: MapFlightMarkerProps) {
           <SheetTrigger asChild>
             <HoverCardTrigger>
               <Plane
-                className={cn("fill-primary stroke-none text-lg",)}
+                className={cn("fill-muted-foreground text-muted-foreground stroke-none text-lg",)}
                 style={{ transform: `rotate(${planeHeading}deg)` }}
                 size={16}
               />
@@ -44,27 +43,27 @@ export function MapFlightMarker(data: MapFlightMarkerProps) {
           >
             <div className="flex flex-col px-3 py-2 gap-2">
               <header className="flex items-center justify-between w-full">
-                <span className="font-bold text-base text-primary">{callsign}</span>
+                <span className="font-bold text-base text-secondary-foreground">{callsign}</span>
                 <span className="text-xs italic text-muted-foreground">{flight_plan?.aircraft_short}</span>
               </header>
 
-              <div className="flex items-center justify-between w-full relative">
-                <span className="z-10 pr-2 bg-popover font-medium text-sm">{flight_plan?.departure}</span>
-                <Separator className="absolute w-full bg-muted" />
-                <span className="z-10 pl-2 bg-popover font-medium text-sm">{flight_plan?.arrival}</span>
+              <div className="flex items-center justify-between w-full gap-3 font-medium text-sm">
+                <span>{flight_plan?.departure}</span>
+                <Progress className="w-full h-1" value={45} />
+                <span>{flight_plan?.arrival}</span>
               </div>
 
               <div className="flex justify-between w-full items-center">
                 <div className="flex flex-col">
-                  <span className="z-10 pr-2 bg-popover font-medium text-sm">{name}</span>
+                  <span className="z-10 pr-2 font-medium text-sm">{name}</span>
                   <span className="text-muted-foreground">{cid}</span>
                 </div>
-                <Badge className="w-fit h-fit px-1 text-[10px] leading-[10px] font-extrabold">Private Pilot</Badge>
+                <Badge className="w-fit h-fit px-1 text-[10px] leading-[10px]">Private Pilot</Badge>
               </div>
 
             </div>
 
-            <footer className="flex items-center justify-center px-2 py-1 border-t">
+            <footer className="flex items-center justify-center px-2 py-1 border-t bg-popover/75 rounded-b-sm">
               <span className="text-muted-foreground">Click to open details</span>
             </footer>
           </HoverCardContent>
@@ -72,7 +71,7 @@ export function MapFlightMarker(data: MapFlightMarkerProps) {
 
         <SheetContent className="sm:max-w-2xl flex flex-col gap-8 px-6 h-screen">
           <SheetHeader>
-            <SheetTitle className="font-bold text-3xl text-primary">{callsign}</SheetTitle>
+            <SheetTitle className="font-bold text-3xl text-secondary-foreground">{callsign}</SheetTitle>
             <SheetDescription className="text-sm text-muted-foreground">{flight_plan?.aircraft_short}</SheetDescription>
           </SheetHeader>
 

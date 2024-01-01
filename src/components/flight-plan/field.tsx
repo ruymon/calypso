@@ -27,7 +27,7 @@ export function FlightPlanLabel({ label }: { label: string }) {
 export function FlightPlanInput({ value, prefix }: { value: string; prefix?: string }) {
   return (
     <div className="uppercase flex h-8 items-center w-full rounded-md border border-input bg-background ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-not-allowed">
-      { prefix && <span className="text-xs leading-3 font-semibold uppercase bg-primary text-secondary px-1 min-w-[1.5rem] h-full rounded-l-sm flex items-center justify-center">{prefix}</span>}
+      { prefix && <span className="text-xs leading-3 font-semibold uppercase bg-primary text-primary-foreground px-1 min-w-[1.5rem] h-full rounded-l-sm flex items-center justify-center">{prefix}</span>}
       <span className="text-sm font-medium flex-1 line-clamp-1 px-2">{value}</span>
     </div>
   );

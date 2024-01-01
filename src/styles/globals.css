@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: var(--fuselage-50);
+    --foreground: var(--fuselage-800);
+ 
+    --card: var(--fuselage-50);
+    --card-foreground: var(--fuselage-800);
+ 
+    --popover: var(--fuselage-50);
+    --popover-foreground: var(--fuselage-800);
+ 
+    --primary: 255 65 23;
+    --primary-foreground: 255 234 229;
+ 
+    --secondary: var(--fuselage-100);
+    --secondary-foreground:var(--fuselage-800);
+ 
+    --muted: var(--fuselage-250);
+    --muted-foreground: var(--fuselage-500);
+ 
+    --accent: var(--fuselage-250);
+    --accent-foreground: var(--fuselage-500);
+ 
+    --destructive: var(--semantic-red-500);
+    --destructive-foreground: var(--semantic-red-50);
+ 
+    --border: var(--fuselage-150);
+    --input: var(--fuselage-150);
+    --ring: var(--fuselage-200);
+ 
+    --radius: 0.875rem;
+  }
+ 
+  .dark {
+    --background: var(--fuselage-950);
+    --foreground: var(--fuselage-100);
+ 
+    --card: var(--fuselage-950);
+    --card-foreground: var(--fuselage-200);
+ 
+    --popover: var(--fuselage-950);
+    --popover-foreground: var(--fuselage-200);
+ 
+    --secondary: var(--fuselage-800);
+    --secondary-foreground:var(--fuselage-100);
+ 
+    --muted: var(--fuselage-900);
+    --muted-foreground: var(--fuselage-500);
+ 
+    --accent: var(--fuselage-800);
+    --accent-foreground: var(--fuselage-300);
+ 
+    --destructive: var(--semantic-red-600);
+    --destructive-foreground: var(--semantic-red-50);
+ 
+    --border: var(--fuselage-900);
+    --input: var(--fuselage-900);
+    --ring: var(--fuselage-800);
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border font-sans font-normal antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
