@@ -13,8 +13,8 @@
     --popover: var(--fuselage-50);
     --popover-foreground: var(--fuselage-800);
  
-    --primary: 255 65 23;
-    --primary-foreground: 255 234 229;
+    --primary: 99 102 241; /* tailwind indigo-500 */
+    --primary-foreground: 238 242 255; /* tailwind indigo-50 */
  
     --secondary: var(--fuselage-100);
     --secondary-foreground:var(--fuselage-800);
@@ -32,7 +32,7 @@
     --input: var(--fuselage-150);
     --ring: var(--fuselage-200);
  
-    --radius: 0.875rem;
+    --radius: 0.75rem;
   }
  
   .dark {

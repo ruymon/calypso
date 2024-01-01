@@ -15,7 +15,7 @@ export async function MapFlightsTile({}: MapFlightsTileProps) {
       revalidate: dataExpiry
     }
   }
-0
+  
   const response = await fetch(vatsimApiUrl, options);
   const data = (await response.json()) as VatsimData;
   
