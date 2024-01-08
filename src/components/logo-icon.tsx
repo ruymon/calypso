@@ -5,9 +5,9 @@ interface LogoIconProps {};
 
 export function LogoIcon({}: LogoIconProps) {
   return (
-    <figure className='w-11 h-11 rounded-lg bg-gradient-to-b from-primary to-indigo-700 flex items-center justify-center relative overflow-clip'>
-      <TowerControlIcon className='w-10 h-10 absolute bottom-0 translate-y-0.5 text-primary-foreground fill-primary-foreground/40' />
-      <LogoIconGrid className='w-11 h-11' />
+    <figure className='w-9 h-9 rounded-md bg-gradient-to-b from-primary to-indigo-700 flex items-center justify-center relative overflow-clip'>
+      <TowerControlIcon className='w-9 h-9 absolute bottom-0 translate-y-0.5 text-primary-foreground fill-primary-foreground/40' />
+      <LogoIconGrid className='w-9 h-9' />
     </figure>
   );
 };

@@ -1,15 +1,41 @@
+import { buttonVariants } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
+import Link from "next/link";
+import { AnchorHTMLAttributes } from 'react';
 
-interface SidebarItemProps {
-  icon: LucideIcon;
-  label: string;
+interface SidebarItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  title: string
+  label?: string
+  icon: LucideIcon
+  variant?: "default" | "ghost"
+  href: string;
 };
 
-export function SidebarItem({ icon: Icon, label }: SidebarItemProps) {
+export function SidebarItem({ icon: Icon, label, title, variant = 'default', href, ...props }: SidebarItemProps) {
   return (
-    <div className={cn('transition-colors flex items-center bg-transparent text-muted-foreground hover:text-secondary-foreground p-2 hover:bg-primary rounded-md', )}>
-      <Icon className='w-6' />
-    </div>
+    <Tooltip delayDuration={0}>
+      <TooltipTrigger asChild>
+        <Link
+          href={href}
+          className={cn(
+            buttonVariants({ variant: variant, size: "icon" }),
+            "h-10 w-10",
+          )}
+        >
+          <Icon className="h-5 w-5" />
+          <span className="sr-only">{title}</span>
+        </Link>
+      </TooltipTrigger>
+      <TooltipContent side="right" className="flex items-center gap-4">
+        {title}
+        {label && (
+          <span className="ml-auto text-muted-foreground">
+            {label}
+          </span>
+        )}
+      </TooltipContent>
+    </Tooltip>
   );
 };

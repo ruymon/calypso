@@ -32,7 +32,7 @@
     --input: var(--fuselage-150);
     --ring: var(--fuselage-200);
  
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
  
   .dark {

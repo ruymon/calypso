@@ -1,10 +1,10 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import { Button } from '../ui/button';
-import { Skeleton } from '../ui/skeleton';
 
 interface NavbarProps {};
 

@@ -1,5 +1,5 @@
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { VatsimDataPilot } from "@/types/vatsim";
-import { ScrollArea } from "../ui/scroll-area";
 import { FlightPlanField } from "./field";
 import { FlightPlanSeparator } from "./separator";
 
@@ -9,8 +9,8 @@ interface FlightPlanProps {
 
 export function FlightPlan({data}: FlightPlanProps) {
   return (
-    <ScrollArea className="h-[36rem] pr-4 py-6">
-      <div className="flex flex-col gap-8">
+    <ScrollArea className="h-[calc(100dvh-12.5rem)] pl-3">
+      <div className="flex flex-col gap-8 mr-3">
         <div className="flex gap-2 items-end">
           <FlightPlanSeparator content="&lt;&#61;&#40;FPL" />
           <FlightPlanField label="7 - Aircraft Identification" value={data.callsign} />
