@@ -1,29 +1,19 @@
-import { VatsimData, VatsimDataPilot } from "@/types/vatsim";
+import { LiveFlights } from "@/types/live-flights"
+import { getVatsimData } from "./vatsim";
+import { getIvaoData } from "./ivao";
+import { vatsimLiveFlightsAdapter } from "@/adapters/vatsim-live-flights-adapter";
+import { ivaoLiveFlightsAdapter } from "@/adapters/ivao-live-flights-adapter";
 
-export async function getLiveFlights(): Promise<VatsimData | undefined> {
-  const vatsimApiUrl = "https://data.vatsim.net/v3/vatsim-data.json";
+export async function getLiveFlights(): Promise<LiveFlights | null> {
+  const [ vatsimRawData, ivaoRawData ] = await Promise.all([
+    getVatsimData(),
+    getIvaoData(),
+  ]);
 
-  try {
-    const response = await fetch(vatsimApiUrl);
-    const data = await response.json();
-    
-    return data;
-  }
-  catch (error) {
-    console.error(error);
-    return;
-  }
-}
+  if (!vatsimRawData || !ivaoRawData) return null;
 
-export async function getFlight(callsign: string): Promise<VatsimDataPilot | undefined> {
-  const vatsimData = await getLiveFlights();
-  const pilot = vatsimData?.pilots.find(pilot => pilot.callsign === callsign);
+  const vatsimData = vatsimLiveFlightsAdapter(vatsimRawData.pilots);
+  const ivaoData = ivaoLiveFlightsAdapter();
 
-  if (pilot) {
-    return pilot;
-  }
-  else {
-    throw new Error(`No pilot with callsign ${callsign} found`);
-  }
-
+  return [...ivaoData, ...vatsimData];
 }

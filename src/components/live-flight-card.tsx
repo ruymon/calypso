@@ -1,62 +1,38 @@
+import { LiveFlight } from "@/types/live-flights";
 import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
+import Link from "next/link";
 
-export interface LiveFlightCardProps {
-  icaoCallsign: string;
-  iataCallsign: string;
-  airline: string;
-  departureIcao: string;
-  departureIata: string;
-  arrivalIcao: string;
-  arrivalIata: string;
-  aircraft: string;
-  registration: string;
-  network: string;
-  flightStatus: string;
-  flightProgress: number;
-};
+type LiveFlightCardProps = LiveFlight;
 
-export function LiveFlightCard({
-  icaoCallsign,
-  iataCallsign,
-  airline,
-  departureIcao,
-  departureIata,
-  arrivalIcao,
-  arrivalIata,
-  aircraft,
-  registration,
-  network,
-  flightStatus,
-  flightProgress,
-}: LiveFlightCardProps) {
+export function LiveFlightCard({ callsign, currentPosition, flightPlan, network, pilot, id }: LiveFlightCardProps) {
   return (
-    <button className="flex flex-col w-full bg-background/20 backdrop-blur-lg items-start gap-4 rounded-lg p-3 text-left transition-all hover:bg-background">
+    <Link href={`/flight/${id}`} className="flex flex-col w-full bg-background/20 backdrop-blur-lg items-start gap-4 rounded-lg p-3 text-left transition-all hover:bg-background">
       <header className="flex items-center w-full justify-between gap-4">
         <div className="flex flex-col">
-          <span className="font-bold text-lg text-foreground">{icaoCallsign}<span className="ml-1.5 text-sm text-muted-foreground font-medium">{iataCallsign}</span></span>
-          <span className="text-xs text-muted-foreground font-medium">{airline}</span>
+          <span className="font-bold text-lg text-foreground">{callsign}<span className="ml-1.5 text-sm text-muted-foreground font-medium">TBD</span></span>
+          <span className="text-xs text-muted-foreground font-medium">Airline name</span>
         </div>
 
-        <Badge variant="warning" className="font-mono uppercase">Final app</Badge>
+        <Badge variant="warning" className="font-mono uppercase whitespace-nowrap">TBD</Badge>
       </header>
 
       <div className="flex items-center justify-between w-full gap-4">
         <div className="flex flex-col">
-          <span className="text-sm text-secondary-foreground font-medium">{departureIcao}</span>
-          <span className="text-xs text-muted-foreground font-medium">{departureIata}</span>
+          <span className="text-sm text-secondary-foreground font-medium">{flightPlan?.departure.icao}</span>
+          <span className="text-xs text-muted-foreground font-medium">{flightPlan?.departure.iata}</span>
         </div>
-        <Progress value={flightProgress} />
+        <Progress value={45} />
         <div className="flex flex-col">
-          <span className="text-sm text-secondary-foreground font-medium">{arrivalIcao}</span>
-          <span className="text-xs text-muted-foreground">{arrivalIata}</span>
+          <span className="text-sm text-secondary-foreground font-medium">{flightPlan?.arrival.icao}</span>
+          <span className="text-xs text-muted-foreground">{flightPlan?.arrival.iata}</span>
         </div>
       </div>
 
       <div className="flex items-center gap-4 justify-between w-full">
         <div className="flex items-center gap-2">
-          <Badge className="font-semibold" variant="muted" size="sm">{aircraft}</Badge>
-          <Badge className="font-semibold" variant="muted" size="sm">{registration}</Badge>
+          <Badge className="font-semibold" variant="muted" size="sm">{flightPlan?.aircraft.icao}</Badge>
+          <Badge className="font-semibold" variant="muted" size="sm">{flightPlan?.aircraft.registration}</Badge>
         </div>
 
         <div className=" flex items-center gap-1">
@@ -64,6 +40,6 @@ export function LiveFlightCard({
           <span className="text-xs font-medium text-foreground">{network}</span>
         </div>
       </div>
-    </button>
+    </Link>
   );
 };

@@ -1,6 +1,6 @@
 'use client'
 
-import { formatVatsimPilotDataToGeoJSON } from '@/lib/geojson';
+import { liveFlightToGeoJson } from '@/lib/geojson';
 import { getLiveFlights } from '@/services/live-flights';
 import { useQuery } from '@tanstack/react-query';
 import { Layer, Source, SymbolLayer } from 'react-map-gl';
@@ -11,7 +11,7 @@ const flightsLayerStyle: SymbolLayer = {
   layout: {
     'icon-image': [
       'coalesce',
-      ['image', ['get', 'wake_turbulence', ['get', 'flight_plan']]],
+      ['image', ['get', 'wakeTurbulence', ['get', 'aircraft', ['get', 'flightPlan']]]],
       ['image', 'm']
     ],
     'icon-allow-overlap': true,
@@ -24,7 +24,7 @@ const flightsLayerStyle: SymbolLayer = {
       15, 1,
       16, 1.75,
     ],
-    'icon-rotate': ['get', 'heading'],
+    'icon-rotate': ['get', 'heading', ['get', 'currentPosition']],
   },
   paint: {
     'icon-color': '#818cf8',
@@ -42,8 +42,12 @@ export function MapLiveFlightsLayer() {
     refetchInterval: LIVE_FLIGHT_REFRESH_INTERVAL_IN_MS,
   })
 
+  if (!data) return null;
+
+  const geoJson = liveFlightToGeoJson(data);
+
   return (
-    <Source id='live-flights-source' type='geojson' data={data && formatVatsimPilotDataToGeoJSON(data?.pilots)}>
+    <Source id='live-flights-source' type='geojson' data={geoJson}>
       <Layer {...flightsLayerStyle} />
     </Source>
   )

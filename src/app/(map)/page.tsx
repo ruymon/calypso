@@ -1,16 +1,18 @@
-'use client'
-
 import { LiveFlightCard } from "@/components/live-flight-card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { liveFlightsMock } from "@/mock/live-flights";
+import { getLiveFlights } from "@/services/live-flights";
 import { Search } from "lucide-react";
 
 
-interface MapLiveFlightsPage {};
+interface MapLiveFlightsPage { };
 
-export default function MapLiveFlightsPage({}: MapLiveFlightsPage) {
+export default async function MapLiveFlightsPage({ }: MapLiveFlightsPage) {
+  const liveFlights = await getLiveFlights();
+
+  if (!liveFlights) return null
+
   return (
     <Tabs defaultValue="all" className="flex flex-col gap-2 px-1 pt-4">
       <header className="flex flex-col mb-2 px-3">
@@ -33,7 +35,7 @@ export default function MapLiveFlightsPage({}: MapLiveFlightsPage) {
       <TabsContent value="all">
         <ScrollArea className="h-[calc(100dvh-12.5rem)] pl-3">
           <div className="flex flex-col gap-3 mr-3">
-            {liveFlightsMock.map((flight) => <LiveFlightCard key={flight.icaoCallsign} {...flight} />)}
+            {/* {liveFlights.map(flight => <LiveFlightCard key={flight.id} {...flight} />)} */}
           </div>
         </ScrollArea>
       </TabsContent>
@@ -41,7 +43,7 @@ export default function MapLiveFlightsPage({}: MapLiveFlightsPage) {
       <TabsContent value="friends">
         <ScrollArea className="h-[calc(100dvh-12.5rem)] pl-3">
           <div className="flex flex-col gap-3 mr-3">
-            {liveFlightsMock.map((flight) => <LiveFlightCard key={flight.icaoCallsign} {...flight} />)}
+            {/* {liveFlights.map(flight => <LiveFlightCard key={flight.id} {...flight} />)} */}
           </div>
         </ScrollArea>
       </TabsContent>

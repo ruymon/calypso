@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "atcs",
     "callsign",
     "deptime",
     "enroute",
@@ -7,6 +8,8 @@
     "heli",
     "iata",
     "icao",
+    "ivao",
+    "Ivao",
     "mapbox",
     "MAPBOX",
     "maxzoom",
