@@ -4,7 +4,7 @@ import { LiveFlights } from "@/types/live-flights";
 export function ivaoLiveFlightsAdapter(data?: IvaoDataPilot[]): LiveFlights {
   return [
     {
-      id: 'ivao-12345-tst1234',
+      id: 'ivao-tst1234',
       callsign: 'TST1234',
       currentPosition: {
         coordinates: [0, 0],

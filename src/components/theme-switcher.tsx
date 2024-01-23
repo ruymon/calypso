@@ -6,9 +6,7 @@ import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-interface NavbarProps {};
-
-export function NavbarThemeSwitcher({}: NavbarProps) {
+export function ThemeSwitcher() {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -23,7 +21,7 @@ export function NavbarThemeSwitcher({}: NavbarProps) {
   }
 
   if (!isMounted) {
-    return <NavbarThemeSwitcherSkeleton />
+    return <ThemeSwitcherSkeleton />
   }
 
   return (
@@ -34,6 +32,6 @@ export function NavbarThemeSwitcher({}: NavbarProps) {
 };
 
 
-function NavbarThemeSwitcherSkeleton() {
+function ThemeSwitcherSkeleton() {
   return <Skeleton className='h-9 w-9' />
 }

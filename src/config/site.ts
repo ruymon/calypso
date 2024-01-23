@@ -1,10 +1,10 @@
 export const siteConfig = {
-  name: 'Ground Control',
-  description: 'An open source application to monitor real-time connections at Vatsim.',
+  name: 'Skyscope',
+  description: 'Your all in one flight tracker',
   slogan: 'Supercharge your flights',
-  url: 'https://github.com/ruymon/ground-control',
+  url: 'https://skyscope.app',
   ogImage: '',
   links: {
-    github: 'https://github.com/ruymon/ground-control',
+    github: 'https://github.com/skyscope-app',
   },
 };

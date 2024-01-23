@@ -4,25 +4,40 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "flex items-center rounded-sm border w-fit h-fit text-xs leading-3 font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center border text-xs focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 font-semibold",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-primary text-primary-foreground",
-        secondary: "border-transparent bg-secondary text-secondary-foreground",
-        destructive: "border-transparent bg-destructive text-destructive-foreground",
+        default: "border-foreground bg-foreground text-background",
+        primary: "border-primary bg-primary text-primary-foreground",
+        secondary: "border-secondary bg-secondary text-secondary-foreground",
+        destructive: "border-destructive bg-destructive text-destructive-foreground",
         outline: "text-foreground",
         muted: "bg-muted text-muted-foreground border-transparent",
-        warning: "border-transparent bg-amber-500 text-amber-50",
+        warning: "border-transparent bg-orange-500 text-orange-50",
+        "purple-leaked": "border-purple-500 bg-transparent backdrop-blur-md text-purple-500",
+        purple: "border-purple-500 bg-purple-500 text-purple-50",
+        "green-leaked": "border-green-500 bg-transparent backdrop-blur-md text-green-500",
+        green: "border-green-500 bg-green-500 text-green-50",
+      },
+      font: {
+        default: "font-sans",
+        mono: "font-mono leading-1 uppercase"
       },
       size: {
-        default: "px-1 py-0.5",
+        default: "px-2 py-0.5",
         sm: "px-1.5 py-0.5",
+      },
+      radius: {
+        default: "rounded-sm",
+        full: "rounded-full",
       }
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      font: "default",
+      radius: "default",
     },
   }
 )
@@ -31,9 +46,9 @@ export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
-function Badge({ className, variant, size, ...props }: BadgeProps) {
+function Badge({ className, variant, size, font, radius, ...props }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant, size }), className)} {...props} />
+    <div className={cn(badgeVariants({ variant, size, font, radius }), className)} {...props} />
   )
 }
 

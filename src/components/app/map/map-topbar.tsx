@@ -1,12 +1,10 @@
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
 import { BellIcon, Search } from "lucide-react";
-import { NavbarThemeSwitcher } from "./theme-switcher";
 
-interface NavbarProps {};
-
-export function Navbar({}: NavbarProps) {
+export function MapTopbar() {
   return (
     <nav className="flex items-center gap-8 justify-between w-[calc(100%-3.5rem)] p-2 pl-0 h-14 bg-background/50 backdrop-blur-md absolute top-0 right-0 z-10">
       <div className="flex flex-col gap-0.5">
@@ -23,7 +21,7 @@ export function Navbar({}: NavbarProps) {
         <time>22:39z</time>
         <Separator orientation="vertical" />
         <BellIcon className="w-5 h-5" />
-        <NavbarThemeSwitcher />
+        <ThemeSwitcher />
       </div>
     </nav>
   );

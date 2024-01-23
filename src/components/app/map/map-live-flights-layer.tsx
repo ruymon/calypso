@@ -9,15 +9,16 @@ const flightsLayerStyle: SymbolLayer = {
   id: 'live-flights-layer',
   type: 'symbol',
   layout: {
-    'icon-image': [
-      'coalesce',
-      ['image', ['get', 'wakeTurbulence', ['get', 'aircraft', ['get', 'flightPlan']]]],
-      ['image', 'm']
-    ],
+    // 'icon-image': [
+    //   'coalesce',
+    //   ['image', ['get', 'wakeTurbulence', ['get', 'aircraft', ['get', 'flightPlan']]]],
+    //   ['image', 'm']
+    // ],
+    'icon-image': 'm', // TODO: use wake turbulence if available. else use 'm'
     'icon-allow-overlap': true,
     "icon-size": [
       'interpolate',
-      ['linear'], 
+      ['linear'],
       ['zoom'],
       0, 0.5,
       10, 0.75,
@@ -27,7 +28,15 @@ const flightsLayerStyle: SymbolLayer = {
     'icon-rotate': ['get', 'heading', ['get', 'currentPosition']],
   },
   paint: {
-    'icon-color': '#818cf8',
+    'icon-color': [
+      'match', // Use the 'match' expression: https://docs.mapbox.com/style-spec/reference/expressions/#match
+      ['get', 'network'], // Use the result 'STORE_TYPE' property
+      'vatsim',
+      '#A1A1A1',
+      'ivao',
+      '#A1A1A1',
+      '#A1A1A1' // any other store type
+    ],
   },
 }
 
@@ -42,12 +51,10 @@ export function MapLiveFlightsLayer() {
     refetchInterval: LIVE_FLIGHT_REFRESH_INTERVAL_IN_MS,
   })
 
-  if (!data) return null;
-
-  const geoJson = liveFlightToGeoJson(data);
+  if (!data || error) return null;
 
   return (
-    <Source id='live-flights-source' type='geojson' data={geoJson}>
+    <Source id='live-flights-source' type='geojson' data={liveFlightToGeoJson(data)}>
       <Layer {...flightsLayerStyle} />
     </Source>
   )

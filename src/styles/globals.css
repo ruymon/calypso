@@ -4,62 +4,62 @@
  
 @layer base {
   :root {
-    --background: var(--fuselage-50);
-    --foreground: var(--fuselage-800);
+    --background: var(--gray-050);
+    --foreground: var(--gray-900);
  
-    --card: var(--fuselage-50);
-    --card-foreground: var(--fuselage-800);
+    --card: var(--gray-050);
+    --card-foreground: var(--gray-800);
  
-    --popover: var(--fuselage-50);
-    --popover-foreground: var(--fuselage-800);
+    --popover: var(--gray-050);
+    --popover-foreground: var(--gray-800);
  
-    --primary: 99 102 241; /* tailwind indigo-500 */
-    --primary-foreground: 238 242 255; /* tailwind indigo-50 */
+    --primary: var(--orange-500);
+    --primary-foreground: var(--orange-050);
  
-    --secondary: var(--fuselage-100);
-    --secondary-foreground:var(--fuselage-800);
+    --secondary: var(--gray-100);
+    --secondary-foreground:var(--gray-700);
  
-    --muted: var(--fuselage-250);
-    --muted-foreground: var(--fuselage-500);
+    --muted: var(--gray-200);
+    --muted-foreground: var(--gray-600);
  
-    --accent: var(--fuselage-250);
-    --accent-foreground: var(--fuselage-500);
+    --accent: var(--gray-250);
+    --accent-foreground: var(--gray-500);
  
-    --destructive: var(--semantic-red-500);
-    --destructive-foreground: var(--semantic-red-50);
+    --destructive: var(--red-500);
+    --destructive-foreground: var(--red-050);
  
-    --border: var(--fuselage-150);
-    --input: var(--fuselage-150);
-    --ring: var(--fuselage-200);
+    --border: var(--gray-100);
+    --input: var(--gray-200);
+    --ring: var(--gray-200);
  
-    --radius: 0.5rem;
+    --radius: 0.625rem;
   }
  
   .dark {
-    --background: var(--fuselage-950);
-    --foreground: var(--fuselage-100);
+    --background: var(--gray-900);
+    --foreground: var(--gray-050);
  
-    --card: var(--fuselage-950);
-    --card-foreground: var(--fuselage-200);
+    --card: var(--gray-900);
+    --card-foreground: var(--gray-200);
  
-    --popover: var(--fuselage-950);
-    --popover-foreground: var(--fuselage-200);
+    --popover: var(--gray-900);
+    --popover-foreground: var(--gray-200);
  
-    --secondary: var(--fuselage-800);
-    --secondary-foreground:var(--fuselage-100);
+    --secondary: var(--gray-850);
+    --secondary-foreground:var(--gray-200);
  
-    --muted: var(--fuselage-900);
-    --muted-foreground: var(--fuselage-500);
+    --muted: var(--gray-850);
+    --muted-foreground: var(--gray-500);
  
-    --accent: var(--fuselage-800);
-    --accent-foreground: var(--fuselage-300);
+    --accent: var(--gray-700);
+    --accent-foreground: var(--gray-300);
  
-    --destructive: var(--semantic-red-600);
-    --destructive-foreground: var(--semantic-red-50);
+    --destructive: var(--red-600);
+    --destructive-foreground: var(--red-050);
  
-    --border: var(--fuselage-900);
-    --input: var(--fuselage-900);
-    --ring: var(--fuselage-800);
+    --border: var(--gray-850);
+    --input: var(--gray-850);
+    --ring: var(--gray-850);
   }
 }
  

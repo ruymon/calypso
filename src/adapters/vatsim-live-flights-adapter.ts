@@ -27,7 +27,7 @@ function parseVatsimFlightPlan(flight_plan: VatsimDataFlightPlan | null): Flight
 
   return {
     flightRules: flight_plan.flight_rules,
-    flightType: 'S', // TODO: Review this
+    flightType: 'X',
     departure: {
       icao: flight_plan.departure,
       iata: 'FIX', // TODO: Review this
@@ -47,13 +47,13 @@ function parseVatsimFlightPlan(flight_plan: VatsimDataFlightPlan | null): Flight
       transponderTypes: parseVatsimAircraftTransponderEquipmentCode(flight_plan.aircraft),
       equipment: parseVatsimAircraftEquipment(flight_plan.aircraft)
     },
-    level: flight_plan.altitude, // TODO: Parse this to FlightLevel or Altitude
+    level: flight_plan.altitude, // FIXME: Parse this to FlightLevel by dividing by 100 and adding F in front of the number
     route: flight_plan.route,
-    remarks: flight_plan.remarks,
-    cruiseTas: flight_plan.cruise_tas,
-    departureTime: flight_plan.deptime,
-    enrouteTime: flight_plan.enroute_time,
-    endurance: flight_plan.fuel_time,
+    remarks: flight_plan.remarks, // FIXME: Parse this to get the rest of the information (Registration)
+    cruiseTas: flight_plan.cruise_tas, // FIXME: Use ivao format. To parse, make 4 char add N in front.
+    departureTime: flight_plan.deptime, // Vatsim "deptime": "0425", - IVAO - "departureTime": 82980,
+    enrouteTime: flight_plan.enroute_time, // Vatsim - "enroute_time": "2150", IVAO - "eet": 32400,
+    endurance: flight_plan.fuel_time, // VATSIM - "fuel_time": "2250", "endurance": 37800,
     alternate: flight_plan.alternate !== '' ? {
       icao: flight_plan.alternate,
       iata: 'FIX', // TODO: Review this
@@ -69,13 +69,13 @@ export function vatsimLiveFlightsAdapter(data: VatsimDataPilot[]): LiveFlights {
 
   return data.map(({ cid, name, latitude, longitude, altitude, heading, transponder, groundspeed, callsign, flight_plan, pilot_rating }: VatsimDataPilot) => (
     {
-      id: `vatsim-${callsign}`,
+      id: `vatsim-${callsign.toLowerCase()}`,
       network: 'vatsim',
       callsign: callsign,
       pilot: {
         id: cid,
         rating: 'PP', // TODO: Use Enum to find the rating label (pilot_rating)
-        name: name // TODO: Remove the Airport ICAO code from the name and Normalize the name Capitalization
+        name: name // TODO: Remove the Airport ICAO code from the name and Normalize the name Capitalization 
       },
       currentPosition: {
         coordinates: [longitude, latitude],

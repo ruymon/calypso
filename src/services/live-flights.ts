@@ -17,3 +17,15 @@ export async function getLiveFlights(): Promise<LiveFlights | null> {
 
   return [...ivaoData, ...vatsimData];
 }
+
+export async function getFlightDetails(id:string) {
+  const flights = await getLiveFlights();
+
+  if (!flights) throw new Error('No flights found');
+
+  const flight = flights.find(flight => flight.id === id);
+
+  if (!flight) throw new Error('Flight not found');
+
+  return flight;
+}

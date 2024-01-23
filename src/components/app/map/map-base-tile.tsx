@@ -5,8 +5,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useCallback, useRef, useState } from 'react';
 import InteractiveMap, { MapRef, Popup } from 'react-map-gl';
-import { Badge } from '../ui/badge';
-import { Progress } from '../ui/progress';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { LiveFlight } from '@/types/live-flights';
 
 interface MapBaseTileProps {
@@ -71,10 +71,12 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
     const flight = event.features && event.features[0];
 
     if (!flight) {
+      //router.push('/map');
       return;
     }
 
-    router.push(`/flight/${flight.properties.id}`);
+    router.push(`/map/flight/${flight.properties.id}`);
+    return;
   };
 
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
@@ -105,12 +107,11 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
         width: '100dvw',
         height: '100dvh',
         position: 'absolute',
-        top: 0,
-        left: 0,
+        inset: 0,
       }}
       reuseMaps
       ref={mapRefCallback}
-      mapStyle='mapbox://styles/filipecordovil/clqvo0fh700nt01quhqc05chh'
+      mapStyle='mapbox://styles/filipecordovil/clrpc6xop006301o83famdf0h'
       mapboxAccessToken={MAPBOX_TOKEN}
       maxZoom={16}
       minZoom={2}

@@ -2,12 +2,7 @@
   outline: none;
 }
 
-/* Overide position to avoid covering Mapbox logo by Sidebar */
-.mapboxgl-ctrl-bottom-left {
-  bottom: 0 !important;
-  left: 3.5rem !important;
-}
-
+/* TODO: Review this. */
 .flight-popup {
   @apply min-w-[15rem] w-fit max-w-xs;
 }
