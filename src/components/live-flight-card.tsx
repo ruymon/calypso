@@ -2,6 +2,7 @@ import { LiveFlight } from "@/types/live-flights";
 import { Progress } from "./ui/progress";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import Image from "next/image";
 
 type LiveFlightCardProps = LiveFlight;
 
@@ -10,10 +11,7 @@ export function LiveFlightCard({ callsign, currentPosition, flightPlan, network,
     <Link href={`/map/flight/${id}`} className="flex flex-col w-full bg-background border gap-3 rounded-xl p-3 transition-all hover:bg-muted">
       <header className="flex items-center w-full justify-between">
         <div className="flex gap-2 items-center">
-          <Avatar className="rounded-md w-9 h-9">
-            <AvatarImage src="https://i.pinimg.com/originals/de/e5/4e/dee54e3f5afdd59b2c8d52495f545cb9.png" alt="Airline Logo" />
-            <AvatarFallback />
-          </Avatar>
+          <Image width={32} height={32} className="aspect-square w-8 h-8 rounded-md" src={`/assets/airline-logos/JJ.png`} alt="Airline Logo" />
           <div className="flex flex-col">
             <span className="font-bold text-lg text-foreground">{callsign}</span>
             <span className="text-xs text-muted-foreground font-medium">JJ2056 &bull; Latam Airlines</span>
@@ -24,13 +22,13 @@ export function LiveFlightCard({ callsign, currentPosition, flightPlan, network,
 
       <div className="flex items-center justify-between w-full gap-4">
         <div className="flex flex-col">
-          <span className="text-accent-foreground font-bold">{flightPlan?.departure.iata}</span>
-          <span className="text-xs font-medium text-muted-foreground">{flightPlan?.departure.icao}</span>
+          <span className="text-accent-foreground font-bold">{flightPlan?.departure?.iata || ''}</span>
+          <span className="text-xs font-medium text-muted-foreground">{flightPlan?.departure?.icao || ''}</span>
         </div>
         <Progress value={75} />
         <div className="flex flex-col items-end text-right">
-          <span className="text-accent-foreground font-bold">{flightPlan?.arrival.iata}</span>
-          <span className="text-xs font-medium text-muted-foreground">{flightPlan?.arrival.icao}</span>
+          <span className="text-accent-foreground font-bold">{flightPlan?.arrival?.iata || ''}</span>
+          <span className="text-xs font-medium text-muted-foreground">{flightPlan?.arrival?.icao || ''}</span>
         </div>
       </div>
 

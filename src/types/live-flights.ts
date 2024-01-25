@@ -28,9 +28,9 @@ export interface FlightPlan {
   flightRules: string
   flightType: string
   level: string
-  departure: Airport
-  arrival: Airport
-  aircraft: Aircraft
+  departure: Airport | null
+  arrival: Airport | null
+  aircraft: Aircraft | null
   route: string
   remarks: string
   cruiseTas: string

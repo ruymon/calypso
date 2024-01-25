@@ -1,6 +1,7 @@
-// TODO: Replace any with the correct type
-export async function getIvaoData(options?: RequestInit): Promise<any | undefined> {
-  const ivaoDataUrl = "https://api.ivao.aero/v2/tracker/whazzup";
+import { IvaoData } from "@/types/ivao";
+
+export async function getIvaoData(options?: RequestInit): Promise<IvaoData | undefined> {
+  const ivaoDataUrl = "https://api-stage.ivao.aero/v2/tracker/whazzup";
   
   try {
     const response = await fetch(ivaoDataUrl, options);

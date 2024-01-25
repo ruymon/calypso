@@ -1,57 +1,69 @@
 import { IvaoDataPilot } from "@/types/ivao";
-import { LiveFlights } from "@/types/live-flights";
+import { LiveFlight, LiveFlights } from "@/types/live-flights";
 
 export function ivaoLiveFlightsAdapter(data?: IvaoDataPilot[]): LiveFlights {
-  return [
+  if (!data) return [];
+
+  return data.map(flight => (
     {
-      id: 'ivao-tst1234',
-      callsign: 'TST1234',
+      id: `ivao-${flight.callsign.toLowerCase()}`,
+      network: 'ivao',
+      callsign: flight.callsign,
+      pilot: {
+        id: flight.userId,
+        rating: 'PP', // TODO: Use Enum to find the rating label (flight.rating)
+        name: 'Jonh Doe'
+      },
       currentPosition: {
-        coordinates: [0, 0],
-        altitude: 0,
-        heading: 0,
-        transponder: '2000',
-        groundSpeed: 0,
-        onGround: false
+        coordinates: [flight.lastTrack?.longitude || 0, flight.lastTrack?.latitude || 0],
+        altitude: flight.lastTrack?.altitude || 0,
+        heading: flight.lastTrack?.heading || 0,
+        transponder: String(flight.lastTrack?.transponder), // FIXME: WTF is Transponder a number? FUCK IVAO!       
+        groundSpeed: flight.lastTrack?.groundSpeed || 0,
+        onGround: flight.lastTrack?.onGround || false
       },
       flightPlan: {
-        aircraft: {
-          equipment: 'S',
-          icao: 'A320',
-          registration: 'PR-IVA',
-          transponderTypes: 'LB1',
-          wakeTurbulence: 'M'
+        aircraft: flight.flightPlan.aircraft?.icaoCode ? {
+          equipment: flight.flightPlan.aircraftEquipments,
+          icao: flight.flightPlan.aircraft?.icaoCode,
+          registration: 'PR-TODO',
+          transponderTypes: flight.flightPlan.aircraftTransponderTypes,
+          wakeTurbulence: flight.flightPlan.aircraft?.wakeTurbulence || ''
+        } : null,
+        alternate: {
+          icao: flight.flightPlan.alternativeId,
+          iata: 'FIX', // FIXME: Fetch airport info
+          name: 'FIX ME', // FIXME: Fetch airport info
+          coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
         },
-        alternate: null,
-        alternate2: null,
-        arrival: {
-          icao: 'SBGR',
-          iata: 'GRU',
-          name: 'Guarulhos',
-          coordinates: [-23.435556411743164, -46.47305679321289]
-        },
-        departure: {
-          icao: 'SBSP',
-          iata: 'CGH',
-          name: 'Congonhas',
-          coordinates: [-23.626110076904297, -46.65638732910156]
-        },
-        cruiseTas: '450',
-        departureTime: '20210904000000',
-        endurance: '0000',
-        enrouteTime: '0000',
-        flightType: 'S',
-        level: '000',
-        remarks: 'TEST',
-        route: 'TEST',
-        flightRules: 'I',
-      },
-      network: 'ivao',
-      pilot: {
-        id: 12345,
-        rating: 'PP',
-        name: 'Test Pilot'
+        alternate2: flight.flightPlan.alternative2Id ? {
+          icao: flight.flightPlan.alternative2Id,
+          iata: 'FIX', // FIXME: Fetch airport info
+          name: 'FIX ME', // FIXME: Fetch airport info
+          coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
+        } : null,
+        departure: flight.flightPlan.departureId ? {
+          icao: flight.flightPlan.departureId,
+          iata: 'FIX', // FIXME: Fetch airport info
+          name: 'FIX ME', // FIXME: Fetch airport info
+          coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
+        }: null,
+        arrival: flight.flightPlan.arrivalId ? {
+          icao: flight.flightPlan.arrivalId,
+          iata: 'FIX', // FIXME: Fetch airport info
+          name: 'FIX ME', // FIXME: Fetch airport info
+          coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
+        } : null,
+        cruiseTas: flight.flightPlan.speed,
+        departureTime: String(flight.flightPlan.departureTime),
+        endurance: String(flight.flightPlan.endurance),
+        enrouteTime: String(flight.flightPlan.eet),
+        flightType: flight.flightPlan.flightType,
+        level: flight.flightPlan.level,
+        remarks: flight.flightPlan.remarks || '',
+        route: flight.flightPlan.route,
+        flightRules: flight.flightPlan.flightRules,
       }
     }
-  ]
+  )) as LiveFlights;
 }

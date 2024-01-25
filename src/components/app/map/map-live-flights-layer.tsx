@@ -32,10 +32,10 @@ const flightsLayerStyle: SymbolLayer = {
       'match', // Use the 'match' expression: https://docs.mapbox.com/style-spec/reference/expressions/#match
       ['get', 'network'], // Use the result 'STORE_TYPE' property
       'vatsim',
-      '#A1A1A1',
+      '#13862E',
       'ivao',
-      '#A1A1A1',
-      '#A1A1A1' // any other store type
+      '#144EB6',
+      '#616161' // any other store type
     ],
   },
 }
@@ -51,7 +51,10 @@ export function MapLiveFlightsLayer() {
     refetchInterval: LIVE_FLIGHT_REFRESH_INTERVAL_IN_MS,
   })
 
-  if (!data || error) return null;
+  if (error) console.error(error);
+
+  if (!data) return null;
+
 
   return (
     <Source id='live-flights-source' type='geojson' data={liveFlightToGeoJson(data)}>

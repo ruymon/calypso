@@ -90,7 +90,7 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
       // TODO: Load all images
       const loadImage = () => {
         if (!map.hasImage("m")) {
-          map.loadImage("/assets/images/aircraft-icons/m.png", (error, image) => {
+          map.loadImage("/assets/aircraft-icons/m.png", (error, image) => {
             if (error || image === undefined) throw error;
             map.addImage("m", image, { sdf: true });
           });
@@ -141,16 +141,18 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
           <div className='flex flex-col px-3 py-2 gap-2'>
             <header className='flex items-center justify-between w-full'>
               <span className='font-bold text-base text-secondary-foreground'>{hoverInfo.data.callsign}</span>
-              <span className='text-xs italic text-muted-foreground'>{hoverInfo.data.flightPlan?.aircraft.icao}</span>
+              {hoverInfo.data.flightPlan?.aircraft && <span className='text-xs italic text-muted-foreground'>{hoverInfo.data.flightPlan.aircraft.icao}</span>}
             </header>
-            {hoverInfo.data.flightPlan ? (
-              <div className='flex items-center justify-between w-full gap-3 font-medium text-sm'>
-                <span>{hoverInfo.data.flightPlan.departure.icao}</span>
-                <Progress className='w-full h-1' value={45} />
-                <span>{hoverInfo.data.flightPlan.arrival.icao}</span>
-              </div>
-            ) : (
+            {(!hoverInfo.data.flightPlan || !hoverInfo.data.flightPlan.departure || !hoverInfo.data.flightPlan.arrival) ? (
+
               <span>No flight plan available...</span>
+            ) : (
+
+              <div className='flex items-center justify-between w-full gap-3 font-medium text-sm'>
+                <span>{hoverInfo.data.flightPlan?.departure?.icao || 'TBN'}</span>
+                <Progress className='w-full h-1' value={45} />
+                <span>{hoverInfo.data.flightPlan?.arrival?.icao || 'TBN'}</span>
+              </div>
             )}
 
 

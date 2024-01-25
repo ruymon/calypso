@@ -13,7 +13,7 @@ export async function getLiveFlights(): Promise<LiveFlights | null> {
   if (!vatsimRawData || !ivaoRawData) return null;
 
   const vatsimData = vatsimLiveFlightsAdapter(vatsimRawData.pilots);
-  const ivaoData = ivaoLiveFlightsAdapter();
+  const ivaoData = ivaoLiveFlightsAdapter(ivaoRawData.clients.pilots);
 
   return [...ivaoData, ...vatsimData];
 }
