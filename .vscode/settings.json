@@ -1,10 +1,15 @@
 {
   "cSpell.words": [
     "atcs",
+    "buildx",
+    "Buildx",
     "callsign",
     "deptime",
     "enroute",
     "filipecordovil",
+    "gcloud",
+    "github",
+    "GITHUB",
     "heli",
     "hookform",
     "iata",
@@ -20,6 +25,7 @@
     "shadcn",
     "skyscope",
     "Skyscope",
+    "skyscopeapp",
     "sonner",
     "styleimagemissing",
     "tanstack",

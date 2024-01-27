@@ -46,7 +46,8 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
   const [hoverInfo, setHoverInfo] = useState<FlightHoverInfo | null>(null);
 
   const [cursor, setCursor] = useState('auto');
-
+  // FIXME: This is not working
+  // @ts-ignore
   const onHover = useCallback(event => {
     const flight = event.features && event.features[0];
 
@@ -61,7 +62,9 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
       data: parseFlightData(flight.properties),
     });
   }, []);
-
+  
+  // FIXME: This is not working
+  // @ts-ignore
   const onMouseDown = event => {
     const flight = event.features && event.features[0];
 

@@ -26,19 +26,19 @@ export function FlightPlan({ callsign, currentPosition, flightPlan, pilot }: Fli
         <div className="flex gap-2 items-end">
           <FlightPlanSeparator content="-" />
           <FlightPlanField label="9 - Number" value="1" />
-          <FlightPlanField label="Type of Aircraft" value={flightPlan.aircraft.icao} />
+          <FlightPlanField label="Type of Aircraft" value={flightPlan.aircraft?.icao || ''} />
           <FlightPlanSeparator content="/" />
-          <FlightPlanField label="Wake Turbulence Category" value={flightPlan.aircraft.wakeTurbulence} />
+          <FlightPlanField label="Wake Turbulence Category" value={flightPlan.aircraft?.wakeTurbulence || ''} />
           <FlightPlanSeparator content="-" />
-          <FlightPlanField label="Equipment" value={flightPlan.aircraft.equipment} />
+          <FlightPlanField label="Equipment" value={flightPlan.aircraft?.equipment || ''} />
           <FlightPlanSeparator content="/" />
-          <FlightPlanField label="Transponder" value={flightPlan.aircraft.transponderTypes} />
+          <FlightPlanField label="Transponder" value={flightPlan.aircraft?.transponderTypes || ''} />
           <FlightPlanSeparator content="&lt;&#61;" />
         </div>
 
         <div className="flex gap-2 items-end">
           <FlightPlanSeparator content="-" />
-          <FlightPlanField label="13 - Departure Aerodrome" value={flightPlan.departure.icao} />
+          <FlightPlanField label="13 - Departure Aerodrome" value={flightPlan.departure?.icao || ''} />
           <FlightPlanSeparator content="&nbsp;" />
           <FlightPlanField label="Departure Time" value={flightPlan.departureTime} />
           <FlightPlanSeparator content="&lt;&#61;" />
@@ -60,7 +60,7 @@ export function FlightPlan({ callsign, currentPosition, flightPlan, pilot }: Fli
 
         <div className="flex gap-2 items-end">
           <FlightPlanSeparator content="-" />
-          <FlightPlanField label="16 - Destination Aerodrome" value={flightPlan.arrival.icao} />
+          <FlightPlanField label="16 - Destination Aerodrome" value={flightPlan.arrival?.icao || ''} />
           <FlightPlanSeparator content="&nbsp;" />
           <FlightPlanField label="Total EET" value={flightPlan.enrouteTime} />
           <FlightPlanSeparator content="&nbsp;" />

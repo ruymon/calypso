@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 // FIXME: Remove this and replace with the correct domains for images.
 const nextConfig = {
+  output: "standalone",
   images: {
     remotePatterns: [
       {
