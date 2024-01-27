@@ -1,4 +1,5 @@
 import { Sidebar } from "@/components/app/sidebar";
+import { Metadata } from "next";
 import { ReactNode } from "react";
 
 interface AppLayoutProps {
