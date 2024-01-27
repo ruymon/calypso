@@ -12,6 +12,8 @@ const config = {
   ],
   safelist: [
     ...Array.from(Array(360).keys()).map((i) => `rotate-${i}`),
+    'bg-vatsim',
+    'bg-ivao',
   ],
   prefix: "",
   theme: {
@@ -189,6 +191,12 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      backgroundColor: {
+        ivao: "#0D2C99",
+      },
+      backgroundImage: {
+        vatsim: "linear-gradient(50deg, #29B473 0%, #2483C5 75%, #2B3990 100%)",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],

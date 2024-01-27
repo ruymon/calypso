@@ -7,9 +7,9 @@ interface SidebarProps { };
 
 export function Sidebar({ }: SidebarProps) {
   return (
-    <aside className="px-2 py-4 flex flex-col items-center justify-between bg-background">
+    <aside className="p-2 flex flex-col items-center justify-between bg-background">
       <div className="flex flex-col gap-4">
-        <LogoIcon className="h-10 w-10 p-2 rounded-lg" />
+        <LogoIcon className="h-9 w-9 p-1.5 rounded-lg" />
 
         <nav className="flex items-center flex-col gap-2">
           <SidebarItem title="World map" href='/map' icon={CompassIcon} label="Live network connections" active />
@@ -20,7 +20,7 @@ export function Sidebar({ }: SidebarProps) {
         </nav>
       </div>
 
-      <Avatar className="w-9 h-9">
+      <Avatar className="w-8 h-8">
         <AvatarImage src="https://github.com/ruymon.png" />
         <AvatarFallback>RM</AvatarFallback>
       </Avatar>

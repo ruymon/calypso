@@ -16,27 +16,29 @@ const flightsLayerStyle: SymbolLayer = {
     // ],
     'icon-image': 'm', // TODO: use wake turbulence if available. else use 'm'
     'icon-allow-overlap': true,
-    "icon-size": [
-      'interpolate',
-      ['linear'],
-      ['zoom'],
-      0, 0.5,
-      10, 0.75,
-      15, 1,
-      16, 1.75,
-    ],
+    'icon-size': ['interpolate', ['exponential', 1.5], ['zoom'], 14, 0.5, 16, 1.75],
+    // "icon-size": [
+    //   'interpolate',
+    //   ['linear'],
+    //   ['zoom'],
+    //   0, 0.5,
+    //   10, 0.75,
+    //   15, 1,
+    //   16, 1.75,
+    // ],
     'icon-rotate': ['get', 'heading', ['get', 'currentPosition']],
   },
   paint: {
-    'icon-color': [
-      'match', // Use the 'match' expression: https://docs.mapbox.com/style-spec/reference/expressions/#match
-      ['get', 'network'], // Use the result 'STORE_TYPE' property
-      'vatsim',
-      '#13862E',
-      'ivao',
-      '#144EB6',
-      '#616161' // any other store type
-    ],
+    // 'icon-color': [
+    //   'match', // Use the 'match' expression: https://docs.mapbox.com/style-spec/reference/expressions/#match
+    //   ['get', 'network'], // Use the result 'STORE_TYPE' property
+    //   'vatsim',
+    //   '#29B473',
+    //   'ivao',
+    //   '#3C55AC',
+    //   '#616161' // any other store type
+    // ],
+    'icon-color': '#fff',
   },
 }
 
@@ -47,7 +49,7 @@ export function MapLiveFlightsLayer() {
     queryKey: ['live-flights'],
     queryFn: getLiveFlights,
     refetchOnReconnect: true,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: false,
     refetchInterval: LIVE_FLIGHT_REFRESH_INTERVAL_IN_MS,
   })
 

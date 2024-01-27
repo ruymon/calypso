@@ -12,7 +12,7 @@
 }
 
 .flight-popup > .mapboxgl-popup-content {
-  @apply bg-background/50 shadow-none backdrop-blur-sm rounded-md p-0;
+  @apply bg-background shadow-none border border-border rounded-md p-0;
 }
 
 

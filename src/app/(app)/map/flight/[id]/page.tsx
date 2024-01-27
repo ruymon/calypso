@@ -27,7 +27,7 @@ export default async function FlightDetailsPage({ params: { id } }: FlightDetail
 
   return (
     <Tabs defaultValue="general" className="flex flex-col z-10 bg-background absolute inset-0 max-w-sm">
-      <header className="flex flex-col p-4 justify-between h-48">
+      <header className="flex flex-col px-4 py-2 justify-between h-48">
         <div className="w-full flex justify-between items-center">
           <span className="text-xs text-accent font-medium">Flight details panel</span>
           <Link href="/map" className={buttonVariants({ variant: 'outline', size: 'icon-sm' })}>

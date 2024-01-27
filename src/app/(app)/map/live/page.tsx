@@ -14,7 +14,7 @@ export default async function MapLiveFlightsPage() {
 
   return (
     <Tabs defaultValue="all" className="flex flex-col z-10 bg-background absolute inset-0 max-w-xs">
-      <header className="flex flex-col p-4 justify-between h-48">
+      <header className="flex flex-col px-4 py-2 justify-between h-48">
         <div className="w-full flex justify-between items-center">
           <span className="text-xs text-accent font-medium">Live flights panel</span>
           <Link href="/map" className={buttonVariants({ variant: 'outline', size: 'icon-sm' })}>

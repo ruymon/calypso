@@ -5,9 +5,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useCallback, useRef, useState } from 'react';
 import InteractiveMap, { MapRef, Popup } from 'react-map-gl';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import { LiveFlight } from '@/types/live-flights';
+import { FlightHoverInfo, MapFlightPopup } from './map-flight-popup';
 
 interface MapBaseTileProps {
   children?: ReactNode;
@@ -44,11 +43,7 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
   const router = useRouter();
 
   const mapRef = useRef<MapRef | null>(null);
-  const [hoverInfo, setHoverInfo] = useState<{
-    longitude: number;
-    latitude: number;
-    data: LiveFlight;
-  } | null>(null);
+  const [hoverInfo, setHoverInfo] = useState<FlightHoverInfo | null>(null);
 
   const [cursor, setCursor] = useState('auto');
 
@@ -129,48 +124,7 @@ export function MapBaseTile({ children }: MapBaseTileProps) {
       onMouseLeave={onMouseLeave}
       onMouseDown={onMouseDown}
     >
-      {hoverInfo && (
-        <Popup
-          longitude={hoverInfo.longitude}
-          latitude={hoverInfo.latitude}
-          offset={[0, -20] as any}
-          closeButton={false}
-          className="flight-popup"
-          anchor='bottom'
-        >
-          <div className='flex flex-col px-3 py-2 gap-2'>
-            <header className='flex items-center justify-between w-full'>
-              <span className='font-bold text-base text-secondary-foreground'>{hoverInfo.data.callsign}</span>
-              {hoverInfo.data.flightPlan?.aircraft && <span className='text-xs italic text-muted-foreground'>{hoverInfo.data.flightPlan.aircraft.icao}</span>}
-            </header>
-            {(!hoverInfo.data.flightPlan || !hoverInfo.data.flightPlan.departure || !hoverInfo.data.flightPlan.arrival) ? (
-
-              <span>No flight plan available...</span>
-            ) : (
-
-              <div className='flex items-center justify-between w-full gap-3 font-medium text-sm'>
-                <span>{hoverInfo.data.flightPlan?.departure?.icao || 'TBN'}</span>
-                <Progress className='w-full h-1' value={45} />
-                <span>{hoverInfo.data.flightPlan?.arrival?.icao || 'TBN'}</span>
-              </div>
-            )}
-
-
-            <div className='flex justify-between w-full items-center'>
-              <div className='flex flex-col'>
-                <span className='z-10 pr-2 font-medium text-sm'>{hoverInfo.data.pilot.name}</span>
-                <span className='text-muted-foreground'>{hoverInfo.data.pilot.id}</span>
-              </div>
-              <Badge className='w-fit h-fit px-1 text-[10px] leading-[10px]'>Private Pilot</Badge>
-            </div>
-
-          </div>
-
-          <footer className='flex items-center justify-center px-2 py-1 border-t bg-popover/75 rounded-b-sm'>
-            <span className='text-muted-foreground'>Click to open details</span>
-          </footer>
-        </Popup>
-      )}
+      {hoverInfo && <MapFlightPopup {...hoverInfo} />}
 
       {children}
     </InteractiveMap>

@@ -16,7 +16,7 @@ export function SidebarItem({ icon: Icon, label, title, href, active, ...props }
   return (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>
-        <Link href={href} data-active={active} className={cn("h-10 w-10 p-2.5 rounded-lg text-muted-foreground bg-background transition-all hover:text-accent-foreground data-[active]:bg-muted data-[active]:text-secondary-foreground data-[active]:hover:text-secondary-foreground")} {...props}>
+        <Link href={href} data-active={active} className={cn("h-9 w-9 p-2 rounded-lg text-muted-foreground bg-background transition-all hover:text-accent-foreground data-[active]:bg-muted data-[active]:text-secondary-foreground data-[active]:hover:text-secondary-foreground")} {...props}>
           <Icon className="w-full h-full" />
           <span className="sr-only">{title}</span>
         </Link>
