@@ -1,6 +1,4 @@
 import { MarketingFeatureCard } from "@/components/marketing/marketing-feature-card";
-import { MarketingFooter } from "@/components/marketing/marketing-footer";
-import { MarketingNavbar } from "@/components/marketing/marketing-navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -10,9 +8,7 @@ import Link from "next/link";
 
 export default function MarketingHomePage() {
   return (
-    <main className="flex mx-auto w-full flex-col gap-8 max-w-5xl px-5">
-      <MarketingNavbar />
-
+    <>
       <div className="bg-secondary rounded-full p-2 w-full flex items-center justify-between text-sm">
         <div className="flex items-center gap-3">
           <Badge variant="purple" radius="full">New</Badge>
@@ -56,8 +52,6 @@ export default function MarketingHomePage() {
           <MarketingFeatureCard className="md:col-span-2 lg:col-auto" titleGhost="Keep it" titleStrong="simple." description="We keep things simple and prefer pragmatic solutions over complicated abstractions. We cut away cargo cult." />
         </div>
       </section>
-
-      <MarketingFooter />
-    </main>
+    </>
   );
 };

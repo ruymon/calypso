@@ -1,20 +1,48 @@
 import { cn } from '@/lib/utils';
+import { VariantProps, cva } from 'class-variance-authority';
 import { ScanEyeIcon } from 'lucide-react';
+import { Url } from 'next/dist/shared/lib/router/router';
+import Link, { LinkProps } from 'next/link';
+import { AnchorHTMLAttributes } from 'react';
 
 export function Logo({ className }: { className?: string }) {
   return (
     <figure className={cn('flex items-center gap-2', className)}>
-      <LogoIcon />
+      <LogoIcon size="sm" />
       <LogoText />
     </figure>
   );
 };
 
-export function LogoIcon({ className }: { className?: string }) {
+const logoIconVariants = cva(
+  "flex items-center justify-center",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground",
+        muted: "bg-accent/25 text-muted-foreground",
+      },
+      size: {
+        default: "w-8 h-8 p-1.5 rounded-md",
+        sm: "w-7 h-7 p-1 rounded-md",
+        lg: "h-9 w-9 p-1.5 rounded-lg",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+interface LogoIconProps extends AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof logoIconVariants> {
+  className?: string;
+}
+export function LogoIcon({ href = '/', className, variant, size, ...props }: LogoIconProps) {
   return (
-    <figure className={cn('bg-primary text-primary-foreground p-1 flex items-center justify-center rounded-md w-7 h-7', className)}>
+    <Link href={href} className={cn(logoIconVariants({ variant, size }), className)} {...props}>
       <ScanEyeIcon className='w-full h-full' />
-    </figure>
+    </Link>
   );
 };
 
