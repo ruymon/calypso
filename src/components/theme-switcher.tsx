@@ -1,12 +1,15 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button, ButtonProps, ButtonVariants, buttonVariants } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-export function ThemeSwitcher() {
+interface ThemeSwitcherProps extends ButtonProps {};
+
+export function ThemeSwitcher({ variant = 'ghost', size = 'icon-sm', ...props }: ThemeSwitcherProps) {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -25,13 +28,21 @@ export function ThemeSwitcher() {
   }
 
   return (
-    <Button variant='ghost' onClick={handleThemeChange} size='icon'>
-      {theme === 'dark' ? <Sun className='shrink-0 w-5 h-5' /> : <Moon className='shrink-0 w-5 h-5' />}
+    <Button variant={variant} size={size} {...props} onClick={handleThemeChange}>
+      {theme === 'dark' ? <Sun className='w-full h-full' /> : <Moon className='w-full h-full' />}
     </Button>
   );
 };
 
+interface ThemeSwitcherSkeletonProps {
+  variant?: 'icon-sm' | 'icon' | 'icon-lg';
+};
 
-function ThemeSwitcherSkeleton() {
-  return <Skeleton className='h-9 w-9' />
+const themeSwitcherSkeletonVariants = {
+  "icon-sm": "h-7 w-7 rounded-sm",
+  "icon": "h-9 w-9 rounded-lg",
+  "icon-lg": "h-10 w-10 rounded-lg",
+}
+function ThemeSwitcherSkeleton({ variant = 'icon-sm' }: ThemeSwitcherSkeletonProps) {
+  return <Skeleton className={cn(themeSwitcherSkeletonVariants[variant])} />
 }

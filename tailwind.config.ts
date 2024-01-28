@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
-import { amber, black, cyan, emerald, fuchsia, indigo, lime, neutral, pink, rose, sky, slate, stone, teal, violet, zinc } from "tailwindcss/colors";
+import { amber, black, cyan, emerald, fuchsia, indigo, lime, neutral, pink, rose, sky, slate, stone, teal, violet, zinc, current } from "tailwindcss/colors";
 
 const config = {
   darkMode: ["class"],
@@ -131,7 +131,8 @@ const config = {
       stone,
       teal,
       violet,
-      zinc
+      zinc,
+      current
     },
     extend: {
       colors: {
@@ -174,9 +175,9 @@ const config = {
         },
       },
       borderRadius: {
-        sm: "calc(var(--radius) - 4px)",
-        md: "calc(var(--radius) - 2px)",
-        lg: "var(--radius)",
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         "accordion-down": {
@@ -204,7 +205,11 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/container-queries')
+  ],
 } satisfies Config
 
 export default config

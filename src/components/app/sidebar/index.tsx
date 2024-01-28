@@ -9,7 +9,7 @@ export function Sidebar({ }: SidebarProps) {
   return (
     <aside className="p-2 flex flex-col items-center justify-between bg-background">
       <div className="flex flex-col gap-4">
-        <LogoIcon className="h-9 w-9 p-1.5 rounded-lg" />
+        <LogoIcon size="lg" />
 
         <nav className="flex items-center flex-col gap-2">
           <SidebarItem title="World map" href='/map' icon={CompassIcon} label="Live network connections" active />
