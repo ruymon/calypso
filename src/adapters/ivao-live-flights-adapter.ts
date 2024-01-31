@@ -22,33 +22,33 @@ export function ivaoLiveFlightsAdapter(data?: IvaoDataPilot[]): LiveFlights {
         groundSpeed: flight.lastTrack?.groundSpeed || 0,
         onGround: flight.lastTrack?.onGround || false
       },
-      flightPlan: {
-        aircraft: flight.flightPlan.aircraft?.icaoCode ? {
+      flightPlan: flight.flightPlan ? {
+        aircraft: flight.flightPlan?.aircraft?.icaoCode ? {
           equipment: flight.flightPlan.aircraftEquipments,
           icao: flight.flightPlan.aircraft?.icaoCode,
           registration: 'PR-TODO',
           transponderTypes: flight.flightPlan.aircraftTransponderTypes,
           wakeTurbulence: flight.flightPlan.aircraft?.wakeTurbulence || ''
         } : null,
-        alternate: {
+        alternate: flight.flightPlan?.alternativeId ? {
           icao: flight.flightPlan.alternativeId,
           iata: 'FIX', // FIXME: Fetch airport info
           name: 'FIX ME', // FIXME: Fetch airport info
           coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
-        },
-        alternate2: flight.flightPlan.alternative2Id ? {
+        } : null,
+        alternate2: flight.flightPlan?.alternative2Id ? {
           icao: flight.flightPlan.alternative2Id,
           iata: 'FIX', // FIXME: Fetch airport info
           name: 'FIX ME', // FIXME: Fetch airport info
           coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
         } : null,
-        departure: flight.flightPlan.departureId ? {
+        departure: flight.flightPlan?.departureId ? {
           icao: flight.flightPlan.departureId,
           iata: 'FIX', // FIXME: Fetch airport info
           name: 'FIX ME', // FIXME: Fetch airport info
           coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
         }: null,
-        arrival: flight.flightPlan.arrivalId ? {
+        arrival: flight.flightPlan?.arrivalId ? {
           icao: flight.flightPlan.arrivalId,
           iata: 'FIX', // FIXME: Fetch airport info
           name: 'FIX ME', // FIXME: Fetch airport info
@@ -63,7 +63,7 @@ export function ivaoLiveFlightsAdapter(data?: IvaoDataPilot[]): LiveFlights {
         remarks: flight.flightPlan.remarks || '',
         route: flight.flightPlan.route,
         flightRules: flight.flightPlan.flightRules,
-      }
+      } : null,
     }
   )) as LiveFlights;
 }
