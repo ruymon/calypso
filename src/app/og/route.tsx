@@ -2,11 +2,6 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const size = {
-  width: 1200,
-  height: 630,
-}
-
 export async function GET() {
   const geistRegularFontData = await fetch(new URL('../../../assets/geist-font/Geist-Regular.otf', import.meta.url)).then((res) => res.arrayBuffer());
   const geistMediumFontData = await fetch(new URL('../../../assets/geist-font/Geist-Medium.otf', import.meta.url)).then((res) => res.arrayBuffer());
