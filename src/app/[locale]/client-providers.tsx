@@ -20,12 +20,13 @@ interface ClientProvidersProps {
   children: ReactNode
 };
 
-export function ClientProviders({ children }: ClientProvidersProps) {
-  const [ queryClient ] = useState(() => new QueryClient())
+const queryClient = new QueryClient();
 
+
+export function ClientProviders({ children }: ClientProvidersProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right"  />
       <TooltipProvider delayDuration={0}>
         <ThemeProvider {...themeConfig}>
           {children}

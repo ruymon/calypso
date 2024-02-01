@@ -1,8 +1,9 @@
 "use client"
 
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useScopedI18n } from "@/locales/client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
@@ -16,6 +17,8 @@ const joinFormSchema = z.object({
 })
 
 export function JoinForm() {
+  const t = useScopedI18n('auth.join');
+
   const form = useForm<z.infer<typeof joinFormSchema>>({
     resolver: zodResolver(joinFormSchema),
     defaultValues: {
@@ -41,13 +44,13 @@ export function JoinForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input 
-                    type="text" 
-                    placeholder="Username" 
+                  <Input
+                    type="text"
+                    placeholder={t("username")}
                     autoComplete="username"
                     autoCapitalize="none"
-                    autoCorrect="off" 
-                    {...field} 
+                    autoCorrect="off"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -61,13 +64,13 @@ export function JoinForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input 
-                    type="text" 
-                    placeholder="Full name" 
+                  <Input
+                    type="text"
+                    placeholder={t("fullName")}
                     autoComplete="name"
                     autoCapitalize="none"
-                    autoCorrect="off" 
-                    {...field} 
+                    autoCorrect="off"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -81,13 +84,13 @@ export function JoinForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                <Input
-                    placeholder="Email"
+                  <Input
+                    placeholder={t("email")}
                     type="email"
                     autoComplete="email"
                     autoCapitalize="none"
-                    autoCorrect="off" 
-                    {...field} 
+                    autoCorrect="off"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -101,13 +104,13 @@ export function JoinForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                <Input 
-                    type="password" 
-                    placeholder="Password" 
+                  <Input
+                    type="password"
+                    placeholder={t("password")}
                     autoComplete="current-password"
                     autoCapitalize="none"
-                    autoCorrect="off" 
-                    {...field} 
+                    autoCorrect="off"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -116,12 +119,12 @@ export function JoinForm() {
           />
         </div>
         <div className="flex flex-col gap-3">
-          <Button type="submit">Join waitlist</Button>
+          <Button type="submit">{t('joinWaitList')}</Button>
           <span className="text-xs text-muted-foreground">
-            By joining you agree to the {' '}
-            <Link href="/tos" className="transition-colors hover:text-accent-foreground duration-150 underline decoration-background hover:decoration-current underline-offset-2">Terms of service</Link>
-            {' '} and {' '}
-            <Link href="/privacy" className="transition-colors hover:text-accent-foreground duration-150 underline decoration-background hover:decoration-current underline-offset-2">Privacy policy</Link>
+            {t('agreeToTerms')} {' '}
+            <Link href="/tos" className="transition-colors hover:text-accent-foreground duration-150 underline decoration-background hover:decoration-current underline-offset-2">{t('terms')}</Link>
+            {' '} {t('and')} {' '}
+            <Link href="/privacy" className="transition-colors hover:text-accent-foreground duration-150 underline decoration-background hover:decoration-current underline-offset-2">{t('privacy')}</Link>
           </span>
         </div>
       </form>
