@@ -5,7 +5,7 @@ import { GeistSans } from 'geist/font/sans';
 
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-import { ClientProviders } from './client-providers';
+import { ClientProviders } from './[locale]/client-providers';
 
 import { siteConfig } from '@/config/site';
 import '@/styles/colors.css';

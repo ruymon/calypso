@@ -3,6 +3,7 @@
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useScopedI18n } from "@/locales/client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
@@ -14,6 +15,8 @@ const loginFormSchema = z.object({
 })
 
 export function LoginForm() {
+  const t = useScopedI18n('auth.login');
+
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -38,7 +41,7 @@ export function LoginForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Email"
+                    placeholder={t("email")}
                     type="email"
                     autoCapitalize="none"
                     autoComplete="email"
@@ -59,7 +62,7 @@ export function LoginForm() {
                 <FormControl>
                   <Input 
                     type="password" 
-                    placeholder="Password" 
+                    placeholder={t("password")}
                     autoComplete="current-password"
                     autoCapitalize="none"
                     autoCorrect="off" 
@@ -72,8 +75,8 @@ export function LoginForm() {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <Button type="submit">Sign in</Button>
-          <Link href="/auth/forgot-password" className={buttonVariants({ variant: "link", className: "text-xs" })}>Forgot password?</Link>
+          <Button type="submit">{t('signIn')}</Button>
+          <Link href="/auth/forgot-password" className={buttonVariants({ variant: "link", className: "text-xs" })}>{t('forgotPassword')}</Link>
         </div>
       </form>
     </Form>
