@@ -1,9 +1,8 @@
 import { FlightDetailsProgressCircle } from "@/components/app/flight-details/progress-circle";
-import { FlightPlan } from "@/components/app/flight-plan";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getFlightDetails } from "@/services/live-flights";
 import { ArrowLeftToLine } from "lucide-react";
 import Link from "next/link";
@@ -15,15 +14,7 @@ interface FlightDetailsPageProps {
 }
 
 export default async function FlightDetailsPage({ params: { id } }: FlightDetailsPageProps) {
-  // const flight = await getFlightDetails(id);
-
-  // if (!flight) {
-  //   return (
-  //     <div>
-  //       <h1>Flight not found</h1>
-  //     </div>
-  //   );
-  // }
+  const flight = await getFlightDetails(id);
 
   return (
     <Tabs defaultValue="general" className="flex flex-col z-10 bg-background absolute inset-0 max-w-sm">

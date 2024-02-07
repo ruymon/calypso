@@ -1,5 +1,5 @@
 import { IvaoDataPilot } from "@/types/ivao";
-import { LiveFlight, LiveFlights } from "@/types/live-flights";
+import { LiveFlights } from "@/types/live-flights";
 
 export function ivaoLiveFlightsAdapter(data?: IvaoDataPilot[]): LiveFlights {
   if (!data) return [];
@@ -47,7 +47,7 @@ export function ivaoLiveFlightsAdapter(data?: IvaoDataPilot[]): LiveFlights {
           iata: 'FIX', // FIXME: Fetch airport info
           name: 'FIX ME', // FIXME: Fetch airport info
           coordinates: [-23.435556411743164, -46.47305679321289] // FIXME: Fetch airport info
-        }: null,
+        } : null,
         arrival: flight.flightPlan?.arrivalId ? {
           icao: flight.flightPlan.arrivalId,
           iata: 'FIX', // FIXME: Fetch airport info

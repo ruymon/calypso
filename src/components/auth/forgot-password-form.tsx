@@ -1,7 +1,7 @@
 "use client"
 
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useScopedI18n } from "@/locales/client"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -23,9 +23,13 @@ export function ForgotPasswordForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof forgotPasswordFormSchema>) {
-    // TODO: Implement.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof forgotPasswordFormSchema>) {
+    // TODO: Implement send password reset email
+    // try {
+    //   await sendPasswordResetEmail(firebaseAuth, values.email)
+    // } catch (error) {
+    //   console.error(error)
+    // }
   }
 
   return (

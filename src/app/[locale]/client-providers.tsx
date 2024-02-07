@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "next-themes";
 import { type ThemeProviderProps as ThemeConfigType } from "next-themes/dist/types";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 
 const themeConfig: ThemeConfigType = {
   themes: ['light', 'dark'],

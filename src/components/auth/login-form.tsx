@@ -1,7 +1,7 @@
 "use client"
 
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useScopedI18n } from "@/locales/client"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -11,13 +11,15 @@ import * as z from "zod"
 
 const loginFormSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z.string().min(1),
 })
+
+export type LoginFormType = z.infer<typeof loginFormSchema>
 
 export function LoginForm() {
   const t = useScopedI18n('auth.login');
 
-  const form = useForm<z.infer<typeof loginFormSchema>>({
+  const form = useForm<LoginFormType>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
       email: "",
@@ -25,9 +27,8 @@ export function LoginForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    // TODO: Implement.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
+    // TODO: Implement sign in
   }
 
   return (
@@ -45,8 +46,8 @@ export function LoginForm() {
                     type="email"
                     autoCapitalize="none"
                     autoComplete="email"
-                    autoCorrect="off" 
-                    {...field} 
+                    autoCorrect="off"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -60,13 +61,13 @@ export function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input 
-                    type="password" 
+                  <Input
+                    type="password"
                     placeholder={t("password")}
                     autoComplete="current-password"
                     autoCapitalize="none"
-                    autoCorrect="off" 
-                    {...field} 
+                    autoCorrect="off"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />

@@ -1,8 +1,7 @@
 import { cn } from '@/lib/utils';
 import { VariantProps, cva } from 'class-variance-authority';
-import { ScanEyeIcon } from 'lucide-react';
-import { Url } from 'next/dist/shared/lib/router/router';
-import Link, { LinkProps } from 'next/link';
+import { Rotate3D } from 'lucide-react';
+import Link from 'next/link';
 import { AnchorHTMLAttributes } from 'react';
 
 export function Logo({ className }: { className?: string }) {
@@ -23,9 +22,9 @@ const logoIconVariants = cva(
         muted: "bg-accent/25 text-muted-foreground",
       },
       size: {
-        default: "w-8 h-8 p-1.5 rounded-md",
-        sm: "w-7 h-7 p-1 rounded-md",
-        lg: "h-9 w-9 p-1.5 rounded-lg",
+        default: "w-9 h-9 p-1.5 rounded-lg",
+        sm: "w-8 h-8 p-1 rounded-lg",
+        lg: "h-10 w-10 p-1.5 rounded-xl",
       },
     },
     defaultVariants: {
@@ -41,7 +40,7 @@ interface LogoIconProps extends AnchorHTMLAttributes<HTMLAnchorElement>, Variant
 export function LogoIcon({ href = '/', className, variant, size, ...props }: LogoIconProps) {
   return (
     <Link href={href} className={cn(logoIconVariants({ variant, size }), className)} {...props}>
-      <ScanEyeIcon className='w-full h-full' />
+      <Rotate3D className='w-full h-full' />
     </Link>
   );
 };

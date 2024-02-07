@@ -9,23 +9,16 @@ const flightsLayerStyle: SymbolLayer = {
   id: 'live-flights-layer',
   type: 'symbol',
   layout: {
-    // 'icon-image': [
-    //   'coalesce',
-    //   ['image', ['get', 'wakeTurbulence', ['get', 'aircraft', ['get', 'flightPlan']]]],
-    //   ['image', 'm']
-    // ],
-    'icon-image': 'm', // TODO: use wake turbulence if available. else use 'm'
+    'icon-image': [
+      'coalesce',
+      // TODO: Investigate null cases and errors in the console. Not priority.
+      // FIXME: Heliport icon is not showing up...
+      ['image', ['downcase', ['get', 'wakeTurbulence', ['get', 'aircraft', ['get', 'flightPlan']]]]],
+      ['image', 'm']
+    ],
     'icon-allow-overlap': true,
-    'icon-size': ['interpolate', ['exponential', 1.5], ['zoom'], 14, 0.5, 16, 1.75],
-    // "icon-size": [
-    //   'interpolate',
-    //   ['linear'],
-    //   ['zoom'],
-    //   0, 0.5,
-    //   10, 0.75,
-    //   15, 1,
-    //   16, 1.75,
-    // ],
+    // TODO: Use wakeTurbulence and aircraft type to determine icon size
+    'icon-size': ['interpolate', ['exponential', 1.8], ['zoom'], 14, 0.5, 16, 1.75],
     'icon-rotate': ['get', 'heading', ['get', 'currentPosition']],
   },
   paint: {

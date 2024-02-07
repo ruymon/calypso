@@ -1,7 +1,7 @@
+import { getScopedI18n } from "@/locales/server";
+import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
-import { ChevronRightIcon } from "lucide-react";
-import { getScopedI18n } from "@/locales/server";
 
 interface MarketingAlertTopbarProps { };
 
@@ -9,8 +9,8 @@ export async function MarketingAlertTopbar({ }: MarketingAlertTopbarProps) {
   const t = await getScopedI18n('landing.alert');
 
   return (
-    <div className="bg-secondary rounded-full p-2 w-full flex items-center justify-between text-sm">
-      <div className="flex items-center gap-3">
+    <div className="bg-secondary rounded-md sm:rounded-full p-2 w-full flex flex-col sm:flex-row items-center justify-between text-sm text-center gap-2">
+      <div className="flex flex-col sm:flex-row items-center gap-3">
         <Badge variant="purple" radius="full">{t('new')}</Badge>
         <h5 className="text-secondary-foreground">{t('title')}</h5>
       </div>

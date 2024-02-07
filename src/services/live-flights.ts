@@ -1,11 +1,11 @@
-import { LiveFlights } from "@/types/live-flights"
-import { getVatsimData } from "./vatsim";
-import { getIvaoData } from "./ivao";
-import { vatsimLiveFlightsAdapter } from "@/adapters/vatsim-live-flights-adapter";
 import { ivaoLiveFlightsAdapter } from "@/adapters/ivao-live-flights-adapter";
+import { vatsimLiveFlightsAdapter } from "@/adapters/vatsim-live-flights-adapter";
+import { LiveFlights } from "@/types/live-flights";
+import { getIvaoData } from "./ivao";
+import { getVatsimData } from "./vatsim";
 
 export async function getLiveFlights(): Promise<LiveFlights | null> {
-  const [ vatsimRawData, ivaoRawData ] = await Promise.all([
+  const [vatsimRawData, ivaoRawData] = await Promise.all([
     getVatsimData(),
     getIvaoData(),
   ]);
@@ -18,14 +18,18 @@ export async function getLiveFlights(): Promise<LiveFlights | null> {
   return [...ivaoData, ...vatsimData];
 }
 
-export async function getFlightDetails(id:string) {
-  const flights = await getLiveFlights();
+export async function getFlightDetails(id: string) {
+  const liveFlights = await getLiveFlights();
 
-  if (!flights) throw new Error('No flights found');
+  if (!liveFlights) {
+    throw new Error('Error fetching network flights');
+  }
 
-  const flight = flights.find(flight => flight.id === id);
+  const requestedFlight = liveFlights.find(flight => flight.id === id);
 
-  if (!flight) throw new Error('Flight not found');
+  if (!requestedFlight) {
+    throw new Error(`Error fetching details for ${id}`);
+  }
 
-  return flight;
+  return requestedFlight;
 }
