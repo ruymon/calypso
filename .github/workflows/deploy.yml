@@ -69,5 +69,5 @@ jobs:
           docker build -t skyscopeweb:$LATEST_TAG .
           docker tag skyscopeweb:$LATEST_TAG us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeweb:$LATEST_TAG
           docker tag skyscopeweb:$LATEST_TAG us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeweb:latest
-          docker push us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeapi --all-tags
+          docker push us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeweb --all-tags
           gcloud run services update main-skyscope-web --image=us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeweb:$LATEST_TAG --region=us-east4 --project=skyscopeapp
