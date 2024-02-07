@@ -66,7 +66,7 @@ jobs:
           gcloud auth configure-docker us-east4-docker.pkg.dev
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           git checkout $LATEST_TAG
-          docker build -t skyscopeweb:$LATEST_TAG .
+          docker build --build-arg NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=${NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN} -t skyscopeweb:$LATEST_TAG .
           docker tag skyscopeweb:$LATEST_TAG us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeweb:$LATEST_TAG
           docker tag skyscopeweb:$LATEST_TAG us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeweb:latest
           docker push us-east4-docker.pkg.dev/skyscopeapp/container-registry/skyscopeweb --all-tags
