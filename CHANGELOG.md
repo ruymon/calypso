@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/skyscope-app/skyscope-web/compare/v1.1.1...v1.1.2) (2024-02-07)
+
+
+### Bug Fixes
+
+* Add sharp to lockfile ([1e49528](https://github.com/skyscope-app/skyscope-web/commit/1e49528570fe9a8058bd6663bf69f17a9309b304))
+
 ## [1.1.1](https://github.com/skyscope-app/skyscope-web/compare/v1.1.0...v1.1.1) (2024-02-07)
 
 
