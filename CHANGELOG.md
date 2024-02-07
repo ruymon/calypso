@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/skyscope-app/skyscope-web/compare/v1.1.0...v1.1.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* **deps:** Add Sharp for Docker Image ([b51dc61](https://github.com/skyscope-app/skyscope-web/commit/b51dc612e01b45bb9a25190110e6f84ac1a32334))
+
 # [1.1.0](https://github.com/skyscope-app/skyscope-web/compare/v1.0.0...v1.1.0) (2024-02-07)
 
 
