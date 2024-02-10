@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
+import { amber, black, current, cyan, emerald, fuchsia, indigo, lime, neutral, pink, rose, sky, slate, stone, teal, transparent, violet, zinc } from "tailwindcss/colors";
 import { fontFamily } from "tailwindcss/defaultTheme";
-import { amber, black, cyan, emerald, fuchsia, indigo, lime, neutral, pink, rose, sky, slate, stone, teal, violet, zinc, current } from "tailwindcss/colors";
 
 const config = {
   darkMode: ["class"],
@@ -132,7 +132,8 @@ const config = {
       teal,
       violet,
       zinc,
-      current
+      current,
+      transparent
     },
     extend: {
       colors: {

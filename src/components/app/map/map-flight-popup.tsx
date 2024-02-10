@@ -1,17 +1,40 @@
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { MapHoveredFeature } from "@/contexts/map";
 import { LiveFlight } from "@/types/live-flights";
 import { Popup } from "react-map-gl";
 
-export type FlightHoverInfo = {
-  longitude: number;
-  latitude: number;
-  data: LiveFlight;
+interface MapFlightPopupProps extends MapHoveredFeature { }
+
+function parseFlightData({ currentPosition, flightPlan, pilot, ...rest }: {
+  id: string;
+  callsign: string;
+  currentPosition: string;
+  flightPlan: string;
+  network: string;
+  pilot: string;
+}): LiveFlight {
+  const parseJSON = (jsonString: string): any => {
+    try {
+      return JSON.parse(jsonString)
+    } catch (error) {
+      console.error(`Error parsing JSON: ${jsonString}`);
+      return null;
+    }
+  };
+
+  return {
+    currentPosition: parseJSON(currentPosition),
+    flightPlan: parseJSON(flightPlan),
+    pilot: parseJSON(pilot),
+    ...rest,
+  };
 }
 
-interface MapFlightPopupProps extends FlightHoverInfo { };
 
-export function MapFlightPopup({ latitude, longitude, data }: MapFlightPopupProps) {
+export function MapFlightPopup({ longitude, latitude, feature }: MapFlightPopupProps) {
+  const data = parseFlightData(feature.properties as any);
+
   return (
     <Popup
       longitude={longitude}
@@ -31,6 +54,7 @@ export function MapFlightPopup({ latitude, longitude, data }: MapFlightPopupProp
           </div>
           {data.flightPlan?.aircraft && <span className='text-xs italic text-muted-foreground'>{data.flightPlan.aircraft.icao}</span>}
         </header>
+
         {(!data.flightPlan || !data.flightPlan.departure || !data.flightPlan.arrival) ? (
 
           <span>No flight plan available...</span>
@@ -59,4 +83,5 @@ export function MapFlightPopup({ latitude, longitude, data }: MapFlightPopupProp
       </footer>
     </Popup>
   );
+
 };

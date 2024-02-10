@@ -1,4 +1,4 @@
-import { FlightPlan, LiveFlight, LiveFlights } from "@/types/live-flights";
+import { FlightPlan, LiveFlights } from "@/types/live-flights";
 import { VatsimDataFlightPlan, VatsimDataPilot } from "@/types/vatsim";
 
 function parseVatsimAircraftWakeTurbulence(aircraft: string) {

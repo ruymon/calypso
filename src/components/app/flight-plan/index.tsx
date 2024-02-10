@@ -1,9 +1,9 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { LiveFlight } from "@/types/live-flights";
 import { FlightPlanField } from "./field";
 import { FlightPlanSeparator } from "./separator";
-import { LiveFlight } from "@/types/live-flights";
 
-type FlightPlanProps = LiveFlight 
+type FlightPlanProps = LiveFlight
 
 export function FlightPlan({ callsign, currentPosition, flightPlan, pilot }: FlightPlanProps) {
   if (!flightPlan) return (

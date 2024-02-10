@@ -1,14 +1,13 @@
 import { LiveFlight } from "@/types/live-flights";
-import { Progress } from "./ui/progress";
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Image from "next/image";
+import Link from "next/link";
+import { Progress } from "./ui/progress";
 
 type LiveFlightCardProps = LiveFlight;
 
 export function LiveFlightCard({ callsign, currentPosition, flightPlan, network, pilot, id }: LiveFlightCardProps) {
   return (
-    <Link href={`/map/flight/${id}`} className="flex flex-col w-full bg-background border gap-3 rounded-xl p-3 transition-all hover:bg-muted">
+    <Link href={`/map/flight/${id}`} className="flex flex-col w-full gap-3 rounded-xl p-3 transition-all hover:bg-muted">
       <header className="flex items-center w-full justify-between">
         <div className="flex gap-2 items-center">
           <Image width={32} height={32} className="aspect-square w-8 h-8 rounded-md" src={`/assets/airline-logos/JJ.png`} alt="Airline Logo" />
