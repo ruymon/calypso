@@ -3,17 +3,19 @@ import { ReactNode } from "react";
 
 interface AppSettingsLayoutProps {
   children: ReactNode;
-};
+}
 
-export default function AppSettingsLayout({ children }: AppSettingsLayoutProps) {
+export default function AppSettingsLayout({
+  children,
+}: AppSettingsLayoutProps) {
   return (
-    <div className="flex bg-background/75 backdrop-blur-md flex-1">
-      <div className="flex w-full max-w-5xl mx-auto gap-12 p-4 mt-8">
+    <div className="flex bg-background/75 backdrop-blur-md flex-1 p-8">
+      <div className="flex flex-1 max-w-5xl gap-8 mx-auto">
         <SettingSidebar />
-        <div className="flex-1 flex flex-col gap-8">
+        <main className="flex flex-col gap-8 flex-1 px-8 overflow-y-auto">
           {children}
-        </div>
+        </main>
       </div>
     </div>
   );
-};
+}

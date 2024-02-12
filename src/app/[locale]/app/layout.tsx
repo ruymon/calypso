@@ -5,20 +5,20 @@ import { ReactNode } from "react";
 
 interface AppRootLayoutProps {
   children: ReactNode;
-};
+}
 
 export default async function AppRootLayout({ children }: AppRootLayoutProps) {
   // TODO: AUTH - Add authentication check here
 
   return (
     <div className="flex flex-1 relative overflow-hidden max-h-screen">
+      <Sidebar />
+
       <InteractiveMap>
         <MapLiveFlightsLayer />
       </InteractiveMap>
 
-      <Sidebar />
-
       {children}
     </div>
   );
-};
+}

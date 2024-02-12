@@ -22,7 +22,6 @@ interface ClientProvidersProps {
 
 const queryClient = new QueryClient();
 
-
 export function ClientProviders({ children }: ClientProvidersProps) {
   return (
     <QueryClientProvider client={queryClient}>

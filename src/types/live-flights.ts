@@ -1,12 +1,14 @@
 export type LiveFlights = LiveFlight[]
 
+export type Network = 'vatsim' | 'ivao'
+
 export interface LiveFlight {
   id: string
   pilot: Pilot
   currentPosition: CurrentPosition
   callsign: string
-  network: string
-  flightPlan: FlightPlan | null 
+  network: Network
+  flightPlan: FlightPlan | null
 }
 
 export interface Pilot {

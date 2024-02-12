@@ -1,4 +1,4 @@
-import { useMapContext } from "@/contexts/map";
+import { useMapLoadStore } from "@/stores/map-load-store";
 import { useCallback, useRef } from "react";
 import { MapRef } from "react-map-gl";
 
@@ -36,49 +36,49 @@ const aircraftIcons: AircraftIcon[] = [
 
 export function useMapAircraftIcons() {
   const mapRef = useRef<MapRef | null>(null);
-  const { setMapRef } = useMapContext();
+  const [setIsMapLoaded, setMapRef] = useMapLoadStore((state) => [state.setIsMapLoaded, state.setMapRef]);
 
   const setMapCallbackRef = useCallback((ref: MapRef | null) => {
     if (mapRef.current) {
-      // Make sure to cleanup any events/references added to the last instance
+      // Clean up the previous map
+      setIsMapLoaded(false)
     }
 
-    if (ref) {
-      const map = ref;
+    if (!ref) return
 
-      const loadMapImage = (fileName: string, filePath: string) => {
-        if (map.hasImage(fileName)) {
-          return;
-        }
-
-        map.loadImage(filePath, (error, image) => {
-          if (error) {
-            throw error;
-          };
-
-          if (image === undefined) {
-            throw new Error('Image is undefined');
-          };
-
-          if (map.hasImage(fileName)) {
-            return;
-          }
-
-          map.addImage(fileName, image, { sdf: true });
-        });
-
+    const loadMapImage = (fileName: string, filePath: string) => {
+      if (ref.hasImage(fileName)) {
         return;
       }
 
-      aircraftIcons.forEach((aircraftIcon) => {
-        loadMapImage(aircraftIcon.fileName, aircraftIcon.filePath);
+      ref.loadImage(filePath, (error, image) => {
+        if (error) {
+          throw error;
+        };
+
+        if (image === undefined) {
+          throw new Error('Image is undefined');
+        };
+
+        if (ref.hasImage(fileName)) {
+          return;
+        }
+
+        ref.addImage(fileName, image, { sdf: true });
       });
 
-      setMapRef(ref)
+      return;
     }
 
-    mapRef.current = ref
-  }, [setMapRef])
+    aircraftIcons.forEach((aircraftIcon) => {
+      loadMapImage(aircraftIcon.fileName, aircraftIcon.filePath);
+    });
 
-  return [setMapCallbackRef]
+    mapRef.current = ref
+
+    setMapRef(mapRef.current)
+    setIsMapLoaded(true)
+  }, [setIsMapLoaded, setMapRef])
+
+  return { setMapCallbackRef }
 }

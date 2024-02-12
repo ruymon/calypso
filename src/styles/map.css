@@ -11,7 +11,7 @@
 
 /* TODO: Review this. */
 .flight-popup {
-  @apply min-w-[15rem] w-fit max-w-xs;
+  @apply w-60;
 }
 
 .flight-popup > .mapboxgl-popup-tip {
@@ -19,5 +19,5 @@
 }
 
 .flight-popup > .mapboxgl-popup-content {
-  @apply bg-background shadow-none border border-border rounded-md p-0;
+  @apply bg-background/10 backdrop-blur-md border border-accent/25 shadow-none rounded-md overflow-clip p-0;
 }

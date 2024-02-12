@@ -176,9 +176,19 @@ const config = {
         },
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        none: "0",
+        sm: "calc(var(--radius) - 4px)",
+        DEFAULT: "var(--radius)",
+        md: "calc(var(--radius) + 2px)",
+        lg: "calc(var(--radius) + 4px)",
+        xl: "calc(var(--radius) + 8px)",
+        "2xl": "calc(var(--radius) + 12px)",
+        "3xl": "calc(var(--radius) + 16px)",
+        "4xl": "calc(var(--radius) + 20px)",
+        "full": "9999px",
+        // lg: 'var(--radius)',
+        // md: 'calc(var(--radius) - 2px)',
+        // sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         "accordion-down": {

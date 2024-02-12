@@ -1,4 +1,3 @@
-
 export interface SettingsSidebarItem {
   title: string
   label: string
@@ -19,32 +18,12 @@ export const settingSidebar: SettingsSidebar = [
       {
         'title': 'My account',
         'label': 'Change your account settings',
-        'href': '#'
-      },
-      {
-        'title': 'Export / import data',
-        'label': '',
-        'href': '#'
-      },
-      {
-        'title': 'Privacy',
-        'label': '',
-        'href': '#'
-      },
-      {
-        'title': 'Friend requests',
-        'label': '',
-        'href': '#'
-      },
-      {
-        'title': 'Security',
-        'label': '',
-        'href': '#'
+        'href': '/app/settings'
       },
       {
         'title': 'Connections',
         'label': '',
-        'href': '#'
+        'href': '/app/settings/connections'
       }
     ]
   },
@@ -52,14 +31,9 @@ export const settingSidebar: SettingsSidebar = [
     'title': 'Billing settings',
     'items': [
       {
-        'title': 'Premium',
+        'title': 'PRO',
         'label': 'Change your account settings',
-        'href': '#'
-      },
-      {
-        'title': 'Billing',
-        'label': '',
-        'href': '#'
+        'href': '/app/settings/pro'
       }
     ]
   }

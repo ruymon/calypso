@@ -9,18 +9,26 @@ import Link from "next/link";
 export default async function MapLiveFlightsPage() {
   const liveFlights = await getLiveFlights();
 
-  if (!liveFlights) return null
+  if (!liveFlights) return null;
 
   return (
-    <Tabs defaultValue="all" className="flex flex-col gap-6 bg-background/50 backdrop-blur-xl flex-1 p-4 max-w-sm">
+    <Tabs
+      defaultValue="all"
+      className="flex flex-col gap-6 bg-background/50 backdrop-blur-xl flex-1 p-4 max-w-sm"
+    >
       <header className="flex flex-col gap-6">
         <div className="w-full flex justify-between items-center">
           <div className="flex flex-col">
             <h2 className="text-2xl font-bold">Now flying</h2>
-            <span className="text-sm text-muted-foreground">It is a long established fact that a reader</span>
+            <span className="text-sm text-muted-foreground">
+              It is a long established fact that a reader
+            </span>
           </div>
 
-          <Link href="/app" className={buttonVariants({ variant: 'ghost', size: 'icon-sm' })}>
+          <Link
+            href="/app"
+            className={buttonVariants({ variant: "ghost", size: "icon-sm" })}
+          >
             <ArrowLeftToLine className="w-full h-full" />
           </Link>
         </div>
@@ -35,13 +43,17 @@ export default async function MapLiveFlightsPage() {
         </div>
       </header>
 
-      <TabsContent value="all" className="flex flex-col gap-4 overflow-y-auto pr-2">
-        {liveFlights.slice(0, 10).map(flight => <LiveFlightCard key={flight.id} {...flight} />)}
+      <TabsContent value="all" className="flex-1 overflow-y-auto">
+        <section className="flex flex-col gap-4 pr-2">
+          {liveFlights.slice(0, 10).map((flight) => (
+            <LiveFlightCard key={flight.id} {...flight} />
+          ))}
+        </section>
       </TabsContent>
 
-      <TabsContent value="friends" className="flex flex-col gap-4 overflow-y-auto pr-2">
+      <TabsContent value="friends" className="flex-1 overflow-y-auto">
         To be implemented...
       </TabsContent>
     </Tabs>
   );
-};
+}

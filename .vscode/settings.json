@@ -24,6 +24,7 @@
     "mapbox",
     "MAPBOX",
     "maxzoom",
+    "Navigraph",
     "nextauth",
     "Planetscale",
     "poscon",
@@ -44,6 +45,7 @@
     "unixtime",
     "vatsim",
     "Vatsim",
-    "webeye"
+    "webeye",
+    "zukeeper"
   ]
 }

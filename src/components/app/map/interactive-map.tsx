@@ -1,27 +1,36 @@
-'use client'
+"use client";
 
-import { mapStyles } from '@/config/map';
-import { useMapContext } from '@/contexts/map';
-import { useMapAircraftIcons } from '@/hooks/use-map-aircraft-icons';
-import '@/styles/map.css';
+import { mapStyles } from "@/config/map";
+import { useMapAircraftIcons } from "@/hooks/use-map-aircraft-icons";
+import { useMapCursorStore } from "@/stores/map-cursor-store";
+import { useMapHoveredFeatureStore } from "@/stores/map-hovered-feature-store";
+import { useMapLoadStore } from "@/stores/map-load-store";
+import "@/styles/map.css";
 import { motion } from "framer-motion";
-import 'mapbox-gl/dist/mapbox-gl.css';
-import { useTheme } from 'next-themes';
-import { useRouter } from 'next/navigation';
-import { ReactNode, useCallback } from 'react';
-import Map, { ViewStateChangeEvent } from 'react-map-gl';
-import { MapControls } from './map-controls';
-import { MapFlightPopup } from './map-flight-popup';
+import "mapbox-gl/dist/mapbox-gl.css";
+import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
+import { ReactNode, useCallback } from "react";
+import Map, { ViewStateChangeEvent } from "react-map-gl";
+import { MapControls } from "./map-controls";
+import { MapFlightPopup } from "./map-flight-popup";
 
 interface InteractiveMapProps {
   children?: ReactNode;
 }
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 export function InteractiveMap({ children }: InteractiveMapProps) {
-  const { isMapLoaded, setIsMapLoaded, setHoveredFeature, hoveredFeature, cursor, setCursor, setFocusedLocation } = useMapContext();
-  const [mapRef] = useMapAircraftIcons();
+  const [cursor, setCursor] = useMapCursorStore((state) => [
+    state.cursor,
+    state.setCursor,
+  ]);
+  const [hoveredFeature, setHoveredFeature] = useMapHoveredFeatureStore(
+    (state) => [state.hoveredFeature, state.setHoveredFeature]
+  );
+  const [isMapLoaded] = useMapLoadStore((state) => [state.isMapLoaded]);
+  const { setMapCallbackRef } = useMapAircraftIcons();
   const { resolvedTheme } = useTheme();
   const router = useRouter();
 
@@ -29,49 +38,58 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
     // Do something with the map move event
   }, []);
 
-  const handleMouseMove = useCallback((evt: mapboxgl.MapLayerMouseEvent) => {
-    const feature = evt.features && evt.features[0];
+  const handleMouseMove = useCallback(
+    (evt: mapboxgl.MapLayerMouseEvent) => {
+      const feature = evt.features && evt.features[0];
 
-    if (!feature) {
-      setHoveredFeature(undefined);
+      if (!feature) {
+        setHoveredFeature(null);
+        return;
+      }
+
+      setHoveredFeature({
+        longitude: evt.lngLat.lng,
+        latitude: evt.lngLat.lat,
+        feature: feature,
+      });
+
       return;
-    }
-
-    setHoveredFeature({
-      longitude: evt.lngLat.lng,
-      latitude: evt.lngLat.lat,
-      feature: feature
-    });
-
-    return;
-  }, [setHoveredFeature]);
+    },
+    [setHoveredFeature]
+  );
 
   const handleMouseEnter = useCallback(() => {
-    setCursor('pointer')
+    setCursor("pointer");
 
     return;
   }, [setCursor]);
 
   const handleMouseLeave = useCallback(() => {
-    setCursor('auto')
+    setCursor("auto");
 
     return;
   }, [setCursor]);
 
-  const handleMouseDown = useCallback((evt: mapboxgl.MapLayerMouseEvent) => {
-    const feature = evt.features && evt.features[0];
+  const handleMouseDown = useCallback(
+    (evt: mapboxgl.MapLayerMouseEvent) => {
+      const feature = evt.features && evt.features[0];
 
-    if (!feature || !feature.properties) return;
+      if (!feature || !feature.properties) return;
 
-    console.log(feature);
+      console.log(feature);
 
-    router.push(`/map/flight/${feature.properties.id}`);
+      router.push(`/app/map/flight/${feature.properties.id}`);
 
-    return;
-  }, [router])
+      return;
+    },
+    [router]
+  );
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: isMapLoaded ? 1 : 0 }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isMapLoaded ? 1 : 0 }}
+    >
       <Map
         mapboxAccessToken={MAPBOX_TOKEN}
         style={{
@@ -81,14 +99,13 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
           height: "100%",
         }}
         reuseMaps={true}
-        onLoad={() => setIsMapLoaded(true)}
-        ref={mapRef}
+        ref={setMapCallbackRef}
         mapStyle={resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light}
         maxZoom={16}
         minZoom={2}
         attributionControl={false}
         dragRotate={false}
-        interactiveLayerIds={['live-flights-layer']}
+        interactiveLayerIds={["live-flights-layer"]}
         cursor={cursor}
         onMove={(evt) => isMapLoaded && handleMove(evt)}
         onMouseMove={(evt) => isMapLoaded && handleMouseMove(evt)}
