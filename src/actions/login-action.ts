@@ -22,20 +22,18 @@ export async function signInAction({ email, password }: LoginFormType) {
 
   cookieStore.set('accessToken', userAccessToken.token, {
     httpOnly: true,
-    domain: 'localhost',
+    domain: 'skyscope.app',
     expires: new Date(accessTokenMaxAge).getTime(),
     sameSite: 'lax',
-    // TODO Add only secure in production
-    //secure: true,
+    secure: true,
   })
 
   cookieStore.set('refreshToken', userRefreshToken, {
     httpOnly: true,
-    domain: 'localhost',
+    domain: 'skyscope.app',
     expires: new Date(Date.now() + 100 * 365 * 24 * 60 * 60 * 1000).getTime(), // Refresh token doesn't expire
     sameSite: 'lax',
-    // TODO Add only secure in production
-    //secure: true,
+    secure: true,
   })
 
   return;
