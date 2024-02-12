@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/skyscope-app/skyscope-web/compare/v1.1.2...v1.2.0) (2024-02-12)
+
+
+### Features
+
+* **auth:** Add firebase & secure pages ([abf1d45](https://github.com/skyscope-app/skyscope-web/commit/abf1d4599a6aa1530038a2c2d6c3f0fe32c927b9))
+* Embed page ([2a1f8dc](https://github.com/skyscope-app/skyscope-web/commit/2a1f8dc56db160708ac8305142660fcfd54a1eb8))
+
 ## [1.1.2](https://github.com/skyscope-app/skyscope-web/compare/v1.1.1...v1.1.2) (2024-02-07)
 
 
