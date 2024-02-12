@@ -2,18 +2,22 @@
 
 import { InteractiveMap } from "@/components/app/map/interactive-map";
 import { MapLiveFlightsLayer } from "@/components/app/map/map-live-flights-layer";
-import {
-  MapViewState,
-  useMapFocusedLocationStore,
-} from "@/stores/map-focused-location-store";
+import { useMapFocusedLocationStore } from "@/stores/map-focused-location-store";
 import { useMapLoadStore } from "@/stores/map-load-store";
 import { useEffect } from "react";
 
 interface MapEmbedPageProps {
-  params: MapViewState;
+  params: {
+    locale: string;
+    longitude: number;
+    latitude: number;
+    zoom: number;
+  };
 }
 
-export default function MapEmbedPage({ params }: MapEmbedPageProps) {
+export default function MapEmbedPage({
+  params: { latitude, longitude, zoom },
+}: MapEmbedPageProps) {
   const [setFocusedLocation] = useMapFocusedLocationStore((state) => [
     state.setFocusedLocation,
   ]);
@@ -22,8 +26,12 @@ export default function MapEmbedPage({ params }: MapEmbedPageProps) {
 
   useEffect(() => {
     if (!isMapLoaded) return;
-    setFocusedLocation(params);
-  }, [setFocusedLocation, params, isMapLoaded]);
+    setFocusedLocation({
+      latitude,
+      longitude,
+      zoom,
+    });
+  }, [setFocusedLocation, latitude, longitude, zoom, isMapLoaded]);
 
   return (
     <main className="flex flex-1 relative overflow-hidden max-h-screen">

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -8,31 +8,27 @@ import { type ThemeProviderProps as ThemeConfigType } from "next-themes/dist/typ
 import { ReactNode } from "react";
 
 const themeConfig: ThemeConfigType = {
-  themes: ['light', 'dark'],
-  attribute: 'class',
-  defaultTheme: 'dark',
+  themes: ["light", "dark"],
+  attribute: "class",
+  defaultTheme: "dark",
   disableTransitionOnChange: true,
   enableSystem: false,
-  storageKey: 'theme',
-}
+  storageKey: "theme",
+};
 
 interface ClientProvidersProps {
-  children: ReactNode
-};
+  children: ReactNode;
+}
 
 const queryClient = new QueryClient();
 
 export function ClientProviders({ children }: ClientProvidersProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right"  />
+      <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
       <TooltipProvider delayDuration={0}>
-        <ThemeProvider {...themeConfig}>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider {...themeConfig}>{children}</ThemeProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
-};
-
-
+}

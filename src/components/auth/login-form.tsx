@@ -1,5 +1,6 @@
 "use client";
 
+import { signInAction } from "@/actions/login-action";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Form,
@@ -15,7 +16,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-const loginFormSchema = z.object({
+export const loginFormSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1),
 });
@@ -33,8 +34,8 @@ export function LoginForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    // TODO
+  function onSubmit(values: z.infer<typeof loginFormSchema>) {
+    signInAction(values);
   }
 
   return (

@@ -1,8 +1,8 @@
+import { LoginForm } from "@/components/auth/login-form";
 import { buttonVariants } from "@/components/ui/button";
 import { getScopedI18n } from "@/locales/server";
 import { Metadata } from "next";
 import Link from "next/link";
-import { AuthButton } from "./auth-button";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -22,8 +22,7 @@ export default async function LoginPage({}: LoginPageProps) {
         <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
       </header>
 
-      {/* <LoginForm /> */}
-      <AuthButton />
+      <LoginForm />
 
       <Link
         href="/auth/join"

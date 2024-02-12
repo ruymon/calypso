@@ -42,11 +42,9 @@
     "firebase-admin": "^12.0.0",
     "framer-motion": "^11.0.3",
     "geist": "^1.2.1",
-    "jotai": "^2.6.2",
     "lucide-react": "^0.303.0",
     "mapbox-gl": "^3.1.0",
     "next": "14.0.4",
-    "next-firebase-auth-edge": "^1.0.1",
     "next-international": "^1.2.3",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
@@ -60,7 +58,6 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4",
-    "zukeeper": "^1.0.2",
     "zustand": "^4.5.0"
   },
   "devDependencies": {

@@ -1,15 +1,15 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
-import { GeistMono } from 'geist/font/mono';
-import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 
-import type { Metadata } from 'next';
-import { ReactNode } from 'react';
-import { ClientProviders } from './[locale]/client-providers';
+import type { Metadata } from "next";
+import { ReactNode } from "react";
+import { ClientProviders } from "./[locale]/client-providers";
 
-import { siteConfig } from '@/config/site';
-import '@/styles/colors.css';
-import '@/styles/globals.css';
+import { siteConfig } from "@/config/site";
+import "@/styles/colors.css";
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "Innovative Features",
     "Flight Simulation Networks",
     "Realistic Flying",
-    "Virtual Pilots"
+    "Virtual Pilots",
   ],
   openGraph: {
     type: "website",
@@ -59,21 +59,25 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     creator: "@ruyymon",
   },
-}
+};
 
 interface RootLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn('min-h-screen flex', GeistSans.variable, GeistMono.variable)}>
-        <ClientProviders>
-          {children}
-        </ClientProviders>
+      <body
+        className={cn(
+          "min-h-screen flex",
+          GeistSans.variable,
+          GeistMono.variable
+        )}
+      >
+        <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
-  )
+  );
 }
