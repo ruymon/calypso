@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/skyscope-app/skyscope-web/compare/v1.3.1...v1.3.2) (2024-02-14)
+
+
+### Bug Fixes
+
+* **typescript:** Fetch unknown return :poop: ([fb8ad43](https://github.com/skyscope-app/skyscope-web/commit/fb8ad43f64c70e7b3a90c15c14512fcf7ba38dbf))
+
 ## [1.3.1](https://github.com/skyscope-app/skyscope-web/compare/v1.3.0...v1.3.1) (2024-02-14)
 
 
