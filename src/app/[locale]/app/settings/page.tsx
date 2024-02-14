@@ -15,6 +15,7 @@ import Image from "next/image";
 interface AppSettingsHomePageProps {}
 
 export default function AppSettingsHomePage({}: AppSettingsHomePageProps) {
+
   return (
     <>
       <section className="flex flex-col gap-4">

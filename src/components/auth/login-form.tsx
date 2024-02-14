@@ -1,6 +1,5 @@
 "use client";
 
-import { signInAction } from "@/actions/login-action";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Form,
@@ -10,9 +9,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { login } from "@/lib/auth";
 import { useScopedI18n } from "@/locales/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -25,6 +26,7 @@ export type LoginFormType = z.infer<typeof loginFormSchema>;
 
 export function LoginForm() {
   const t = useScopedI18n("auth.login");
+  const router = useRouter();
 
   const form = useForm<LoginFormType>({
     resolver: zodResolver(loginFormSchema),
@@ -34,8 +36,9 @@ export function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    signInAction(values);
+  async function onSubmit(data: LoginFormType) {
+    await login(data);
+    router.push("/app");
   }
 
   return (

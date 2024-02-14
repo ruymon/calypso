@@ -1,6 +1,7 @@
 "use client";
 
 import { mapStyles } from "@/config/map";
+import { env } from "@/env";
 import { useMapAircraftIcons } from "@/hooks/use-map-aircraft-icons";
 import { useMapCursorStore } from "@/stores/map-cursor-store";
 import { useMapHoveredFeatureStore } from "@/stores/map-hovered-feature-store";
@@ -19,7 +20,7 @@ interface InteractiveMapProps {
   children?: ReactNode;
 }
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
+const mapboxAccessToken = env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 export function InteractiveMap({ children }: InteractiveMapProps) {
   const [cursor, setCursor] = useMapCursorStore((state) => [
@@ -91,7 +92,7 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
       animate={{ opacity: isMapLoaded ? 1 : 0 }}
     >
       <Map
-        mapboxAccessToken={MAPBOX_TOKEN}
+        mapboxAccessToken={mapboxAccessToken}
         style={{
           position: "absolute",
           inset: 0,

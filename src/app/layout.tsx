@@ -8,11 +8,12 @@ import { ReactNode } from "react";
 import { ClientProviders } from "./[locale]/client-providers";
 
 import { siteConfig } from "@/config/site";
+import { BASE_URL } from "@/lib/constants";
 import "@/styles/colors.css";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: BASE_URL,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,

@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { BASE_URL_WITHOUT_PROTOCOL } from "@/lib/constants";
 
 export default {
   "landing.alert.new": "Novo",
@@ -56,7 +57,7 @@ export default {
 
   "legal.terms.title": "Termos e Condições",
   "legal.terms.topic1.title": "1. Termos",
-  "legal.terms.topic1.content": `Ao acessar este site, acessível em ${siteConfig.url}, você concorda em ficar vinculado a estes Termos e Condições de Uso do Site e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Se você discordar de qualquer um desses termos, está proibido de acessar este site. Os materiais contidos neste site são protegidos por leis de direitos autorais e marcas registradas.`,
+  "legal.terms.topic1.content": `Ao acessar este site, acessível em ${BASE_URL_WITHOUT_PROTOCOL}, você concorda em ficar vinculado a estes Termos e Condições de Uso do Site e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Se você discordar de qualquer um desses termos, está proibido de acessar este site. Os materiais contidos neste site são protegidos por leis de direitos autorais e marcas registradas.`,
   "legal.terms.topic2.title": "2. Licença de Uso",
   "legal.terms.topic2.content": `É concedida permissão para baixar os materiais (informações ou software) no site ${siteConfig.name} apenas para uso pessoal e não comercial. Isso é uma concessão de licença, não uma transferência de título, e sob esta licença você não pode:`,
   "legal.terms.topic2.list1": "modificar ou copiar os materiais;",
@@ -81,7 +82,7 @@ export default {
   "legal.terms.topic9.content": `Qualquer reivindicação relacionada ao site ${siteConfig.name} será regida pelas leis dos EUA, sem considerar suas disposições de conflito de leis.`,
 
   "legal.privacy.title": `Política de Privacidade para ${siteConfig.name}`,
-  "legal.privacy.paragraph1": `${siteConfig.name} ("nós", "nos" ou "nosso") fornece esta Política de Privacidade para informá-lo sobre nossas políticas e procedimentos em relação à coleta, uso e divulgação de informações pessoais que podemos receber de usuários de nosso site ("Site"), acessível em ${siteConfig.url}, e quaisquer outros serviços oferecidos por nós em conexão com nosso site (todos os itens acima referidos como os "Serviços").`,
+  "legal.privacy.paragraph1": `${siteConfig.name} ("nós", "nos" ou "nosso") fornece esta Política de Privacidade para informá-lo sobre nossas políticas e procedimentos em relação à coleta, uso e divulgação de informações pessoais que podemos receber de usuários de nosso site ("Site"), acessível em ${BASE_URL_WITHOUT_PROTOCOL}, e quaisquer outros serviços oferecidos por nós em conexão com nosso site (todos os itens acima referidos como os "Serviços").`,
   "legal.privacy.paragraph2": 'Se você tiver perguntas adicionais ou precisar de mais informações sobre nossa Política de Privacidade, não hesite em nos contatar em',
   "legal.privacy.paragraph3": `Esta Política de Privacidade se aplica apenas às nossas atividades online e é válida para visitantes do nosso site no que diz respeito às informações que eles compartilham e/ou coletam por ${siteConfig.name}. Esta política não se aplica a nenhuma informação coletada offline ou por meio de canais diferentes deste site.`,
   "legal.privacy.topic1.title": "Consentimento",

@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { BASE_URL_WITHOUT_PROTOCOL } from "@/lib/constants";
 
 export default {
   'landing.alert.new': 'New',
@@ -56,7 +57,7 @@ export default {
 
   'legal.terms.title': 'Terms and Conditions',
   'legal.terms.topic1.title': '1. Terms',
-  'legal.terms.topic1.content': `By accessing this Website, accessible from ${siteConfig.url}, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trade mark law.`,
+  'legal.terms.topic1.content': `By accessing this Website, accessible from ${BASE_URL_WITHOUT_PROTOCOL}, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trade mark law.`,
   'legal.terms.topic2.title': '2. Use License',
   'legal.terms.topic2.content': `Permission is granted to download the materials (information or software) on ${siteConfig.name}\'s website for personal, non-commercial use only. This is the grant of a license, not a transfer of title, and under this license you may not:`,
   'legal.terms.topic2.list1': 'modify or copy the materials;',
@@ -81,7 +82,7 @@ export default {
   'legal.terms.topic9.content': `Any claim related to ${siteConfig.name}\'s Website shall be governed by the laws of us without regards to its conflict of law provisions.`,
 
   'legal.privacy.title': `Privacy Policy for ${siteConfig.name}`,
-  'legal.privacy.paragraph1': `${siteConfig.name} ("we", "us", or "our") provides this Privacy Policy to inform you of our policies and procedures regarding the collection, use and disclosure of personal information we may receive from users of our website ("Site"), accessible from ${siteConfig.url}, and any other services offered by us in connection with our site (any and all of the foregoing the "Services").`,
+  'legal.privacy.paragraph1': `${siteConfig.name} ("we", "us", or "our") provides this Privacy Policy to inform you of our policies and procedures regarding the collection, use and disclosure of personal information we may receive from users of our website ("Site"), accessible from ${BASE_URL_WITHOUT_PROTOCOL}, and any other services offered by us in connection with our site (any and all of the foregoing the "Services").`,
   'legal.privacy.paragraph2': 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at',
   'legal.privacy.paragraph3': `This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect by ${siteConfig.name}. This policy is not applicable to any information collected offline or via channels other than this website.`,
   'legal.privacy.topic1.title': 'Consent',

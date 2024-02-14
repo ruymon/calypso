@@ -21,6 +21,7 @@ export default function MapEmbedPage({
   const [setFocusedLocation] = useMapFocusedLocationStore((state) => [
     state.setFocusedLocation,
   ]);
+  // Force theme based on SearchParams
 
   const [isMapLoaded] = useMapLoadStore((state) => [state.isMapLoaded]);
 

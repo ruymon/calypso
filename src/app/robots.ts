@@ -1,15 +1,14 @@
-import { siteConfig } from "@/config/site"
+import { BASE_URL } from "@/lib/constants"
 import { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = siteConfig.url;
-  
+
   return {
     rules: {
       userAgent: "*",
       allow: ["/", "/api/og/*"],
       //disallow: "/private/",
     },
-    sitemap: `${baseUrl}/sitemap.xml`
+    sitemap: `${BASE_URL}/sitemap.xml`
   }
 }

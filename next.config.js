@@ -1,7 +1,13 @@
+/**
+ * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
+ * for Docker builds.
+ */
+await import("./src/env.js");
+
 /** @type {import('next').NextConfig} */
-// FIXME: Remove this and replace with the correct domains for images.
 const nextConfig = {
   images: {
+    // FIXME: Remove this and replace with the correct domains for images.
     remotePatterns: [
       {
         protocol: "https",
@@ -14,4 +20,4 @@ const nextConfig = {
   output: "standalone",
 };
 
-module.exports = nextConfig;
+export default nextConfig;

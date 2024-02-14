@@ -1,6 +1,7 @@
 import { InteractiveMap } from "@/components/app/map/interactive-map";
 import { MapLiveFlightsLayer } from "@/components/app/map/map-live-flights-layer";
 import { Sidebar } from "@/components/app/sidebar";
+import { env } from "@/env";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
@@ -11,7 +12,9 @@ interface AppRootLayoutProps {
 
 export default async function AppRootLayout({ children }: AppRootLayoutProps) {
   const cookieStore = cookies();
-  const accessToken = cookieStore.get("accessToken");
+
+  const isSecureCookie = env.NODE_ENV === "production"
+  const accessToken = cookieStore.get(isSecureCookie ? "__Secure-access-token" : "access-token");
 
   if (!accessToken) {
     redirect("/auth/login");
