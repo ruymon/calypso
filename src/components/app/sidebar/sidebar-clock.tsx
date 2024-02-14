@@ -26,8 +26,8 @@ const UTC_TIME_API_URL = "https://worldtimeapi.org/api/timezone/Etc/UTC";
 
 async function getUTCTime(): Promise<UTCTime | null> {
   const response = await fetch(UTC_TIME_API_URL);
-  const data = await response.json();
-  return data;
+  const data = (await response.json()) as unknown as UTCTime;
+  return data ;
 }
 
 export function SidebarClock() {
