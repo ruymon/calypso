@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/skyscope-app/skyscope-web/compare/v1.3.0...v1.3.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* **ci:** Add Line break and build args ([462df51](https://github.com/skyscope-app/skyscope-web/commit/462df516c18eb8ba3845079c44be548d4ba0c749))
+
 # [1.3.0](https://github.com/skyscope-app/skyscope-web/compare/v1.2.1...v1.3.0) (2024-02-14)
 
 
