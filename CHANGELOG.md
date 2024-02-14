@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/skyscope-app/skyscope-web/compare/v1.2.0...v1.2.1) (2024-02-12)
+
+
+### Bug Fixes
+
+* **auth:** Cookies Domain ([2b630fa](https://github.com/skyscope-app/skyscope-web/commit/2b630fa689a81fdcc1627c4cd36d1afd8ee50827))
+
 # [1.2.0](https://github.com/skyscope-app/skyscope-web/compare/v1.1.2...v1.2.0) (2024-02-12)
 
 
