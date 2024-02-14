@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/skyscope-app/skyscope-web/compare/v1.2.1...v1.3.0) (2024-02-14)
+
+
+### Features
+
+* **auth:** Cookie secure policy + env validation ([8aea6e8](https://github.com/skyscope-app/skyscope-web/commit/8aea6e8c9333bcf752d62951719e3c25fa83f14a))
+* **ci:** Update CI for new env deps ([d16519b](https://github.com/skyscope-app/skyscope-web/commit/d16519b7bdf8fd4c8af2ec4a4d389c43f0d85891))
+
 ## [1.2.1](https://github.com/skyscope-app/skyscope-web/compare/v1.2.0...v1.2.1) (2024-02-12)
 
 
