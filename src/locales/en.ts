@@ -53,6 +53,9 @@ export default {
   'auth.forgotPassword.sendEmail': 'Send recovery email',
   'auth.forgotPassword.backToLogin': 'Remember your password?',
 
+  'auth.disabled.title': 'Account disabled',
+  'auth.disabled.subtitle': 'Your account has been disabled.',
+
   'auth.supportCard.title': 'Problem?',
 
   'legal.terms.title': 'Terms and Conditions',

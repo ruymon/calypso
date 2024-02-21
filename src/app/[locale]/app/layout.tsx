@@ -1,9 +1,9 @@
 import { InteractiveMap } from "@/components/app/map/interactive-map";
-import { MapLiveFlightsLayer } from "@/components/app/map/map-live-flights-layer";
+import {
+  MapIvaoLiveFlightsLayer,
+  MapVatsimLiveFlightsLayer,
+} from "@/components/app/map/map-live-flights-layer";
 import { Sidebar } from "@/components/app/sidebar";
-import { env } from "@/env";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
 interface AppRootLayoutProps {
@@ -11,21 +11,13 @@ interface AppRootLayoutProps {
 }
 
 export default async function AppRootLayout({ children }: AppRootLayoutProps) {
-  const cookieStore = cookies();
-
-  const isSecureCookie = env.NODE_ENV === "production"
-  const accessToken = cookieStore.get(isSecureCookie ? "__Secure-access-token" : "access-token");
-
-  if (!accessToken) {
-    redirect("/auth/login");
-  }
-
   return (
-    <div className="flex flex-1 relative overflow-hidden max-h-screen">
+    <div className="relative flex max-h-screen flex-1 overflow-hidden">
       <Sidebar />
 
       <InteractiveMap>
-        <MapLiveFlightsLayer />
+        <MapVatsimLiveFlightsLayer />
+        <MapIvaoLiveFlightsLayer />
       </InteractiveMap>
 
       {children}

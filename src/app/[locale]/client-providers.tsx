@@ -1,6 +1,8 @@
 "use client";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Locale } from "@/config/i18n";
+import { I18nProviderClient } from "@/locales/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "next-themes";
@@ -18,17 +20,23 @@ const themeConfig: ThemeConfigType = {
 
 interface ClientProvidersProps {
   children: ReactNode;
+  locale: Locale;
 }
 
 const queryClient = new QueryClient();
 
-export function ClientProviders({ children }: ClientProvidersProps) {
+export function ClientProviders({ children, locale }: ClientProvidersProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
-      <TooltipProvider delayDuration={0}>
-        <ThemeProvider {...themeConfig}>{children}</ThemeProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <I18nProviderClient locale={locale}>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools
+          initialIsOpen={false}
+          buttonPosition="bottom-right"
+        />
+        <TooltipProvider delayDuration={0}>
+          <ThemeProvider {...themeConfig}>{children}</ThemeProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </I18nProviderClient>
   );
 }

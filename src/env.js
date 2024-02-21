@@ -7,15 +7,16 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    NODE_ENV: z.enum(["development", "test", "production"]).optional().default("development"),
   },
 
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars. To expose them to the client, prefix them with
    * `NEXT_PUBLIC_`.
-   */
+  */
   client: {
+    NEXT_PUBLIC_NODE_ENV: z.enum(["development", "test", "production"]).optional().default("development"),
+
     NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN: z.string().min(1),
 
     NEXT_PUBLIC_FIREBASE_API_KEY: z.string().min(1),
@@ -32,7 +33,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV,
+    NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
 
     NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN,
 

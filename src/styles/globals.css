@@ -83,7 +83,7 @@
 }
 
 ::-webkit-scrollbar {
-  @apply w-1.5 h-0;
+  @apply h-0 w-1.5;
   scrollbar-width: 0.375rem;
 }
 
@@ -93,7 +93,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-accent bg-opacity-20 backdrop-blur-3xl rounded-full;
+  @apply rounded-full bg-accent bg-opacity-20 backdrop-blur-3xl;
 }
 
 ::-webkit-scrollbar,

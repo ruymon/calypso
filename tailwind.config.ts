@@ -199,10 +199,30 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        spotlight: {
+          from: {
+            opacity: "0",
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+        movingbackground: {
+          from: {
+            transform: "translate(0, 0)",
+          },
+          to: {
+            transform: "translate(0, -50%)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+        movingbackground: "movingbackground 90s linear infinite",
       },
       backgroundColor: {
         ivao: "#0D2C99",
@@ -213,6 +233,7 @@ const config = {
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
         mono: ["var(--font-geist-mono)", ...fontFamily.mono],
+        handwriting: ["var(--font-courgette)", "cursive"],
       },
     },
   },

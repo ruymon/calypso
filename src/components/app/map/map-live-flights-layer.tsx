@@ -1,12 +1,11 @@
 "use client";
 
-import { liveFlightToGeoJson } from "@/lib/geojson";
-import { getLiveFlights } from "@/services/live-flights";
+import { getNetworkLiveTrafficInGeoJSON } from "@/services/network";
 import { useQuery } from "@tanstack/react-query";
 import { Layer, Source, SymbolLayer } from "react-map-gl";
 
 const flightsLayerStyle: SymbolLayer = {
-  id: "live-flights-layer",
+  id: "network-live-flights-layer",
   type: "symbol",
   layout: {
     "icon-image": [
@@ -33,44 +32,68 @@ const flightsLayerStyle: SymbolLayer = {
       16,
       1.75,
     ],
-    "icon-rotate": ["get", "heading", ["get", "currentPosition"]],
+    "icon-rotate": ["get", "heading", ["get", "position"]],
   },
   paint: {
-    // 'icon-color': [
-    //   'match', // Use the 'match' expression: https://docs.mapbox.com/style-spec/reference/expressions/#match
-    //   ['get', 'network'], // Use the result 'STORE_TYPE' property
-    //   'vatsim',
-    //   '#29B473',
-    //   'ivao',
-    //   '#3C55AC',
-    //   '#616161' // any other store type
-    // ],
-    "icon-color": "#fff",
+    "icon-color": [
+      "match",
+      ["get", "network"],
+      "vatsim",
+      "#29B473",
+      "ivao",
+      "#3C55AC",
+      "#616161", // any other store type
+    ],
+    // "icon-color": "#fff",
   },
 };
 
 const LIVE_FLIGHT_REFRESH_INTERVAL_IN_MS = 1000 * 60; // 1 minute
 
-export function MapLiveFlightsLayer() {
+export function MapVatsimLiveFlightsLayer() {
   const { data, error } = useQuery({
-    queryKey: ["live-flights"],
-    queryFn: getLiveFlights,
+    queryKey: ["vatsim-live-flights"],
+    queryFn: () => getNetworkLiveTrafficInGeoJSON("vatsim"),
     refetchOnReconnect: true,
     refetchOnWindowFocus: false,
     refetchInterval: LIVE_FLIGHT_REFRESH_INTERVAL_IN_MS,
   });
 
-  if (error) console.error(error);
+  console.log(data);
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
 
   if (!data) return null;
 
   return (
-    <Source
-      id="live-flights-source"
-      type="geojson"
-      data={liveFlightToGeoJson(data)}
-    >
-      <Layer {...flightsLayerStyle} />
+    <Source id="vatsim-live-flights-source" type="geojson" data={data}>
+      <Layer {...flightsLayerStyle} id="vatsim-live-flights-layer" />
+    </Source>
+  );
+}
+
+export function MapIvaoLiveFlightsLayer() {
+  const { data, error } = useQuery({
+    queryKey: ["ivao-live-flights"],
+    queryFn: () => getNetworkLiveTrafficInGeoJSON("ivao"),
+    refetchOnReconnect: true,
+    refetchOnWindowFocus: false,
+    refetchInterval: LIVE_FLIGHT_REFRESH_INTERVAL_IN_MS,
+  });
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+  if (!data) return null;
+
+  return (
+    <Source id="ivao-live-flights-source" type="geojson" data={data}>
+      <Layer {...flightsLayerStyle} id="ivao-live-flights-layer" />
     </Source>
   );
 }

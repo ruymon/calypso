@@ -52,8 +52,8 @@ ENV NEXT_PUBLIC_FIREBASE_APP_ID ${NEXT_PUBLIC_FIREBASE_APP_ID}
 ARG NEXT_PUBLIC_BASE_URL
 ENV NEXT_PUBLIC_BASE_URL ${NEXT_PUBLIC_BASE_URL}
 
-ARG NODE_ENV
-ENV NODE_ENV ${NODE_ENV}
+ARG NEXT_PUBLIC_NODE_ENV
+ENV NEXT_PUBLIC_NODE_ENV ${NEXT_PUBLIC_NODE_ENV}
 
 RUN npm run build
 
@@ -61,7 +61,6 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 

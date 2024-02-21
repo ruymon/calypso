@@ -1,17 +1,16 @@
-import { MarketingFooter } from "@/components/marketing/marketing-footer";
 import { MarketingNavbar } from "@/components/marketing/marketing-navbar";
 import { ReactNode } from "react";
 
 interface MarketingLayoutProps {
   children: ReactNode;
-};
+}
 
 export default function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
-    <main className="flex mx-auto w-full flex-col gap-8 max-w-5xl px-4">
+    <div className="relative flex flex-1 flex-col bg-gradient-to-b from-slate-950 to-zinc-950">
       <MarketingNavbar />
-      {children}
-      <MarketingFooter />
-    </main>
+      <div className="flex flex-1 flex-col gap-16">{children}</div>
+      {/* <MarketingFooter /> */}
+    </div>
   );
-};
+}

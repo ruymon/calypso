@@ -42,7 +42,31 @@ export function MapFlightPopup({
   latitude,
   feature,
 }: MapFlightPopupProps) {
-  const data = parseFlightData(feature.properties as any);
+  // const data = parseFlightData(feature.properties as any);
+
+  const data = {
+    network: "vatsim",
+    callsign: "DAL123",
+    flightPlan: {
+      departure: {
+        icao: "KATL",
+        name: "Hartsfield–Jackson Atlanta International Airport",
+      },
+      arrival: {
+        icao: "KJFK",
+        name: "John F. Kennedy International Airport",
+      },
+      aircraft: {
+        icao: "B738",
+      },
+    },
+    pilot: {
+      name: "John Doe",
+      id: "123456",
+    },
+  };
+
+  console.log(feature.properties);
 
   return (
     <Popup
@@ -53,11 +77,14 @@ export function MapFlightPopup({
       className="flight-popup"
       anchor="bottom"
     >
-      <div className="flex flex-col px-3 py-2 gap-2">
-        <header className="flex items-center justify-between w-full">
-          <div className="flex gap-1.5 items-center">
-            <NetworkIcon variant={data.network} size="sm" />
-            <span className="font-bold text-base text-secondary-foreground">
+      <div className="flex flex-col gap-2 px-3 py-2">
+        <header className="flex w-full items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <NetworkIcon
+              variant={data.network as "vatsim" | "ivao"}
+              size="sm"
+            />
+            <span className="text-base font-bold text-secondary-foreground">
               {data.callsign}
             </span>
           </div>
@@ -73,27 +100,27 @@ export function MapFlightPopup({
         !data.flightPlan.arrival ? (
           <span>No flight plan available...</span>
         ) : (
-          <div className="flex items-center justify-between w-full gap-3 font-medium text-sm">
+          <div className="flex w-full items-center justify-between gap-3 text-sm font-medium">
             <span>{data.flightPlan?.departure?.icao || "TBN"}</span>
-            <Progress className="w-full h-1" value={45} />
+            <Progress className="h-1 w-full" value={45} />
             <span>{data.flightPlan?.arrival?.icao || "TBN"}</span>
           </div>
         )}
 
-        <div className="flex justify-between w-full items-center">
+        <div className="flex w-full items-center justify-between">
           <div className="flex flex-col">
-            <span className="z-10 pr-2 font-medium text-sm">
+            <span className="z-10 pr-2 text-sm font-medium">
               {data.pilot.name}
             </span>
             <span className="text-muted-foreground">{data.pilot.id}</span>
           </div>
-          <Badge className="w-fit h-fit px-1 text-[10px] leading-[10px]">
+          <Badge className="h-fit w-fit px-1 text-[10px] leading-[10px]">
             Private Pilot
           </Badge>
         </div>
       </div>
 
-      <footer className="flex items-center justify-center px-2 py-1 border-t bg-popover/75 rounded-b-sm">
+      <footer className="flex items-center justify-center rounded-b-sm border-t bg-popover/75 px-2 py-1">
         <span className="text-muted-foreground">Click to open details</span>
       </footer>
     </Popup>

@@ -6,7 +6,7 @@ export default {
   "landing.alert.title": "Ground Control agora é Skyscope!",
   "landing.alert.link": "Leia o artigo completo",
 
-  "landing.hero.title": "Sua ferramenta completa para simulação de voo",
+  "landing.hero.title": "Seu novo melhor amigo para voar",
   "landing.hero.subtitle": "Faça parte da nova era, monitore todos os voos em redes de forma rápida e intuitiva.",
   "landing.hero.button": "Vamos lá",
   "landing.hero.learnMore": "Saiba mais",
@@ -52,6 +52,9 @@ export default {
   "auth.forgotPassword.email": "E-mail",
   "auth.forgotPassword.sendEmail": "Enviar e-mail de recuperação",
   "auth.forgotPassword.backToLogin": "Lembrou da sua senha?",
+
+  'auth.disabled.title': 'Conta desativada!',
+  'auth.disabled.subtitle': 'Sua conta foi desativada. Entre em contato com o suporte para obter mais informações.',
 
   'auth.supportCard.title': 'Problema?',
 

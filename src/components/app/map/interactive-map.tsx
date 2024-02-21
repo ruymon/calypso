@@ -7,7 +7,6 @@ import { useMapCursorStore } from "@/stores/map-cursor-store";
 import { useMapHoveredFeatureStore } from "@/stores/map-hovered-feature-store";
 import { useMapLoadStore } from "@/stores/map-load-store";
 import "@/styles/map.css";
-import { motion } from "framer-motion";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -28,7 +27,7 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
     state.setCursor,
   ]);
   const [hoveredFeature, setHoveredFeature] = useMapHoveredFeatureStore(
-    (state) => [state.hoveredFeature, state.setHoveredFeature]
+    (state) => [state.hoveredFeature, state.setHoveredFeature],
   );
   const [isMapLoaded] = useMapLoadStore((state) => [state.isMapLoaded]);
   const { setMapCallbackRef } = useMapAircraftIcons();
@@ -56,7 +55,7 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
 
       return;
     },
-    [setHoveredFeature]
+    [setHoveredFeature],
   );
 
   const handleMouseEnter = useCallback(() => {
@@ -83,42 +82,40 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
 
       return;
     },
-    [router]
+    [router],
   );
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isMapLoaded ? 1 : 0 }}
+    <Map
+      mapboxAccessToken={mapboxAccessToken}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+      }}
+      reuseMaps={true}
+      ref={setMapCallbackRef}
+      mapStyle={resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light}
+      maxZoom={16}
+      minZoom={2}
+      attributionControl={false}
+      dragRotate={false}
+      interactiveLayerIds={[
+        "vatsim-live-flights-layer",
+        "ivao-live-flights-layer",
+      ]}
+      cursor={cursor}
+      onMove={(evt) => isMapLoaded && handleMove(evt)}
+      onMouseMove={(evt) => isMapLoaded && handleMouseMove(evt)}
+      onMouseEnter={() => isMapLoaded && handleMouseEnter}
+      onMouseLeave={() => isMapLoaded && handleMouseLeave}
+      onMouseDown={(evt) => isMapLoaded && handleMouseDown(evt)}
     >
-      <Map
-        mapboxAccessToken={mapboxAccessToken}
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-        }}
-        reuseMaps={true}
-        ref={setMapCallbackRef}
-        mapStyle={resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light}
-        maxZoom={16}
-        minZoom={2}
-        attributionControl={false}
-        dragRotate={false}
-        interactiveLayerIds={["live-flights-layer"]}
-        cursor={cursor}
-        onMove={(evt) => isMapLoaded && handleMove(evt)}
-        onMouseMove={(evt) => isMapLoaded && handleMouseMove(evt)}
-        onMouseEnter={() => isMapLoaded && handleMouseEnter}
-        onMouseLeave={() => isMapLoaded && handleMouseLeave}
-        onMouseDown={(evt) => isMapLoaded && handleMouseDown(evt)}
-      >
-        {hoveredFeature && <MapFlightPopup {...hoveredFeature} />}
-        <MapControls />
+      {hoveredFeature && <MapFlightPopup {...hoveredFeature} />}
+      <MapControls />
 
-        {children}
-      </Map>
-    </motion.div>
+      {children}
+    </Map>
   );
 }
