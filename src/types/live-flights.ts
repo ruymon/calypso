@@ -1,53 +1,55 @@
 export type LiveFlights = LiveFlight[]
 
 export type Network = 'vatsim' | 'ivao'
+export type AircraftWakeTurbulenceCategory = 'heavy' | 'helicopter' | 'super' | 'light' | 'medium' | 'supersonic' | 'unknown'
 
 export interface LiveFlight {
   id: string
   pilot: Pilot
-  currentPosition: CurrentPosition
   callsign: string
   network: Network
-  flightPlan: FlightPlan | null
+  position: Position
+  flightPlan?: FlightPlan
 }
 
 export interface Pilot {
   id: number,
+  name: string
   rating: string
-  name: string | null
 }
 
-export interface CurrentPosition {
-  coordinates: number[]
+export interface Position {
   altitude: number
-  heading: number
-  transponder: string
+  coordinates: number[]
   groundSpeed: number
+  heading: number
   onGround: boolean
+  transponder: string
 }
 
 export interface FlightPlan {
   flightRules: string
   flightType: string
-  level: string
-  departure: Airport | null
-  arrival: Airport | null
-  aircraft: Aircraft | null
+  departure?: Airport
+  arrival?: Airport
+  aircraft?: Aircraft
+  level: number
   route: string
   remarks: string
   cruiseTas: string
   departureTime: string
   enrouteTime: string
   endurance: string
-  alternate: Airport | null,
-  alternate2: Airport | null,
+  alternate?: Airport,
+  alternate2?: Airport,
 }
 
 export interface Airport {
   icao: string
   iata: string
   name: string
-  coordinates: number[]
+  lat: number
+  lng: number
 }
 
 export interface Aircraft {
@@ -56,4 +58,6 @@ export interface Aircraft {
   registration: string
   transponderTypes: string
   equipment: string
+  type: AircraftWakeTurbulenceCategory
 }
+

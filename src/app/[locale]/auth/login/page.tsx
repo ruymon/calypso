@@ -1,22 +1,29 @@
-import { LoginForm } from "@/components/auth/login-form";
 import { buttonVariants } from "@/components/ui/button";
 import { getScopedI18n } from "@/locales/server";
 import { Metadata } from "next";
+import { setStaticParamsLocale } from "next-international/server";
 import Link from "next/link";
+import { JoinButton } from "../_components/join-button";
+import { LoginForm } from "../_components/login-form";
 
 export const metadata: Metadata = {
   title: "Login",
 };
 
-interface LoginPageProps {}
+interface LoginPageProps {
+  params: { locale: string };
+}
 
-export default async function LoginPage({}: LoginPageProps) {
+export default async function LoginPage({
+  params: { locale },
+}: LoginPageProps) {
+  setStaticParamsLocale(locale);
   const t = await getScopedI18n("auth.login");
 
   return (
     <>
-      <header className="flex flex-col mb-6">
-        <h1 className="font-bold text-lg text-secondary-foreground">
+      <header className="mb-6 flex flex-col">
+        <h1 className="text-lg font-bold text-secondary-foreground">
           {t("title")}
         </h1>
         <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
@@ -25,17 +32,16 @@ export default async function LoginPage({}: LoginPageProps) {
       <LoginForm />
 
       <Link
-        href="/auth/join"
+        href="/en/auth/forgot-password"
         className={buttonVariants({
-          variant: "outline",
-          className: "flex-col gap-0.5",
+          variant: "link",
+          className: "text-xs",
         })}
       >
-        <span className="text-xs">{t("noAccount")}</span>
-        <span className="text-sm font-medium text-accent-foreground">
-          {t("join")}
-        </span>
+        {t("forgotPassword")}
       </Link>
+
+      <JoinButton />
     </>
   );
 }

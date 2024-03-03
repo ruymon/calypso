@@ -1,12 +1,12 @@
 'use server'
 
-import { LoginFormType } from "@/components/auth/login-form"
+import { LoginFormType } from "@/app/[locale]/auth/_components/login-form"
+import { COOKIE_DOMAIN, COOKIE_PREFIX, IS_SECURE_COOKIE } from "@/constants/cookies"
 import { env } from "@/env"
-import { firebaseAuth } from "@/lib/firebase/firebase"
+import { firebaseAuth } from "@/lib/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { cookies } from 'next/headers'
 import { NextResponse } from "next/server"
-import { COOKIE_DOMAIN, COOKIE_PREFIX, IS_SECURE_COOKIE } from "./constants"
 
 export async function login({ email, password }: LoginFormType) {
   const userCredentials = await signInWithEmailAndPassword(
@@ -45,8 +45,8 @@ export async function logout() {
 
 export async function getAccessToken() {
   const accessToken = cookies().get(`${COOKIE_PREFIX}access-token`)?.value;
-  if (!accessToken) return null;
-  return accessToken;
+
+  return accessToken
 }
 
 export async function refreshAccessToken(refreshToken: string, response: NextResponse) {
@@ -102,17 +102,17 @@ export async function refreshAccessToken(refreshToken: string, response: NextRes
   return response;
 }
 
-export async function getUser() {
-  const accessToken = await getAccessToken();
+// export async function getUser() {
+//   const accessToken = await getAccessToken();
 
-  const result = await fetch(`https://api.skyscope.app/api/v1/users/profile`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  });
-  const user = await result.json();
+//   const result = await fetch(`https://api.skyscope.app/api/v1/users/profile`, {
+//     headers: {
+//       Authorization: `Bearer ${accessToken}`
+//     }
+//   });
+//   const user = await result.json();
 
-  console.log(user);
+//   console.log(user);
 
-  return user
-}
+//   return user
+// }

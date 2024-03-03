@@ -8,11 +8,10 @@ import type { Metadata } from "next";
 import { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
-import { BASE_URL } from "@/lib/constants";
+import { BASE_URL } from "@/constants/url";
 import { getStaticParams } from "@/locales/server";
-import "@/styles/colors.css";
 import "@/styles/globals.css";
-import { ClientProviders } from "./client-providers";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -94,7 +93,7 @@ export default async function RootLayout({
           courgette.variable,
         )}
       >
-        <ClientProviders locale={locale}>{children}</ClientProviders>
+        <Providers locale={locale}>{children}</Providers>
       </body>
     </html>
   );
