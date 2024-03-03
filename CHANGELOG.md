@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/skyscope-app/skyscope-web/compare/v1.3.2...v1.4.0) (2024-03-03)
+
+
+### Features
+
+* **lp:** Rebrand ([63f7d05](https://github.com/skyscope-app/skyscope-web/commit/63f7d05a24dc807f66587f1c2c8e5bf6b52e67d8))
+* major refac ([1b772b9](https://github.com/skyscope-app/skyscope-web/commit/1b772b9558d2704b5cc5bd6d9b7c81eee87c1fc1))
+
 ## [1.3.2](https://github.com/skyscope-app/skyscope-web/compare/v1.3.1...v1.3.2) (2024-02-14)
 
 
