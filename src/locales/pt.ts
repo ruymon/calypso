@@ -1,12 +1,13 @@
 import { siteConfig } from "@/config/site";
-import { BASE_URL_WITHOUT_PROTOCOL } from "@/lib/constants";
+import { BASE_URL_WITHOUT_PROTOCOL } from "@/constants/url";
 
 export default {
   "landing.alert.new": "Novo",
   "landing.alert.title": "Ground Control agora é Skyscope!",
   "landing.alert.link": "Leia o artigo completo",
 
-  "landing.hero.title": "Sua ferramenta completa para simulação de voo",
+  "landing.hero.hat": "Olá, chegou a hora de decolar!",
+  "landing.hero.title": "Seu novo melhor amigo para voar",
   "landing.hero.subtitle": "Faça parte da nova era, monitore todos os voos em redes de forma rápida e intuitiva.",
   "landing.hero.button": "Vamos lá",
   "landing.hero.learnMore": "Saiba mais",
@@ -33,25 +34,17 @@ export default {
   "auth.login.noAccount": "Sem conta?",
   "auth.login.join": "Junte-se agora",
 
-  "auth.join.title": "Junte-se à comunidade!",
-  "auth.join.subtitle": `Crie uma conta para começar a usar ${siteConfig.name}.`,
-  "auth.join.username": "Nome de usuário",
-  "auth.join.fullName": "Nome completo",
-  "auth.join.email": "E-mail",
-  "auth.join.password": "Senha",
-  "auth.join.joinWaitList": "Entrar na lista de espera",
-  "auth.join.agreeToTerms": "Ao se juntar, você concorda com os",
-  "auth.join.terms": "Termos de Serviço",
-  "auth.join.and": "e",
-  "auth.join.privacy": "Política de Privacidade",
-  "auth.join.haveAccount": "Já tem uma conta?",
-  "auth.join.login": "Entrar",
+  'auth.join.inviteOnly': 'Pedimos desculpas, mas o registro está atualmente disponível apenas por convite.',
+
 
   "auth.forgotPassword.title": "Esqueceu sua senha?",
   "auth.forgotPassword.subtitle": "Digite seu e-mail para redefinir sua senha.",
   "auth.forgotPassword.email": "E-mail",
   "auth.forgotPassword.sendEmail": "Enviar e-mail de recuperação",
   "auth.forgotPassword.backToLogin": "Lembrou da sua senha?",
+
+  'auth.disabled.title': 'Conta desativada!',
+  'auth.disabled.subtitle': 'Sua conta foi desativada. Entre em contato com o suporte para obter mais informações.',
 
   'auth.supportCard.title': 'Problema?',
 

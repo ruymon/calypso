@@ -1,11 +1,12 @@
 import { siteConfig } from "@/config/site";
-import { BASE_URL_WITHOUT_PROTOCOL } from "@/lib/constants";
+import { BASE_URL_WITHOUT_PROTOCOL } from "@/constants/url";
 
 export default {
   'landing.alert.new': 'New',
   'landing.alert.title': 'Ground Control is now Skyscope!',
   'landing.alert.link': 'Read full article',
 
+  "landing.hero.hat": "Hey, time to take off!",
   'landing.hero.title': 'Your all in one tool for flight simulation',
   'landing.hero.subtitle': 'Be part of the new era, monitor all flights in networks in a fast and intuitive way.',
   'landing.hero.button': 'Get started',
@@ -33,25 +34,16 @@ export default {
   'auth.login.noAccount': 'No account?',
   'auth.login.join': 'Join now',
 
-  'auth.join.title': 'Join the community!',
-  'auth.join.subtitle': `Create an account to start using ${siteConfig.name}.`,
-  'auth.join.username': 'Username',
-  'auth.join.fullName': 'Full name',
-  'auth.join.email': 'Email',
-  'auth.join.password': 'Password',
-  'auth.join.joinWaitList': 'Join wait list',
-  'auth.join.agreeToTerms': 'By joining you agree to the',
-  'auth.join.terms': 'Terms of Service',
-  'auth.join.and': 'and',
-  'auth.join.privacy': 'Privacy Policy',
-  'auth.join.haveAccount': 'Have an account?',
-  'auth.join.login': 'Login',
+  'auth.join.inviteOnly': 'We\'re sorry, but unfortunately joining is only available to invited users at this time.',
 
   'auth.forgotPassword.title': 'Forgot your password?',
   'auth.forgotPassword.subtitle': 'Enter your email to reset your password.',
   'auth.forgotPassword.email': 'Email',
   'auth.forgotPassword.sendEmail': 'Send recovery email',
   'auth.forgotPassword.backToLogin': 'Remember your password?',
+
+  'auth.disabled.title': 'Account disabled',
+  'auth.disabled.subtitle': 'Your account has been disabled.',
 
   'auth.supportCard.title': 'Problem?',
 

@@ -1,8 +1,7 @@
 import { create } from "zustand";
 
 export type MapHoveredFeature = {
-  longitude: number;
-  latitude: number;
+  coordinates: [number, number];
   feature: mapboxgl.MapboxGeoJSONFeature;
 };
 

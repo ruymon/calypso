@@ -1,7 +1,6 @@
 "use client";
 
-import { InteractiveMap } from "@/components/app/map/interactive-map";
-import { MapLiveFlightsLayer } from "@/components/app/map/map-live-flights-layer";
+import { InteractiveMap } from "@/components/interactive-map";
 import { useMapFocusedLocationStore } from "@/stores/map-focused-location-store";
 import { useMapLoadStore } from "@/stores/map-load-store";
 import { useEffect } from "react";
@@ -35,10 +34,8 @@ export default function MapEmbedPage({
   }, [setFocusedLocation, latitude, longitude, zoom, isMapLoaded]);
 
   return (
-    <main className="flex flex-1 relative overflow-hidden max-h-screen">
-      <InteractiveMap>
-        <MapLiveFlightsLayer />
-      </InteractiveMap>
+    <main className="relative flex max-h-screen flex-1 overflow-hidden">
+      <InteractiveMap />
     </main>
   );
 }
