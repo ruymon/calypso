@@ -36,7 +36,12 @@ export function SupportCard({}: SupportCardProps) {
         <AlertTriangleIcon className="h-3.5 w-3.5" />
         <span className="text-xs font-medium">{t("title")}</span>
       </div>
-      <Link href={`mailto:${siteConfig.email}`} className="text-xs opacity-75">
+      <Link
+        href={siteConfig.links.discord}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs opacity-75"
+      >
         {siteConfig.email}
       </Link>
     </div>
