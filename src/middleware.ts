@@ -1,26 +1,20 @@
-import { withAuthMiddleware } from "./middlewares/auth-middleware"
-import { chainedMiddlewares } from "./middlewares/chain"
-import { withI18nMiddleware } from "./middlewares/i18n-middleware"
+import { createI18nMiddleware } from "next-international/middleware";
+import { NextRequest } from "next/server";
+import { DefaultLocale, Locales } from "./config/i18n";
+import { authMiddleware } from "./middlewares/auth-middleware";
 
+const I18nMiddleware = createI18nMiddleware({
+  locales: Locales,
+  defaultLocale: DefaultLocale,
+});
 
-export default chainedMiddlewares([withAuthMiddleware, withI18nMiddleware])
+export default async function middleware(request: NextRequest) {
+  let response = I18nMiddleware(request);
+  response = await authMiddleware(request, response);
 
-export const config = {
-  matcher: ['/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)']
+  return response;
 }
 
-// middleware.ts
-// import { createI18nMiddleware } from 'next-international/middleware'
- 
-// const I18nMiddleware = createI18nMiddleware({
-//   locales: ['en', 'pt'],
-//   defaultLocale: 'en'
-// })
- 
-// export function middleware(request: NextRequest) {
-//   return I18nMiddleware(request)
-// }
- 
-// export const config = {
-//   matcher: ['/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)']
-// }
+export const config = {
+  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
+};

@@ -57,8 +57,6 @@ export default async function AppRootLayout({ children }: AppRootLayoutProps) {
 
   const userProfile = await fetchUserProfile(accessToken);
 
-  console.log(userProfile);
-
   return (
     <div className="relative flex max-h-screen flex-1 overflow-hidden">
       <Sidebar avatarUrl={userProfile?.avatarUrl} name={userProfile?.name} />

@@ -13,7 +13,8 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { ReactNode, useCallback } from "react";
 import Map, { MapLayerMouseEvent } from "react-map-gl";
-import { MapControls } from "./map-controls";
+import { MapLayerControls } from "./map-controls/map-layer-controls";
+import { MapZoomControls } from "./map-controls/map-zoom-controls";
 import { MapFlightPopup } from "./map-flight-popup";
 
 interface InteractiveMapProps {
@@ -53,17 +54,9 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
   const handleMouseEnter = useCallback((e: MapLayerMouseEvent) => {
     if (!e.features?.[0]) return;
 
-    let featureCoordinates = JSON.parse(
+    const featureCoordinates = JSON.parse(
       e.features[0].properties!.position,
     ).coordinates;
-
-    // Ensure that if the map is zoomed out such that multiple
-    // copies of the feature are visible, the popup appears
-    // over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - featureCoordinates[0]) > 180) {
-      featureCoordinates[0] +=
-        e.lngLat.lng > featureCoordinates[0] ? 360 : -360;
-    }
 
     setHoveredFeature({
       coordinates: featureCoordinates,
@@ -128,7 +121,10 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
     >
       {hoveredFeature && <MapFlightPopup {...hoveredFeature} />}
 
-      <MapControls />
+      <MapLayerControls />
+      <div className="absolute bottom-5 right-2">
+        <MapZoomControls />
+      </div>
 
       {/* <footer className="absolute bottom-0 right-4 z-10 flex h-6">
         <div className="flex h-full items-center justify-center gap-1 bg-destructive px-2 py-1 font-mono text-xs text-destructive-foreground">
