@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/skyscope-app/skyscope-web/compare/v1.4.0...v1.5.0) (2024-03-04)
+
+
+### Bug Fixes
+
+* Middleware chain ([8882f0a](https://github.com/skyscope-app/skyscope-web/commit/8882f0af73549c0178925872eec58e55740d1949))
+
+
+### Features
+
+* Airline Tail Image Skeleton ([b74c9e7](https://github.com/skyscope-app/skyscope-web/commit/b74c9e74e82de29c0da0f645101a7d3f85076c19))
+* Support button redirect to Discord ([71390ca](https://github.com/skyscope-app/skyscope-web/commit/71390ca0284463b192d23f8368f3a5112712579a))
+
 # [1.4.0](https://github.com/skyscope-app/skyscope-web/compare/v1.3.2...v1.4.0) (2024-03-03)
 
 
