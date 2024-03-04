@@ -38,14 +38,12 @@ export function MapFlightPopup({ feature, coordinates }: MapFlightPopupProps) {
     >
       <Card className="flex min-w-56 flex-col gap-2 rounded-md py-2">
         <CardHeader className="flex-row items-center gap-3 px-3 py-0">
-          <Avatar className="h-8 w-8 rounded-none">
+          <Avatar className="h-8 w-9 rounded-none">
             <AvatarImage
               src={getAirlineTailImageUrl(data.callsign)}
               alt="Airline Tail Image"
             />
-            <AvatarFallback className="text-xs">
-              {data.callsign.slice(0, 2)}
-            </AvatarFallback>
+            <AvatarFallback className="clip-tail animate-pulse rounded-none" />
           </Avatar>
 
           <div className="flex flex-col">

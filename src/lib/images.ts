@@ -4,5 +4,5 @@ export function getAirlineTailImageUrl(callsign: string) {
   const regex = /[A-Z]{3}/;
   const match = callsign.match(regex);
 
-  return `${imageBaseUrl}${match?.join("") || "XXX"}.png`;
+  return `${imageBaseUrl}${match?.join("") || "default"}.png`;
 }
