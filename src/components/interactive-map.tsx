@@ -122,22 +122,11 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
       {hoveredFeature && <MapFlightPopup {...hoveredFeature} />}
 
       <MapLayerControls />
+
       <div className="absolute bottom-5 right-2">
         <MapZoomControls />
       </div>
 
-      {/* <footer className="absolute bottom-0 right-4 z-10 flex h-6">
-        <div className="flex h-full items-center justify-center gap-1 bg-destructive px-2 py-1 font-mono text-xs text-destructive-foreground">
-          <span className="font-semibold uppercase">Navdata Cycle 2304</span>
-
-          <Separator
-            orientation="vertical"
-            className="bg-destructive-foreground/25"
-          />
-
-          <span className="italic">Outdated</span>
-        </div>
-      </footer> */}
       {children}
     </Map>
   );

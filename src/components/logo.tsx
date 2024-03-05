@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { Rotate3D } from "lucide-react";
-import Link from "next/link";
-import { AnchorHTMLAttributes } from "react";
 
 export function Logo({ className }: { className?: string }) {
   return (
@@ -25,6 +23,7 @@ const logoIconVariants = cva("flex items-center justify-center", {
       xs: "w-6 h-6",
       sm: "w-8 h-8 p-1 rounded-lg",
       lg: "h-10 w-10 p-1.5 rounded-xl",
+      xl: "h-12 w-12 p-2 rounded-2xl",
     },
   },
   defaultVariants: {
@@ -33,26 +32,22 @@ const logoIconVariants = cva("flex items-center justify-center", {
   },
 });
 
-interface LogoIconProps
-  extends AnchorHTMLAttributes<HTMLAnchorElement>,
-    VariantProps<typeof logoIconVariants> {
+interface LogoIconProps extends VariantProps<typeof logoIconVariants> {
   className?: string;
 }
 export function LogoIcon({
-  href = "/",
   className,
   variant,
   size,
   ...props
 }: LogoIconProps) {
   return (
-    <Link
-      href={href}
+    <figure
       className={cn(logoIconVariants({ variant, size }), className)}
       {...props}
     >
       <Rotate3D className="h-full w-full" />
-    </Link>
+    </figure>
   );
 }
 

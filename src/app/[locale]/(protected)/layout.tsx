@@ -51,6 +51,8 @@ async function fetchUserProfile(
 }
 
 export default async function AppRootLayout({ children }: AppRootLayoutProps) {
+  await new Promise((resolve) => setTimeout(resolve, 5 * 1000));
+
   const accessToken = await getAccessToken();
 
   if (!accessToken) return null;
