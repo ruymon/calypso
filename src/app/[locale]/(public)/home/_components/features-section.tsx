@@ -61,10 +61,10 @@ export async function FeaturesSection({}: FeaturesSectionProps) {
   };
 
   return (
-    <section className="flex justify-between gap-16 py-24">
-      <header className="flex flex-col gap-8 text-6xl">
-        <Balancer as="h2">
-          <span className="block font-bold leading-tight text-muted-foreground">
+    <div className="flex flex-col lg:flex-row gap-16">
+      <header className="flex flex-col gap-4 lg:gap-8">
+        <Balancer as="h2" className="text-4xl sm:text-5xl lg:text-6xl lg:leading-tight">
+          <span className="block font-bold text-muted-foreground">
             {t("hat")}
           </span>
           <span className="font-bold text-secondary-foreground">
@@ -72,7 +72,7 @@ export async function FeaturesSection({}: FeaturesSectionProps) {
           </span>
         </Balancer>
 
-        <div className="flex max-w-sm flex-col items-start gap-8">
+        <div className="flex lg:max-w-sm flex-col items-start gap-8">
           <span className="text-lg text-muted-foreground">{t("subtitle")}</span>
 
           <Link
@@ -116,6 +116,6 @@ export async function FeaturesSection({}: FeaturesSectionProps) {
           </Fragment>
         ))}
       </aside>
-    </section>
+    </div>
   );
 }

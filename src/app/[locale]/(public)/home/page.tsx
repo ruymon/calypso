@@ -11,10 +11,10 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
   setStaticParamsLocale(locale);
 
   return (
-    <main className="flex flex-1 flex-col">
+    <>
       <HeroSection />
       <FeaturesSection />
       <CallToActionSection />
-    </main>
+    </>
   );
 }

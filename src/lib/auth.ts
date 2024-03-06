@@ -2,9 +2,9 @@
 
 import { LoginFormType } from "@/app/[locale]/auth/_components/login-form";
 import {
-  COOKIE_DOMAIN,
-  COOKIE_PREFIX,
-  IS_SECURE_COOKIE,
+    COOKIE_DOMAIN,
+    COOKIE_PREFIX,
+    IS_SECURE_COOKIE,
 } from "@/constants/cookies";
 import { env } from "@/env";
 import { firebaseAuth } from "@/lib/firebase";

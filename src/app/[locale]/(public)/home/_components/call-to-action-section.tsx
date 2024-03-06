@@ -15,16 +15,16 @@ export async function CallToActionSection({}: CallToActionSectionProps) {
   const t = await getScopedI18n("landing.callToAction");
 
   return (
-    <Card className="my-48 bg-foreground p-4">
+    <Card className="mt-24 bg-foreground p-4">
       <CardHeader className="items-center gap-2 text-center">
         <span className="mb-3 rounded bg-violet-400 px-2 py-0 font-mono text-sm font-black uppercase text-black">
           {t("hat")}
         </span>
 
-        <CardTitle className="w-3/4 text-5xl font-extrabold text-background">
+        <CardTitle className="md:w-3/4 text-4xl md:text-5xl font-extrabold text-background">
           {t("title")}
         </CardTitle>
-        <CardDescription className="w-1/2 text-lg font-medium text-muted">
+        <CardDescription className="w-3/4 md:w-1/2 md:text-lg font-medium text-muted">
           {t("subtitle")}
         </CardDescription>
 
