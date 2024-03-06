@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/skyscope-app/skyscope-web/compare/v1.6.2...v1.7.0) (2024-03-06)
+
+
+### Bug Fixes
+
+* **Auth:** Refactor logout method ([c454367](https://github.com/skyscope-app/skyscope-web/commit/c45436723d069d5a5cfac7202ccb82ee245ab8f8))
+
+
+### Features
+
+* **isr:** Enhance ISR loading ([f6f9333](https://github.com/skyscope-app/skyscope-web/commit/f6f933306658531a77a7ca5b95c5a0bcbe096295))
+
 ## [1.6.2](https://github.com/skyscope-app/skyscope-web/compare/v1.6.1...v1.6.2) (2024-03-06)
 
 
