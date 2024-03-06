@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/skyscope-app/skyscope-web/compare/v1.6.0...v1.6.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* Use next SSG to optimize load speeds ([31951bc](https://github.com/skyscope-app/skyscope-web/commit/31951bc4587dd7d970b15fbc79405ef78e19e761))
+
 # [1.6.0](https://github.com/skyscope-app/skyscope-web/compare/v1.5.0...v1.6.0) (2024-03-06)
 
 
