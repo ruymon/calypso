@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/skyscope-app/skyscope-web/compare/v1.6.1...v1.6.2) (2024-03-06)
+
+
+### Bug Fixes
+
+* **networkFetch:** Update refetch time ([f6bdb6a](https://github.com/skyscope-app/skyscope-web/commit/f6bdb6ac0698335e2e2fa48eea4a3e1a42c67797))
+
 ## [1.6.1](https://github.com/skyscope-app/skyscope-web/compare/v1.6.0...v1.6.1) (2024-03-06)
 
 
