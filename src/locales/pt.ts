@@ -8,6 +8,7 @@ export default {
   "common.openApp": "Abrir app",
   "common.close": "Fechar",
   "common.joinDiscord": "Entrar no Discord",
+  "common.contactSupport": "Contatar suporte",
 
   "loading.title": "Carregando",
   "loading.subtitle": "Isso deve levar alguns segundos",
@@ -80,6 +81,18 @@ export default {
     "Sua conta foi desativada. Entre em contato com o suporte para obter mais informações.",
 
   "auth.supportCard.title": "Problema?",
+
+  "onboarding.welcome.hat": "Olá!",
+  "onboarding.welcome.title": `Bem-vindo ao ${siteConfig.name}!`,
+  "onboarding.welcome.subtitle":
+    "Estamos animados por você estar aqui. Vamos começar com alguns detalhes básicos.",
+  "onboarding.welcome.getStarted": "Get started",
+
+  "onboarding.integrations.hat": "Integrações",
+  "onboarding.integrations.title": "Sincronize suas contas",
+  "onboarding.integrations.subtitle":
+    "Conecte suas contas para sincronizar seus contatos e eventos de calendário.",
+  "onboarding.integrations.skip": "Continuar sem sincronizar",
 
   "legal.terms.title": "Termos e Condições",
   "legal.terms.topic1.title": "1. Termos",

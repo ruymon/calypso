@@ -1,21 +1,25 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { useScopedI18n } from "@/locales/client";
 import { SparklesIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-interface GetStartedButtonProps {};
+interface GetStartedButtonProps {}
 
 export function GetStartedButton({}: GetStartedButtonProps) {
-  const router = useRouter();
+  const t = useScopedI18n("onboarding.welcome");
 
-  function handleStartOnboardingFlow() {
-    router.push("/onboarding/integrations")
-  }
   return (
-    <Button className="w-fit mx-auto font-semibold" size="lg" onClick={handleStartOnboardingFlow}>
-    <SparklesIcon className="w-4 h-4 mr-2"/>
-    Lets get started
-  </Button>
+    <Link
+      href="/onboarding/integrations"
+      className={buttonVariants({
+        size: "lg",
+        className: "mx-auto w-fit",
+      })}
+    >
+      <SparklesIcon className="mr-2 h-4 w-4" />
+      {t("getStarted")}
+    </Link>
   );
-};
+}

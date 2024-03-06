@@ -8,6 +8,7 @@ export default {
   "common.openApp": "Open app",
   "common.close": "Close",
   "common.joinDiscord": "Join our discord",
+  "common.contactSupport": "Contact support",
 
   "loading.title": "Loading",
   "loading.subtitle": "This should take a few seconds",
@@ -79,6 +80,18 @@ export default {
   "auth.disabled.subtitle": "Your account has been disabled.",
 
   "auth.supportCard.title": "Problem?",
+
+  "onboarding.welcome.hat": "Getting started",
+  "onboarding.welcome.title": `Welcome to ${siteConfig.name}!`,
+  "onboarding.welcome.subtitle":
+    "We are excited to have you on board. Let's get you started with a few basic details.",
+  "onboarding.welcome.getStarted": "Get started",
+
+  "onboarding.integrations.hat": "Sync your details",
+  "onboarding.integrations.title": "Sync your details",
+  "onboarding.integrations.subtitle":
+    "Connect your accounts to have a seamless experience.",
+  "onboarding.integrations.skip": "Continue without syncing",
 
   "legal.terms.title": "Terms and Conditions",
   "legal.terms.topic1.title": "1. Terms",

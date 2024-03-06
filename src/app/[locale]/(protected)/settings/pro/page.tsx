@@ -16,11 +16,19 @@ import {
   SparklesIcon,
   UsersIcon,
 } from "lucide-react";
+import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 
-interface AppSettingsProPageProps {}
+interface AppSettingsProPageProps {
+  params: {
+    locale: string;
+  };
+}
 
-export default function AppSettingsProPage({}: AppSettingsProPageProps) {
+export default function AppSettingsProPage({
+  params: { locale },
+}: AppSettingsProPageProps) {
+  setStaticParamsLocale(locale);
   return (
     <>
       <section className="relative flex flex-col gap-6 rounded-xl p-6">

@@ -25,6 +25,9 @@ import { UserProfile } from "../layout";
 
 interface AppSettingsHomePageProps {}
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+
 async function fetchUserProfile(
   accessToken: string,
 ): Promise<UserProfile | null> {
@@ -62,9 +65,15 @@ export default async function AppSettingsHomePage({}: AppSettingsHomePageProps) 
   return (
     <>
       <section className="flex flex-col gap-4">
-      <Avatar className="h-20 w-20">
+        <Avatar className="h-20 w-20">
           <AvatarImage src={userProfile?.avatarUrl} alt="avatar" />
-          <AvatarFallback>{userProfile?.name ? getNameInitials(userProfile?.name) : <UserRoundIcon className="w-4 h-4" />}</AvatarFallback>
+          <AvatarFallback>
+            {userProfile?.name ? (
+              getNameInitials(userProfile?.name)
+            ) : (
+              <UserRoundIcon className="h-4 w-4" />
+            )}
+          </AvatarFallback>
         </Avatar>
         <header className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
@@ -92,7 +101,7 @@ export default async function AppSettingsHomePage({}: AppSettingsHomePageProps) 
               <CalendarDaysIcon className="h-4 w-4 shrink-0" />
               <span>Ingressou em junho de 2020</span>
             </div>
-          </div>  
+          </div>
         </header>
       </section>
 

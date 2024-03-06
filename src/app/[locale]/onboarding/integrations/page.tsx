@@ -1,22 +1,23 @@
 import { buttonVariants } from "@/components/ui/button";
+import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
 import { NetworkIntegrationCard } from "./_components/network-integration-card";
 
 interface OnboardingIntegrationsProps {}
 
-export default function OnboardingIntegrations({}: OnboardingIntegrationsProps) {
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+
+export default async function OnboardingIntegrations({}: OnboardingIntegrationsProps) {
+  const t = await getScopedI18n("onboarding.integrations");
   return (
     <>
       <header className="flex flex-col">
         <span className="mb-2 font-mono text-xs font-medium uppercase text-muted-foreground">
-          integrations
+          {t("hat")}
         </span>
-        <h1 className="text-2xl font-bold text-foreground">
-          Sync your details
-        </h1>
-        <span className="text-sm text-accent-foreground">
-          Connect your accounts to have a seamless experience
-        </span>
+        <h1 className="text-2xl font-bold text-foreground">{t("title")}</h1>
+        <span className="text-sm text-accent-foreground">{t("subtitle")}</span>
       </header>
 
       <section className="grid grid-cols-2 gap-4">
@@ -45,7 +46,7 @@ export default function OnboardingIntegrations({}: OnboardingIntegrationsProps) 
           className: "mx-auto w-fit font-normal text-muted-foreground",
         })}
       >
-        Continuar sem vincular
+        {t("skip")}
       </Link>
     </>
   );

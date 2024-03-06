@@ -1,21 +1,41 @@
 import { LogoIcon } from "@/components/logo";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { getScopedI18n } from "@/locales/server";
 import { ArrowLeftIcon, LifeBuoyIcon } from "lucide-react";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 interface OnboardingLayoutProps {
   children: ReactNode;
-};
+}
 
-export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
-  
+export default async function OnboardingLayout({
+  children,
+}: OnboardingLayoutProps) {
+  const t = await getScopedI18n("common");
+
   return (
-    <div className="flex-1 flex flex-col items-center justify-between container py-4 gap-4">
-      <nav className="flex items-center w-full justify-between relative">
-        <Button variant="ghost" size="icon"><ArrowLeftIcon className="w-4 h-4" /></Button>
-        <LogoIcon variant="muted" className="absolute left-1/2 -translate-x-1/2"/>
-        <Button variant="outline" size="sm"><LifeBuoyIcon className="w-4 h-4 mr-2" /> Contact support</Button>
+    <div className="container flex flex-1 flex-col items-center justify-between gap-4 py-4">
+      <nav className="relative flex w-full items-center justify-between">
+        <Button variant="ghost" size="icon">
+          <ArrowLeftIcon className="h-4 w-4" />
+        </Button>
+        <LogoIcon
+          variant="muted"
+          className="absolute left-1/2 -translate-x-1/2"
+        />
+        <Link
+          href={siteConfig.links.discord}
+          ref="noopener noreferrer"
+          target="_blank"
+          className={buttonVariants({
+            variant: "outline",
+            size: "sm",
+          })}
+        >
+          <LifeBuoyIcon className="mr-2 h-4 w-4" /> {t("contactSupport")}
+        </Link>
       </nav>
 
       <main className="mx-auto flex w-full max-w-md flex-col gap-8">
@@ -29,4 +49,4 @@ export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
       </footer>
     </div>
   );
-};
+}
