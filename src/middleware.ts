@@ -1,11 +1,10 @@
 import { createI18nMiddleware } from "next-international/middleware";
 import { NextRequest } from "next/server";
-import { DefaultLocale, Locales } from "./config/i18n";
 import { authMiddleware } from "./middlewares/auth-middleware";
 
 const I18nMiddleware = createI18nMiddleware({
-  locales: Locales,
-  defaultLocale: DefaultLocale,
+  locales: ["en", "pt"],
+  defaultLocale: "en",
 });
 
 export default async function middleware(request: NextRequest) {

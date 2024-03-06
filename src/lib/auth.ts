@@ -8,7 +8,7 @@ import {
 } from "@/constants/cookies";
 import { env } from "@/env";
 import { firebaseAuth } from "@/lib/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -43,8 +43,14 @@ export async function login({ email, password }: LoginFormType) {
 }
 
 export async function logout() {
-  cookies().set(`${COOKIE_PREFIX}access-token`, "", { expires: new Date(0) });
-  cookies().set(`${COOKIE_PREFIX}refresh-token`, "", { expires: new Date(0) });
+  cookies().delete(`${COOKIE_PREFIX}access-token`);
+  cookies().delete(`${COOKIE_PREFIX}refresh-token`);
+
+  try {
+    await signOut(firebaseAuth);
+  } catch (error) {
+    console.error("Error signing out:", error);
+  }
 }
 
 export async function getAccessToken() {

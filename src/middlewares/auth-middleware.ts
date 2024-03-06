@@ -1,6 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { Locales } from "@/config/i18n";
 import { COOKIE_PREFIX } from "@/constants/cookies";
 import { refreshAccessToken } from "@/lib/auth";
 
@@ -39,7 +38,7 @@ export async function authMiddleware(
 
   const pathname = request.nextUrl.pathname;
 
-  const publicPathsWithLocale = getPublicRoutes(publicPaths, Locales);
+  const publicPathsWithLocale = getPublicRoutes(publicPaths, ["en", "pt"]);
 
   if (!publicPathsWithLocale.includes(pathname)) {
     if (!accessToken && !refreshToken) {
