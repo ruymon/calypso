@@ -63,8 +63,9 @@ export function WeatherLayer({ tilesData }: WeatherLayerProps) {
 
   const tileUrl = `${tileBaseUrl}${
     nowcastTile.path
-  }/${WEATHER_RADAR_TILE_SIZE}/{z}/{x}/{y}/${WEATHER_RADAR_COLOR_SCHEMES[3]
-    ?.id}/${+SMOOTH_RADAR_TILE}_${+SNOW_IN_SEPARATE_COLOR}.png`;
+  }/${WEATHER_RADAR_TILE_SIZE}/{z}/{x}/{y}/${
+    WEATHER_RADAR_COLOR_SCHEMES[3]?.id
+  }/${+SMOOTH_RADAR_TILE}_${+SNOW_IN_SEPARATE_COLOR}.png`;
 
   return (
     <Source
@@ -72,7 +73,6 @@ export function WeatherLayer({ tilesData }: WeatherLayerProps) {
       type="raster"
       tileSize={WEATHER_RADAR_TILE_SIZE}
       tiles={[tileUrl]}
-      attribution='<a href="https://www.rainviewer.com/api.html">RainViewer</a>'
     >
       <Layer
         id="weather-radar-layer"

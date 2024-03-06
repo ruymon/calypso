@@ -41,7 +41,6 @@ export function IvaoFlightsLayer({ initialData }: IvaoFlightsLayerProps) {
       id="ivao-flights-source"
       type="geojson"
       data={convertFlightsToGeoJSON(data)}
-      attribution='<a href="https://www.ivao.aero">IVAO</a>'
     >
       <Layer
         type="symbol"

@@ -1,6 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { ArrowDownIcon } from "lucide-react";
 import Link from "next/link";
@@ -31,30 +30,17 @@ export async function HeroSection({}: HeroSectionProps) {
           {t("subtitle")}
         </Balancer>
 
-        <div className="mt-12 flex flex-col gap-2">
-          <Link
-            href={siteConfig.links.discord}
-            rel="noopener noreferrer"
-            target="_blank"
-            className={buttonVariants({
-              size: "lg",
-            })}
-          >
-            {t("button")}
-          </Link>
-          <Link
-            href="/curious"
-            className={cn(
-              buttonVariants({
-                variant: "ghost",
-                size: "lg",
-              }),
-              "opacity-5 transition-all delay-100 duration-300 hover:opacity-100",
-            )}
-          >
-            {t("curious")}
-          </Link>
-        </div>
+        <Link
+          href={siteConfig.links.discord}
+          rel="noopener noreferrer"
+          target="_blank"
+          className={buttonVariants({
+            size: "lg",
+            className: "mt-12",
+          })}
+        >
+          {t("button")}
+        </Link>
       </header>
 
       <figure className="flex flex-col items-center justify-center gap-4">

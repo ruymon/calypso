@@ -1,5 +1,6 @@
 "use client";
 
+import { NavLink } from "@/components/nav-link";
 import {
   Tooltip,
   TooltipContent,
@@ -7,8 +8,6 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { AnchorHTMLAttributes } from "react";
 
 interface SidebarItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -25,23 +24,19 @@ export function SidebarItem({
   href,
   ...props
 }: SidebarItemProps) {
-  const pathname = usePathname();
-  const isActive = pathname === href; // TODO: Fix this
-
   return (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>
-        <Link
+        <NavLink
           href={href}
-          data-active={isActive}
           className={cn(
-            "data-[active=true]:after:contents-[''] relative flex w-full items-center justify-center py-2 text-muted-foreground data-[active=true]:text-primary data-[active=true]:after:absolute data-[active=true]:after:left-0 data-[active=true]:after:h-1/2 data-[active=true]:after:w-1 data-[active=true]:after:rounded-r-full data-[active=true]:after:bg-primary",
+            "data-[current=true]:after:contents-[''] relative flex w-full items-center justify-center py-2 text-muted-foreground data-[current=true]:text-primary data-[current=true]:after:absolute data-[current=true]:after:left-0 data-[current=true]:after:h-1/2 data-[current=true]:after:w-1 data-[current=true]:after:rounded-r-full data-[current=true]:after:bg-primary",
           )}
           {...props}
         >
           <Icon className="h-5 w-5" />
           <span className="sr-only">{title}</span>
-        </Link>
+        </NavLink>
       </TooltipTrigger>
       <TooltipContent side="right" className="flex flex-col" sideOffset={6}>
         <span className="text-sm font-semibold">{title}</span>

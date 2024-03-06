@@ -20,10 +20,7 @@ export default {
   "landing.hero.title": "A ferramenta que você não sabia que precisava.",
   "landing.hero.subtitle": `${siteConfig.name} é a ferramenta para simuleiros que desejam acompanhar voos em tempo real, informações meteorológicas e muito mais.`,
   "landing.hero.button": "Solicitar acesso antecipado",
-  "landing.hero.curious": "Sou um curioso",
   "landing.hero.scroll": "Duvido você ler até o final",
-
-  "curious.title": "Já sabe o que acontece com curioso, né?",
 
   "landing.features.hat": "Sem enrolação.",
   "landing.features.title":
@@ -93,6 +90,11 @@ export default {
   "onboarding.integrations.subtitle":
     "Conecte suas contas para sincronizar seus contatos e eventos de calendário.",
   "onboarding.integrations.skip": "Continuar sem sincronizar",
+
+  "onboarding.finish.hat": "Tudo pronto!",
+  "onboarding.finish.title": "Vamos começar?",
+  "onboarding.finish.subtitle": `Você está pronto para começar a usar o ${siteConfig.name}?`,
+  "onboarding.finish.getStarted": "Começar",
 
   "legal.terms.title": "Termos e Condições",
   "legal.terms.topic1.title": "1. Termos",

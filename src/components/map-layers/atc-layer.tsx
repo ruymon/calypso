@@ -96,7 +96,6 @@ export function ATCLayer() {
       id="atc-source"
       type="geojson"
       data={polygon([data], { name: "poly1" })}
-      attribution='<a href="https://www.vatsim.net">Vatsim</a>'
     >
       <Layer
         type="fill"

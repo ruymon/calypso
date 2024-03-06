@@ -110,7 +110,7 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
       maxZoom={16}
       minZoom={2}
       initialViewState={MAP_INITIAL_VIEW_STATE}
-      attributionControl={true}
+      attributionControl={false}
       dragRotate={false}
       interactiveLayerIds={getInteractiveLayerIds()}
       cursor={cursor}

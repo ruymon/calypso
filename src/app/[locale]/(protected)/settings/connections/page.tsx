@@ -1,11 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { SettingsConnectionCard } from "./_components/settings-connection-card";
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
-
-// TODO: Implement the user profile fetching logic
-
 export default function AppSettingsUserDataPage() {
   return (
     <>

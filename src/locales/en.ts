@@ -20,10 +20,7 @@ export default {
   "landing.hero.title": "The tool you never knew you needed.",
   "landing.hero.subtitle": `${siteConfig.name} is the tool for simmers who want to track live flights, weather information and much more.`,
   "landing.hero.button": "Request access",
-  "landing.hero.curious": "I am curious",
   "landing.hero.scroll": "I dare you to scroll",
-
-  "curious.title": "You know what happens next, right?",
 
   "landing.features.hat": "Cut the crap.",
   "landing.features.title":
@@ -92,6 +89,11 @@ export default {
   "onboarding.integrations.subtitle":
     "Connect your accounts to have a seamless experience.",
   "onboarding.integrations.skip": "Continue without syncing",
+
+  "onboarding.finish.hat": "All set!",
+  "onboarding.finish.title": "Let's get started?",
+  "onboarding.finish.subtitle": `You're all set! Click the button below start using ${siteConfig.name}.`,
+  "onboarding.finish.getStarted": "Get started",
 
   "legal.terms.title": "Terms and Conditions",
   "legal.terms.topic1.title": "1. Terms",

@@ -6,18 +6,17 @@ import { NetworkIntegrationCard } from "./_components/network-integration-card";
 interface OnboardingIntegrationsProps {}
 
 export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
 
 export default async function OnboardingIntegrations({}: OnboardingIntegrationsProps) {
   const t = await getScopedI18n("onboarding.integrations");
   return (
-    <>
-      <header className="flex flex-col">
-        <span className="mb-2 font-mono text-xs font-medium uppercase text-muted-foreground">
+    <div className="flex max-w-xl flex-col gap-8">
+      <header className="flex w-3/4 flex-col">
+        <span className="mb-2 font-mono text-xs font-medium uppercase tracking-wide text-muted-foreground">
           {t("hat")}
         </span>
-        <h1 className="text-2xl font-bold text-foreground">{t("title")}</h1>
-        <span className="text-sm text-accent-foreground">{t("subtitle")}</span>
+        <h1 className="text-3xl font-bold text-foreground">{t("title")}</h1>
+        <span className="text-muted-foreground">{t("subtitle")}</span>
       </header>
 
       <section className="grid grid-cols-2 gap-4">
@@ -39,7 +38,7 @@ export default async function OnboardingIntegrations({}: OnboardingIntegrationsP
       </section>
 
       <Link
-        href="/onboarding"
+        href="/onboarding/finish"
         className={buttonVariants({
           variant: "ghost",
           size: "sm",
@@ -48,6 +47,6 @@ export default async function OnboardingIntegrations({}: OnboardingIntegrationsP
       >
         {t("skip")}
       </Link>
-    </>
+    </div>
   );
 }

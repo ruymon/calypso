@@ -41,7 +41,6 @@ export function VatsimFlightsLayer({ initialData }: VatsimFlightsLayerProps) {
       id="vatsim-flights-source"
       type="geojson"
       data={convertFlightsToGeoJSON(data)}
-      attribution='<a href="https://www.vatsim.net">Vatsim</a>'
     >
       <Layer
         type="symbol"
