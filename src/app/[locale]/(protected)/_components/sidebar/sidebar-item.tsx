@@ -30,7 +30,7 @@ export function SidebarItem({
         <NavLink
           href={href}
           className={cn(
-            "data-[current=true]:after:contents-[''] relative flex w-full items-center justify-center py-2 text-muted-foreground data-[current=true]:text-primary data-[current=true]:after:absolute data-[current=true]:after:left-0 data-[current=true]:after:h-1/2 data-[current=true]:after:w-1 data-[current=true]:after:rounded-r-full data-[current=true]:after:bg-primary",
+            "after:contents-[''] relative flex w-full items-center justify-center py-2 text-muted-foreground data-[current=true]:text-primary after:absolute after:left-0 after:h-1/2 after:w-1 after:rounded-r-full after:bg-background data-[current=true]:after:bg-primary",
           )}
           {...props}
         >

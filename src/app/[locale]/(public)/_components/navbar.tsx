@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { Logo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";

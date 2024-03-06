@@ -6,16 +6,10 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.name,
     short_name: siteConfig.name,
     description: siteConfig.description,
-    start_url: '/',
+    start_url: '/home',
     display: 'standalone',
     background_color: '#111111',
     theme_color: '#fff',
-    icons: [
-      {
-        src: '/favicon.ico',
-        sizes: 'any',
-        type: 'image/x-icon',
-      },
-    ],
+    icons: [],
   }
 }
