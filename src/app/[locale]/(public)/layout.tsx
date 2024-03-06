@@ -8,9 +8,9 @@ interface MarketingLayoutProps {
 
 export default function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
-    <div className="relative mx-auto flex max-w-7xl flex-1 flex-col items-center px-10">
+    <div className="mx-auto flex max-w-6xl flex-1 flex-col items-center justify-between">
       <Navbar />
-      <main className="flex flex-1 flex-col gap-16">{children}</main>
+      {children}
       <Footer />
     </div>
   );

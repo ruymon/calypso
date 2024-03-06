@@ -15,7 +15,7 @@ import {
 
 interface MapFlightPopupProps extends MapHoveredFeature {}
 
-export function MapFlightPopup({ feature, coordinates }: MapFlightPopupProps) {
+export function MapFlightPopup({ feature, lat, lng }: MapFlightPopupProps) {
   const data: LiveFlight = {
     callsign: feature.properties!.callsign,
     position: JSON.parse(feature.properties!.position),
@@ -29,8 +29,8 @@ export function MapFlightPopup({ feature, coordinates }: MapFlightPopupProps) {
 
   return (
     <Popup
-      longitude={coordinates[0]}
-      latitude={coordinates[1]}
+      longitude={lng}
+      latitude={lat}
       offset={[0, -20] as any}
       closeButton={false}
       className="flight-popup"

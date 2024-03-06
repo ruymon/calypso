@@ -6,6 +6,7 @@ import { useMapLayersStore } from "@/stores/map-layers-store";
 import { LiveFlights } from "@/types/live-flights";
 import { useQuery } from "@tanstack/react-query";
 import { Layer, Source } from "react-map-gl";
+import { indigo } from "tailwindcss/colors";
 import { flightLayerBaseLayout } from "../helper";
 import { getIvaoFlights } from "./ivao-flights-layer-container";
 
@@ -50,7 +51,7 @@ export function IvaoFlightsLayer({ initialData }: IvaoFlightsLayerProps) {
           visibility: isIvaoFlightsLayerVisible ? "visible" : "none",
         }}
         paint={{
-          "icon-color": "#3C55AC",
+          "icon-color": indigo[500],
         }}
       />
     </Source>

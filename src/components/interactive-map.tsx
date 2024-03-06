@@ -54,12 +54,11 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
   const handleMouseEnter = useCallback((e: MapLayerMouseEvent) => {
     if (!e.features?.[0]) return;
 
-    const featureCoordinates = JSON.parse(
-      e.features[0].properties!.position,
-    ).coordinates;
+    const featureCoordinates = JSON.parse(e.features[0].properties!.position);
 
     setHoveredFeature({
-      coordinates: featureCoordinates,
+      lat: featureCoordinates.lat,
+      lng: featureCoordinates.lng,
       feature: e.features[0],
     });
 

@@ -52,7 +52,7 @@ export default async function TosPage({ params: { locale } }: TosPageProps) {
 
       <h2>{t("topic8.title")}</h2>
       <p>
-        <Link href="/privacy">{t("topic8.content")}</Link>
+        <Link href="/legal/privacy">{t("topic8.content")}</Link>
       </p>
 
       <h2>{t("topic9.title")}</h2>

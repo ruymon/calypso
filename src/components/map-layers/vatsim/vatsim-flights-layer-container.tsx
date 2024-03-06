@@ -1,9 +1,12 @@
-import { FLIGHTS_REFETCH_INTERVAL_IN_SECONDS } from "@/constants/api";
+import {
+  API_BASE_URL,
+  FLIGHTS_REFETCH_INTERVAL_IN_SECONDS,
+} from "@/constants/api";
 import { LiveFlights } from "@/types/live-flights";
 import { VatsimFlightsLayer } from "./vatsim-flights-layer";
 
 export async function getVatsimFlights(): Promise<LiveFlights | null> {
-  const url = "https://static.skyscope.app/liveflights/vatsim.json";
+  const url = `${API_BASE_URL}/networks/vatsim/flights`;
 
   const options: RequestInit = {
     method: "GET",

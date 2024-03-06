@@ -1,7 +1,9 @@
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { siteConfig } from "@/config/site";
 import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
+import { Suspense } from "react";
+import { LanguageDropdown } from "./language-dropdown";
+import { ThemeSwitcher } from "./theme-switcher";
 
 interface FooterProps {}
 
@@ -9,21 +11,21 @@ export async function Footer({}: FooterProps) {
   const t = await getScopedI18n("landing.footer");
 
   return (
-    <footer className="mt-12 flex w-full items-center justify-between px-10 py-2 text-sm">
+    <footer className="mt-16 flex w-full items-center justify-between py-8 text-sm">
       <section className="flex flex-col gap-1">
         <span className="text-sm text-secondary-foreground">
           {t("builtBy")}
         </span>
         <span className="text-xs text-muted-foreground">
           <Link
-            href="/privacy"
+            href="/legal/privacy"
             className="underline decoration-background underline-offset-2 transition-colors duration-150 hover:text-accent-foreground hover:decoration-current"
           >
             {t("privacy")}
           </Link>{" "}
           |{" "}
           <Link
-            href="/tos"
+            href="/legal/tos"
             className="underline decoration-background underline-offset-2 transition-colors duration-150 hover:text-accent-foreground hover:decoration-current"
           >
             {t("terms")}
@@ -32,7 +34,12 @@ export async function Footer({}: FooterProps) {
       </section>
 
       <section className="flex flex-col items-end gap-1">
-        <ThemeSwitcher />
+        <div className="flex items-center gap-2">
+          <ThemeSwitcher />
+          <Suspense>
+            <LanguageDropdown />
+          </Suspense>
+        </div>
 
         <span className="text-xs text-muted-foreground">
           &copy; {new Date().getUTCFullYear()} {siteConfig.name}

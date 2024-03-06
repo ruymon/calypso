@@ -6,6 +6,7 @@ import { useMapLayersStore } from "@/stores/map-layers-store";
 import { LiveFlights } from "@/types/live-flights";
 import { useQuery } from "@tanstack/react-query";
 import { Layer, Source } from "react-map-gl";
+import { lime } from "tailwindcss/colors";
 import { flightLayerBaseLayout } from "../helper";
 import { getVatsimFlights } from "./vatsim-flights-layer-container";
 
@@ -50,7 +51,7 @@ export function VatsimFlightsLayer({ initialData }: VatsimFlightsLayerProps) {
           visibility: isVatsimFlightsLayerVisible ? "visible" : "none",
         }}
         paint={{
-          "icon-color": "#29B473",
+          "icon-color": lime[500],
         }}
       />
     </Source>

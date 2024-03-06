@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { logout } from "@/lib/auth";
 import { getNameInitials } from "@/lib/utils";
-import { UserRoundIcon } from "lucide-react";
+import { LogOutIcon, UserRoundIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { sidebarItems } from "./helper";
 import { SidebarClock } from "./sidebar-clock";
@@ -33,7 +33,9 @@ export function Sidebar({ avatarUrl, name }: SidebarProps) {
           <SidebarItem key={item.href} {...item} />
         ))}
       </nav>
-      <Button onClick={handleLogout}>LOGOUT</Button>
+      <Button onClick={handleLogout} variant="ghost" size="icon">
+        <LogOutIcon className="h-5 w-5" />
+      </Button>
       <footer className="flex flex-col gap-4">
         <Avatar className="h-9 w-9">
           <AvatarImage src={avatarUrl} alt="avatar" />

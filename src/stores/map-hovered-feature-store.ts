@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
 export type MapHoveredFeature = {
-  coordinates: [number, number];
+  lat: number;
+  lng: number;
   feature: mapboxgl.MapboxGeoJSONFeature;
 };
 
@@ -11,8 +12,9 @@ export type MapHoveredFeatureStore = {
 };
 
 export const useMapHoveredFeatureStore = create<MapHoveredFeatureStore>(
-  set => ({
+  (set) => ({
     hoveredFeature: null,
-    setHoveredFeature: (feature: MapHoveredFeature | null) => set({ hoveredFeature: feature }),
+    setHoveredFeature: (feature: MapHoveredFeature | null) =>
+      set({ hoveredFeature: feature }),
   }),
 );
