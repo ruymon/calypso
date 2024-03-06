@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/skyscope-app/skyscope-web/compare/v1.5.0...v1.6.0) (2024-03-06)
+
+
+### Features
+
+* Loading page ([f6ecb07](https://github.com/skyscope-app/skyscope-web/commit/f6ecb0769a3763c76d38fa9a722ab26f3752d4a9))
+* New landing page ([8d836d0](https://github.com/skyscope-app/skyscope-web/commit/8d836d0c2db4f3b03c192939f09719798f06c530))
+
 # [1.5.0](https://github.com/skyscope-app/skyscope-web/compare/v1.4.0...v1.5.0) (2024-03-04)
 
 
