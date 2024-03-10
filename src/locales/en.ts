@@ -95,6 +95,37 @@ export default {
   "onboarding.finish.subtitle": `You're all set! Click the button below start using ${siteConfig.name}.`,
   "onboarding.finish.getStarted": "Get started",
 
+  "app.flightDetails.altitude": "Altitude",
+  "app.flightDetails.groundSpeed": "Ground speed",
+  "app.flightDetails.heading": "Heading",
+  "app.flightDetails.transponder": "Transponder",
+  "app.flightDetails.locationDetails.title": "Location details",
+  "app.flightDetails.locationDetails.subtitle":
+    "Detailed information about the aircraft",
+
+  "app.flightDetails.airport.departure": "Departure",
+  "app.flightDetails.airport.arrival": "Arrival",
+  "app.flightDetails.airport.alternate": "Alternate",
+  "app.flightDetails.airport.alternate2": "Second alternate",
+
+  "app.flightDetails.aircraftDetails.title": "Aircraft details",
+  "app.flightDetails.aircraftDetails.subtitle":
+    "Detailed information about the aircraft",
+
+  "app.flightDetails.aircraft.registration": "Registration",
+  "app.flightDetails.aircraft.transponder": "Transponder",
+  "app.flightDetails.aircraft.wakeTurbulence": "Wake turbulence",
+
+  "app.flightDetails.crewDetails.title": "Flight crew details",
+  "app.flightDetails.crewDetails.subtitle":
+    "Detailed information about the flight crew",
+
+  "app.flightDetails.crew.pilotInCommand": "Pilot in command",
+
+  "app.flightDetails.flightPlanDetails.title": "Flight plan details",
+  "app.flightDetails.flightPlanDetails.subtitle":
+    "Detailed information about the flight plan",
+
   "legal.terms.title": "Terms and Conditions",
   "legal.terms.topic1.title": "1. Terms",
   "legal.terms.topic1.content": `By accessing this Website, accessible from ${BASE_URL_WITHOUT_PROTOCOL}, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trade mark law.`,

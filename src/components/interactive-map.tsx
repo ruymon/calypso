@@ -76,9 +76,8 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
     if (!feature) return;
 
     const featureId = feature.properties!.id;
-    const featureNetwork = feature.properties!.network;
 
-    router.push(`/flight/${featureNetwork}/${featureId}`);
+    router.push(`/flights/${featureId}`);
   }, []);
 
   const getInteractiveLayerIds = useCallback(() => {
@@ -97,6 +96,7 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
 
   return (
     <Map
+      id="map"
       mapboxAccessToken={mapboxAccessToken}
       style={{
         position: "absolute",

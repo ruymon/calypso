@@ -96,6 +96,37 @@ export default {
   "onboarding.finish.subtitle": `Você está pronto para começar a usar o ${siteConfig.name}?`,
   "onboarding.finish.getStarted": "Começar",
 
+  "app.flightDetails.altitude": "Altitude",
+  "app.flightDetails.groundSpeed": "Velocidade do solo",
+  "app.flightDetails.heading": "Rumo",
+  "app.flightDetails.transponder": "Transponder",
+  "app.flightDetails.locationDetails.title": "Detalhes da localização",
+  "app.flightDetails.locationDetails.subtitle":
+    "Informações sobre a localização atual da aeronave.",
+
+  "app.flightDetails.airport.departure": "Partida",
+  "app.flightDetails.airport.arrival": "Chegada",
+  "app.flightDetails.airport.alternate": "Alternativo",
+  "app.flightDetails.airport.alternate2": "Alternativo secundário",
+
+  "app.flightDetails.aircraftDetails.title": "Detalhes da aeronave",
+  "app.flightDetails.aircraftDetails.subtitle":
+    "Informações sobre a aeronave e seu estado atual.",
+
+  "app.flightDetails.aircraft.registration": "Matrícula",
+  "app.flightDetails.aircraft.transponder": "Transponder",
+  "app.flightDetails.aircraft.wakeTurbulence": "Esteira de turbulência",
+
+  "app.flightDetails.crewDetails.title": "Detalhes da tripulação",
+  "app.flightDetails.crewDetails.subtitle":
+    "Informações sobre a tripulação a bordo da aeronave.",
+
+  "app.flightDetails.crew.pilotInCommand": "Piloto em comando",
+
+  "app.flightDetails.flightPlanDetails.title": "Detalhes do plano de voo",
+  "app.flightDetails.flightPlanDetails.subtitle":
+    "Informações sobre o plano de voo atual.",
+
   "legal.terms.title": "Termos e Condições",
   "legal.terms.topic1.title": "1. Termos",
   "legal.terms.topic1.content": `Ao acessar este site, acessível em ${BASE_URL_WITHOUT_PROTOCOL}, você concorda em ficar vinculado a estes Termos e Condições de Uso do Site e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Se você discordar de qualquer um desses termos, está proibido de acessar este site. Os materiais contidos neste site são protegidos por leis de direitos autorais e marcas registradas.`,

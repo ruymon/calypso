@@ -32,7 +32,7 @@ export default async function LoginPage({
       <LoginForm />
 
       <Link
-        href="/en/auth/forgot-password"
+        href="/auth/forgot-password"
         className={buttonVariants({
           variant: "link",
           className: "text-xs",

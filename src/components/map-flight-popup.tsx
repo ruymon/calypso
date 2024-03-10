@@ -1,9 +1,8 @@
 import { Progress } from "@/components/ui/progress";
-import { getAirlineTailImageUrl } from "@/lib/images";
 import { MapHoveredFeature } from "@/stores/map-hovered-feature-store";
 import { LiveFlight } from "@/types/live-flights";
 import { Popup } from "react-map-gl";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { AirlineTail } from "./airline-tail";
 import {
   Card,
   CardContent,
@@ -38,13 +37,7 @@ export function MapFlightPopup({ feature, lat, lng }: MapFlightPopupProps) {
     >
       <Card className="flex min-w-56 flex-col gap-2 rounded-md py-2">
         <CardHeader className="flex-row items-center gap-3 px-3 py-0">
-          <Avatar className="h-8 w-9 rounded-none">
-            <AvatarImage
-              src={getAirlineTailImageUrl(data.callsign)}
-              alt="Airline Tail Image"
-            />
-            <AvatarFallback className="clip-tail animate-pulse rounded-none" />
-          </Avatar>
+          <AirlineTail callsign={data.callsign} />
 
           <div className="flex flex-col">
             <CardTitle className="text-base">{data.callsign}</CardTitle>

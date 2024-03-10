@@ -37,7 +37,7 @@ export function LoginForm() {
   });
 
   async function onSubmit(data: LoginFormType) {
-    await login(data)
+    login(data)
       .then(() => {
         router.push("/", { scroll: false });
       })

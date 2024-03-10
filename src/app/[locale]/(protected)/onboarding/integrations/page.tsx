@@ -3,11 +3,11 @@ import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
 import { NetworkIntegrationCard } from "./_components/network-integration-card";
 
-interface OnboardingIntegrationsProps {}
+interface OnboardingIntegrationsPageProps {}
 
 export const dynamic = "force-dynamic";
 
-export default async function OnboardingIntegrations({}: OnboardingIntegrationsProps) {
+export default async function OnboardingIntegrationsPage({}: OnboardingIntegrationsPageProps) {
   const t = await getScopedI18n("onboarding.integrations");
   return (
     <div className="flex max-w-xl flex-col gap-8">

@@ -4,15 +4,15 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   safelist: [
     ...Array.from(Array(360).keys()).map((i) => `rotate-${i}`),
-    'bg-vatsim',
-    'bg-ivao',
+    "bg-vatsim",
+    "bg-ivao",
   ],
   prefix: "",
   theme: {
@@ -109,13 +109,16 @@ const config = {
         mono: ["var(--font-geist-mono)", ...fontFamily.mono],
         handwriting: ["var(--font-courgette)", "cursive"],
       },
+      fontSize: {
+        "2xs": "0.625rem",
+      },
     },
   },
   plugins: [
     require("tailwindcss-animate"),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries')
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
   ],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeSwitcher } from "@/app/[locale]/(public)/_components/theme-switcher";
 import { LogoIcon } from "@/components/logo";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -25,7 +26,7 @@ export function Sidebar({ avatarUrl, name }: SidebarProps) {
   }
 
   return (
-    <aside className="z-20 flex w-14 flex-col items-center gap-8 bg-background py-4">
+    <aside className="z-10 flex w-14 shrink-0 flex-col items-center gap-8 bg-background py-4">
       <LogoIcon />
 
       <nav className="flex w-full flex-1 flex-col gap-4">
@@ -36,6 +37,9 @@ export function Sidebar({ avatarUrl, name }: SidebarProps) {
       <Button onClick={handleLogout} variant="ghost" size="icon">
         <LogOutIcon className="h-5 w-5" />
       </Button>
+
+      <ThemeSwitcher />
+
       <footer className="flex flex-col gap-4">
         <Avatar className="h-9 w-9">
           <AvatarImage src={avatarUrl} alt="avatar" />

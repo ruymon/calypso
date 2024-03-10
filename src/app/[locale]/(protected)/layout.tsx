@@ -5,6 +5,7 @@ import { WeatherLayerContainer } from "@/components/map-layers/weather/weather-l
 import { API_BASE_URL } from "@/constants/api";
 import { getAccessToken } from "@/lib/auth";
 import { ReactNode, Suspense } from "react";
+import { CommandDialogDemo } from "./_components/command-bar";
 import { Sidebar } from "./_components/sidebar";
 
 interface AppRootLayoutProps {
@@ -59,7 +60,11 @@ export default async function AppRootLayout({ children }: AppRootLayoutProps) {
 
   return (
     <div className="relative flex max-h-screen flex-1 overflow-hidden">
-      <Sidebar avatarUrl={userProfile?.avatarUrl} name={userProfile?.name} />
+      <div className="flex gap-0">
+        <Sidebar avatarUrl={userProfile?.avatarUrl} name={userProfile?.name} />
+        {children}
+        <CommandDialogDemo />
+      </div>
 
       <InteractiveMap>
         <Suspense fallback={null}>
@@ -74,7 +79,6 @@ export default async function AppRootLayout({ children }: AppRootLayoutProps) {
           <IvaoFlightsLayerContainer />
         </Suspense>
       </InteractiveMap>
-      {children}
     </div>
   );
 }
