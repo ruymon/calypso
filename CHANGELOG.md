@@ -1,3 +1,16 @@
+# [1.8.0](https://github.com/skyscope-app/skyscope-web/compare/v1.7.0...v1.8.0) (2024-03-10)
+
+
+### Bug Fixes
+
+* **landingPage:** Mobile Layout ([d4701ea](https://github.com/skyscope-app/skyscope-web/commit/d4701ea3ba8dc8ef05514c950d10c8d549333aba))
+* **meta:** Icon ([c001c40](https://github.com/skyscope-app/skyscope-web/commit/c001c4037afbcde0e017d065e8fcb4e9bb6d74dc))
+
+
+### Features
+
+* Flight details ([d4d24c6](https://github.com/skyscope-app/skyscope-web/commit/d4d24c60fa9b4f87089278b24c69c08664559824))
+
 # [1.7.0](https://github.com/skyscope-app/skyscope-web/compare/v1.6.2...v1.7.0) (2024-03-06)
 
 
