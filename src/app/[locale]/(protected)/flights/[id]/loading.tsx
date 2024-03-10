@@ -1,3 +1,4 @@
+import { AirlineTail } from "@/components/airline-tail";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function FlightDetailsLoadingPage() {
@@ -6,7 +7,7 @@ export default function FlightDetailsLoadingPage() {
       <header className="flex flex-col gap-8 pt-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex w-3/4 items-center gap-4">
-            <Skeleton className="clip-tail h-10 w-11 rounded-none" />
+            <AirlineTail className="h-10 w-11" />
             <header className="flex w-full flex-col gap-1.5">
               <Skeleton className="h-9 w-2/4" />
               <Skeleton className="h-4 w-3/4" />
