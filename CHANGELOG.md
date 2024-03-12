@@ -1,3 +1,11 @@
+## [1.8.1](https://github.com/skyscope-app/skyscope-web/compare/v1.8.0...v1.8.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* Flight details loading tail skeleton ([6d39960](https://github.com/skyscope-app/skyscope-web/commit/6d399601962c3ed19f2b59006bd05345ca7f955c))
+* **lint:** Hero section) ([d2a9408](https://github.com/skyscope-app/skyscope-web/commit/d2a94080919b68188ffa14da832bf076dff32f9a))
+
 # [1.8.0](https://github.com/skyscope-app/skyscope-web/compare/v1.7.0...v1.8.0) (2024-03-10)
 
 
