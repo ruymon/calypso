@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/skyscope-app/skyscope-web/compare/v1.8.1...v1.9.0) (2024-03-13)
+
+
+### Features
+
+* **blog+map:** Overhaul ([5ca4b1e](https://github.com/skyscope-app/skyscope-web/commit/5ca4b1ebeca5669f04d9952d6f43c53aef7f6125))
+
 ## [1.8.1](https://github.com/skyscope-app/skyscope-web/compare/v1.8.0...v1.8.1) (2024-03-12)
 
 
