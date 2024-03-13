@@ -12,6 +12,7 @@
     "firestore",
     "Firestore",
     "fmsdata",
+    "fonseca",
     "gcloud",
     "github",
     "GITHUB",
@@ -19,6 +20,7 @@
     "hookform",
     "iata",
     "icao",
+    "isodate",
     "ivao",
     "Ivao",
     "lcnssantos",
@@ -39,6 +41,7 @@
     "POSCON",
     "Prefile",
     "prefiles",
+    "rehype",
     "ruyymon",
     "SELEX",
     "shadcn",
@@ -59,7 +62,9 @@
     "unixtime",
     "vatsim",
     "Vatsim",
+    "velite",
     "webeye",
+    "xpdr",
     "zukeeper"
   ]
 }

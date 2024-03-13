@@ -1,4 +1,5 @@
 import { InteractiveMap } from "@/components/interactive-map";
+import { FlightTrackLayer } from "@/components/map-layers/flight-track-layer";
 import { IvaoFlightsLayerContainer } from "@/components/map-layers/ivao/ivao-flights-layer-container";
 import { VatsimFlightsLayerContainer } from "@/components/map-layers/vatsim/vatsim-flights-layer-container";
 import { WeatherLayerContainer } from "@/components/map-layers/weather/weather-layer-container";
@@ -78,6 +79,8 @@ export default async function AppRootLayout({ children }: AppRootLayoutProps) {
         <Suspense fallback={null}>
           <IvaoFlightsLayerContainer />
         </Suspense>
+
+        <FlightTrackLayer />
       </InteractiveMap>
     </div>
   );

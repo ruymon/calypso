@@ -30,8 +30,8 @@ export function Sidebar({ avatarUrl, name }: SidebarProps) {
       <LogoIcon />
 
       <nav className="flex w-full flex-1 flex-col gap-4">
-        {sidebarItems.map((item) => (
-          <SidebarItem key={item.href} {...item} />
+        {sidebarItems.map((item, index) => (
+          <SidebarItem key={index} {...item} />
         ))}
       </nav>
       <Button onClick={handleLogout} variant="ghost" size="icon">

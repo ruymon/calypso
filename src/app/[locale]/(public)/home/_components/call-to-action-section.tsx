@@ -21,10 +21,10 @@ export async function CallToActionSection({}: CallToActionSectionProps) {
           {t("hat")}
         </span>
 
-        <CardTitle className="md:w-3/4 text-4xl md:text-5xl font-extrabold text-background">
+        <CardTitle className="text-4xl font-extrabold text-background md:w-3/4 md:text-5xl">
           {t("title")}
         </CardTitle>
-        <CardDescription className="w-3/4 md:w-1/2 md:text-lg font-medium text-muted">
+        <CardDescription className="w-3/4 font-medium text-muted md:w-1/2 md:text-lg">
           {t("subtitle")}
         </CardDescription>
 

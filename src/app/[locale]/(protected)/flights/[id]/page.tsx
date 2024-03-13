@@ -3,16 +3,17 @@ import { NetworkIcon } from "@/components/network-icon";
 import { Button } from "@/components/ui/button";
 import { API_BASE_URL } from "@/constants/api";
 import { getScopedI18n } from "@/locales/server";
-import { LiveFlight } from "@/types/live-flights";
+import { LiveFlightDetail } from "@/types/live-flights";
 import { notFound } from "next/navigation";
 import { AircraftCard } from "./_components/aircraft-card";
 import { AirportCard } from "./_components/airport-card";
 import { CrewCard } from "./_components/crew-card";
 import { FlightplanItemCard } from "./_components/flightplan-item-card";
+import { GoToPlane } from "./_components/go-to-plane";
 import { Heading } from "./_components/heading";
 import { Transponder } from "./_components/transponder";
 
-async function getFlightDetails(id: string): Promise<LiveFlight | null> {
+async function getFlightDetails(id: string): Promise<LiveFlightDetail | null> {
   const url = `${API_BASE_URL}/networks/flights/${id}`;
 
   const options: RequestInit = {
@@ -57,6 +58,7 @@ export default async function FlightsDetailPage({
 
   return (
     <div className="flex flex-1 flex-col gap-8">
+      <GoToPlane {...data} />
       <header className="flex flex-col gap-8 pt-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -64,7 +66,7 @@ export default async function FlightsDetailPage({
             <div className="flex flex-col">
               <h1 className="text-3xl font-bold">{data.callsign}</h1>
               <span className="text-sm text-muted-foreground">
-                {data.pilot?.name || "Unknown pilot"} &bull;{" "}
+                {data.pilot?.name || data.pilot.id} &bull;{" "}
                 {data.flightPlan?.aircraft?.icao}
               </span>
             </div>
@@ -78,8 +80,8 @@ export default async function FlightsDetailPage({
             <span className="font-semibold text-accent-foreground">
               {data.position.altitude}
             </span>
-            <span className="text-center text-xs text-muted-foreground">
-              {t("altitude")}
+            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+              alt
             </span>
           </div>
 
@@ -87,8 +89,8 @@ export default async function FlightsDetailPage({
             <span className="font-semibold text-accent-foreground">
               {data.position.groundSpeed}
             </span>
-            <span className="text-center text-xs text-muted-foreground">
-              {t("groundSpeed")}
+            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+              gs
             </span>
           </div>
 
@@ -98,8 +100,8 @@ export default async function FlightsDetailPage({
               value={data.position.heading}
             />
 
-            <span className="text-center text-xs text-muted-foreground">
-              {t("heading")}
+            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+              hdg
             </span>
           </div>
 
@@ -108,8 +110,8 @@ export default async function FlightsDetailPage({
               className="font-semibold text-accent-foreground"
               code={data.position.transponder}
             />
-            <span className="text-center text-xs text-muted-foreground">
-              {t("transponder")}
+            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+              xpdr
             </span>
           </div>
         </div>
@@ -136,8 +138,16 @@ export default async function FlightsDetailPage({
             type="arrival"
             className="col-span-2"
           />
-          <AirportCard data={data.flightPlan?.alternate} type="alternate" />
-          <AirportCard data={data.flightPlan?.alternate2} type="alternate2" />
+          <AirportCard
+            data={data.flightPlan?.alternate}
+            type="alternate"
+            className={
+              data.flightPlan?.alternate2 ? "col-span-1" : "col-span-2"
+            }
+          />
+          {data.flightPlan?.alternate2 && (
+            <AirportCard data={data.flightPlan?.alternate2} type="alternate2" />
+          )}
         </div>
       </section>
 

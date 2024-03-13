@@ -20,7 +20,7 @@ export default async function PrivacyPage({
   const t = await getScopedI18n("legal.privacy");
 
   return (
-    <div className="prose mx-auto dark:prose-invert">
+    <article className="prose mx-auto py-8 dark:prose-invert">
       <h1>{t("title")}</h1>
       <p>{t("paragraph1")}</p>
       <p>
@@ -110,6 +110,6 @@ export default async function PrivacyPage({
       </p>
 
       <p>{t("lastModified")} 27/01/2024</p>
-    </div>
+    </article>
   );
 }

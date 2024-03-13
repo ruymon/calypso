@@ -19,6 +19,25 @@ export interface LiveFlight {
   flightPlan?: FlightPlan;
 }
 
+export interface TrackPosition {
+  lat: number;
+  lng: number;
+  altitude: number;
+  groundSpeed: number;
+  heading: number;
+  ground: boolean;
+  timestamp: number;
+}
+export interface LiveFlightDetail {
+  id: string;
+  pilot: Pilot;
+  callsign: string;
+  network: Network;
+  position: Position;
+  flightPlan?: FlightPlan;
+  tracks: TrackPosition[];
+}
+
 export interface Pilot {
   id: number;
   name: string;

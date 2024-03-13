@@ -11,13 +11,13 @@ export function SettingSidebar({}: SettingSidebarProps) {
       {settingSidebar.map(({ title, items }, idx) => {
         const isLast = idx === settingSidebar.length - 1;
         return (
-          <Fragment key={title}>
+          <Fragment key={idx}>
             <section className="flex flex-col gap-1">
               <span className="text-xs font-bold uppercase text-muted-foreground">
                 {title}
               </span>
-              {items.map((item) => (
-                <SettingSidebarItem key={item.href} {...item} />
+              {items.map((item, index) => (
+                <SettingSidebarItem key={index} {...item} />
               ))}
             </section>
 

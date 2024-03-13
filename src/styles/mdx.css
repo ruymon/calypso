@@ -1,0 +1,48 @@
+@tailwind base;
+
+@layer base {
+  [data-rehype-pretty-code-figure] pre {
+    @apply px-0;
+  }
+
+  [data-rehype-pretty-code-figure] code {
+    @apply border-0 p-0 text-sm !leading-loose tracking-normal;
+  }
+
+  [data-rehype-pretty-code-figure] code[data-line-numbers] {
+    counter-reset: line;
+  }
+
+  [data-rehype-pretty-code-figure]
+    code[data-line-numbers]
+    > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    @apply mr-4 inline-flex h-full w-4 items-center justify-center text-right text-2xs font-medium !leading-none text-zinc-500;
+  }
+
+  [data-rehype-pretty-code-figure] [data-line] {
+    @apply border-l-2 border-l-transparent px-3;
+  }
+
+  [data-rehype-pretty-code-figure] [data-highlighted-line] {
+    @apply border-l-orange-400 bg-zinc-800;
+  }
+
+  [data-rehype-pretty-code-figure]
+    code[data-line-numbers]
+    > [data-highlighted-line]::before {
+    @apply text-zinc-200;
+  }
+
+  [data-rehype-pretty-code-figure] [data-highlighted-chars] {
+    @apply rounded-xs bg-zinc-800 shadow-[0_0_0_4px_#27272a];
+  }
+
+  [data-rehype-pretty-code-figure] [data-chars-id] {
+    @apply border-b-2 p-1 shadow-none;
+  }
+}
+.subheading-anchor {
+  @apply no-underline before:text-muted-foreground before:opacity-0 before:transition-all before:content-['#'] hover:before:mr-2 hover:before:opacity-100;
+}

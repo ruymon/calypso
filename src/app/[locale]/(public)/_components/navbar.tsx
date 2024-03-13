@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Logo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,11 +9,12 @@ export function Navbar({}) {
   const t = useScopedI18n("common");
 
   return (
-    <div className="flex h-20 w-full items-center justify-between">
-      <div className="flex items-center gap-6">
-        <Logo />
+    <div className="sticky top-0 z-10 flex w-full bg-background/25 backdrop-blur-xl">
+      <div className="container flex w-full items-center justify-between py-4">
+        <div className="flex items-center gap-6">
+          <Logo />
 
-        {/* <nav className="flex items-center gap-3">
+          {/* <nav className="flex items-center gap-3">
           <Link
             href="/manifesto"
             className="text-sm font-medium text-muted-foreground transition-colors duration-200 ease-in-out hover:text-accent-foreground"
@@ -28,16 +29,17 @@ export function Navbar({}) {
             Manifesto
           </Link>
         </nav> */}
+        </div>
+        <Link
+          href="/"
+          className={buttonVariants({
+            size: "sm",
+            variant: "outline",
+          })}
+        >
+          {t("openApp")}
+        </Link>
       </div>
-      <Link
-        href="/"
-        className={buttonVariants({
-          size: "sm",
-          variant: "outline",
-        })}
-      >
-        {t("openApp")}
-      </Link>
     </div>
   );
 }
