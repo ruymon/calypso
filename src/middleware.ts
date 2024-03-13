@@ -5,7 +5,7 @@ import { authMiddleware } from "./middlewares/auth-middleware";
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en", "pt"],
   defaultLocale: "en",
-  urlMappingStrategy: "rewrite",
+  urlMappingStrategy: "rewriteDefault",
 });
 
 export default async function middleware(request: NextRequest) {

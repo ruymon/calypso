@@ -61,9 +61,12 @@ export async function FeaturesSection({}: FeaturesSectionProps) {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-16">
+    <div className="container flex flex-col gap-16 lg:flex-row">
       <header className="flex flex-col gap-4 lg:gap-8">
-        <Balancer as="h2" className="text-4xl sm:text-5xl lg:text-6xl lg:leading-tight">
+        <Balancer
+          as="h2"
+          className="text-4xl sm:text-5xl lg:text-6xl lg:leading-tight"
+        >
           <span className="block font-bold text-muted-foreground">
             {t("hat")}
           </span>
@@ -72,7 +75,7 @@ export async function FeaturesSection({}: FeaturesSectionProps) {
           </span>
         </Balancer>
 
-        <div className="flex lg:max-w-sm flex-col items-start gap-8">
+        <div className="flex flex-col items-start gap-8 lg:max-w-sm">
           <span className="text-lg text-muted-foreground">{t("subtitle")}</span>
 
           <Link

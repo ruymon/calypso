@@ -11,7 +11,7 @@ export async function Footer({}: FooterProps) {
   const t = await getScopedI18n("landing.footer");
 
   return (
-    <footer className="mt-16 flex w-full items-center justify-between py-8 text-sm">
+    <footer className="container mt-16 flex w-full items-center justify-between py-8 text-sm">
       <section className="flex flex-col gap-1">
         <span className="text-sm text-secondary-foreground">
           {t("builtBy")}

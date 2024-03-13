@@ -100,9 +100,9 @@ export default {
   "app.flightDetails.groundSpeed": "Velocidade do solo",
   "app.flightDetails.heading": "Rumo",
   "app.flightDetails.transponder": "Transponder",
-  "app.flightDetails.locationDetails.title": "Detalhes da localização",
+  "app.flightDetails.locationDetails.title": "Rota",
   "app.flightDetails.locationDetails.subtitle":
-    "Informações sobre a localização atual da aeronave.",
+    "Informações sobre a rota da aeronave.",
 
   "app.flightDetails.airport.departure": "Partida",
   "app.flightDetails.airport.arrival": "Chegada",

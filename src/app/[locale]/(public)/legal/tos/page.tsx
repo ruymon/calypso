@@ -18,7 +18,7 @@ export default async function TosPage({ params: { locale } }: TosPageProps) {
   const t = await getScopedI18n("legal.terms");
 
   return (
-    <div className="prose mx-auto dark:prose-invert">
+    <article className="prose mx-auto py-8 dark:prose-invert">
       <h1>{t("title")}</h1>
 
       <h2>{t("topic1.title")}</h2>
@@ -57,6 +57,6 @@ export default async function TosPage({ params: { locale } }: TosPageProps) {
 
       <h2>{t("topic9.title")}</h2>
       <p>{t("topic9.content")}</p>
-    </div>
+    </article>
   );
 }

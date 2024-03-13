@@ -10,7 +10,7 @@ interface HeroSectionProps {}
 export async function HeroSection({}: HeroSectionProps) {
   const t = await getScopedI18n("landing.hero");
   return (
-    <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-8">
+    <div className="container flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-8">
       <header className="flex w-full flex-col items-center justify-center gap-3 text-center lg:max-w-2xl">
         <span className="mb-3 rounded bg-gradient-to-r from-violet-500 to-rose-400 p-0.5 px-2 font-mono text-xs font-black uppercase text-white md:text-sm">
           {t("hat")}

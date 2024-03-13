@@ -4,26 +4,7 @@ import { COOKIE_PREFIX } from "@/constants/cookies";
 import { refreshAccessToken } from "@/lib/auth";
 
 // TODO: implement url callbacks
-
-const publicPaths = [
-  "/home",
-  "/legal/tos",
-  "/legal/privacy",
-  "/auth/login",
-  "/auth/forgot-password",
-];
-
-function getPublicRoutes(publicPaths: string[], locales: string[]) {
-  let publicPathsWithLocale = [...publicPaths];
-
-  publicPaths.forEach((path) => {
-    locales.forEach((locale) => {
-      publicPathsWithLocale.push(`/${locale}${path}`);
-    });
-  });
-
-  return publicPathsWithLocale;
-}
+const publicPathsPattern = /\/(home|legal|auth|blog)\b/;
 
 export async function authMiddleware(
   request: NextRequest,
@@ -38,17 +19,16 @@ export async function authMiddleware(
 
   const pathname = request.nextUrl.pathname;
 
-  const publicPathsWithLocale = getPublicRoutes(publicPaths, ["en", "pt"]);
+  const isPublic = publicPathsPattern.test(pathname);
 
-  if (!publicPathsWithLocale.includes(pathname)) {
-    if (!accessToken && !refreshToken) {
-      const homeUrl = new URL("/home", request.url);
-      return NextResponse.redirect(homeUrl);
-    }
+  if (!isPublic && !accessToken && !refreshToken) {
+    const homeUrl = new URL("/home", request.url);
+    return NextResponse.redirect(homeUrl);
+  }
 
-    if (!accessToken && refreshToken) {
-      await refreshAccessToken(refreshToken, response);
-    }
+  if (!accessToken && refreshToken) {
+    await refreshAccessToken(refreshToken, response);
+    return response;
   }
 
   return response;

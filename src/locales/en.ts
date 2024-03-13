@@ -99,9 +99,9 @@ export default {
   "app.flightDetails.groundSpeed": "Ground speed",
   "app.flightDetails.heading": "Heading",
   "app.flightDetails.transponder": "Transponder",
-  "app.flightDetails.locationDetails.title": "Location details",
+  "app.flightDetails.locationDetails.title": "Route",
   "app.flightDetails.locationDetails.subtitle":
-    "Detailed information about the aircraft",
+    "Detailed information about the aircraft's route.",
 
   "app.flightDetails.airport.departure": "Departure",
   "app.flightDetails.airport.arrival": "Arrival",
