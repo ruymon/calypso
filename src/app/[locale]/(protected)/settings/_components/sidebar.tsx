@@ -1,30 +1,21 @@
-import { Separator } from "@/components/ui/separator";
-import { Fragment } from "react";
-import { settingSidebar } from "./helper";
 import { SettingSidebarItem } from "./sidebar-item";
 
 interface SettingSidebarProps {}
 
 export function SettingSidebar({}: SettingSidebarProps) {
   return (
-    <nav className="flex w-full max-w-52 flex-col gap-6">
-      {settingSidebar.map(({ title, items }, idx) => {
-        const isLast = idx === settingSidebar.length - 1;
-        return (
-          <Fragment key={idx}>
-            <section className="flex flex-col gap-1">
-              <span className="text-xs font-bold uppercase text-muted-foreground">
-                {title}
-              </span>
-              {items.map((item, index) => (
-                <SettingSidebarItem key={index} {...item} />
-              ))}
-            </section>
+    <aside className="flex w-full max-w-52 flex-col gap-6">
+      <h2 className="text-xl font-semibold text-foreground">Settings</h2>
 
-            {!isLast && <Separator className="bg-accent" />}
-          </Fragment>
-        );
-      })}
-    </nav>
+      <nav className="flex flex-col gap-1">
+        <SettingSidebarItem href="/settings/profile">
+          Profile
+        </SettingSidebarItem>
+
+        <SettingSidebarItem href="/settings/integrations">
+          Integrations
+        </SettingSidebarItem>
+      </nav>
+    </aside>
   );
 }

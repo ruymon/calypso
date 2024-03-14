@@ -1,57 +1,89 @@
-"use client";
-
-import { ThemeSwitcher } from "@/app/[locale]/(public)/_components/theme-switcher";
-import { LogoIcon } from "@/components/logo";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { logout } from "@/lib/auth";
-import { getNameInitials } from "@/lib/utils";
-import { LogOutIcon, UserRoundIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { sidebarItems } from "./helper";
-import { SidebarClock } from "./sidebar-clock";
+import {
+  PiBriefcaseJobStroke,
+  PiCalendarDefaultStroke,
+  PiChatDefaultStroke,
+  PiCommunityStroke,
+  PiMapStroke,
+  PiSparkleAi01Stroke,
+  PiTroubleshootStroke,
+  PiUserDefaultStroke,
+} from "@/components/icons";
+import { Separator } from "@/components/ui/separator";
+import { Rotate3D } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 
-interface SidebarProps {
-  avatarUrl?: string;
-  name?: string;
-}
+interface SidebarProps {}
 
-export function Sidebar({ avatarUrl, name }: SidebarProps) {
-  const router = useRouter();
-
-  async function handleLogout() {
-    await logout();
-    router.push("/auth/login");
-  }
-
+export function Sidebar({}: SidebarProps) {
   return (
-    <aside className="z-10 flex w-14 shrink-0 flex-col items-center gap-8 bg-background py-4">
-      <LogoIcon />
+    <aside className="z-10 flex w-16 shrink-0 flex-col items-center gap-6 bg-background py-4">
+      <Rotate3D className="h-8 w-8 text-primary" />
 
-      <nav className="flex w-full flex-1 flex-col gap-4">
-        {sidebarItems.map((item, index) => (
-          <SidebarItem key={index} {...item} />
-        ))}
+      <Separator className="w-1/2" />
+
+      <nav className="flex w-full flex-1 flex-col justify-between">
+        <div className="flex flex-col gap-4">
+          <SidebarItem
+            href="/"
+            icon={<PiMapStroke className="w-6" />}
+            title="World map"
+            label="Live network connections"
+          />
+
+          <SidebarItem
+            href="/events"
+            icon={<PiCalendarDefaultStroke className="w-6" />}
+            title="Calendar"
+            label="Live network connections"
+          />
+
+          <SidebarItem
+            href="/career"
+            icon={<PiBriefcaseJobStroke className="w-6" />}
+            title="Career"
+            label="Manage your account settings"
+          />
+
+          <SidebarItem
+            href="/friends"
+            icon={<PiCommunityStroke className="w-6" />}
+            title="Friends"
+            label="Manage your account settings"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <SidebarItem
+            href="/feedback"
+            icon={<PiChatDefaultStroke className="w-6" />}
+            title="Feedback"
+            label="Help us improve our service"
+          />
+
+          <SidebarItem
+            href="/help"
+            icon={<PiTroubleshootStroke className="w-6" />}
+            title="Support"
+            label="Get help with the app"
+          />
+          <SidebarItem
+            href="/changelog"
+            icon={<PiSparkleAi01Stroke className="w-6" />}
+            title="Changelog"
+            label="See what's new in the app"
+          />
+        </div>
       </nav>
-      <Button onClick={handleLogout} variant="ghost" size="icon">
-        <LogOutIcon className="h-5 w-5" />
-      </Button>
 
-      <ThemeSwitcher />
+      <Separator className="w-1/2" />
 
-      <footer className="flex flex-col gap-4">
-        <Avatar className="h-9 w-9">
-          <AvatarImage src={avatarUrl} alt="avatar" />
-          <AvatarFallback>
-            {name ? (
-              getNameInitials(name)
-            ) : (
-              <UserRoundIcon className="h-4 w-4" />
-            )}
-          </AvatarFallback>
-        </Avatar>
-        <SidebarClock />
+      <footer className="flex w-full flex-col gap-3 py-2">
+        <SidebarItem
+          href="/settings"
+          icon={<PiUserDefaultStroke className="w-6" />}
+          title="Settings"
+          label="Manage your account settings"
+        />
       </footer>
     </aside>
   );

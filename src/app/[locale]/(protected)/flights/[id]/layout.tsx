@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { PageShell } from "../../_components/page-shell";
 
 interface FlightsDetailsLayoutProps {
   children: ReactNode;
@@ -7,9 +8,5 @@ interface FlightsDetailsLayoutProps {
 export default function FlightsDetailsLayout({
   children,
 }: FlightsDetailsLayoutProps) {
-  return (
-    <div className="z-10 flex min-h-screen w-full max-w-md shrink-0 overflow-y-auto bg-background p-4">
-      {children}
-    </div>
-  );
+  return <PageShell className="overflow-y-auto">{children}</PageShell>;
 }

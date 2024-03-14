@@ -1,15 +1,17 @@
 import { ReactNode } from "react";
+import { PageShell } from "../_components/page-shell";
 
 interface OnboardingLayoutProps {
   children: ReactNode;
 }
 
-export default async function OnboardingLayout({
-  children,
-}: OnboardingLayoutProps) {
+export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
   return (
-    <div className="absolute z-20 flex h-screen w-screen items-center justify-center gap-4 bg-background/10 p-8 backdrop-blur-lg">
+    <PageShell
+      width="full"
+      className="absolute inset-0 z-50 items-center justify-center gap-4"
+    >
       {children}
-    </div>
+    </PageShell>
   );
 }

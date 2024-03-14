@@ -1,34 +1,37 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  PiAlertTriangleStroke,
+  PiEnvelopeDefaultDuoSolid,
+  PiUserDefaultDuoSolid,
+} from "@/components/icons";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
 import { API_BASE_URL } from "@/constants/api";
 import { getAccessToken } from "@/lib/auth";
-import { getNameInitials } from "@/lib/utils";
-import {
-  BadgeCheckIcon,
-  BugIcon,
-  CalendarDaysIcon,
-  HeartHandshakeIcon,
-  MapPinIcon,
-  UserRoundIcon,
-} from "lucide-react";
-import { UserProfile } from "../../layout";
+import { notFound } from "next/navigation";
+import { DangerCollapsible } from "./_components/danger-collapsible";
+
+export interface UserProfile {
+  id: string;
+  name?: string;
+  email: string;
+  avatarUrl?: string;
+  ivaoId?: string;
+  vatsimId?: string;
+  posconId?: string;
+  navigraphId?: string;
+  simbriefId?: string;
+}
 
 interface SettingsProfilePageProps {}
 
-async function fetchUserProfile(
-  accessToken: string,
-): Promise<UserProfile | null> {
+async function fetchUserProfile(): Promise<UserProfile | null> {
   const url = `${API_BASE_URL}/users/profile`;
+
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) {
+    return null;
+  }
 
   const options: RequestInit = {
     method: "GET",
@@ -52,126 +55,71 @@ async function fetchUserProfile(
   return data;
 }
 
-export const dynamic = "force-dynamic";
-
 export default async function SettingsProfilePage({}: SettingsProfilePageProps) {
-  const accessToken = await getAccessToken();
+  const userProfile = await fetchUserProfile();
 
-  if (!accessToken) return null;
-
-  const userProfile = await fetchUserProfile(accessToken);
+  if (!userProfile) {
+    return notFound();
+  }
 
   return (
-    <>
+    <main className="mx-auto flex max-w-xl flex-1 flex-col gap-8">
+      <header className="flex flex-col py-4">
+        <h2 className="text-2xl font-bold text-foreground">Profile</h2>
+        <span className="text-sm text-muted-foreground">
+          Manage and update your profile settings
+        </span>
+      </header>
+
       <section className="flex flex-col gap-4">
-        <Avatar className="h-20 w-20">
-          <AvatarImage src={userProfile?.avatarUrl} alt="avatar" />
-          <AvatarFallback>
-            {userProfile?.name ? (
-              getNameInitials(userProfile?.name)
-            ) : (
-              <UserRoundIcon className="h-4 w-4" />
-            )}
-          </AvatarFallback>
-        </Avatar>
-        <header className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-4">
-              <h2 className="text-2xl font-bold text-foreground">
-                {userProfile?.name || "Anonymous..."}
-              </h2>
+        <Card>
+          <CardHeader className="flex-row items-center gap-4">
+            <PiEnvelopeDefaultDuoSolid className="h-5 w-5 text-primary" />
 
-              <div className="flex items-center gap-2">
-                <BadgeCheckIcon className="h-5 w-5 shrink-0 text-blue-500" />
-                <HeartHandshakeIcon className="h-5 w-5 shrink-0 text-red-500" />
-                <BugIcon className="h-5 w-5 shrink-0 text-purple-500" />
-              </div>
-            </div>
-            <span className="text-accent-foreground">@seu_username</span>
-          </div>
-
-          <div className="flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPinIcon className="h-4 w-4 shrink-0" />
-              <span>São Paulo, Brasil</span>
-            </div>
-
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <CalendarDaysIcon className="h-4 w-4 shrink-0" />
-              <span>Ingressou em junho de 2020</span>
-            </div>
-          </div>
-        </header>
-      </section>
-
-      <Separator className="bg-accent/25" />
-
-      <section className="flex flex-col gap-6">
-        <h2 className="text-xs font-semibold uppercase text-muted-foreground">
-          Password and security
-        </h2>
-
-        <div className="flex flex-col gap-8">
-          <div className="flex w-full items-center justify-between gap-4">
-            <header className="flex max-w-[75%] flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-secondary-foreground">
-                  Multi-factor authentication
-                </h3>
-
-                <Badge variant="outline">Not enabled</Badge>
-              </div>
-
-              <span className="text-sm text-muted-foreground">
-                Proteja sua conta com camadas extras de segurança. Uma vez
-                configurado, será necessário que você digite sua senha e um
-                código de autenticação do seu telefone para fazer o login.
-              </span>
-            </header>
-
-            <Switch />
-          </div>
-
-          <div className="flex w-full items-center justify-between gap-4">
-            <header className="flex max-w-[75%] flex-col gap-1">
-              <h3 className="font-semibold text-secondary-foreground">
-                Reset password
-              </h3>
-
-              <span className="text-sm text-muted-foreground">
-                Proteja sua conta com camadas extras de segurança. Uma vez
-                configurado, será necessário que você digite sua senha e um
-                código de autenticação do seu telefone para fazer o login.
-              </span>
-            </header>
-
-            <Button variant="secondary">Reset password</Button>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="bg-accent" />
-
-      <section className="flex flex-col gap-6">
-        <h2 className="text-xs font-semibold uppercase text-muted-foreground">
-          Privacy and data
-        </h2>
-
-        <Card className="flex flex-row items-end justify-between gap-4">
-          <CardHeader>
-            <CardTitle className="text-base">Delete my account</CardTitle>
-
-            <CardDescription className="text-sm">
-              Note that deleting your account will also delete any organizations
-              in which you are the only member
-            </CardDescription>
+            <h3 className="font-semibold">email</h3>
           </CardHeader>
+          <Separator />
 
-          <CardFooter>
-            <Button variant="destructive">Delete account</Button>
-          </CardFooter>
+          <CardContent className="flex flex-col gap-4 pt-4">
+            <span className="font-medium text-accent-foreground">
+              {userProfile.email}
+            </span>
+
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <PiAlertTriangleStroke className="h-3 w-3" />
+              <span>You cannot change your email address</span>
+            </div>
+          </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader className="flex-row items-center gap-4">
+            <PiUserDefaultDuoSolid className="h-5 w-5 text-primary" />
+
+            <h3 className="font-semibold">name</h3>
+          </CardHeader>
+          <Separator />
+
+          <CardContent className="flex flex-col gap-4 pt-4">
+            {userProfile.name ? (
+              <span className="font-medium text-accent-foreground">
+                {userProfile.name}
+              </span>
+            ) : (
+              <span className="font-medium italic text-muted-foreground">
+                Not set
+              </span>
+            )}
+
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <PiAlertTriangleStroke className="h-3 w-3" />
+              <span>At the moment, you cannot change your name.</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <DangerCollapsible />
       </section>
-    </>
+    </main>
   );
 }

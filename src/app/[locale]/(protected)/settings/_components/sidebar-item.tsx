@@ -1,27 +1,19 @@
-import Link from "next/link";
-import { AnchorHTMLAttributes } from "react";
+import { NavLink, NavLinkProps } from "@/components/nav-link";
+import { cn } from "@/lib/utils";
 
-interface SettingSidebarItemProps
-  extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  title: string;
-  label: string;
-  href: string;
-}
+interface SettingSidebarItemProps extends NavLinkProps {}
 
 export function SettingSidebarItem({
-  title,
-  label,
-  href,
+  className,
   ...props
 }: SettingSidebarItemProps) {
   return (
-    <Link
-      href={href}
-      data-active={false}
-      className="rounded-sm px-2 py-1 text-muted-foreground data-[active=true]:bg-accent data-[active=true]:text-accent-foreground"
+    <NavLink
+      className={cn(
+        "flex w-full items-center rounded-md p-2 text-sm font-medium text-muted-foreground transition-all hover:text-accent-foreground data-[current=true]:bg-muted  data-[current=true]:text-accent-foreground",
+        className,
+      )}
       {...props}
-    >
-      {title}
-    </Link>
+    />
   );
 }

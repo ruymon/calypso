@@ -6,13 +6,16 @@ import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
 interface OnboardingFinishPageProps {
-  params: { locale: string };
+  params: {
+    locale: string;
+  };
 }
 
 export default async function OnboardingFinishPage({
   params: { locale },
 }: OnboardingFinishPageProps) {
   setStaticParamsLocale(locale);
+
   const t = await getScopedI18n("onboarding.finish");
 
   return (

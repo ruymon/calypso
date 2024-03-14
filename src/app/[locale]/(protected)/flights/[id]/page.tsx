@@ -59,63 +59,62 @@ export default async function FlightsDetailPage({
   return (
     <div className="flex flex-1 flex-col gap-8">
       <GoToPlane {...data} />
-      <header className="flex flex-col gap-8 pt-4">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <AirlineTail callsign={data.callsign} className="h-10 w-11" />
-            <div className="flex flex-col">
-              <h1 className="text-3xl font-bold">{data.callsign}</h1>
-              <span className="text-sm text-muted-foreground">
-                {data.pilot?.name || data.pilot.id} &bull;{" "}
-                {data.flightPlan?.aircraft?.icao}
-              </span>
-            </div>
-          </div>
 
-          <NetworkIcon network={data.network} className="h-9 w-9 rounded-lg" />
-        </div>
-
-        <div className="grid grid-cols-4 items-center gap-4 rounded-md border p-2">
-          <div className="flex flex-col items-center">
-            <span className="font-semibold text-accent-foreground">
-              {data.position.altitude}
-            </span>
-            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
-              alt
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <span className="font-semibold text-accent-foreground">
-              {data.position.groundSpeed}
-            </span>
-            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
-              gs
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <Heading
-              className="font-semibold text-accent-foreground"
-              value={data.position.heading}
-            />
-
-            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
-              hdg
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <Transponder
-              className="font-semibold text-accent-foreground"
-              code={data.position.transponder}
-            />
-            <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
-              xpdr
+      <header className="flex items-center justify-between gap-4 pt-4">
+        <div className="flex items-center gap-4">
+          <AirlineTail callsign={data.callsign} className="h-10 w-12" />
+          <div className="flex flex-col">
+            <h1 className="text-3xl font-bold">{data.callsign}</h1>
+            <span className="text-sm text-muted-foreground">
+              {data.pilot?.name || data.pilot.id} &bull;{" "}
+              {data.flightPlan?.aircraft?.icao}
             </span>
           </div>
         </div>
+
+        <NetworkIcon network={data.network} className="h-9 w-9 rounded-lg" />
       </header>
+
+      <div className="grid grid-cols-4 items-center gap-4 rounded-md border p-2">
+        <div className="flex flex-col items-center">
+          <span className="font-semibold text-accent-foreground">
+            {data.position.altitude}
+          </span>
+          <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+            alt
+          </span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <span className="font-semibold text-accent-foreground">
+            {data.position.groundSpeed}
+          </span>
+          <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+            gs
+          </span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <Heading
+            className="font-semibold text-accent-foreground"
+            value={data.position.heading}
+          />
+
+          <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+            hdg
+          </span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <Transponder
+            className="font-semibold text-accent-foreground"
+            code={data.position.transponder}
+          />
+          <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
+            xpdr
+          </span>
+        </div>
+      </div>
 
       <section className="flex flex-col gap-4">
         <header className="flex flex-col">

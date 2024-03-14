@@ -7,34 +7,35 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
 import { AnchorHTMLAttributes } from "react";
 
 interface SidebarItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   title: string;
   label: string;
-  icon: LucideIcon;
+  icon: any;
   href: string;
 }
 
 export function SidebarItem({
-  icon: Icon,
+  icon,
   label,
   title,
   href,
+  className,
   ...props
 }: SidebarItemProps) {
   return (
-    <Tooltip delayDuration={0}>
-      <TooltipTrigger asChild>
+    <Tooltip delayDuration={400}>
+      <TooltipTrigger>
         <NavLink
           href={href}
           className={cn(
-            "after:contents-[''] relative flex w-full items-center justify-center py-2 text-muted-foreground after:absolute after:left-0 after:h-1/2 after:w-1 after:rounded-r-full after:bg-background data-[current=true]:text-primary data-[current=true]:after:bg-primary",
+            "after:contents-[''] relative flex w-full items-center justify-center py-2 text-muted-foreground transition-all after:absolute after:left-0 after:h-1/2 after:w-1 after:rounded-r-full after:bg-background hover:text-accent-foreground data-[current=true]:text-primary data-[current=true]:after:bg-primary dark:text-muted-foreground/50 dark:hover:text-muted-foreground dark:data-[current=true]:text-primary",
+            className,
           )}
           {...props}
         >
-          <Icon className="h-5 w-5" />
+          {icon}
           <span className="sr-only">{title}</span>
         </NavLink>
       </TooltipTrigger>

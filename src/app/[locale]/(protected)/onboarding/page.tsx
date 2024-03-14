@@ -1,7 +1,5 @@
 import { redirect } from "next/navigation";
 
-interface OnboardingRootPageProps {}
-
-export default async function OnboardingRootPage({}: OnboardingRootPageProps) {
+export default function OnboardingRootPage() {
   return redirect("/onboarding/welcome");
 }
