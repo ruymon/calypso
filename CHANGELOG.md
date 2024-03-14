@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/skyscope-app/skyscope-web/compare/v1.9.0...v1.10.0) (2024-03-14)
+
+
+### Features
+
+* **app:** Shell refactor ([0a5090d](https://github.com/skyscope-app/skyscope-web/commit/0a5090d83c4ab55a5b18bb57d907f18a4cdddca8))
+
 # [1.9.0](https://github.com/skyscope-app/skyscope-web/compare/v1.8.1...v1.9.0) (2024-03-13)
 
 
