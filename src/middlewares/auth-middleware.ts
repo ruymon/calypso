@@ -4,7 +4,7 @@ import { COOKIE_PREFIX } from "@/constants/cookies";
 import { refreshAccessToken } from "@/lib/auth";
 
 // TODO: implement url callbacks
-const publicPathsPattern = /\/(home|legal|auth|blog)\b/;
+const publicPathsPattern = /\/(auth)\b/;
 
 export async function authMiddleware(
   request: NextRequest,
@@ -22,8 +22,8 @@ export async function authMiddleware(
   const isPublic = publicPathsPattern.test(pathname);
 
   if (!isPublic && !accessToken && !refreshToken) {
-    const homeUrl = new URL("/home", request.url);
-    return NextResponse.redirect(homeUrl);
+    const loginUrl = new URL("/auth/login", request.url);
+    return NextResponse.redirect(loginUrl);
   }
 
   if (!accessToken && refreshToken) {

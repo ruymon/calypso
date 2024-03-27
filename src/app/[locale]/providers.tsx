@@ -1,6 +1,5 @@
 "use client";
 
-import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { I18nProviderClient } from "@/locales/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -13,15 +12,7 @@ interface ProvidersProps {
   locale: string;
 }
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // With SSR, we usually want to set some default staleTime
-      // above 0 to avoid refetching immediately on the client
-      staleTime: 60 * 1000,
-    },
-  },
-});
+const queryClient = new QueryClient();
 
 export function Providers({ children, locale }: ProvidersProps) {
   return (
@@ -36,7 +27,6 @@ export function Providers({ children, locale }: ProvidersProps) {
           >
             {children}
             <ReactQueryDevtools />
-            <Toaster />
           </ThemeProvider>
         </TooltipProvider>
       </QueryClientProvider>

@@ -1,6 +1,6 @@
 "use client";
 
-import { env } from "@/env";
+import { env } from "@/env.mjs";
 import { useMapInitialization } from "@/hooks/use-map-initialization";
 import { useMapCursorStore } from "@/stores/map-cursor-store";
 import { MAP_INITIAL_VIEW_STATE } from "@/stores/map-focused-location-store";

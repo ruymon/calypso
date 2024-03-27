@@ -1,4 +1,4 @@
-import { env } from "@/env";
+import { env } from "@/env.mjs";
 import { FirebaseOptions, getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -15,4 +15,3 @@ const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const firebaseAuth = getAuth();
 
 export { firebaseApp, firebaseAuth };
-

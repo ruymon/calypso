@@ -1,12 +1,12 @@
 "use server";
 
-import { LoginFormType } from "@/app/[locale]/auth/_components/login-form";
+import { LoginFormType } from "@/app/[locale]/(public)/auth/_components/login-form";
 import {
-    COOKIE_DOMAIN,
-    COOKIE_PREFIX,
-    IS_SECURE_COOKIE,
+  COOKIE_DOMAIN,
+  COOKIE_PREFIX,
+  IS_SECURE_COOKIE,
 } from "@/constants/cookies";
-import { env } from "@/env";
+import { env } from "@/env.mjs";
 import { firebaseAuth } from "@/lib/firebase";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { cookies } from "next/headers";
@@ -113,18 +113,3 @@ export async function refreshAccessToken(
 
   return response;
 }
-
-// export async function getUser() {
-//   const accessToken = await getAccessToken();
-
-//   const result = await fetch(`https://api.skyscope.app/api/v1/users/profile`, {
-//     headers: {
-//       Authorization: `Bearer ${accessToken}`
-//     }
-//   });
-//   const user = await result.json();
-
-//   console.log(user);
-
-//   return user
-// }

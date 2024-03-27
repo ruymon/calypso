@@ -5,7 +5,6 @@ export const siteConfig = {
   slogan: "Supercharge your flights",
   email: "support@skyscope.app",
   links: {
-    github: "https://github.com/skyscope-app",
-    discord: "https://discord.gg/gSmAuzhzgR"
+    discord: "https://discord.gg/gSmAuzhzgR",
   },
 };

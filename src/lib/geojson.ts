@@ -19,6 +19,7 @@ export function convertFlightsToGeoJSON(
 export function convertTracksToLineString(
   tracks: TrackPosition[],
 ): GeoJSON.FeatureCollection<GeoJSON.LineString> {
+  console.log(tracks);
   const bellow500Coordinates = [] as number[][];
   const between500And1000Coordinates = [] as number[][];
   const between1000And2000Coordinates = [] as number[][];
@@ -90,6 +91,19 @@ export function convertTracksToLineString(
           coordinates: tracks.map((track) => [track.lat, track.lng]),
         },
       },
+      tracks.map((track) => {
+        return {
+          type: "Feature",
+          properties: {
+            color: color.purple[500],
+            altitude: track.altitude,
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [track.lat, track.lng],
+          },
+        };
+      }),
     ],
   };
 

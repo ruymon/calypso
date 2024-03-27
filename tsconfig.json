@@ -27,8 +27,7 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@site/content": ["./.velite"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -38,7 +37,8 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/env.mjs"
   ],
   "exclude": ["node_modules"]
 }
