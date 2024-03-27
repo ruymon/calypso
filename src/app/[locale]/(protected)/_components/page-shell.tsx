@@ -21,17 +21,17 @@ export function PageShell({
   width = DEFAULT_WIDTH,
 }: PageShellProps) {
   const widthClassNames = {
-    sm: "max-w-sm",
-    md: "max-w-md",
-    lg: "max-w-lg",
-    xl: "max-w-xl",
-    full: "max-w-full",
+    sm: "lg:max-w-sm",
+    md: "lg:max-w-md",
+    lg: "lg:max-w-lg",
+    xl: "lg:max-w-xl",
+    full: "lg:max-w-full",
   };
 
   return (
     <div
       className={cn(
-        "z-10 flex w-full bg-background px-6 py-4",
+        "z-10 flex h-full w-full bg-background px-6 py-4",
         widthClassNames[width],
         className,
       )}

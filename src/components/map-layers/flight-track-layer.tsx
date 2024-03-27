@@ -9,7 +9,7 @@ interface FlightTrackLayerProps {}
 export function FlightTrackLayer({}: FlightTrackLayerProps) {
   const [track] = useFlightTrackStore((state) => [state.track]);
 
-  if (track.length === 0) {
+  if (!track) {
     return null;
   }
 

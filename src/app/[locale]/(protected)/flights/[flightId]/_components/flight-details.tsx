@@ -1,64 +1,63 @@
+"use client";
+
 import { AirlineTail } from "@/components/airline-tail";
 import { NetworkIcon } from "@/components/network-icon";
-import { Button } from "@/components/ui/button";
-import { API_BASE_URL } from "@/constants/api";
-import { getScopedI18n } from "@/locales/server";
+import { FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
+import { getAirlineTailImageUrl } from "@/lib/images";
+import { useScopedI18n } from "@/locales/client";
+import { useFlightTrackStore } from "@/stores/flight-track-store";
 import { LiveFlightDetail } from "@/types/live-flights";
+import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { AircraftCard } from "./_components/aircraft-card";
-import { AirportCard } from "./_components/airport-card";
-import { CrewCard } from "./_components/crew-card";
-import { FlightplanItemCard } from "./_components/flightplan-item-card";
-import { GoToPlane } from "./_components/go-to-plane";
-import { Heading } from "./_components/heading";
-import { Transponder } from "./_components/transponder";
+import { useEffect } from "react";
+import { getFlightDetails } from "../page";
+import { AircraftCard } from "./aircraft-card";
+import { AirportCard } from "./airport-card";
+import { CopyFlightPlanButton } from "./copy-flight-button";
+import { CrewCard } from "./crew-card";
+import { FlightplanItemCard } from "./flightplan-item-card";
+import { Heading } from "./heading";
+import { Transponder } from "./transponder";
 
-async function getFlightDetails(id: string): Promise<LiveFlightDetail | null> {
-  const url = `${API_BASE_URL}/networks/flights/${id}`;
-
-  const options: RequestInit = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    next: {},
-  };
-
-  const result = await fetch(url, options);
-  const data = await result.json();
-
-  if (result.status !== 200) {
-    console.error("Error fetching flight details", data);
-    return null;
-  }
-
-  return data;
+interface FlightDetailsProps {
+  initialData: LiveFlightDetail;
 }
 
-interface FlightsDetailPageProps {
-  params: {
-    id: string;
-  };
-}
+export function FlightDetails({ initialData }: FlightDetailsProps) {
+  const t = useScopedI18n("app.flightDetails");
+  const [setTrack] = useFlightTrackStore((state) => [state.setTrack]);
 
-export default async function FlightsDetailPage({
-  params: { id },
-}: FlightsDetailPageProps) {
-  const t = await getScopedI18n("app.flightDetails");
+  const { data, error } = useQuery({
+    initialData,
+    queryKey: ["flight-details", initialData.id],
+    queryFn: async () => getFlightDetails(initialData.id),
+    refetchOnReconnect: true,
+    refetchOnWindowFocus: true,
+    refetchInterval: FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
+  });
 
-  if (!id) {
+  if (error || !data) {
     return notFound();
   }
 
-  const data = await getFlightDetails(id);
-
-  if (!data) {
-    return notFound();
-  }
+  useEffect(() => {
+    setTrack(data.tracks);
+  }, [data]);
 
   return (
     <div className="flex flex-1 flex-col gap-8">
-      <GoToPlane {...data} />
+      <Image
+        src={getAirlineTailImageUrl(data.callsign)}
+        fill
+        className="pointer-events-none absolute inset-0 top-0 -z-10 max-h-64 scale-y-[-1] opacity-0 blur-[360px] saturate-150 transition-opacity duration-1000 ease-in-out"
+        alt="Illustration"
+        draggable={false}
+        onLoad={(e) => {
+          e.currentTarget.classList.remove("opacity-0");
+          e.currentTarget.classList.add("opacity-100");
+        }}
+      />
 
       <header className="flex items-center justify-between gap-4 pt-4">
         <div className="flex items-center gap-4">
@@ -75,7 +74,7 @@ export default async function FlightsDetailPage({
         <NetworkIcon network={data.network} className="h-9 w-9 rounded-lg" />
       </header>
 
-      <div className="grid grid-cols-4 items-center gap-4 rounded-md border p-2">
+      <div className="grid grid-cols-4 items-center gap-4 rounded-md border bg-background p-2">
         <div className="flex flex-col items-center">
           <span className="font-semibold text-accent-foreground">
             {data.position.altitude}
@@ -198,7 +197,7 @@ export default async function FlightsDetailPage({
       </section>
 
       <section className="flex flex-col gap-4 pb-4">
-        <Button>Copy flight plan</Button>
+        <CopyFlightPlanButton />
       </section>
     </div>
   );

@@ -1,10 +1,12 @@
+"use client";
+
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getScopedI18n } from "@/locales/server";
+import { useScopedI18n } from "@/locales/client";
 import { Pilot } from "@/types/live-flights";
 
 interface CrewCardProps {
@@ -13,12 +15,12 @@ interface CrewCardProps {
 }
 
 export async function CrewCard({ className, data }: CrewCardProps) {
-  const t = await getScopedI18n("app.flightDetails.crew");
+  const t = useScopedI18n("app.flightDetails.crew");
 
   return (
     <Card className={className}>
       <CardHeader className="gap-0.5">
-        <span className="text-2xs font-mono font-medium uppercase text-muted-foreground">
+        <span className="font-mono text-2xs font-medium uppercase text-muted-foreground">
           {t("pilotInCommand")}
         </span>
         <CardTitle>{data.name || "Empty state"}</CardTitle>

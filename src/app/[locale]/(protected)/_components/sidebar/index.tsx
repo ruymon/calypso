@@ -16,7 +16,7 @@ interface SidebarProps {}
 
 export function Sidebar({}: SidebarProps) {
   return (
-    <aside className="z-10 flex w-16 shrink-0 flex-col items-center gap-6 bg-background py-4">
+    <aside className="z-20 hidden w-16 shrink-0 flex-col items-center gap-6 bg-background py-4 lg:flex">
       <Rotate3D className="h-8 w-8 text-primary" />
 
       <Separator className="w-1/2" />

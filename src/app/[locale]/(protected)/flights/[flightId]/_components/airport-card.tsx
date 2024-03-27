@@ -1,3 +1,10 @@
+"use client";
+
+import {
+  PiArrowTurnDownRightStroke,
+  PiArrowTurnUpRightStroke,
+  PiShuffleStroke,
+} from "@/components/icons";
 import {
   Card,
   CardDescription,
@@ -5,14 +12,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getScopedI18n } from "@/locales/server";
+import { useScopedI18n } from "@/locales/client";
 import { Airport } from "@/types/live-flights";
-import {
-  ArrowDownRightIcon,
-  ArrowUpRightIcon,
-  GitBranchIcon,
-  LucideIcon,
-} from "lucide-react";
 
 type AirportCardType = "departure" | "arrival" | "alternate" | "alternate2";
 interface AirportCardProps {
@@ -21,15 +22,15 @@ interface AirportCardProps {
   className?: string;
 }
 
-const typeIconVariants: { [key in AirportCardType]: LucideIcon } = {
-  departure: ArrowUpRightIcon,
-  arrival: ArrowDownRightIcon,
-  alternate: GitBranchIcon,
-  alternate2: GitBranchIcon,
+const typeIconVariants: { [key in AirportCardType]: any } = {
+  departure: PiArrowTurnUpRightStroke,
+  arrival: PiArrowTurnDownRightStroke,
+  alternate: PiShuffleStroke,
+  alternate2: PiShuffleStroke,
 };
 
 export async function AirportCard({ type, data, className }: AirportCardProps) {
-  const t = await getScopedI18n("app.flightDetails.airport");
+  const t = useScopedI18n("app.flightDetails.airport");
 
   const typeLabelVariants = {
     departure: t("departure"),
@@ -45,7 +46,7 @@ export async function AirportCard({ type, data, className }: AirportCardProps) {
       <CardHeader className="gap-0.5">
         <span
           data-type={type}
-          className="text-2xs mb-2 inline-flex w-fit items-center gap-1 rounded px-1 py-0.5 font-mono font-extrabold uppercase leading-none text-muted-foreground data-[type='alternate']:bg-transparent data-[type='arrival']:bg-primary data-[type='departure']:bg-primary data-[type='arrival']:text-primary-foreground data-[type='departure']:text-primary-foreground"
+          className="mb-2 inline-flex w-fit items-center gap-1 rounded px-1 py-0.5 font-mono text-2xs font-extrabold uppercase leading-none text-muted-foreground data-[type='alternate']:bg-transparent data-[type='arrival']:bg-primary data-[type='departure']:bg-primary data-[type='arrival']:text-primary-foreground data-[type='departure']:text-primary-foreground"
         >
           <Icon className="h-3 w-3" />
           {typeLabelVariants[type]}

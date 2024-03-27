@@ -1,5 +1,6 @@
 "use client";
 
+import { PiSpinnerStroke } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -36,21 +37,30 @@ export function LoginForm() {
     },
   });
 
-  async function onSubmit(data: LoginFormType) {
-    login(data)
-      .then(() => {
-        router.push("/", { scroll: false });
-      })
-      .catch((error) => {
-        toast.error("Error logging in. Please try again.");
-        console.error(error);
+  async function handleLogin(data: LoginFormType) {
+    try {
+      await login(data);
+
+      router.push("/");
+    } catch (error) {
+      toast.error("Uh oh! Something went wrong.", {
+        description:
+          "An error ocurred while trying to log in. Please try again",
       });
+
+      console.error(error);
+    }
   }
+
+  const {
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = form;
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(handleLogin)}
         className="flex flex-col gap-5"
       >
         <div className="flex flex-col gap-3">
@@ -94,7 +104,14 @@ export function LoginForm() {
             )}
           />
         </div>
-        <Button type="submit">{t("signIn")}</Button>
+
+        <Button disabled={isSubmitting}>
+          {isSubmitting ? (
+            <PiSpinnerStroke className="w-4 animate-spin" />
+          ) : (
+            t("signIn")
+          )}
+        </Button>
       </form>
     </Form>
   );

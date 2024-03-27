@@ -22,7 +22,7 @@ const nextConfig = {
   webpack: config => {
     config.plugins.push(new VeliteWebpackPlugin())
     return config
-  }
+  },
 };
 
 class VeliteWebpackPlugin {
@@ -43,5 +43,3 @@ class VeliteWebpackPlugin {
     })
   }
 }
-
-export default nextConfig;

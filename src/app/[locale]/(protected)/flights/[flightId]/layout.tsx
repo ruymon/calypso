@@ -8,5 +8,5 @@ interface FlightsDetailsLayoutProps {
 export default function FlightsDetailsLayout({
   children,
 }: FlightsDetailsLayoutProps) {
-  return <PageShell className="overflow-y-auto">{children}</PageShell>;
+  return <PageShell className="relative overflow-y-auto">{children}</PageShell>;
 }

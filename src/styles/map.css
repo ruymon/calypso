@@ -4,11 +4,11 @@
 
 /* Override position to avoid covering Mapbox logo by Sidebar */
 .mapboxgl-ctrl-bottom-left {
-  @apply !bottom-2 !left-14 !z-0 opacity-30;
+  @apply !bottom-2 !left-16 !z-0 opacity-30;
 }
 
 .flight-popup {
-  @apply w-fit;
+  @apply pointer-events-none w-fit;
 }
 
 .flight-popup > .mapboxgl-popup-tip {
