@@ -15,7 +15,7 @@ interface CrewCardProps {
 }
 
 export async function CrewCard({ className, data }: CrewCardProps) {
-  const t = useScopedI18n("app.flightDetails.crew");
+  const t = useScopedI18n("flightDetails.crewDetails.crew");
 
   return (
     <Card className={className}>

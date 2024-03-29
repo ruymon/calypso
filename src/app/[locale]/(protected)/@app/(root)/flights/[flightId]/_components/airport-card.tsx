@@ -30,7 +30,7 @@ const typeIconVariants: { [key in AirportCardType]: any } = {
 };
 
 export async function AirportCard({ type, data, className }: AirportCardProps) {
-  const t = useScopedI18n("app.flightDetails.airport");
+  const t = useScopedI18n("flightDetails.routeDetails.airport");
 
   const typeLabelVariants = {
     departure: t("departure"),

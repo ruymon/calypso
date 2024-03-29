@@ -32,15 +32,6 @@ export function FlightTrackLayer({}: FlightTrackLayerProps) {
           "line-width": 2,
         }}
       />
-      <Layer
-        id="flight-track-layer"
-        type="circle"
-        source="flight-track-source"
-        layout={{}}
-        paint={{
-          "circle-color": ["get", "color"],
-        }}
-      />
     </Source>
   );
 }

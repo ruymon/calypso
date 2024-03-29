@@ -9,13 +9,14 @@ export type MapLayersStore = {
   setIsWeatherLayerVisible: (visible: boolean) => void;
 };
 
-export const useMapLayersStore = create<MapLayersStore>(
-  set => ({
-    isVatsimFlightsLayerVisible: true,
-    setIsVatsimFlightsLayerVisible: (visible: boolean) => set({ isVatsimFlightsLayerVisible: visible }),
-    isIvaoFlightsLayerVisible: true,
-    setIsIvaoFlightsLayerVisible: (visible: boolean) => set({ isIvaoFlightsLayerVisible: visible }),
-    isWeatherLayerVisible: false,
-    setIsWeatherLayerVisible: (visible: boolean) => set({ isWeatherLayerVisible: visible }),
-  }),
-);
+export const useMapLayersStore = create<MapLayersStore>((set) => ({
+  isVatsimFlightsLayerVisible: true,
+  setIsVatsimFlightsLayerVisible: (visible: boolean) =>
+    set({ isVatsimFlightsLayerVisible: visible }),
+  isIvaoFlightsLayerVisible: true,
+  setIsIvaoFlightsLayerVisible: (visible: boolean) =>
+    set({ isIvaoFlightsLayerVisible: visible }),
+  isWeatherLayerVisible: false,
+  setIsWeatherLayerVisible: (visible: boolean) =>
+    set({ isWeatherLayerVisible: visible }),
+}));

@@ -23,7 +23,6 @@ export default function AppRootLayout({ children }: AppRootLayoutProps) {
       </div>
 
       <CommandDialogDemo />
-
       <InteractiveMap>
         <Suspense
           fallback={

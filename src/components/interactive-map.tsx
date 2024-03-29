@@ -130,3 +130,66 @@ export function InteractiveMap({ children }: InteractiveMapProps) {
     </Map>
   );
 }
+const ICON_MAPPING = {
+  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
+};
+
+// export async function InteractiveMap({ children }: InteractiveMapProps) {
+//   const vatsimData = await getVatsimFlights();
+//   const ivaoData = await getIvaoFlights();
+
+//   // const vatsimFlightsLayer = new IconLayer({
+//   //   id: "vatsim-flights-layer",
+//   //   data: vatsimData,
+//   //   iconAtlas:
+//   //     "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
+//   //   iconMapping: ICON_MAPPING,
+//   //   getIcon: (d) => "marker",
+//   //   sizeScale: 15,
+//   //   getPosition: (d) => [d.position.lng, d.position.lat],
+//   //   getColor: (d) => [255, 140, 0],
+//   //   pickable: true,
+//   // });
+
+//   // const ivaoFlightsLayer = new IconLayer({
+//   //   id: "ivao-flights-layer",
+//   //   data: ivaoData,
+//   //   iconAtlas:
+//   //     "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
+//   //   iconMapping: ICON_MAPPING,
+//   //   getIcon: (d) => "marker",
+//   //   sizeScale: 15,
+//   //   getPosition: (d) => [d.position.lng, d.position.lat],
+//   //   getColor: (d) => [0, 0, 255],
+//   //   pickable: true,
+//   //   onClick: (info) => {
+//   //     info.object && console.log(info.object);
+//   //   },
+//   // });
+
+//   return (
+//     <DeckGL
+//       effects={[lightingEffect]}
+//       initialViewState={MAP_INITIAL_VIEW_STATE}
+//       controller={true}
+//       layers={[]}
+//       style={{
+//         position: "absolute",
+//         inset: "0",
+//         width: "100%",
+//         height: "100%",
+//       }}
+//       getTooltip={({ object }) =>
+//         object &&
+//         `${object.callsign}\n${object.position.lat}\n${object.position.lng}`
+//       }
+//     >
+//       <Map
+//         mapboxAccessToken={mapboxAccessToken}
+//         reuseMaps
+//         mapStyle={mapStyles.dark}
+//         antialias
+//       />
+//     </DeckGL>
+//   );
+// }

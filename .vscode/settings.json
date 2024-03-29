@@ -35,6 +35,7 @@
     "nextauth",
     "nowcast",
     "oidc",
+    "pickable",
     "pkce",
     "Planetscale",
     "poscon",

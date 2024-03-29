@@ -14,13 +14,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 
 interface VatsimIntegrationCardProps {}
 
 export function VatsimIntegrationCard({}: VatsimIntegrationCardProps) {
+  const t = useScopedI18n("integrations");
+
   function handleConnect() {
-    toast.error("This feature is not available yet");
+    toast.error(t("ivao.cannotChange"));
   }
 
   return (
@@ -38,22 +41,20 @@ export function VatsimIntegrationCard({}: VatsimIntegrationCardProps) {
           onClick={handleConnect}
         >
           <PiLinkChainSlantDuoStroke className="w-4" />
-          <span className="text-xs font-medium">Connect</span>
+          <span className="text-xs font-medium">{t("comum.connect")}</span>
         </Button>
       </CardContent>
 
       <CardHeader className="p-0">
         <CardTitle className="text-lg font-semibold">Vatsim</CardTitle>
         <CardDescription className="text-muted-foreground">
-          Virtual Air Traffic Simulation Network is a nonprofit organization
-          that operates an online flight-simulation network noted for its active
-          membership and realism.
+          {t("vatsim.description")}
         </CardDescription>
       </CardHeader>
 
       <CardFooter className="gap-1 p-0">
         <PiAlertTriangleStroke className="h-3 w-3" />
-        <span>At the moment, you cannot to your Vatsim account</span>
+        <span>{t("vatsim.cannotChange")}</span>
       </CardFooter>
     </Card>
   );

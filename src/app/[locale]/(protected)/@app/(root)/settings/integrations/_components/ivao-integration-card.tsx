@@ -14,13 +14,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 
 interface IvaoIntegrationCardProps {}
 
 export function IvaoIntegrationCard({}: IvaoIntegrationCardProps) {
+  const t = useScopedI18n("integrations");
+
   function handleConnect() {
-    toast.error("This feature is not available yet");
+    toast.error(t("ivao.cannotChange"));
   }
 
   return (
@@ -38,22 +41,20 @@ export function IvaoIntegrationCard({}: IvaoIntegrationCardProps) {
           onClick={handleConnect}
         >
           <PiLinkChainSlantDuoStroke className="w-4" />
-          <span className="text-xs font-medium">Connect</span>
+          <span className="text-xs font-medium">{t("comum.connect")}</span>
         </Button>
       </CardContent>
 
       <CardHeader className="p-0">
         <CardTitle className="text-lg font-semibold">IVAO</CardTitle>
         <CardDescription className="text-muted-foreground">
-          International Virtual Aviation Organisation VZW is a non-profit
-          association which operates a free-of-charge online flight-simulation
-          network
+          {t("ivao.description")}
         </CardDescription>
       </CardHeader>
 
       <CardFooter className="gap-2 p-0">
         <PiAlertTriangleStroke className="h-3 w-3 shrink-0" />
-        <span>At the moment, you cannot to your IVAO account</span>
+        <span>{t("ivao.cannotChange")}</span>
       </CardFooter>
     </Card>
   );

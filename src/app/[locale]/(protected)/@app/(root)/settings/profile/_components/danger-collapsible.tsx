@@ -15,12 +15,15 @@ import {
 } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { useScopedI18n } from "@/locales/client";
 import { useState } from "react";
 
 interface DangerCollapsibleProps {}
 
 export function DangerCollapsible({}: DangerCollapsibleProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useScopedI18n("settings.profile.dangerZone");
+
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
       <Card>
@@ -33,7 +36,7 @@ export function DangerCollapsible({}: DangerCollapsibleProps) {
               )}
             />
 
-            <h3 className="font-semibold">Danger zone</h3>
+            <h3 className="font-semibold">{t("title")}</h3>
           </div>
 
           <CollapsibleTrigger asChild>
@@ -56,16 +59,12 @@ export function DangerCollapsible({}: DangerCollapsibleProps) {
           <Separator />
           <CardContent className="flex flex-col gap-4 pt-4">
             <span className="font-medium text-destructive">
-              Delete your account
+              {t("deleteAccount")}
             </span>
 
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <PiInformationCircleDuoStroke className="w-4 shrink-0 text-accent-foreground" />
-              <span>
-                Should you decide to delete your account, you will lose access
-                to all of your data. This action cannot be undone and the
-                process may take up to 24 hours.
-              </span>
+              <span>{t("deleteAccountDescription")}</span>
             </div>
           </CardContent>
         </CollapsibleContent>

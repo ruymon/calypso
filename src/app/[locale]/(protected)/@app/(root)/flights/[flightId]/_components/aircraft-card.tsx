@@ -40,7 +40,7 @@ interface AircraftImage {
 }
 
 export async function AircraftCard({ className, data }: AircraftCardProps) {
-  const t = useScopedI18n("app.flightDetails.aircraft");
+  const t = useScopedI18n("flightDetails.aircraftDetails.aircraft");
   const [aircraftImage, setAircraftImage] = useState<string | null>();
 
   useEffect(() => {

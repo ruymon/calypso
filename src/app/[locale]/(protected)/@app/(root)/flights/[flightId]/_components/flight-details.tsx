@@ -3,6 +3,7 @@
 import { AirlineTail } from "@/components/airline-tail";
 import { NetworkIcon } from "@/components/network-icon";
 import { FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
+import { getFlightDetails } from "@/lib/flights";
 import { getAirlineTailImageUrl } from "@/lib/images";
 import { useScopedI18n } from "@/locales/client";
 import { useFlightTrackStore } from "@/stores/flight-track-store";
@@ -11,7 +12,6 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { useEffect } from "react";
-import { getFlightDetails } from "../page";
 import { AircraftCard } from "./aircraft-card";
 import { AirportCard } from "./airport-card";
 import { CrewCard } from "./crew-card";
@@ -23,7 +23,7 @@ interface FlightDetailsProps {
 }
 
 export function FlightDetails({ initialData }: FlightDetailsProps) {
-  const t = useScopedI18n("app.flightDetails");
+  const t = useScopedI18n("flightDetails");
   const [setTrack] = useFlightTrackStore((state) => [state.setTrack]);
 
   const { data, error } = useQuery({
@@ -77,10 +77,10 @@ export function FlightDetails({ initialData }: FlightDetailsProps) {
       <section className="flex flex-col gap-4">
         <header className="flex flex-col">
           <span className="text-xl font-semibold">
-            {t("locationDetails.title")}
+            {t("routeDetails.title")}
           </span>
           <span className="text-xs text-muted-foreground">
-            {t("locationDetails.subtitle")}
+            {t("routeDetails.subtitle")}
           </span>
         </header>
 

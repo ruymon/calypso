@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { API_BASE_URL } from "@/constants/api";
 import { getAccessToken } from "@/lib/auth";
+import { getScopedI18n } from "@/locales/server";
 import { notFound } from "next/navigation";
 import { DangerCollapsible } from "./_components/danger-collapsible";
 
@@ -57,7 +58,7 @@ async function fetchUserProfile(): Promise<UserProfile | null> {
 
 export default async function SettingsProfilePage({}: SettingsProfilePageProps) {
   const userProfile = await fetchUserProfile();
-
+  const t = await getScopedI18n("settings.profile");
   if (!userProfile) {
     return notFound();
   }
@@ -65,10 +66,8 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
   return (
     <main className="mx-auto flex max-w-xl flex-1 flex-col gap-8">
       <header className="flex flex-col py-4">
-        <h2 className="text-2xl font-bold text-foreground">Profile</h2>
-        <span className="text-sm text-muted-foreground">
-          Manage and update your profile settings
-        </span>
+        <h2 className="text-2xl font-bold text-foreground">{t("title")}</h2>
+        <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
       </header>
 
       <section className="flex flex-col gap-4">
@@ -76,7 +75,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
           <CardHeader className="flex-row items-center gap-4">
             <PiEnvelopeDefaultDuoSolid className="h-5 w-5 text-primary" />
 
-            <h3 className="font-semibold">email</h3>
+            <h3 className="font-semibold">{t("emailCard.title")}</h3>
           </CardHeader>
           <Separator />
 
@@ -87,7 +86,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
 
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <PiAlertTriangleStroke className="h-3 w-3" />
-              <span>You cannot change your email address</span>
+              <span>{t("emailCard.cannotChange")}</span>
             </div>
           </CardContent>
         </Card>
@@ -96,7 +95,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
           <CardHeader className="flex-row items-center gap-4">
             <PiUserDefaultDuoSolid className="h-5 w-5 text-primary" />
 
-            <h3 className="font-semibold">name</h3>
+            <h3 className="font-semibold">{t("nameCard.title")}</h3>
           </CardHeader>
           <Separator />
 
@@ -107,13 +106,13 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
               </span>
             ) : (
               <span className="font-medium italic text-muted-foreground">
-                Not set
+                {t("nameCard.emptyState")}
               </span>
             )}
 
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <PiAlertTriangleStroke className="h-3 w-3" />
-              <span>At the moment, you cannot change your name.</span>
+              <span>{t("nameCard.cannotChange")}</span>
             </div>
           </CardContent>
         </Card>
