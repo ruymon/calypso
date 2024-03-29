@@ -32,6 +32,7 @@ export function FlightDetails({ initialData }: FlightDetailsProps) {
     queryFn: async () => getFlightDetails(initialData.id),
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
+    staleTime: 1000 * 60 * 5,
     refetchInterval: FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
   });
 
