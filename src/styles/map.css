@@ -8,7 +8,11 @@
 }
 
 .flight-popup {
-  @apply pointer-events-none w-fit;
+  @apply !pointer-events-none w-fit;
+}
+
+.flight-popup > * {
+  @apply !pointer-events-none;
 }
 
 .flight-popup > .mapboxgl-popup-tip {
