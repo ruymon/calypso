@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/skyscope-app/skyscope-web/compare/v1.11.0...v1.11.1) (2024-03-29)
+
+
+### Bug Fixes
+
+* remove map config ([d6dc3c1](https://github.com/skyscope-app/skyscope-web/commit/d6dc3c1e72a9373069fbbf86a1961c0f073c9325))
+
 # [1.11.0](https://github.com/skyscope-app/skyscope-web/compare/v1.10.0...v1.11.0) (2024-03-29)
 
 
