@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/skyscope-app/skyscope-web/compare/v1.10.0...v1.11.0) (2024-03-29)
+
+
+### Features
+
+* Repo split ([40b4582](https://github.com/skyscope-app/skyscope-web/commit/40b4582878fdd26d84049bb1571ca98cb40a3afe))
+
 # [1.10.0](https://github.com/skyscope-app/skyscope-web/compare/v1.9.0...v1.10.0) (2024-03-14)
 
 
