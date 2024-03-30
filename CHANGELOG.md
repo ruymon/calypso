@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/skyscope-app/skyscope-web/compare/v1.12.0...v1.13.0) (2024-03-30)
+
+
+### Features
+
+* **seo:** Add Open graph e Twitter Images ([decbe9b](https://github.com/skyscope-app/skyscope-web/commit/decbe9b7e484f9297fe6675b77b5352a3af1dd42))
+
 # [1.12.0](https://github.com/skyscope-app/skyscope-web/compare/v1.11.1...v1.12.0) (2024-03-30)
 
 
