@@ -1,61 +1,26 @@
-"use client";
-
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getAircraftImage } from "@/lib/flights";
 import { cn } from "@/lib/utils";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 import { Aircraft } from "@/types/live-flights";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { AircraftCardImage } from "./aircraft-card-image";
 
 interface AircraftCardProps {
   className?: string;
   data?: Aircraft;
 }
 
-interface AircraftImage {
-  photos: {
-    id: string;
-    thumbnail: {
-      src: string;
-      size: {
-        width: number;
-        height: number;
-      };
-    };
-    thumbnail_large: {
-      src: string;
-      size: {
-        width: number;
-        height: number;
-      };
-    };
-    link: string;
-    photographer: string;
-  }[];
-}
-
 export async function AircraftCard({ className, data }: AircraftCardProps) {
-  const t = useScopedI18n("flightDetails.aircraftDetails.aircraft");
-  const [aircraftImage, setAircraftImage] = useState<string | null>();
+  const t = await getScopedI18n("flightDetails.aircraftDetails.aircraft");
 
-  useEffect(() => {
-    if (!data?.registration) return;
-
-    const registration = data.registration;
-    const apiUrl = `https://api.planespotters.net/pub/photos/reg/${registration}`;
-
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then(
-        ({ photos }: AircraftImage) =>
-          photos[0] && setAircraftImage(photos[0].thumbnail_large.src),
-      );
-  }, []);
+  const aircraftImage = data?.registration
+    ? await getAircraftImage(data.registration)
+    : null;
 
   return (
     <Card className={cn("relative flex overflow-clip", className)}>
@@ -76,15 +41,7 @@ export async function AircraftCard({ className, data }: AircraftCardProps) {
           </span>
         </div>
       </CardHeader>
-      {aircraftImage && (
-        <Image
-          src={aircraftImage}
-          className="pointer-events-none rounded-lg object-cover"
-          alt="Aircraft image"
-          fill
-          draggable={false}
-        />
-      )}
+      <AircraftCardImage data={aircraftImage} />
     </Card>
   );
 }

@@ -1,10 +1,12 @@
 import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
 interface FlightplanItemCardProps {
   data?: any;
   title: string;
   className?: string;
   childrenClassName?: string;
+  children?: ReactNode;
 }
 
 export function FlightplanItemCard({
@@ -12,12 +14,13 @@ export function FlightplanItemCard({
   title,
   className,
   childrenClassName,
+  children,
 }: FlightplanItemCardProps) {
   return (
     <div
       className={cn("flex flex-col gap-1.5 rounded-sm border pb-2", className)}
     >
-      <span className="text-2xs w-fit rounded-br rounded-tl bg-accent px-2 py-1 font-semibold uppercase leading-3 text-accent-foreground">
+      <span className="w-fit rounded-br rounded-tl bg-accent px-2 py-1 text-2xs font-semibold uppercase leading-3 text-accent-foreground">
         {title}
       </span>
       <pre
@@ -26,7 +29,9 @@ export function FlightplanItemCard({
           childrenClassName,
         )}
       >
-        {data || "TBN"}
+        {data}
+        {!data && !children && "TBN"}
+        {children}
       </pre>
     </div>
   );

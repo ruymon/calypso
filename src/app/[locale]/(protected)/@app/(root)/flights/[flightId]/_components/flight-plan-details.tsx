@@ -1,0 +1,77 @@
+"use client";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useScopedI18n } from "@/locales/client";
+import { LiveFlightDetail } from "@/types/live-flights";
+import { FlightplanItemCard } from "./flightplan-item-card";
+
+interface FlightPlanDetailsProps {
+  data?: LiveFlightDetail;
+}
+
+export function FlightPlanDetails({ data }: FlightPlanDetailsProps) {
+  const t = useScopedI18n("flightDetails.flightPlanDetails");
+
+  return (
+    <Tabs defaultValue="simple" className="flex flex-col gap-4">
+      <header className="flex items-center justify-between gap-4">
+        <div className="flex flex-col">
+          <span className="text-xl font-semibold">{t("title")}</span>
+          <span className="text-xs text-muted-foreground">{t("subtitle")}</span>
+        </div>
+        <TabsList className="flex w-fit">
+          <TabsTrigger value="simple" className="px-1 py-0.5">
+            {t("viewTypes.simple")}
+          </TabsTrigger>
+          <TabsTrigger value="detailed" className="px-1 py-0.5">
+            {t("viewTypes.detailed")}
+          </TabsTrigger>
+        </TabsList>
+      </header>
+
+      <TabsContent value="simple">
+        <div className="grid grid-cols-3 gap-3">
+          <FlightplanItemCard
+            title={t("flightRules")}
+            data={data?.flightPlan?.flightRules}
+          />
+          <FlightplanItemCard
+            title={t("flightType")}
+            data={data?.flightPlan?.flightType}
+          />
+
+          <FlightplanItemCard title="tas" data={data?.flightPlan?.cruiseTas} />
+          <FlightplanItemCard title="fl" data={data?.flightPlan?.level} />
+
+          <FlightplanItemCard
+            title={t("route")}
+            data={data?.flightPlan?.route}
+            className="col-span-4"
+          />
+          <FlightplanItemCard
+            title={t("remarks")}
+            data={data?.flightPlan?.remarks}
+            className="col-span-4"
+          />
+        </div>
+      </TabsContent>
+      <TabsContent value="detailed">
+        <FlightplanItemCard title={t("icaoFplFormat")}>
+          (FPL-{data?.callsign}-{data?.flightPlan?.flightRules}
+          {data?.flightPlan?.flightType}
+          <br />- {data?.flightPlan?.aircraft?.icao}/
+          {data?.flightPlan?.aircraft?.wakeTurbulence}-
+          {data?.flightPlan?.aircraft?.equipment}/
+          {data?.flightPlan?.aircraft?.transponderTypes}
+          <br />- {data?.flightPlan?.departure?.icao}{" "}
+          {data?.flightPlan?.departureTime} <br />- {data?.flightPlan?.route}{" "}
+          <br />- {data?.flightPlan?.arrival?.icao}{" "}
+          {data?.flightPlan?.enrouteTime} {data?.flightPlan?.alternate?.icao}{" "}
+          {data?.flightPlan?.alternate2?.icao} <br />-{" "}
+          {data?.flightPlan?.remarks}
+          <br />- E/{data?.flightPlan?.endurance})
+        </FlightplanItemCard>
+      </TabsContent>
+    </Tabs>
+  );
+}

@@ -133,6 +133,15 @@ const en = {
     flightPlanDetails: {
       title: "Flight plan details",
       subtitle: "Detailed information about the flight plan.",
+      viewTypes: {
+        simple: "Simple",
+        detailed: "Detailed",
+      },
+      flightRules: "Flight rules",
+      flightType: "Flight type",
+      route: "Route",
+      remarks: "Remarks",
+      icaoFplFormat: "ICAO FPL format",
     },
   },
 };

@@ -23,3 +23,47 @@ export async function getFlightDetails(
 
   return data;
 }
+
+export interface AircraftImage {
+  photos: {
+    id: string;
+    thumbnail: {
+      src: string;
+      size: {
+        width: number;
+        height: number;
+      };
+    };
+    thumbnail_large: {
+      src: string;
+      size: {
+        width: number;
+        height: number;
+      };
+    };
+    link: string;
+    photographer: string;
+  }[];
+}
+
+export async function getAircraftImage(
+  registration: string,
+): Promise<AircraftImage | null> {
+  const url = `https://api.planespotters.net/pub/photos/reg/${registration}`;
+
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const result = await fetch(url, options);
+  const data = await result.json();
+
+  if (result.status !== 200) {
+    return null;
+  }
+
+  return data;
+}

@@ -1,5 +1,3 @@
-"use client";
-
 import {
   PiArrowTurnDownRightStroke,
   PiArrowTurnUpRightStroke,
@@ -12,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 import { Airport } from "@/types/live-flights";
 
 type AirportCardType = "departure" | "arrival" | "alternate" | "alternate2";
@@ -30,7 +28,7 @@ const typeIconVariants: { [key in AirportCardType]: any } = {
 };
 
 export async function AirportCard({ type, data, className }: AirportCardProps) {
-  const t = useScopedI18n("flightDetails.routeDetails.airport");
+  const t = await getScopedI18n("flightDetails.routeDetails.airport");
 
   const typeLabelVariants = {
     departure: t("departure"),
