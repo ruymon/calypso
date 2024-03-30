@@ -23,7 +23,7 @@ export function VatsimIntegrationCard({}: VatsimIntegrationCardProps) {
   const t = useScopedI18n("integrations");
 
   function handleConnect() {
-    toast.error(t("ivao.cannotChange"));
+    toast.error(t("vatsim.cannotChange"));
   }
 
   return (
