@@ -1,3 +1,17 @@
+# [1.12.0](https://github.com/skyscope-app/skyscope-web/compare/v1.11.1...v1.12.0) (2024-03-30)
+
+
+### Bug Fixes
+
+* **auth:** i18n to login page ([c2b3f56](https://github.com/skyscope-app/skyscope-web/commit/c2b3f56291d0751cd212f7dee83f2df02b1fc80a))
+* **i18n:** Integrations card translation ([cec18e7](https://github.com/skyscope-app/skyscope-web/commit/cec18e7a3a182e75be6d5be41fc71c94294c6c98))
+* **map:** Flight popup pointer events ([99eceaa](https://github.com/skyscope-app/skyscope-web/commit/99eceaadaf1bc84904ea48cd9dcce635bd8fb9f6))
+
+
+### Features
+
+* **flight details:** Refactor + FPL View ([d532f5b](https://github.com/skyscope-app/skyscope-web/commit/d532f5b848e993bf202216494d10beefa5a7a183))
+
 ## [1.11.1](https://github.com/skyscope-app/skyscope-web/compare/v1.11.0...v1.11.1) (2024-03-29)
 
 
