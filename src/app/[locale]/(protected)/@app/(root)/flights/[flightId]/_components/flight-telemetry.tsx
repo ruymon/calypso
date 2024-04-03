@@ -22,9 +22,21 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
     refetchInterval: FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
   });
 
+  const arrivalCoordinates: [number, number] | null =
+    (data?.flightPlan?.arrival?.lat &&
+      data?.flightPlan?.arrival?.lat && [
+        data?.flightPlan?.arrival?.lng,
+        data?.flightPlan?.arrival?.lat,
+      ]) ||
+    null;
+
   return (
     <>
-      <SetFlightTrack tracks={data?.tracks} />
+      <SetFlightTrack
+        tracks={data?.tracks}
+        arrivalCoordinates={arrivalCoordinates}
+        currentPosition={data?.position}
+      />
       <div className="grid grid-cols-4 items-center gap-4 rounded-md border bg-background p-2">
         <div className="flex flex-col items-center">
           <span className="font-semibold text-accent-foreground">

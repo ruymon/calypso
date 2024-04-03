@@ -11,7 +11,9 @@ export async function getFlightDetails(
     headers: {
       "Content-Type": "application/json",
     },
-    next: {},
+    next: {
+      revalidate: 60 * 5, // 5 minutes
+    },
   };
 
   const result = await fetch(url, options);

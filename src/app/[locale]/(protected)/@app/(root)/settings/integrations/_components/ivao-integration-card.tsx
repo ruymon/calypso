@@ -22,8 +22,10 @@ interface IvaoIntegrationCardProps {}
 export function IvaoIntegrationCard({}: IvaoIntegrationCardProps) {
   const t = useScopedI18n("integrations");
 
-  function handleConnect() {
+  async function handleConnect() {
     toast.error(t("ivao.cannotChange"));
+
+    // await integrateIvaoAccount();
   }
 
   return (
