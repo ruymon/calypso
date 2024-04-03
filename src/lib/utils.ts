@@ -14,3 +14,12 @@ export function getNameInitials(name: string) {
 
   return initials;
 }
+
+export function parseAltitudeToFlightLevel(altitude: number) {
+  return (
+    "F" +
+    Math.round(altitude / 100)
+      .toString()
+      .padStart(3, "0")
+  );
+}
