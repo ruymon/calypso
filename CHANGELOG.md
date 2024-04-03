@@ -1,3 +1,16 @@
+# [1.14.0](https://github.com/skyscope-app/skyscope-web/compare/v1.13.0...v1.14.0) (2024-04-03)
+
+
+### Bug Fixes
+
+* **icaoFpl:** Remove spaces + add TAS and FL ([c289e99](https://github.com/skyscope-app/skyscope-web/commit/c289e995e9ca156a8722e8c16117a73c2274d2fa))
+
+
+### Features
+
+* **flightTrack:** Arrival Preview line ([88b2193](https://github.com/skyscope-app/skyscope-web/commit/88b2193f4cacc65dd2aa7c25f8c60b699f59b172))
+* **utils:** Add parse altitude function ([0488583](https://github.com/skyscope-app/skyscope-web/commit/0488583fd5e544bf354ebaaf4eddc24f64d35ba3))
+
 # [1.13.0](https://github.com/skyscope-app/skyscope-web/compare/v1.12.0...v1.13.0) (2024-03-30)
 
 
