@@ -1,6 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { parseAltitudeToFlightLevel } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import { LiveFlightDetail } from "@/types/live-flights";
 import { FlightplanItemCard } from "./flightplan-item-card";
@@ -58,18 +59,24 @@ export function FlightPlanDetails({ data }: FlightPlanDetailsProps) {
       <TabsContent value="detailed">
         <FlightplanItemCard title={t("icaoFplFormat")}>
           (FPL-{data?.callsign}-{data?.flightPlan?.flightRules}
-          {data?.flightPlan?.flightType}
-          <br />- {data?.flightPlan?.aircraft?.icao}/
+          {data?.flightPlan?.flightType || "S"}
+          <br />-{data?.flightPlan?.aircraft?.icao}/
           {data?.flightPlan?.aircraft?.wakeTurbulence}-
           {data?.flightPlan?.aircraft?.equipment}/
           {data?.flightPlan?.aircraft?.transponderTypes}
-          <br />- {data?.flightPlan?.departure?.icao}{" "}
-          {data?.flightPlan?.departureTime} <br />- {data?.flightPlan?.route}{" "}
-          <br />- {data?.flightPlan?.arrival?.icao}{" "}
+          <br />-{data?.flightPlan?.departure?.icao}
+          {data?.flightPlan?.departureTime}
+          <br />-
+          {data?.flightPlan?.cruiseTas && `N${data.flightPlan.cruiseTas}`}
+          {data?.flightPlan?.level &&
+            parseAltitudeToFlightLevel(data.flightPlan.level)}{" "}
+          {data?.flightPlan?.route}
+          <br />-{data?.flightPlan?.arrival?.icao}
           {data?.flightPlan?.enrouteTime} {data?.flightPlan?.alternate?.icao}{" "}
-          {data?.flightPlan?.alternate2?.icao} <br />-{" "}
-          {data?.flightPlan?.remarks}
-          <br />- E/{data?.flightPlan?.endurance})
+          {data?.flightPlan?.alternate2?.icao}
+          <br />-{data?.flightPlan?.remarks}
+          <br />
+          -E/{data?.flightPlan?.endurance})
         </FlightplanItemCard>
       </TabsContent>
     </Tabs>
