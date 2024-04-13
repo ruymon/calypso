@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/skyscope-app/skyscope-web/compare/v1.15.0...v1.16.0) (2024-04-13)
+
+
+### Features
+
+* Remove paralel routes ([03b94ec](https://github.com/skyscope-app/skyscope-web/commit/03b94ec7a62548cf592858ca0a2c73e9c75ae30c))
+
 # [1.15.0](https://github.com/skyscope-app/skyscope-web/compare/v1.14.0...v1.15.0) (2024-04-13)
 
 
