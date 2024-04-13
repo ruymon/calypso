@@ -3,8 +3,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
-import { IvaoIntegrationCard } from "../../(root)/settings/integrations/_components/ivao-integration-card";
-import { VatsimIntegrationCard } from "../../(root)/settings/integrations/_components/vatsim-integration-card";
+import { IvaoIntegrationCard } from "../../settings/integrations/_components/ivao-integration-card";
+import { VatsimIntegrationCard } from "../../settings/integrations/_components/vatsim-integration-card";
 
 interface OnboardingIntegrationsPageProps {}
 

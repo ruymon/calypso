@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { PageShell } from "../(root)/_components/page-shell";
+import { PageShell } from "../_components/page-shell";
 
 interface OnboardingLayoutProps {
   children: ReactNode;
