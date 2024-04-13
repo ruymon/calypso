@@ -80,6 +80,10 @@ const en = {
         cannotChange: "You cannot change your name",
         emptyState: "Not set",
       },
+      avatarCard: {
+        title: "Profile picture",
+        subtitle: "Keeping a profile picture helps others recognize you.",
+      },
       dangerZone: {
         title: "Danger zone",
         deleteAccount: "Delete your account",

@@ -1,11 +1,16 @@
 import {
   PiAlertTriangleStroke,
   PiEnvelopeDefaultDuoSolid,
+  PiInformationCircleStroke,
+  PiPhotoImageDefaultDuoSolid,
   PiUserDefaultDuoSolid,
+  PiUserDefaultDuoStroke,
 } from "@/components/icons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getProfile } from "@/lib/auth";
+import { getNameInitials } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { notFound } from "next/navigation";
 import { DangerCollapsible } from "./_components/danger-collapsible";
@@ -16,6 +21,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
   const userProfile = await getProfile();
 
   const t = await getScopedI18n("settings.profile");
+
   if (!userProfile) {
     return notFound();
   }
@@ -30,20 +36,27 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
       <section className="flex flex-col gap-4">
         <Card>
           <CardHeader className="flex-row items-center gap-4">
-            <PiEnvelopeDefaultDuoSolid className="h-5 w-5 text-primary" />
+            <PiPhotoImageDefaultDuoSolid className="h-5 w-5 text-primary" />
 
-            <h3 className="font-semibold">{t("emailCard.title")}</h3>
+            <h3 className="font-semibold">{t("avatarCard.title")}</h3>
           </CardHeader>
           <Separator />
 
           <CardContent className="flex flex-col gap-4 pt-4">
-            <span className="font-medium text-accent-foreground">
-              {userProfile.email}
-            </span>
+            <Avatar>
+              <AvatarImage src={userProfile?.avatarUrl} />
+              <AvatarFallback>
+                {userProfile?.name ? (
+                  getNameInitials(userProfile.name)
+                ) : (
+                  <PiUserDefaultDuoStroke className="w-6" />
+                )}
+              </AvatarFallback>
+            </Avatar>
 
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <PiAlertTriangleStroke className="h-3 w-3" />
-              <span>{t("emailCard.cannotChange")}</span>
+              <PiInformationCircleStroke className="h-3 w-3" />
+              <span>{t("avatarCard.subtitle")}</span>
             </div>
           </CardContent>
         </Card>
@@ -70,6 +83,26 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <PiAlertTriangleStroke className="h-3 w-3" />
               <span>{t("nameCard.cannotChange")}</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex-row items-center gap-4">
+            <PiEnvelopeDefaultDuoSolid className="h-5 w-5 text-primary" />
+
+            <h3 className="font-semibold">{t("emailCard.title")}</h3>
+          </CardHeader>
+          <Separator />
+
+          <CardContent className="flex flex-col gap-4 pt-4">
+            <span className="font-medium text-accent-foreground">
+              {userProfile.email}
+            </span>
+
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <PiAlertTriangleStroke className="h-3 w-3" />
+              <span>{t("emailCard.cannotChange")}</span>
             </div>
           </CardContent>
         </Card>
