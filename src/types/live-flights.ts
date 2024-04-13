@@ -28,6 +28,7 @@ export interface TrackPosition {
   ground: boolean;
   timestamp: number;
 }
+
 export interface LiveFlightDetail {
   id: string;
   pilot: Pilot;

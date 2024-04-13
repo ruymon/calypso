@@ -1,20 +1,56 @@
-import { COOKIE_PREFIX } from "@/constants/cookies";
-import { cookies } from "next/headers";
-import { ReactNode } from "react";
+import { PiServerDuoStroke } from "@/components/icons";
+import { InteractiveMap } from "@/components/interactive-map";
+import { FlightTrackLayer } from "@/components/map-layers/flight-track-layer";
+import { IvaoFlightsLayerContainer } from "@/components/map-layers/ivao/ivao-flights-layer-container";
+import { VatsimFlightsLayerContainer } from "@/components/map-layers/vatsim/vatsim-flights-layer-container";
+import { WeatherLayerContainer } from "@/components/map-layers/weather/weather-layer-container";
+import { ReactNode, Suspense } from "react";
+import { CommandDialogDemo } from "./_components/command-bar";
+import { MobileSidebar } from "./_components/mobile-sidebar";
+import { Sidebar } from "./_components/sidebar";
 
-interface ProtectedLayoutProps {
-  app: ReactNode;
-  login: ReactNode;
+interface AppRootLayoutProps {
+  children: ReactNode;
 }
 
-export default function ProtectedLayout({ app, login }: ProtectedLayoutProps) {
-  const accessToken = cookies().get(`${COOKIE_PREFIX}access-token`)?.value;
+export default function AppRootLayout({ children }: AppRootLayoutProps) {
+  return (
+    <div className="relative flex h-screen w-screen">
+      <div className="flex w-full flex-1 flex-col lg:w-fit lg:flex-row">
+        <Sidebar />
+        {children}
+        <MobileSidebar />
+      </div>
 
-  const isAuthenticated = !!accessToken;
+      <CommandDialogDemo />
+      <InteractiveMap>
+        <Suspense
+          fallback={
+            <span className="absolute bottom-5 left-2 z-10 border bg-background p-4 text-xs ">
+              Loading Weather
+            </span>
+          }
+        >
+          <WeatherLayerContainer />
+        </Suspense>
 
-  if (isAuthenticated) {
-    return <>{app}</>;
-  }
+        <Suspense
+          fallback={
+            <span className="border-md absolute bottom-5 left-1/2 right-1/2 z-10 mx-auto flex h-fit w-full max-w-fit -translate-x-1/2 items-center justify-center whitespace-nowrap rounded-full border border-amber-500 bg-background/25 px-3 py-2 text-xs font-medium backdrop-blur-md">
+              <PiServerDuoStroke className="mr-2 h-4 w-4 text-amber-400" />
+              Loading Weather
+            </span>
+          }
+        >
+          <VatsimFlightsLayerContainer />
+        </Suspense>
 
-  return login;
+        <Suspense fallback={null}>
+          <IvaoFlightsLayerContainer />
+        </Suspense>
+
+        <FlightTrackLayer />
+      </InteractiveMap>
+    </div>
+  );
 }

@@ -1,6 +1,7 @@
 "use server";
 
 import { LoginFormType } from "@/app/[locale]/(public)/auth/_components/login-form";
+import { API_BASE_URL } from "@/constants/api";
 import {
   COOKIE_DOMAIN,
   COOKIE_PREFIX,
@@ -8,6 +9,7 @@ import {
 } from "@/constants/cookies";
 import { env } from "@/env.mjs";
 import { firebaseAuth } from "@/lib/firebase";
+import { UserProfile } from "@/types/profile";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -55,8 +57,12 @@ export async function logout() {
 
 export async function getAccessToken() {
   const accessToken = cookies().get(`${COOKIE_PREFIX}access-token`)?.value;
-
   return accessToken;
+}
+
+export async function getRefreshToken() {
+  const refreshToken = cookies().get(`${COOKIE_PREFIX}refresh-token`)?.value;
+  return refreshToken;
 }
 
 export async function refreshAccessToken(
@@ -112,4 +118,32 @@ export async function refreshAccessToken(
   });
 
   return response;
+}
+
+export async function getProfile(): Promise<UserProfile | null> {
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) {
+    return null;
+  }
+
+  const url = `${API_BASE_URL}/users/profile`;
+
+  const options: RequestInit = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  const result = await fetch(url, options);
+  const data = await result.json();
+
+  if (result.status !== 200) {
+    console.error("Error fetching user profile", data);
+    return null;
+  }
+
+  return data;
 }

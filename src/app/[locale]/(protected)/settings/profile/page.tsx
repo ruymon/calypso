@@ -5,59 +5,16 @@ import {
 } from "@/components/icons";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { API_BASE_URL } from "@/constants/api";
-import { getAccessToken } from "@/lib/auth";
+import { getProfile } from "@/lib/auth";
 import { getScopedI18n } from "@/locales/server";
 import { notFound } from "next/navigation";
 import { DangerCollapsible } from "./_components/danger-collapsible";
 
-export interface UserProfile {
-  id: string;
-  name?: string;
-  email: string;
-  avatarUrl?: string;
-  ivaoId?: string;
-  vatsimId?: string;
-  posconId?: string;
-  navigraphId?: string;
-  simbriefId?: string;
-}
-
 interface SettingsProfilePageProps {}
 
-async function fetchUserProfile(): Promise<UserProfile | null> {
-  const url = `${API_BASE_URL}/users/profile`;
-
-  const accessToken = await getAccessToken();
-
-  if (!accessToken) {
-    return null;
-  }
-
-  const options: RequestInit = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    next: {
-      tags: ["user-profile"],
-    },
-  };
-
-  const result = await fetch(url, options);
-  const data = await result.json();
-
-  if (result.status !== 200) {
-    console.error("Error fetching user profile", data);
-    return null;
-  }
-
-  return data;
-}
-
 export default async function SettingsProfilePage({}: SettingsProfilePageProps) {
-  const userProfile = await fetchUserProfile();
+  const userProfile = await getProfile();
+
   const t = await getScopedI18n("settings.profile");
   if (!userProfile) {
     return notFound();

@@ -1,5 +1,3 @@
-"use client";
-
 import { NavLink } from "@/components/nav-link";
 import {
   Tooltip,

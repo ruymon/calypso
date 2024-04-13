@@ -36,6 +36,37 @@ const en = {
     },
   },
 
+  sidebar: {
+    map: {
+      title: "World map",
+      subtitle: "Live network connections",
+    },
+    events: {
+      title: "Events",
+      subtitle: "See current and upcoming events",
+    },
+    friends: {
+      title: "Friends",
+      subtitle: "Manage your friends list",
+    },
+    feedback: {
+      title: "Feedback",
+      subtitle: "Help us improve our service",
+    },
+    help: {
+      title: "Support",
+      subtitle: "Get help with the app",
+    },
+    changelog: {
+      title: "Changelog",
+      subtitle: "See what's new in the app",
+    },
+    profile: {
+      title: "Profile",
+      subtitle: "Manage your account settings",
+    },
+  },
+
   settings: {
     profile: {
       title: "Profile",
