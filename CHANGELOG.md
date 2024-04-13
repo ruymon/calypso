@@ -1,3 +1,16 @@
+# [1.15.0](https://github.com/skyscope-app/skyscope-web/compare/v1.14.0...v1.15.0) (2024-04-13)
+
+
+### Bug Fixes
+
+* Middleware ([1c5a998](https://github.com/skyscope-app/skyscope-web/commit/1c5a998c75a015470101e4304d8d18d79295dd5b))
+* Network flights authorization ([8ba38f8](https://github.com/skyscope-app/skyscope-web/commit/8ba38f855772fe318e65336efe1a6da6c40cc57c))
+
+
+### Features
+
+* Profile picture in settings ([a2a5ad2](https://github.com/skyscope-app/skyscope-web/commit/a2a5ad2afc63c0fa02195bf5344838ed781322b4))
+
 # [1.14.0](https://github.com/skyscope-app/skyscope-web/compare/v1.13.0...v1.14.0) (2024-04-03)
 
 
