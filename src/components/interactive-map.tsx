@@ -13,6 +13,7 @@ import {
   getNetworkATCsFacilitiesLabelLayer,
   getNetworkATCsPolygonLayer,
   getNetworkFlightsLayer,
+  getTooltipContentBasedOnLayer,
 } from "@/lib/map";
 import { useMapLayersStore } from "@/stores/map-layers-store";
 import "@/styles/map.css";
@@ -107,6 +108,8 @@ export function InteractiveMap({
     getNetworkATCsFacilitiesLabelLayer(vatsimAtcsData, "vatsim"),
   ];
 
+  //
+
   return (
     <figure
       className="absolute inset-0 h-full w-full"
@@ -115,7 +118,7 @@ export function InteractiveMap({
       <DeckGL
         pickingRadius={10}
         controller={true}
-        getTooltip={({ object }) => object && `${object.callsign}`}
+        getTooltip={getTooltipContentBasedOnLayer}
         initialViewState={{
           ...MAP_INITIAL_VIEW_STATE,
           maxZoom: 16,

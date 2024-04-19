@@ -44,3 +44,7 @@ export function hexToRGBAArray(
   const rgb = hexToRGBArray(hex);
   return [...rgb, alpha];
 }
+
+export function guaranteeIsUppercase(str: string) {
+  return str.toUpperCase();
+}
