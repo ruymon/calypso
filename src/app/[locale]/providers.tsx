@@ -2,6 +2,7 @@
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { I18nProviderClient } from "@/locales/client";
+import { ResolvedTheme } from "@/types/themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "next-themes";
@@ -23,6 +24,7 @@ export function Providers({ children, locale }: ProvidersProps) {
             attribute="class"
             defaultTheme="system"
             enableSystem
+            themes={["light", "dark"] as ResolvedTheme[]}
             disableTransitionOnChange
           >
             {children}

@@ -3,7 +3,7 @@ import {
   NetworkLogoVariants,
   VATSIM_NETWORK_LOGO,
 } from "@/constants/assets";
-import { Network } from "@/types/live-flights";
+import { Network } from "@/types/networks";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 interface NetworkIconProps {

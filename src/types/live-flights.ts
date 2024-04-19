@@ -1,6 +1,7 @@
+import { Network } from "./networks";
+
 export type LiveFlights = LiveFlight[];
 
-export type Network = "vatsim" | "ivao";
 export type AircraftWakeTurbulenceCategory =
   | "heavy"
   | "helicopter"

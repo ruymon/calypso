@@ -6,19 +6,3 @@
 .mapboxgl-ctrl-bottom-left {
   @apply !bottom-2 !left-14 !z-0 opacity-30;
 }
-
-.flight-popup {
-  @apply !pointer-events-none w-fit;
-}
-
-.flight-popup > * {
-  @apply !pointer-events-none;
-}
-
-.flight-popup > .mapboxgl-popup-tip {
-  @apply hidden;
-}
-
-.flight-popup > .mapboxgl-popup-content {
-  @apply overflow-clip rounded-md border border-accent/25 bg-background/10 p-0 shadow-none backdrop-blur-md;
-}
