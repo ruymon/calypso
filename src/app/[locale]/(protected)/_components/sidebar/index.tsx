@@ -12,6 +12,7 @@ import { getScopedI18n } from "@/locales/server";
 import { Rotate3D } from "lucide-react";
 import { SidebarAvatar } from "./sidebar-avatar";
 import { SidebarItem } from "./sidebar-item";
+import { SidebarThemeSwitcher } from "./sidebar-theme-switcher";
 
 interface SidebarProps {}
 
@@ -75,6 +76,7 @@ export async function Sidebar({}: SidebarProps) {
             title={t("changelog.title")}
             label={t("changelog.subtitle")}
           />
+          <SidebarThemeSwitcher />
         </div>
       </nav>
 
