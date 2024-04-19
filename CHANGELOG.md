@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/skyscope-app/skyscope-web/compare/v1.16.0...v1.17.0) (2024-04-19)
+
+
+### Features
+
+* Migrate to Deck.gl :tada: ([53a9f6a](https://github.com/skyscope-app/skyscope-web/commit/53a9f6a9565abf5b65d40a34345856fe8ecaa21d))
+
 # [1.16.0](https://github.com/skyscope-app/skyscope-web/compare/v1.15.0...v1.16.0) (2024-04-13)
 
 
