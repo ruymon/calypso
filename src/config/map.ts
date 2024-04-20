@@ -63,6 +63,8 @@ export const FLIGHT_ICON_ACCENT_COLOR: { [key in Network]: string } = {
   ivao: blue[500],
 };
 
+export const FLIGHT_ICON_EMERGENCY_ACCENT_COLOR = red[500];
+
 export const FLIGHT_ICON_HOVER_ACCENT_COLOR: { [key in Network]: string } = {
   vatsim: green[400],
   ivao: blue[400],

@@ -1,3 +1,4 @@
+import { EMERGENCY_TRANSPONDER_CODES } from "@/config/transponder";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -47,4 +48,13 @@ export function hexToRGBAArray(
 
 export function guaranteeIsUppercase(str: string) {
   return str.toUpperCase();
+}
+
+export function convertHeadingToAngle(heading: number) {
+  return heading * -1;
+}
+
+export function isEmergencyTransponder(code: string) {
+  const isEmergency = EMERGENCY_TRANSPONDER_CODES.includes(code);
+  return isEmergency;
 }

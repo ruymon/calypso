@@ -89,3 +89,5 @@ export interface Aircraft {
   equipment: string;
   type: AircraftWakeTurbulenceCategory;
 }
+
+export type EmergencyTransponder = "7500" | "7600" | "7700";

@@ -5,6 +5,7 @@ import {
   ATC_FACILITIES_THAT_HAVE_LABEL,
   DECK_GL_TOOLTIP_STYLE_OVERRIDE,
   FLIGHT_ICON_ACCENT_COLOR,
+  FLIGHT_ICON_EMERGENCY_ACCENT_COLOR,
   MAP_SPRITES,
   MAP_STYLES,
 } from "@/config/map";
@@ -13,7 +14,11 @@ import { LiveFlight, LiveFlights } from "@/types/live-flights";
 import { Network } from "@/types/networks";
 import { ResolvedTheme } from "@/types/themes";
 import { IconLayer, PickingInfo, PolygonLayer } from "deck.gl";
-import { hexToRGBAArray } from "./utils";
+import {
+  convertHeadingToAngle,
+  hexToRGBAArray,
+  isEmergencyTransponder,
+} from "./utils";
 
 export function getMapStyleBasedOnTheme(resolvedTheme: ResolvedTheme) {
   return resolvedTheme === "light" ? MAP_STYLES.light : MAP_STYLES.dark;
@@ -62,6 +67,7 @@ export const getNetworkATCsPolygonLayer = (
     getLineWidth: 20,
     lineWidthMinPixels: 1,
     pickable: true,
+    autoHighlight: true,
   });
 };
 
@@ -76,8 +82,14 @@ export const getNetworkFlightsLayer = (
     return aircraftType?.toLowerCase() || FALLBACK_AIRCRAFT_TYPE;
   };
 
-  const getIconAccentColor = ({ network }: LiveFlight) => {
-    const accentColor = FLIGHT_ICON_ACCENT_COLOR[network];
+  const getIconAccentColor = ({ network, position }: LiveFlight) => {
+    const squawkCode = position.transponder;
+    const isEmergency = isEmergencyTransponder(squawkCode);
+
+    const accentColor = isEmergency
+      ? FLIGHT_ICON_EMERGENCY_ACCENT_COLOR
+      : FLIGHT_ICON_ACCENT_COLOR[network];
+
     return hexToRGBAArray(accentColor);
   };
 
@@ -87,10 +99,12 @@ export const getNetworkFlightsLayer = (
     iconAtlas: MAP_SPRITES.AIRCRAFT_ICONS,
     iconMapping: AIRCRAFT_SPRITE_ICON_MAPPING,
     getIcon: getIconBasedOnAircraftType,
-    getSize: 18,
-    sizeUnits: "pixels",
+    sizeUnits: "common",
+    sizeMinPixels: 12,
+    sizeMaxPixels: 28,
+    sizeScale: 1,
     getPosition: (d: LiveFlight) => [d.position.lng, d.position.lat],
-    getAngle: (d: LiveFlight) => d.position.heading,
+    getAngle: (d: LiveFlight) => convertHeadingToAngle(d.position.heading),
     billboard: false,
     getColor: getIconAccentColor,
     autoHighlight: true,
@@ -130,7 +144,7 @@ export const getNetworkATCsFacilitiesLabelLayer = (
     getSize: 12,
     sizeUnits: "pixels",
     getPosition: (d: LiveATC) => [d.longitude, d.latitude],
-    pickable: false,
+    pickable: true,
   });
 };
 
@@ -151,12 +165,18 @@ export const flightLayerTooltip = ({
   };
 };
 
-export const atcLayerTooltip = ({ facility, network }: LiveATC) => {
+export const atcLayerTooltip = ({
+  callsign,
+  facility,
+  network,
+  frequency,
+  atis,
+}: LiveATC) => {
   return {
     html: `
-      <div class="flex flex-col gap-2">
-        <span class="text-sm font-medium">${facility}</span>
-        <span class="text-xs">${network}</span>
+      <div class="flex flex-col border bg-card text-card-foreground gap-1 rounded-sm py-2 px-3">
+        <span class="text-sm font-semibold">${callsign}</span>
+        <span class="text-2xs text-muted-foreground">${frequency} <span class="uppercase">${network}</span></span>
       </div>
     `,
     style: DECK_GL_TOOLTIP_STYLE_OVERRIDE,
@@ -179,7 +199,3 @@ export const getTooltipContentBasedOnLayer = ({
 
   return null;
 };
-
-// export const getFlightPathLayer = () => {
-//   // Spread operator of the 2 layers.
-// };
