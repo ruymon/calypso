@@ -12,13 +12,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { EmergencyTransponder } from "@/types/live-flights";
 
 interface TransponderProps {
   code: string; // Transponder code is string because it can start with 0;
   className?: string;
 }
-
-type EmergencyTransponder = "7500" | "7600" | "7700";
 
 export function Transponder({ code, className }: TransponderProps) {
   const emergencyTransponders: {

@@ -13,25 +13,32 @@ import {
   getNetworkATCsFacilitiesLabelLayer,
   getNetworkATCsPolygonLayer,
   getNetworkFlightsLayer,
+  getTooltipContentBasedOnLayer,
 } from "@/lib/map";
 import { useMapLayersStore } from "@/stores/map-layers-store";
 import "@/styles/map.css";
 import { LiveATCs } from "@/types/atcs";
 import { LiveFlight, LiveFlights } from "@/types/live-flights";
+import { AiracCycle } from "@/types/navigraph";
 import { ResolvedTheme } from "@/types/themes";
 import { useQuery } from "@tanstack/react-query";
+import { intlFormatDistance } from "date-fns";
 import { DeckGL } from "deck.gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
+import { ReactNode, useState } from "react";
 import Map from "react-map-gl";
-import { PiServerDuoStroke } from "./icons";
+import { toast } from "sonner";
+import { PiCurlyBracesCodeCheckStroke, PiDatabaseStroke } from "./icons";
 import { MapLayerControls } from "./map-controls/map-layer-controls";
 
 interface InteractiveMapProps {
   ivaoFlightsData: LiveFlights | null;
   vatsimFlightsData: LiveFlights | null;
   vatsimAtcsData: LiveATCs | null;
+  currentAiracCycle: AiracCycle | null;
+  children?: ReactNode;
 }
 
 const mapboxAccessToken = env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -40,9 +47,14 @@ export function InteractiveMap({
   ivaoFlightsData: ivaoFlightsInitialData,
   vatsimAtcsData: vatsimAtcsInitialData,
   vatsimFlightsData: vatsimFlightsInitialData,
+  currentAiracCycle,
+  children,
 }: InteractiveMapProps) {
   const { resolvedTheme } = useTheme();
   const router = useRouter();
+  const [selectedFlightParsedRoute, setSelectedFlightParsedRoute] = useState<
+    any | null
+  >(null);
 
   const { isVatsimFlightsLayerVisible, isIvaoFlightsLayerVisible } =
     useMapLayersStore();
@@ -87,6 +99,7 @@ export function InteractiveMap({
   });
 
   const layers = [
+    // getFlightsPlannedRouteLayer(selectedFlightData),
     getNetworkATCsPolygonLayer(vatsimAtcsData, "vatsim"),
     getNetworkFlightsLayer(vatsimFlightsData, "vatsim", {
       visible: isVatsimFlightsLayerVisible,
@@ -107,6 +120,23 @@ export function InteractiveMap({
     getNetworkATCsFacilitiesLabelLayer(vatsimAtcsData, "vatsim"),
   ];
 
+  function handleAiracCycleClick({ cycle, status, from, to }: AiracCycle) {
+    if (status === "outdated") {
+      toast.warning("Outdated AIRAC cycle", {
+        description:
+          "Integrate a navigraph account with active subscription to get the latest cycle.",
+        icon: <PiDatabaseStroke className="h-4 w-4 text-destructive" />,
+      });
+    }
+
+    if (status === "current") {
+      toast.success(`Current AIRAC cycle | ${cycle}`, {
+        description: `This cycle will expire ${intlFormatDistance(new Date(to), new Date())}.`,
+        icon: <PiDatabaseStroke className="h-4 w-4 text-green-500" />,
+      });
+    }
+  }
+
   return (
     <figure
       className="absolute inset-0 h-full w-full"
@@ -115,7 +145,7 @@ export function InteractiveMap({
       <DeckGL
         pickingRadius={10}
         controller={true}
-        getTooltip={({ object }) => object && `${object.callsign}`}
+        getTooltip={getTooltipContentBasedOnLayer}
         initialViewState={{
           ...MAP_INITIAL_VIEW_STATE,
           maxZoom: 16,
@@ -132,30 +162,35 @@ export function InteractiveMap({
           mapboxAccessToken={mapboxAccessToken}
         />
 
+        {children}
+
         <MapLayerControls />
 
-        <div className="absolute bottom-5 left-1/2 right-1/2 z-10 mx-auto flex w-full max-w-xs -translate-x-1/2 flex-col  gap-4">
-          {isVatsimAtcsLoading && (
-            <span className="border-md flex items-center justify-center rounded-full border border-amber-500 bg-background/25 px-3 py-2 text-xs font-medium backdrop-blur-md">
-              <PiServerDuoStroke className="mr-2 h-4 w-4 text-amber-400" />
-              Loading Vatsim ATC's data
-            </span>
+        <footer className="absolute bottom-0 right-0 flex h-fit w-[calc(100%-3.5rem)] items-center justify-end gap-2 bg-card/30 px-4 text-2xs text-muted-foreground backdrop-blur-md">
+          {currentAiracCycle && (
+            <button
+              onClick={() => handleAiracCycleClick(currentAiracCycle)}
+              data-isOutdated={currentAiracCycle.status === "outdated"}
+              className="flex items-center gap-1 px-1 py-0.5 font-bold data-[isOutdated='true']:bg-destructive data-[isOutdated='true']:text-destructive-foreground"
+            >
+              <PiDatabaseStroke className="h-3 w-3" />
+              <span>AIRAC cycle {currentAiracCycle.cycle}</span>
+            </button>
           )}
 
-          {isIvaoFlightsLoading && (
-            <span className="border-md flex items-center justify-center  rounded-full border border-amber-500 bg-background/25 px-3 py-2 text-xs font-medium backdrop-blur-md">
-              <PiServerDuoStroke className="mr-2 h-4 w-4 text-amber-400" />
-              Loading IVAO's live flights data
-            </span>
-          )}
+          <div className="flex items-center gap-1 px-1 py-0.5 font-bold ">
+            <PiCurlyBracesCodeCheckStroke className="h-3 w-3" />
+            <span>v0.1 alpha</span>
+          </div>
 
-          {isVatsimFlightsLoading && (
-            <span className="border-md flex items-center justify-center  rounded-full border border-amber-500 bg-background/25 px-3 py-2 text-xs font-medium backdrop-blur-md">
-              <PiServerDuoStroke className="mr-2 h-4 w-4 text-amber-400" />
-              Loading Vatsim's live flights data
-            </span>
-          )}
-        </div>
+          {/* <div className="flex items-center gap-1 px-1 py-0.5 ">
+        <PiCheckTickCircleStroke className="h-3 w-3 text-green-400" />
+      </div>
+
+      <div className="flex items-center gap-1 px-1 py-0.5 ">
+        <PiNotificationBellOnStroke className="h-3 w-3" />
+      </div> */}
+        </footer>
       </DeckGL>
     </figure>
   );

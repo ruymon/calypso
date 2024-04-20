@@ -109,7 +109,7 @@ export default async function FlightsDetailPage({
           </span>
         </header>
 
-        <CrewCard data={data.pilot} />
+        <CrewCard data={data.pilot} network={data.network} />
       </section>
 
       <FlightPlanDetails data={data} />

@@ -4,8 +4,10 @@ import {
 } from "@/constants/api";
 import { LiveATCs } from "@/types/atcs";
 import { LiveFlightDetail, LiveFlights } from "@/types/live-flights";
+import { ParsedRoute } from "@/types/navigraph";
 import { Network } from "@/types/networks";
 import { getAccessToken } from "./auth";
+import { guaranteeIsUppercase } from "./utils";
 
 export async function getNetworkFlights(
   network: Network,
@@ -79,6 +81,60 @@ export async function getFlightDetails(
     },
     next: {
       revalidate: 60 * 5, // 5 minutes
+    },
+  };
+
+  const result = await fetch(url, options);
+  const data = await result.json();
+
+  if (result.status !== 200) {
+    return null;
+  }
+
+  return data;
+}
+
+export async function getAirportDetails(icaoCode: string): Promise<any | null> {
+  if (!icaoCode) {
+    return null;
+  }
+
+  icaoCode = guaranteeIsUppercase(icaoCode);
+
+  const accessToken = await getAccessToken();
+  const url = `${API_BASE_URL}/airports/${icaoCode}`;
+
+  const options: RequestInit = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  const result = await fetch(url, options);
+  const data = await result.json();
+
+  if (result.status !== 200) {
+    return null;
+  }
+
+  return data;
+}
+
+export async function getParsedRouted(
+  route: string,
+): Promise<ParsedRoute | null> {
+  const accessToken = await getAccessToken();
+
+  const url = new URL(`${API_BASE_URL}/navigraph/route`);
+  url.searchParams.append("route", route);
+
+  const options: RequestInit = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
   };
 

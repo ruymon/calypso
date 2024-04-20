@@ -1,0 +1,1 @@
+export const EMERGENCY_TRANSPONDER_CODES = ["7500", "7600", "7700"];

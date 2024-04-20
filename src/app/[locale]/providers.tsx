@@ -28,7 +28,7 @@ export function Providers({ children, locale }: ProvidersProps) {
             disableTransitionOnChange
           >
             {children}
-            <ReactQueryDevtools />
+            <ReactQueryDevtools buttonPosition="top-left" />
           </ThemeProvider>
         </TooltipProvider>
       </QueryClientProvider>
