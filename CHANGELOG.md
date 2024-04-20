@@ -1,3 +1,11 @@
+# [1.18.0](https://github.com/skyscope-app/skyscope-web/compare/v1.17.0...v1.18.0) (2024-04-20)
+
+
+### Features
+
+* Flights tooltip ([dada497](https://github.com/skyscope-app/skyscope-web/commit/dada49777a6ce6c3d1dd617c3438938aa8d6dfdc))
+* HUGE UPDATES BOYYY (thanks [@dbabbs](https://github.com/dbabbs)) ([d17f619](https://github.com/skyscope-app/skyscope-web/commit/d17f61938c3b495a03556c3a25b677e7b13247c1))
+
 # [1.17.0](https://github.com/skyscope-app/skyscope-web/compare/v1.16.0...v1.17.0) (2024-04-19)
 
 
