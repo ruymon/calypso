@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/skyscope-app/skyscope-web/compare/v1.19.0...v1.19.1) (2024-04-20)
+
+
+### Bug Fixes
+
+* restore public folder ([e43b945](https://github.com/skyscope-app/skyscope-web/commit/e43b945ad9b9ab84f6e7df1ea9e0ce798d8be7ca))
+
 # [1.19.0](https://github.com/skyscope-app/skyscope-web/compare/v1.18.0...v1.19.0) (2024-04-20)
 
 
