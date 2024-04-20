@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/skyscope-app/skyscope-web/compare/v1.18.0...v1.19.0) (2024-04-20)
+
+
+### Features
+
+* update pnpm ([5c2ad7e](https://github.com/skyscope-app/skyscope-web/commit/5c2ad7eab3fda396a081a54220c3ef6a2fe5ddd8))
+
 # [1.18.0](https://github.com/skyscope-app/skyscope-web/compare/v1.17.0...v1.18.0) (2024-04-20)
 
 
