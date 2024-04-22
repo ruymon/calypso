@@ -37,6 +37,7 @@ export interface LiveFlightDetail {
   network: Network;
   position: Position;
   flightPlan?: FlightPlan;
+  airline?: Airline;
   tracks: TrackPosition[];
 }
 
@@ -75,7 +76,7 @@ export interface FlightPlan {
 
 export interface Airport {
   icao: string;
-  iata: string;
+  iata?: string;
   name: string;
   lat: number;
   lng: number;
@@ -88,6 +89,13 @@ export interface Aircraft {
   transponderTypes: string;
   equipment: string;
   type: AircraftWakeTurbulenceCategory;
+}
+
+export interface Airline {
+  id: string;
+  name: string;
+  icao: string;
+  image: string;
 }
 
 export type EmergencyTransponder = "7500" | "7600" | "7700";
