@@ -40,9 +40,8 @@ export default async function FlightsDetailPage({
           <AirlineTail callsign={data.callsign} className="h-10 w-12" />
           <div className="flex flex-col">
             <h1 className="text-3xl font-bold">{data.callsign}</h1>
-            <span className="text-sm text-muted-foreground">
-              {data.pilot?.name || data.pilot.id} &bull;{" "}
-              {data.flightPlan?.aircraft?.icao}
+            <span className="text-sm lowercase text-muted-foreground first-letter:capitalize">
+              {data.airline?.name || t("unknownAirline")}
             </span>
           </div>
         </div>
