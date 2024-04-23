@@ -1,47 +1,58 @@
-'use client';
+"use client";
 
-import { PiLaptopDuoStroke, PiMoonStroke, PiSunStroke } from "@/components/icons";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { PiMoonStroke, PiSunStroke } from "@/components/icons";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Theme } from "@/types/themes";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
-interface SidebarThemeSwitcherProps {};
+interface SidebarThemeSwitcherProps {}
 
-const themeIconVariants = {
+const themeIconVariants: { [key in Theme]: ReactNode } = {
   light: <PiSunStroke className="w-5" />,
   dark: <PiMoonStroke className="w-5" />,
-  system: <PiLaptopDuoStroke className="w-5" />,
 } as const;
 
 export function SidebarThemeSwitcher({}: SidebarThemeSwitcherProps) {
   const [isMounted, setIsMounted] = useState(false);
-  const { theme, setTheme, themes } = useTheme();
+  const { resolvedTheme, setTheme, themes } = useTheme();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) return null;
+  if (!isMounted) {
+    return (
+      <div className="flex w-full items-center justify-center">
+        <Skeleton className="h-6 w-6 rounded-sm" />
+      </div>
+    );
+  }
 
   function handleThemeSwitch() {
-    if (theme === "light") {
-      setTheme('dark');
+    if (resolvedTheme === "light") {
+      setTheme("dark");
     }
 
-    if (theme === "dark") {
-      setTheme('light');
+    if (resolvedTheme === "dark") {
+      setTheme("light");
     }
   }
 
   return (
     <Tooltip delayDuration={400}>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <button
-        type="button"
-        onClick={handleThemeSwitch}
+          type="button"
+          onClick={handleThemeSwitch}
           className="flex w-full items-center justify-center text-muted-foreground transition-all hover:text-accent-foreground dark:text-muted-foreground/50 dark:hover:text-muted-foreground"
         >
-          {themeIconVariants[theme as keyof typeof themeIconVariants]}
+          {themeIconVariants[resolvedTheme as keyof typeof themeIconVariants]}
           <span className="sr-only">Theme</span>
         </button>
       </TooltipTrigger>
@@ -51,8 +62,10 @@ export function SidebarThemeSwitcher({}: SidebarThemeSwitcherProps) {
         sideOffset={6}
       >
         <span className="text-xs font-semibold">Theme switcher</span>
-        <span className="text-2xs text-muted-foreground">Change the app's apperance.</span>
+        <span className="text-2xs text-muted-foreground">
+          Change the app's appearance.
+        </span>
       </TooltipContent>
     </Tooltip>
   );
-};
+}
