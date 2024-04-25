@@ -1,13 +1,15 @@
 "use client";
 
 import { AircraftImage } from "@/lib/flights";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 interface AircraftCardImageProps {
   data: AircraftImage | null;
+  className?: string;
 }
 
-export function AircraftCardImage({ data }: AircraftCardImageProps) {
+export function AircraftCardImage({ data, className }: AircraftCardImageProps) {
   if (!data) {
     return null;
   }
@@ -21,7 +23,10 @@ export function AircraftCardImage({ data }: AircraftCardImageProps) {
   return (
     <Image
       src={src}
-      className="pointer-events-none rounded-lg object-cover opacity-0 transition-opacity duration-1000 ease-in-out"
+      className={cn(
+        "pointer-events-none rounded-lg object-cover opacity-0 transition-opacity duration-1000 ease-in-out",
+        className,
+      )}
       alt="Aircraft image"
       fill
       draggable={false}

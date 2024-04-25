@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { parseAltitudeToFlightLevel } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import { LiveFlightDetail } from "@/types/live-flights";
-import { FlightplanItemCard } from "./flightplan-item-card";
+import { DataItemCard } from "../../../_components/data-item-card";
 
 interface FlightPlanDetailsProps {
   data?: LiveFlightDetail;
@@ -32,24 +32,24 @@ export function FlightPlanDetails({ data }: FlightPlanDetailsProps) {
 
       <TabsContent value="simple">
         <div className="grid grid-cols-3 gap-3">
-          <FlightplanItemCard
+          <DataItemCard
             title={t("flightRules")}
             data={data?.flightPlan?.flightRules}
           />
-          <FlightplanItemCard
+          <DataItemCard
             title={t("flightType")}
             data={data?.flightPlan?.flightType}
           />
 
-          <FlightplanItemCard title="tas" data={data?.flightPlan?.cruiseTas} />
-          <FlightplanItemCard title="fl" data={data?.flightPlan?.level} />
+          <DataItemCard title="tas" data={data?.flightPlan?.cruiseTas} />
+          <DataItemCard title="fl" data={data?.flightPlan?.level} />
 
-          <FlightplanItemCard
+          <DataItemCard
             title={t("route")}
             data={data?.flightPlan?.route}
             className="col-span-4"
           />
-          <FlightplanItemCard
+          <DataItemCard
             title={t("remarks")}
             data={data?.flightPlan?.remarks}
             className="col-span-4"
@@ -57,7 +57,7 @@ export function FlightPlanDetails({ data }: FlightPlanDetailsProps) {
         </div>
       </TabsContent>
       <TabsContent value="detailed">
-        <FlightplanItemCard title={t("icaoFplFormat")}>
+        <DataItemCard title={t("icaoFplFormat")}>
           (FPL-{data?.callsign}-{data?.flightPlan?.flightRules}
           {data?.flightPlan?.flightType || "S"}
           <br />-{data?.flightPlan?.aircraft?.icao}/
@@ -77,7 +77,7 @@ export function FlightPlanDetails({ data }: FlightPlanDetailsProps) {
           <br />-{data?.flightPlan?.remarks}
           <br />
           -E/{data?.flightPlan?.endurance})
-        </FlightplanItemCard>
+        </DataItemCard>
       </TabsContent>
     </Tabs>
   );

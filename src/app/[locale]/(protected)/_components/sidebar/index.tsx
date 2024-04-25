@@ -8,6 +8,7 @@ import {
   PiTroubleshootStroke,
 } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
+import { siteConfig } from "@/config/site";
 import { getScopedI18n } from "@/locales/server";
 import { Rotate3D } from "lucide-react";
 import { SidebarAvatar } from "./sidebar-avatar";
@@ -35,6 +36,7 @@ export async function Sidebar({}: SidebarProps) {
           />
 
           <SidebarItem
+            disabled
             href="/events"
             icon={<PiCalendarDefaultStroke className="w-5" />}
             title={t("events.title")}
@@ -42,6 +44,7 @@ export async function Sidebar({}: SidebarProps) {
           />
 
           <SidebarItem
+            disabled
             href="/career"
             icon={<PiBriefcaseJobStroke className="w-5" />}
             title="Career"
@@ -49,6 +52,7 @@ export async function Sidebar({}: SidebarProps) {
           />
 
           <SidebarItem
+            disabled
             href="/friends"
             icon={<PiCommunityStroke className="w-5" />}
             title={t("friends.title")}
@@ -58,20 +62,20 @@ export async function Sidebar({}: SidebarProps) {
 
         <div className="flex flex-col gap-3">
           <SidebarItem
-            href="/feedback"
+            href={siteConfig.links.discord}
             icon={<PiChatDefaultStroke className="w-5" />}
             title={t("feedback.title")}
             label={t("feedback.subtitle")}
           />
 
           <SidebarItem
-            href="/help"
+            href={siteConfig.links.discord}
             icon={<PiTroubleshootStroke className="w-5" />}
             title={t("help.title")}
             label={t("help.subtitle")}
           />
           <SidebarItem
-            href="/changelog"
+            href={siteConfig.links.discord}
             icon={<PiSparkleAi01Stroke className="w-5" />}
             title={t("changelog.title")}
             label={t("changelog.subtitle")}

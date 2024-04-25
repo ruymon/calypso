@@ -20,8 +20,12 @@ export function MapLayerControls({}: MapLayerControlsProps) {
     setIsVatsimFlightsLayerVisible,
     isIvaoFlightsLayerVisible,
     setIsIvaoFlightsLayerVisible,
-    isWeatherLayerVisible,
-    setIsWeatherLayerVisible,
+    isIvaoATCsLayerVisible,
+    setIsIvaoATCsLayerVisible,
+    isVatsimATCsLayerVisible,
+    setIsVatsimATCsLayerVisible,
+    isAirportsLayerVisible,
+    setIsAirportsLayerVisible,
   } = useMapLayersStore();
 
   function handleToggleVatsimFlightsLayer() {
@@ -32,8 +36,12 @@ export function MapLayerControls({}: MapLayerControlsProps) {
     setIsIvaoFlightsLayerVisible(!isIvaoFlightsLayerVisible);
   }
 
-  function handleToggleWeatherLayer() {
-    setIsWeatherLayerVisible(!isWeatherLayerVisible);
+  function handleToggleIvaoATCsLayer() {
+    setIsIvaoATCsLayerVisible(!isIvaoATCsLayerVisible);
+  }
+
+  function handleToggleVatsimATCsLayer() {
+    setIsVatsimATCsLayerVisible(!isVatsimATCsLayerVisible);
   }
 
   return (
@@ -71,10 +79,24 @@ export function MapLayerControls({}: MapLayerControlsProps) {
           </DropdownMenuItem>
 
           <DropdownMenuItem
-            onClick={handleToggleWeatherLayer}
+            onClick={handleToggleIvaoATCsLayer}
             className="hover:cursor-pointer"
           >
-            {isWeatherLayerVisible ? "Hide" : "Show"} Weather Layer
+            {isIvaoATCsLayerVisible ? "Hide" : "Show"} IVAO ATCs Layer
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            onClick={handleToggleVatsimATCsLayer}
+            className="hover:cursor-pointer"
+          >
+            {isVatsimATCsLayerVisible ? "Hide" : "Show"} VATSIM ATCs Layer
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            onClick={() => setIsAirportsLayerVisible(!isAirportsLayerVisible)}
+            className="hover:cursor-pointer"
+          >
+            {isAirportsLayerVisible ? "Hide" : "Show"} Airports Layer
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

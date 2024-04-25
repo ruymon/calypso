@@ -27,7 +27,7 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
       <div className="grid grid-cols-4 items-center gap-4 rounded-md border bg-background p-2">
         <div className="flex flex-col items-center">
           <span className="font-semibold text-accent-foreground">
-            {data?.position.altitude}
+            {data?.position.altitude} ft
           </span>
           <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
             alt
@@ -36,7 +36,7 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
 
         <div className="flex flex-col items-center">
           <span className="font-semibold text-accent-foreground">
-            {data?.position.groundSpeed}
+            {data?.position.groundSpeed} kt
           </span>
           <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
             gs

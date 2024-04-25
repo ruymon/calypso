@@ -10,7 +10,7 @@ export default function AppSettingsLayout({
   children,
 }: AppSettingsLayoutProps) {
   return (
-    <PageShell width="full">
+    <PageShell width="full" hasTopNav={false}>
       <SettingSidebar />
 
       {children}

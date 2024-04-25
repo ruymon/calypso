@@ -35,12 +35,12 @@ export default async function FlightsDetailPage({
     <div className="flex flex-1 flex-col gap-8">
       <BlurBackdrop callsign={data.callsign} />
 
-      <header className="flex items-center justify-between gap-4 pt-4">
+      <header className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <AirlineTail callsign={data.callsign} className="h-10 w-12" />
           <div className="flex flex-col">
             <h1 className="text-3xl font-bold">{data.callsign}</h1>
-            <span className="text-sm lowercase text-muted-foreground first-letter:capitalize">
+            <span className="text-sm text-muted-foreground">
               {data.airline?.name || t("unknownAirline")}
             </span>
           </div>
@@ -112,7 +112,6 @@ export default async function FlightsDetailPage({
       </section>
 
       <FlightPlanDetails data={data} />
-      <div className="p-0.5" />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
-interface FlightplanItemCardProps {
+interface DataItemCardProps {
   data?: any;
   title: string;
   className?: string;
@@ -9,13 +9,13 @@ interface FlightplanItemCardProps {
   children?: ReactNode;
 }
 
-export function FlightplanItemCard({
+export function DataItemCard({
   data,
   title,
   className,
   childrenClassName,
   children,
-}: FlightplanItemCardProps) {
+}: DataItemCardProps) {
   return (
     <div
       className={cn("flex flex-col gap-1.5 rounded-sm border pb-2", className)}

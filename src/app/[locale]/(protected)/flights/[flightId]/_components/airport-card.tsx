@@ -12,6 +12,7 @@ import {
 import { cn } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { Airport } from "@/types/live-flights";
+import Link from "next/link";
 
 type AirportCardType = "departure" | "arrival" | "alternate" | "alternate2";
 interface AirportCardProps {
@@ -40,33 +41,40 @@ export async function AirportCard({ type, data, className }: AirportCardProps) {
   const Icon = typeIconVariants[type];
 
   return (
-    <Card className={cn("w-full", className)}>
-      <CardHeader className="gap-0.5">
-        <span
-          data-type={type}
-          className="mb-2 inline-flex w-fit items-center gap-1 rounded px-1 py-0.5 font-mono text-2xs font-extrabold uppercase leading-none text-muted-foreground data-[type='alternate']:bg-transparent data-[type='arrival']:bg-primary data-[type='departure']:bg-primary data-[type='arrival']:text-primary-foreground data-[type='departure']:text-primary-foreground"
-        >
-          <Icon className="h-3 w-3" />
-          {typeLabelVariants[type]}
-        </span>
-        <CardTitle
-          className={
-            type === "arrival" || type === "departure" ? "text-xl" : "text-base"
-          }
-        >
-          {data?.icao || "TBN"}
-          <span className="ml-2 text-muted-foreground">
-            {data?.iata || "TBN"}
+    <Link
+      href={`/airports/${data?.icao.toLowerCase()}`}
+      className={cn("group w-full", className)}
+    >
+      <Card className="transition-all group-hover:bg-accent">
+        <CardHeader className="gap-0.5">
+          <span
+            data-type={type}
+            className="mb-2 inline-flex w-fit items-center gap-1 rounded px-1 py-0.5 font-mono text-2xs font-extrabold uppercase leading-none text-muted-foreground data-[type='alternate']:bg-transparent data-[type='arrival']:bg-primary data-[type='departure']:bg-primary data-[type='arrival']:text-primary-foreground data-[type='departure']:text-primary-foreground"
+          >
+            <Icon className="h-3 w-3" />
+            {typeLabelVariants[type]}
           </span>
-        </CardTitle>
-        <CardDescription
-          className={
-            type === "arrival" || type === "departure" ? "" : "text-xs"
-          }
-        >
-          {data?.name || "Not filled"}
-        </CardDescription>
-      </CardHeader>
-    </Card>
+          <CardTitle
+            className={
+              type === "arrival" || type === "departure"
+                ? "text-xl"
+                : "text-base"
+            }
+          >
+            {data?.icao || "TBN"}
+            <span className="ml-2 text-muted-foreground">
+              {data?.iata || "TBN"}
+            </span>
+          </CardTitle>
+          <CardDescription
+            className={
+              type === "arrival" || type === "departure" ? "" : "text-xs"
+            }
+          >
+            {data?.name || "Not filled"}
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    </Link>
   );
 }

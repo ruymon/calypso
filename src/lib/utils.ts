@@ -1,4 +1,4 @@
-import { EMERGENCY_TRANSPONDER_CODES } from "@/config/transponder";
+import { EMERGENCY_TRANSPONDER_CODES } from "@/constants/transponder";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -57,4 +57,16 @@ export function convertHeadingToAngle(heading: number) {
 export function isEmergencyTransponder(code: string) {
   const isEmergency = EMERGENCY_TRANSPONDER_CODES.includes(code);
   return isEmergency;
+}
+
+export function guaranteeFirstLetterCapitalizedInEveryWord(str: string) {
+  // Normalize the string to lowercase
+  str = str.toLowerCase();
+
+  const words = str.split(" ");
+  const capitalizedWords = words.map((word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  });
+
+  return capitalizedWords.join(" ");
 }

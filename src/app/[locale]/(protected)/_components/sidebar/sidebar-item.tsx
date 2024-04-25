@@ -12,6 +12,7 @@ interface SidebarItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   label: string;
   icon: any;
   href: string;
+  disabled?: boolean;
 }
 
 export function SidebarItem({
@@ -20,11 +21,15 @@ export function SidebarItem({
   title,
   href,
   className,
+  disabled,
   ...props
 }: SidebarItemProps) {
   return (
     <Tooltip delayDuration={400}>
-      <TooltipTrigger>
+      <TooltipTrigger
+        disabled={disabled}
+        className="disabled:pointer-events-none disabled:opacity-50"
+      >
         <NavLink
           href={href}
           className={cn(

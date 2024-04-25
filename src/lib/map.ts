@@ -1,5 +1,6 @@
 import {
   AIRCRAFT_SPRITE_ICON_MAPPING,
+  AIRPORT_SPRITE_ICON_MAPPING,
   ATC_FACILITIES_ACCENT_COLOR,
   ATC_FACILITIES_SPRITE_ICON_MAPPING,
   ATC_FACILITIES_THAT_HAVE_LABEL,
@@ -9,19 +10,21 @@ import {
   MAP_SPRITES,
   MAP_STYLES,
 } from "@/config/map";
+import { AirportSummary, AirportSummaryList } from "@/types/airports";
 import { ATCFacility, LiveATC, LiveATCGeometry, LiveATCs } from "@/types/atcs";
 import { LiveFlight, LiveFlights } from "@/types/live-flights";
 import { Network } from "@/types/networks";
-import { ResolvedTheme } from "@/types/themes";
+import { Theme } from "@/types/themes";
 import { IconLayer, PickingInfo, PolygonLayer } from "deck.gl";
+import { indigo } from "tailwindcss/colors";
 import {
   convertHeadingToAngle,
   hexToRGBAArray,
   isEmergencyTransponder,
 } from "./utils";
 
-export function getMapStyleBasedOnTheme(resolvedTheme: ResolvedTheme) {
-  return resolvedTheme === "light" ? MAP_STYLES.light : MAP_STYLES.dark;
+export function getMapStyleBasedOnTheme(theme: Theme) {
+  return theme === "light" ? MAP_STYLES.light : MAP_STYLES.dark;
 }
 
 export function getMapCursor({
@@ -39,17 +42,30 @@ export function getMapCursor({
 export const getNetworkATCsPolygonLayer = (
   data: LiveATCs | null,
   network: Network,
+  options?: { isVisible: boolean },
 ) => {
   const atcHasGeometryFilteredData = data?.filter(
     (atc: LiveATC) => atc.geometry.length > 0,
   );
 
-  const getATCPolygonShape = (data: LiveATC) => [
-    data.geometry.map((coord: LiveATCGeometry) => [
-      coord.longitude,
-      coord.latitude,
-    ]),
-  ];
+  const getATCPolygonShape = (data: LiveATC) => {
+    if (data.network === "vatsim") {
+      return [
+        data.geometry.map((coord: LiveATCGeometry) => [
+          coord.longitude,
+          coord.latitude,
+        ]),
+      ];
+    }
+    if (data.network === "ivao") {
+      return [
+        data.geometry.map((coord: LiveATCGeometry) => [
+          coord.latitude,
+          coord.longitude,
+        ]),
+      ];
+    }
+  };
 
   const getATCColor = ({ facility }: LiveATC, opacity?: number) => {
     const accentColor = ATC_FACILITIES_ACCENT_COLOR[facility as ATCFacility];
@@ -68,6 +84,7 @@ export const getNetworkATCsPolygonLayer = (
     lineWidthMinPixels: 1,
     pickable: true,
     autoHighlight: true,
+    visible: options?.isVisible ?? true,
   });
 };
 
@@ -116,6 +133,7 @@ export const getNetworkFlightsLayer = (
 export const getNetworkATCsFacilitiesLabelLayer = (
   data: LiveATCs | null,
   network: Network,
+  options?: { isVisible: boolean },
 ) => {
   const getFilteredATCsBasedOnLabelInclusion = (data: LiveATCs) => {
     return data.filter(({ facility }) =>
@@ -145,9 +163,33 @@ export const getNetworkATCsFacilitiesLabelLayer = (
     sizeUnits: "pixels",
     getPosition: (d: LiveATC) => [d.longitude, d.latitude],
     pickable: true,
+    visible: options?.isVisible ?? true,
   });
 };
 
+export const getAirportSummaryLayer = (
+  data: AirportSummaryList | null,
+  options: {
+    currentZoom: number;
+    isVisible: boolean;
+    onClick?: (arg: any) => void;
+  },
+) => {
+  return new IconLayer({
+    id: "airports-layer",
+    data: data ?? [],
+    iconAtlas: MAP_SPRITES.AIRPORT_ICONS,
+    iconMapping: AIRPORT_SPRITE_ICON_MAPPING,
+    getIcon: (d: AirportSummary) => "airport",
+    getSize: 14,
+    getColor: (d: AirportSummary) => hexToRGBAArray(indigo[400]),
+    sizeUnits: "pixels",
+    getPosition: (d: AirportSummary) => [d.lng, d.lat],
+    pickable: true,
+    visible: options.currentZoom > 6 && options.isVisible,
+    onClick: options.onClick,
+  });
+};
 export const flightLayerTooltip = ({
   callsign,
   flightPlan,
@@ -183,6 +225,18 @@ export const atcLayerTooltip = ({
   };
 };
 
+export const airportLayerTooltip = ({ icao, iata, name }: AirportSummary) => {
+  return {
+    html: `
+    <div class="flex flex-col border bg-card text-card-foreground gap-1 rounded-sm py-2 px-3">
+    <span class="text-sm font-semibold">${icao}</span>
+    <span class="text-2xs text-muted-foreground">${name}</span>
+  </div>
+    `,
+    style: DECK_GL_TOOLTIP_STYLE_OVERRIDE,
+  };
+};
+
 export const getTooltipContentBasedOnLayer = ({
   layer,
   object,
@@ -193,8 +247,15 @@ export const getTooltipContentBasedOnLayer = ({
     return flightLayerTooltip(object);
   }
 
-  if (layer.id.includes("atcs-layer")) {
+  if (
+    layer.id.includes("atcs-layer") ||
+    layer.id.includes("atcs-facilities-icon")
+  ) {
     return atcLayerTooltip(object);
+  }
+
+  if (layer.id.includes("airports-layer")) {
+    return airportLayerTooltip(object);
   }
 
   return null;

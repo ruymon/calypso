@@ -6,7 +6,7 @@
 // import { VatsimFlightsLayerContainer } from "@/components/map-layers/vatsim/vatsim-flights-layer-container";
 // import { WeatherLayerContainer } from "@/components/map-layers/weather/weather-layer-container";
 import { InteractiveMapContainer } from "@/components/interactive-map-container";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { CommandDialogDemo } from "./_components/command-bar";
 import { MobileSidebar } from "./_components/mobile-sidebar";
 import { Sidebar } from "./_components/sidebar";
@@ -26,9 +26,7 @@ export default function AppRootLayout({ children }: AppRootLayoutProps) {
 
       <CommandDialogDemo />
 
-      <Suspense fallback={null}>
-        <InteractiveMapContainer />
-      </Suspense>
+      <InteractiveMapContainer />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function FlightDetailsLoadingPage() {
   return (
     <div className="flex flex-1 flex-col gap-8">
-      <header className="flex flex-col gap-8 pt-4">
+      <header className="flex flex-col gap-8">
         <div className="flex items-center justify-between gap-4">
           <div className="flex w-3/4 items-center gap-4">
             <AirlineTail className="h-10 w-12" />

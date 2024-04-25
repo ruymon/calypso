@@ -14,5 +14,5 @@ export function Heading({ value, className }: HeadingProps) {
     parsedValue = `0${parsedValue}`;
   }
 
-  return <span className={className}>{parsedValue}</span>;
+  return <span className={className}>{parsedValue}&deg;</span>;
 }

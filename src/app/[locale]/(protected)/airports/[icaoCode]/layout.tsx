@@ -8,5 +8,12 @@ interface AirportDetailsLayoutProps {
 export default function AirportDetailsLayout({
   children,
 }: AirportDetailsLayoutProps) {
-  return <PageShell className="relative overflow-y-auto">{children}</PageShell>;
+  return (
+    <PageShell
+      shellTitle="Aerodrome details"
+      className="relative overflow-y-auto"
+    >
+      {children}
+    </PageShell>
+  );
 }

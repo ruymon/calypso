@@ -5,9 +5,11 @@ import {
   ATCS_REFETCH_INTERVAL_IN_MILLISECONDS,
   FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
 } from "@/constants/api";
+import { BUILD_VERSION } from "@/constants/workspace";
 import { env } from "@/env.mjs";
 import { getNetworkATCs, getNetworkFlights } from "@/lib/flights";
 import {
+  getAirportSummaryLayer,
   getMapCursor,
   getMapStyleBasedOnTheme,
   getNetworkATCsFacilitiesLabelLayer,
@@ -17,10 +19,10 @@ import {
 } from "@/lib/map";
 import { useMapLayersStore } from "@/stores/map-layers-store";
 import "@/styles/map.css";
-import { LiveATCs } from "@/types/atcs";
-import { LiveFlight, LiveFlights } from "@/types/live-flights";
+import { AirportSummary, AirportSummaryList } from "@/types/airports";
+import { LiveFlight } from "@/types/live-flights";
 import { AiracCycle } from "@/types/navigraph";
-import { ResolvedTheme } from "@/types/themes";
+import { Theme } from "@/types/themes";
 import { useQuery } from "@tanstack/react-query";
 import { intlFormatDistance } from "date-fns";
 import { DeckGL } from "deck.gl";
@@ -34,37 +36,44 @@ import { PiCurlyBracesCodeCheckStroke, PiDatabaseStroke } from "./icons";
 import { MapLayerControls } from "./map-controls/map-layer-controls";
 
 interface InteractiveMapProps {
-  ivaoFlightsData: LiveFlights | null;
-  vatsimFlightsData: LiveFlights | null;
-  vatsimAtcsData: LiveATCs | null;
   currentAiracCycle: AiracCycle | null;
+  airportsSummary: AirportSummaryList | null;
   children?: ReactNode;
 }
 
 const mapboxAccessToken = env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 export function InteractiveMap({
-  ivaoFlightsData: ivaoFlightsInitialData,
-  vatsimAtcsData: vatsimAtcsInitialData,
-  vatsimFlightsData: vatsimFlightsInitialData,
   currentAiracCycle,
+  airportsSummary,
   children,
 }: InteractiveMapProps) {
+  const [mapViewState, setMapViewState] = useState(MAP_INITIAL_VIEW_STATE);
+
   const { resolvedTheme } = useTheme();
   const router = useRouter();
   const [selectedFlightParsedRoute, setSelectedFlightParsedRoute] = useState<
     any | null
   >(null);
 
-  const { isVatsimFlightsLayerVisible, isIvaoFlightsLayerVisible } =
-    useMapLayersStore();
+  const handleViewStateChange = ({ viewState }: any) => {
+    setMapViewState(viewState);
+  };
+
+  const {
+    isVatsimFlightsLayerVisible,
+    isIvaoFlightsLayerVisible,
+    isIvaoATCsLayerVisible,
+    isVatsimATCsLayerVisible,
+    isAirportsLayerVisible,
+  } = useMapLayersStore();
 
   const {
     data: vatsimFlightsData,
     error: vatsimFlightsError,
     isLoading: isVatsimFlightsLoading,
   } = useQuery({
-    initialData: vatsimFlightsInitialData,
+    initialData: null,
     queryKey: ["vatsim-flights"],
     queryFn: () => getNetworkFlights("vatsim"),
     refetchOnReconnect: true,
@@ -77,7 +86,7 @@ export function InteractiveMap({
     error: ivaoFlightsError,
     isLoading: isIvaoFlightsLoading,
   } = useQuery({
-    initialData: ivaoFlightsInitialData,
+    initialData: null,
     queryKey: ["ivao-flights"],
     queryFn: () => getNetworkFlights("ivao"),
     refetchOnReconnect: true,
@@ -90,7 +99,7 @@ export function InteractiveMap({
     error: vatsimAtcsError,
     isLoading: isVatsimAtcsLoading,
   } = useQuery({
-    initialData: vatsimAtcsInitialData,
+    initialData: null,
     queryKey: ["vatsim-atcs"],
     queryFn: () => getNetworkATCs("vatsim"),
     refetchOnReconnect: true,
@@ -98,9 +107,27 @@ export function InteractiveMap({
     refetchInterval: ATCS_REFETCH_INTERVAL_IN_MILLISECONDS,
   });
 
+  const {
+    data: ivaoAtcsData,
+    error: ivaoAtcsError,
+    isLoading: isIvaoAtcsLoading,
+  } = useQuery({
+    initialData: null,
+    queryKey: ["ivao-atcs"],
+    queryFn: () => getNetworkATCs("ivao"),
+    refetchOnReconnect: true,
+    refetchOnWindowFocus: true,
+    refetchInterval: ATCS_REFETCH_INTERVAL_IN_MILLISECONDS,
+  });
+
   const layers = [
     // getFlightsPlannedRouteLayer(selectedFlightData),
-    getNetworkATCsPolygonLayer(vatsimAtcsData, "vatsim"),
+    getNetworkATCsPolygonLayer(vatsimAtcsData, "vatsim", {
+      isVisible: isVatsimATCsLayerVisible,
+    }),
+    getNetworkATCsPolygonLayer(ivaoAtcsData, "ivao", {
+      isVisible: isIvaoATCsLayerVisible,
+    }),
     getNetworkFlightsLayer(vatsimFlightsData, "vatsim", {
       visible: isVatsimFlightsLayerVisible,
       onClick: (pickingInfo) => {
@@ -117,7 +144,21 @@ export function InteractiveMap({
         router.push(`/flights/${flight.id}`);
       },
     }),
-    getNetworkATCsFacilitiesLabelLayer(vatsimAtcsData, "vatsim"),
+    getAirportSummaryLayer(airportsSummary, {
+      currentZoom: mapViewState.zoom,
+      isVisible: isAirportsLayerVisible,
+      onClick: (pickingInfo) => {
+        const airport: AirportSummary = pickingInfo.object;
+        if (!airport) return;
+        router.push(`/airports/${airport.icao.toLowerCase()}`);
+      },
+    }),
+    getNetworkATCsFacilitiesLabelLayer(vatsimAtcsData, "vatsim", {
+      isVisible: isVatsimATCsLayerVisible,
+    }),
+    getNetworkATCsFacilitiesLabelLayer(ivaoAtcsData, "ivao", {
+      isVisible: isIvaoATCsLayerVisible,
+    }),
   ];
 
   function handleAiracCycleClick({ cycle, status, from, to }: AiracCycle) {
@@ -146,18 +187,15 @@ export function InteractiveMap({
         pickingRadius={10}
         controller={true}
         getTooltip={getTooltipContentBasedOnLayer}
-        initialViewState={{
-          ...MAP_INITIAL_VIEW_STATE,
-          maxZoom: 16,
-          minZoom: 2,
-        }}
+        viewState={mapViewState}
+        onViewStateChange={handleViewStateChange}
         layers={layers}
         getCursor={getMapCursor}
       >
         <Map
           attributionControl={false}
           reuseMaps={true}
-          mapStyle={getMapStyleBasedOnTheme(resolvedTheme as ResolvedTheme)}
+          mapStyle={getMapStyleBasedOnTheme(resolvedTheme as Theme)}
           antialias={true}
           mapboxAccessToken={mapboxAccessToken}
         />
@@ -170,8 +208,8 @@ export function InteractiveMap({
           {currentAiracCycle && (
             <button
               onClick={() => handleAiracCycleClick(currentAiracCycle)}
-              data-isOutdated={currentAiracCycle.status === "outdated"}
-              className="flex items-center gap-1 px-1 py-0.5 font-bold data-[isOutdated='true']:bg-destructive data-[isOutdated='true']:text-destructive-foreground"
+              data-outdated={currentAiracCycle.status === "outdated"}
+              className="flex items-center gap-1 px-1 py-0.5 font-bold data-[outdated='true']:bg-destructive data-[outdated='true']:text-destructive-foreground"
             >
               <PiDatabaseStroke className="h-3 w-3" />
               <span>AIRAC cycle {currentAiracCycle.cycle}</span>
@@ -180,7 +218,7 @@ export function InteractiveMap({
 
           <div className="flex items-center gap-1 px-1 py-0.5 font-bold ">
             <PiCurlyBracesCodeCheckStroke className="h-3 w-3" />
-            <span>v0.1 alpha</span>
+            <span>{BUILD_VERSION}</span>
           </div>
 
           {/* <div className="flex items-center gap-1 px-1 py-0.5 ">
