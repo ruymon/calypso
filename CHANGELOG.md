@@ -1,3 +1,19 @@
+# [1.20.0](https://github.com/skyscope-app/skyscope-web/compare/v1.19.1...v1.20.0) (2024-04-25)
+
+
+### Bug Fixes
+
+* **config:** Update email ([87cec19](https://github.com/skyscope-app/skyscope-web/commit/87cec1913438ef1370fe6d0c37d67fd3e0aab5a0))
+* **themeSwitcher:** Fix SSR fallback ([2ab7bd0](https://github.com/skyscope-app/skyscope-web/commit/2ab7bd0b7fd13779d206a01314874b56173dcced))
+* update project version ([5b01c43](https://github.com/skyscope-app/skyscope-web/commit/5b01c4387a69a2a97228f0ea9b2eb24a1faf85fd))
+
+
+### Features
+
+* **airline:** Show in flight details page ([ec35201](https://github.com/skyscope-app/skyscope-web/commit/ec35201d89c8f853559208c709a85581e763c577))
+* Airport page + minor bug fixes ([9cfc0f5](https://github.com/skyscope-app/skyscope-web/commit/9cfc0f5bbe919a7efd53ddc1056f4692fff63a1b))
+* **types:** Add airline object ([b9165c6](https://github.com/skyscope-app/skyscope-web/commit/b9165c679013f5cc4c09b4af8e6755127e7e9b57))
+
 ## [1.19.1](https://github.com/skyscope-app/skyscope-web/compare/v1.19.0...v1.19.1) (2024-04-20)
 
 
