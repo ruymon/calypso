@@ -19,6 +19,9 @@ const en = {
       forgotPassword: "Forgot password?",
       noAccount: "No account?",
       join: "Join now",
+      loginError: "Oh no! Something went wrong.",
+      loginErrorDescription:
+        "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord.",
     },
     join: {
       inviteOnly:

@@ -40,12 +40,10 @@ export function LoginForm() {
   async function handleLogin(data: LoginFormType) {
     try {
       await login(data);
-
       router.push("/");
     } catch (error) {
-      toast.error("Uh oh! Something went wrong.", {
-        description:
-          "An error ocurred while trying to log in. Please try again",
+      toast.error(t("loginError"), {
+        description: t("loginErrorDescription"),
       });
 
       console.error(error);
