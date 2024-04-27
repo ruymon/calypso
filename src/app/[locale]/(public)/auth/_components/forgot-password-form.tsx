@@ -1,5 +1,6 @@
 "use client";
 
+import { PiSpinnerStroke } from "@/components/icons";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Form,
@@ -9,34 +10,52 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { passwordReset } from "@/lib/auth";
 import { useScopedI18n } from "@/locales/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod";
 
 const forgotPasswordFormSchema = z.object({
   email: z.string().email(),
 });
 
+export type ForgotPasswordFormType = z.infer<typeof forgotPasswordFormSchema>;
+
 export function ForgotPasswordForm() {
   const t = useScopedI18n("auth.forgotPassword");
+  const router = useRouter();
 
-  const form = useForm<z.infer<typeof forgotPasswordFormSchema>>({
+  const form = useForm<ForgotPasswordFormType>({
     resolver: zodResolver(forgotPasswordFormSchema),
     defaultValues: {
       email: "",
     },
   });
 
-  async function onSubmit(values: z.infer<typeof forgotPasswordFormSchema>) {
-    // TODO: Implement send password reset email
-    // try {
-    //   await sendPasswordResetEmail(firebaseAuth, values.email)
-    // } catch (error) {
-    //   console.error(error)
-    // }
+  async function onSubmit(data: ForgotPasswordFormType) {
+    try {
+      await passwordReset(data);
+
+      toast.success(t("resetEmailSent"), {
+        description: t("resetEmailSentIfAccountIsValid"),
+      });
+
+      router.push("/auth/login");
+    } catch (error) {
+      toast.error(t("resetError"), {
+        description: t("resetErrorDescription"),
+      });
+    }
   }
+
+  const {
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = form;
 
   return (
     <Form {...form}>
@@ -64,7 +83,13 @@ export function ForgotPasswordForm() {
           )}
         />
         <div className="flex flex-col gap-1">
-          <Button type="submit">{t("sendEmail")}</Button>
+          <Button disabled={isSubmitting} type="submit">
+            {isSubmitting ? (
+              <PiSpinnerStroke className="w-4 animate-spin" />
+            ) : (
+              t("sendEmail")
+            )}
+          </Button>
           <Link
             href="/auth/login"
             className={buttonVariants({

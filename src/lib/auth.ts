@@ -1,5 +1,6 @@
 "use server";
 
+import { ForgotPasswordFormType } from "@/app/[locale]/(public)/auth/_components/forgot-password-form";
 import { LoginFormType } from "@/app/[locale]/(public)/auth/_components/login-form";
 import { API_BASE_URL } from "@/constants/api";
 import {
@@ -10,7 +11,11 @@ import {
 import { env } from "@/env.mjs";
 import { firebaseAuth } from "@/lib/firebase";
 import { UserProfile } from "@/types/profile";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -53,6 +58,10 @@ export async function logout() {
   } catch (error) {
     console.error("Error signing out:", error);
   }
+}
+
+export async function passwordReset({ email }: ForgotPasswordFormType) {
+  sendPasswordResetEmail(firebaseAuth, email);
 }
 
 export async function getAccessToken() {

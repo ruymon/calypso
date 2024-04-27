@@ -30,6 +30,12 @@ const en = {
       email: "Email",
       sendEmail: "Send recovery email",
       backToLogin: "Remember your password?",
+      resetError: "An error occurred while trying to reset your password.",
+      resetErrorDescription:
+        "Please try again later or contact support on Discord.",
+      resetEmailSent: "Password reset email sent!",
+      resetEmailSentIfAccountIsValid:
+        "If the email you entered is associated with a valid account, you will receive a password reset link in your email.",
     },
     supportCard: {
       title: "Need help?",
