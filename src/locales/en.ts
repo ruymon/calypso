@@ -188,6 +188,31 @@ const en = {
       remarks: "Remarks",
       icaoFplFormat: "ICAO FPL format",
     },
+    notFound: {
+      title: "Flight unavailable",
+      subtitle: "We couldn't find the flight you were looking for.",
+      troubleshooting: {
+        title: "Troubleshooting",
+        subtitle:
+          "Things you can do to possibly fix it. If this problem persists, please contact our support team.",
+        steps: {
+          verifyFlightExists:
+            "Make sure the flight is currently flying in one of the supported networks",
+          refresh: "Refresh the page",
+          checkInternetConnection: "Check your internet connection",
+          checkLoginStatus: "Make sure you are logged in",
+        },
+      },
+      systemLogs: {
+        title: "System logs",
+        subtitle:
+          "The following information might be useful for our support team.",
+        code: "Code",
+        flightId: "Flight id",
+        timestamp: "Timestamp",
+        buildVersion: "Build version",
+      },
+    },
   },
 };
 
