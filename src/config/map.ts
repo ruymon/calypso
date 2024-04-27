@@ -1,3 +1,4 @@
+import { env } from "@/env.mjs";
 import { ATCFacility } from "@/types/atcs";
 import { Network } from "@/types/networks";
 import { MapViewState } from "deck.gl";
@@ -24,6 +25,8 @@ export const MAP_SPRITES = {
   ATC_FACILITIES:
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAoCAYAAACiu5n/AAAAAXNSR0IArs4c6QAABC5JREFUaEPtmHtsS1Ecx7+3unhsLSbisVJmjIiKsC4m3oRFGEK8lk34Q4QgEo8IEY94zF/C/iCINUQkohYW75CIMCOyCuYRW231iKTZ2k4n21o551jdtefe9u5Wg9zfP/f2vHo+v9/v/H6/e4TkDQ+DiKOYZu+L42rAqwpXXNcTNGCV+tQsrFKBCXHpE8szIrZZ72/Fg/cNuPbCLYsgZ2Fr6igUmOdjhHEIXcPT4oO97g7srtvwtjRy1+UBC5PWAj37R473exF0VgBv7knukXuGfUdzJCc43U3IPfYSH90/uGOkgNdnrMD6ofncOS7/VxSUbwN5hgsXuPAMBPM4yT0GayoQtK3m9ssCN/hbQhadmNEdA1M700UIdE6RA6Q/XHjAC9Jm4qBlMx1KoGw1V+BpbsQC0wxYUy20/YnbQaEVA1eWsildDIA5iz0BBG8WIVh+LmI9WWCn+wdG7nkWmnR44WCsm9yP/j5wvRYHbtTGBHx3ylmkde1Dx06/vzJkSWNSCkifQZ9M+7JuL4pw7WgWDuxlCqOSORW6JUcZcGUpgqW71AF376qH65CVLuJwNSKnqDIq8AhjOuwTiiWtSPoN+hSqBE+zTx3w6HnQ5e1nwI/PIXirSB0wmf1y91iYUztTd07b/iQqMAlUtmz2xyXVdhysOknfhxvSYUxilm2T154PioGJJX9beBoE4tL1nxCwraLPcFHk0vEEtlkPw9pL5I4APcPkLIslmktHEDV5Ebi4EXA+jegiDYqASdB6tXusIpcmZ5ecUyLiwFQ4aD6GG9OppdvSVIeAxUErc1oIMlCyigutCHjHbBN25A6kixbf/4xt9uqoLk0GSAWt8L6OAIuDljA6D0Ieq+U7FKVpWnKwQmNUWjIsJnbmPv7KxSSKh0vsackHkq7Ebq0WGIOyoCs4zYA7ErR4h4DALj1VBYfrO/eMSBYeQ/NBig+eEFcn+Vg1cI/+0G24wYCVpKUTKyJLywZ/KyrrGlH2wo16TsHRBiJXWhKLkmKjLSeTVHT83Xk6lbSXVF9BlfdDO51wg1Z2PoS+mXRcQJxruxigm7WVAX95E3vhwTVDjI3a11KMipIalpCvJTV71CysRnv4A1c8+9d443qntfjmTJWI7adn1jwW4rmgoAGrVKdmYZUKTLhLm4d1gmW8nm7b8agFzretsgg8C/fetQk6Y4rsvIDHi2/72Me7WBIObBmfhLmF7GrnakkThZYTHnD6g8vQm9hNiZQ0131G9cSF/wfwgAvFSPoFTCytM7J7J2LVgMdH3wlw7bJ1/wewmKLvkZ0wLppDmxouleHrFnYlIyX/pEtrwJqFNZcOaUA7w7IhLnpn1Fo6HnlYC1p/c9CKR2kptjDJwd2yx9Cm7+XP4blU9nfl4einov0I7WtJqcbCxic8Sivdr2ZhpRr7wxb+CYFVAp6/pGIhAAAAAElFTkSuQmCC",
 };
+
+export const MAPBOX_ACCESS_TOKEN = env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 export const AIRPORT_SPRITE_ICON_MAPPING = {
   airport: { x: 0, y: 0, width: 20, height: 20, mask: true },

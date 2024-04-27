@@ -1,8 +1,6 @@
 "use client";
 
-import { useMapLayersStore } from "@/stores/map-layers-store";
-import { LayersIcon } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +8,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
+import { useMapLayersStore } from "@/stores/map-layers-store";
+import { LayersIcon } from "lucide-react";
 
 interface MapLayerControlsProps {}
 
