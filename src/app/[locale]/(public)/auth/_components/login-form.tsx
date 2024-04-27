@@ -45,8 +45,6 @@ export function LoginForm() {
       toast.error(t("loginError"), {
         description: t("loginErrorDescription"),
       });
-
-      console.error(error);
     }
   }
 
