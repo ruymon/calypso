@@ -1,3 +1,22 @@
+# [1.21.0](https://github.com/skyscope-app/skyscope-web/compare/v1.20.0...v1.21.0) (2024-04-28)
+
+
+### Bug Fixes
+
+* **build:** Update version ([f1d3279](https://github.com/skyscope-app/skyscope-web/commit/f1d32790c3b22e50bac02b5fc49f97d0eb623445))
+* **i18n:** Add login error translations ([f81f09d](https://github.com/skyscope-app/skyscope-web/commit/f81f09dd1c59e1155d0ed2fce3cfeaf51f84de13))
+* **log:** Remove unused console.log ([803e656](https://github.com/skyscope-app/skyscope-web/commit/803e6560cc14bbb8543dceffa2b5bc8a652ae57e))
+* **refactor:** Map component ([5419b54](https://github.com/skyscope-app/skyscope-web/commit/5419b5411c129d6add6e1ac5aef2068a19990178))
+* **styles:** Remove fixed styling ([fa3f193](https://github.com/skyscope-app/skyscope-web/commit/fa3f193c2ac7d7acd4246645e41db15e7a202374))
+* **types:** Map index ([2999ec7](https://github.com/skyscope-app/skyscope-web/commit/2999ec756672162d3ebaf89152b58b7772d6c9cd))
+
+
+### Features
+
+* **auth:** Implement password reset ([21ee327](https://github.com/skyscope-app/skyscope-web/commit/21ee327dd6c2c2dd0c95cbf1a128cb2614dd2b44))
+* **error:** Flight not found ([e3b1bfd](https://github.com/skyscope-app/skyscope-web/commit/e3b1bfdac57778e6fc4ea3d1e50497983fccb522))
+* **profile:** WIP: Upload avatar ([b8f0228](https://github.com/skyscope-app/skyscope-web/commit/b8f0228a3c2036717320a737ba5579f0b0fa2da6))
+
 # [1.20.0](https://github.com/skyscope-app/skyscope-web/compare/v1.19.1...v1.20.0) (2024-04-25)
 
 
