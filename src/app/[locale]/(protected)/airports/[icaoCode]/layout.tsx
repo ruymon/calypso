@@ -9,10 +9,7 @@ export default function AirportDetailsLayout({
   children,
 }: AirportDetailsLayoutProps) {
   return (
-    <PageShell
-      shellTitle="Aerodrome details"
-      className="relative overflow-y-auto"
-    >
+    <PageShell shellTitle="Aerodrome details" className="relative">
       {children}
     </PageShell>
   );

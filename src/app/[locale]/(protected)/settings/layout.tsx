@@ -12,7 +12,6 @@ export default function AppSettingsLayout({
   return (
     <PageShell width="full" hasTopNav={false}>
       <SettingSidebar />
-
       {children}
     </PageShell>
   );

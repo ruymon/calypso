@@ -59,13 +59,13 @@ export function PageShell({
   return (
     <div
       className={cn(
-        "z-10 flex h-full w-full flex-col bg-background",
+        "z-10 flex h-full w-full flex-col overflow-y-auto bg-background",
         widthClassNames[width],
         className,
       )}
     >
       {hasTopNav && (
-        <header className="sticky top-0 z-20 flex items-center justify-between  px-6 py-1.5 text-muted-foreground backdrop-blur-xl">
+        <header className="sticky top-0 z-20 flex items-center justify-between px-6 py-1.5 text-muted-foreground backdrop-blur-xl">
           <span className="text-xs">{shellTitle}</span>
           <nav className="flex items-center gap-0.5">
             <button
@@ -85,7 +85,7 @@ export function PageShell({
         </header>
       )}
 
-      <main className="flex flex-1 px-6  py-4">{children}</main>
+      <main className="flex flex-1 px-6 py-4">{children}</main>
     </div>
   );
 }

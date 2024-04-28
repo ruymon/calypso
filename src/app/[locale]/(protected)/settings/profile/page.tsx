@@ -14,8 +14,11 @@ import { getNameInitials } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { notFound } from "next/navigation";
 import { DangerCollapsible } from "./_components/danger-collapsible";
+import { UpdateAvatarButton } from "./_components/update-avatar-button";
 
 interface SettingsProfilePageProps {}
+
+const dynamic = "force-dynamic";
 
 export default async function SettingsProfilePage({}: SettingsProfilePageProps) {
   const userProfile = await getProfile();
@@ -27,7 +30,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
   }
 
   return (
-    <main className="mx-auto flex max-w-xl flex-1 flex-col gap-8">
+    <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
       <header className="flex flex-col py-4">
         <h2 className="text-2xl font-bold text-foreground">{t("title")}</h2>
         <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
@@ -38,15 +41,15 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
           <CardHeader className="flex-row items-center gap-4">
             <PiPhotoImageDefaultDuoSolid className="h-5 w-5 text-primary" />
 
-            <h3 className="font-semibold">{t("avatarCard.title")}</h3>
+            <h3 className="font-semibold">{t("title")}</h3>
           </CardHeader>
           <Separator />
 
           <CardContent className="flex flex-col gap-4 pt-4">
             <Avatar>
-              <AvatarImage src={userProfile?.avatarUrl} />
+              <AvatarImage src={userProfile.avatarUrl} />
               <AvatarFallback>
-                {userProfile?.name ? (
+                {userProfile.name ? (
                   getNameInitials(userProfile.name)
                 ) : (
                   <PiUserDefaultDuoStroke className="w-6" />
@@ -54,9 +57,11 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
               </AvatarFallback>
             </Avatar>
 
+            <UpdateAvatarButton />
+
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <PiInformationCircleStroke className="h-3 w-3" />
-              <span>{t("avatarCard.subtitle")}</span>
+              <span>{t("subtitle")}</span>
             </div>
           </CardContent>
         </Card>
@@ -109,6 +114,6 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
 
         <DangerCollapsible />
       </section>
-    </main>
+    </div>
   );
 }
