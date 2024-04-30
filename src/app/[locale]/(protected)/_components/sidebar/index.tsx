@@ -9,6 +9,8 @@ import {
 } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
+import { IS_IN_DEVELOPMENT } from "@/constants/workspace";
+import { cn } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { Rotate3D } from "lucide-react";
 import { SidebarAvatar } from "./sidebar-avatar";
@@ -22,7 +24,25 @@ export async function Sidebar({}: SidebarProps) {
 
   return (
     <aside className="z-20 hidden w-14 shrink-0 flex-col items-center gap-4 bg-background py-4 lg:flex">
-      <Rotate3D className="mb-2 h-7 w-7 text-primary" />
+      <header className="flex w-full flex-col items-center gap-1">
+        <Rotate3D
+          className={cn(
+            "mb-2 h-7 w-7",
+            IS_IN_DEVELOPMENT ? "text-red-500" : "text-primary",
+          )}
+        />
+
+        <span
+          className={cn(
+            "rounded p-1 text-2xs font-bold uppercase leading-none",
+            IS_IN_DEVELOPMENT
+              ? "bg-red-500 font-black text-red-50"
+              : "bg-secondary text-secondary-foreground",
+          )}
+        >
+          {IS_IN_DEVELOPMENT ? "dev" : "beta"}
+        </span>
+      </header>
 
       <Separator className="w-1/2" />
 
