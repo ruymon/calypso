@@ -96,6 +96,7 @@ export interface Airline {
   name: string;
   icao: string;
   image: string;
+  callsign: string;
 }
 
 export type EmergencyTransponder = "7500" | "7600" | "7700";
