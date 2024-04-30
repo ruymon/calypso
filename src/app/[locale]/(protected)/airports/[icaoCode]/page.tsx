@@ -6,15 +6,15 @@ import { notFound } from "next/navigation";
 import { FlightListCard } from "./_components/flight-list-card";
 import { WeatherCard } from "./_components/weather-card";
 
-interface AirportDetailPageProps {
+interface AirportDetailsPageProps {
   params: {
     icaoCode: string;
   };
 }
 
-export default async function AirportDetailPage({
+export default async function AirportDetailsPage({
   params: { icaoCode },
-}: AirportDetailPageProps) {
+}: AirportDetailsPageProps) {
   // const t = await getScopedI18n("flightDetails");
 
   if (!icaoCode) {
@@ -22,6 +22,9 @@ export default async function AirportDetailPage({
   }
 
   const data = await getAirportDetails(icaoCode);
+
+  // mock delay for testing the skeleton loading
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   if (!data) {
     return notFound();
