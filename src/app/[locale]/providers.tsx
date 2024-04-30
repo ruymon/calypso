@@ -22,7 +22,7 @@ export function Providers({ children, locale }: ProvidersProps) {
         <TooltipProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem={false}
             themes={["light", "dark"] as Theme[]}
             disableTransitionOnChange
