@@ -167,6 +167,7 @@ const en = {
         registration: "Registration",
         transponder: "Transponder",
         wakeTurbulence: "Wake turbulence",
+        photographer: "Photographer",
       },
     },
     crewDetails: {

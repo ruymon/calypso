@@ -119,26 +119,28 @@ export async function getParsedRouted(
   return data;
 }
 
+export interface AircraftImages {
+  photos: AircraftImage[];
+}
+
 export interface AircraftImage {
-  photos: {
-    id: string;
-    thumbnail: {
-      src: string;
-      size: {
-        width: number;
-        height: number;
-      };
+  id: string;
+  thumbnail: {
+    src: string;
+    size: {
+      width: number;
+      height: number;
     };
-    thumbnail_large: {
-      src: string;
-      size: {
-        width: number;
-        height: number;
-      };
+  };
+  thumbnail_large: {
+    src: string;
+    size: {
+      width: number;
+      height: number;
     };
-    link: string;
-    photographer: string;
-  }[];
+  };
+  link: string;
+  photographer: string;
 }
 
 export async function getAircraftImage(
@@ -160,5 +162,6 @@ export async function getAircraftImage(
     return null;
   }
 
-  return data;
+  const singlePhotoData = data.photos[0] as AircraftImage;
+  return singlePhotoData;
 }

@@ -29,17 +29,30 @@ export async function AircraftCard({ className, data }: AircraftCardProps) {
           <CardTitle>
             {data?.icao || "TBN"} / {data?.wakeTurbulence || "TBN"}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="break-all">
             {data?.equipment || "TBN"} / {data?.transponderTypes}
           </CardDescription>
 
-          <div className="mt-4 flex flex-col gap-0.5">
-            <span className="text-sm text-accent-foreground">
-              {data?.registration || "TBN"}
-            </span>
-            <span className="text-xs text-muted-foreground">
-              {t("registration")}
-            </span>
+          <div className="mt-6 flex gap-6">
+            <div className="flex flex-col gap-0.5">
+              <span className="text-sm text-accent-foreground">
+                {data?.registration || "TBN"}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                {t("registration")}
+              </span>
+            </div>
+
+            {aircraftImage?.photographer && (
+              <div className="flex flex-col gap-0.5">
+                <span className="text-sm text-accent-foreground">
+                  {aircraftImage.photographer}
+                </span>
+                <span className="text-xs text-muted-foreground">
+                  {t("photographer")}
+                </span>
+              </div>
+            )}
           </div>
         </CardHeader>
         <AircraftCardImage data={aircraftImage} />

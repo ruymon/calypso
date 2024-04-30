@@ -14,7 +14,7 @@ export function AircraftCardImage({ data, className }: AircraftCardImageProps) {
     return null;
   }
 
-  const src = data.photos[0]?.thumbnail_large.src;
+  const src = data.thumbnail_large.src;
 
   if (!src) {
     return null;
