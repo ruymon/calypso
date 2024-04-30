@@ -149,6 +149,7 @@ const en = {
 
   flightDetails: {
     unknownAirline: "Unknown airline",
+    unknownCallsign: "Unknown callsign",
     routeDetails: {
       title: "Route",
       subtitle: "Detailed information about the aircraft's route.",

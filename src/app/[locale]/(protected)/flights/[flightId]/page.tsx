@@ -41,7 +41,7 @@ export default async function FlightsDetailPage({
           <div className="flex flex-col">
             <h1 className="text-3xl font-bold">{data.callsign}</h1>
             <span className="text-sm text-muted-foreground">
-              {data.airline?.name || t("unknownAirline")}
+            {data.airline?.callsign || t("unknownCallsign")} &bull; {data.airline?.name || t("unknownAirline")}
             </span>
           </div>
         </div>
