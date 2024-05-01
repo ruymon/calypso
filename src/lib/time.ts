@@ -21,3 +21,7 @@ export function getZuluTimeString(date: Date | string) {
   // SHould return a string like 2200z
   return date.toISOString().slice(11, 16).replace(":", "") + "z";
 }
+
+export function parseUnixTimestampToZuluTimeString(unixTimestamp: any) {
+  return getZuluTimeString(new Date(unixTimestamp * 1000));
+}

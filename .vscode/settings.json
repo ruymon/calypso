@@ -3,6 +3,7 @@
     "AFIS",
     "airac",
     "Airac",
+    "apexcharts",
     "atcs",
     "buildx",
     "Buildx",
@@ -60,6 +61,7 @@
     "skyscopeapp",
     "skyscopeweb",
     "sonner",
+    "sparkline",
     "styleimagemissing",
     "tanstack",
     "Tektur",
@@ -72,7 +74,9 @@
     "Vatsim",
     "velite",
     "webeye",
+    "xaxis",
     "xpdr",
+    "yaxis",
     "zukeeper"
   ]
 }

@@ -177,6 +177,16 @@ const en = {
         pilotInCommand: "Pilot in command",
       },
     },
+    analytics: {
+      title: "Analytics",
+      subtitle: "Data and statistics about the flight in real-time.",
+      verticalPathChart: {
+        title: "Vertical path",
+        subtitle: "Altitude and vertical speed",
+        altitude: "Altitude",
+        speed: "Ground speed",
+      },
+    },
     flightPlanDetails: {
       title: "Flight plan details",
       subtitle: "Detailed information about the flight plan.",
