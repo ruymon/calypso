@@ -1,50 +1,57 @@
-import * as crypto from 'crypto'
+"use server";
 
-export function getRandomInteger(range: number): number {
-  const max_range = 256 // Highest possible number in Uint8
+import * as crypto from "crypto";
 
-  const byteArray = new Uint8Array(1) as Uint8Array
-  crypto.getRandomValues(byteArray)
-
-  if (byteArray[0] === undefined)  {
-    return getRandomInteger(range)
-  }
-
-  if (byteArray[0] >= Math.floor(max_range / range) * range) {
-    return getRandomInteger(range)
-  }
-
-  return byteArray[0] % range
+function getRandomValues(size: number) {
+  return crypto.getRandomValues(new Uint8Array(size));
 }
 
-export function generateRandomString(length: number): string {
-  let text = ''
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
-  for (let i = 0; i < length; i++) {
-    text += possible.charAt(getRandomInteger(possible.length - 1))
+function random(size: number) {
+  const mask =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~";
+  let result = "";
+  const randomUnits = getRandomValues(size);
+  for (let i = 0; i < size; i++) {
+    // cap the value of the randomIndex to mask.length - 1
+    const randomIndex = (randomUnits[i]! % mask.length) as number;
+    result += mask[randomIndex];
   }
-
-  return text
+  return result;
 }
 
-export async function generateCodeChallenge(codeVerifier: string): Promise<string> {
-  if (!crypto.subtle?.digest) {
-    throw new Error(
-      "The context/environment is not secure, and does not support the 'crypto.subtle' module. See: https://developer.mozilla.org/en-US/docs/Web/API/Crypto/subtle for details"
-    )
+function generateVerifier(length: number): string {
+  return random(length);
+}
+
+export async function generateChallenge(code_verifier: string) {
+  const buffer = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(code_verifier),
+  );
+  // Generate base64url string
+  // btoa is deprecated in Node.js but is used here for web browser compatibility
+  // (which has no good replacement yet, see also https://github.com/whatwg/html/issues/6811)
+  return btoa(String.fromCharCode(...new Uint8Array(buffer)))
+    .replace(/\//g, "_")
+    .replace(/\+/g, "-")
+    .replace(/=/g, "");
+}
+
+export async function pkceChallenge(length?: number): Promise<{
+  code_verifier: string;
+  code_challenge: string;
+}> {
+  if (!length) length = 43;
+
+  if (length < 43 || length > 128) {
+    throw `Expected a length between 43 and 128. Received ${length}.`;
   }
-  
-  const encoder = new TextEncoder()
-  const bytes: Uint8Array = encoder.encode(codeVerifier)
-  const hash: ArrayBuffer = await crypto.subtle.digest('SHA-256', bytes)
-  const hashString: string = String.fromCharCode(...new Uint8Array(hash))
-  const base64 = btoa(hashString)
 
-  const formattedBase64 = base64
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
+  const verifier = generateVerifier(length);
+  const challenge = await generateChallenge(verifier);
 
-  return formattedBase64
+  return {
+    code_verifier: verifier,
+    code_challenge: challenge,
+  };
 }

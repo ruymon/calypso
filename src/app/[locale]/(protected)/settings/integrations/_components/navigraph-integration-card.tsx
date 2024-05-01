@@ -14,25 +14,25 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { redirectToIvaoAuth } from "@/lib/integrations/ivao";
+import { redirectToNavigraphAuth } from "@/lib/integrations/navigraph";
 import { useScopedI18n } from "@/locales/client";
 
-interface IvaoIntegrationCardProps {}
+interface NavigraphIntegrationCardProps {}
 
-export function IvaoIntegrationCard({}: IvaoIntegrationCardProps) {
+export function NavigraphIntegrationCard({}: NavigraphIntegrationCardProps) {
   const t = useScopedI18n("integrations");
 
   function handleConnect() {
     //toast.error(t("ivao.cannotChange"));
 
-    redirectToIvaoAuth();
+    redirectToNavigraphAuth();
   }
 
   return (
     <Card className="flex flex-col gap-4 p-4">
       <CardContent className="mb-2 flex items-center justify-between gap-4 p-0">
         <Avatar className="rounded-md">
-          <AvatarImage src="https://static.skyscope.app/networks/ivao.png" />
+          <AvatarImage src="https://pbs.twimg.com/profile_images/1502197605127839744/wS9ttQ02_400x400.jpg" />
           <AvatarFallback />
         </Avatar>
 
@@ -48,7 +48,7 @@ export function IvaoIntegrationCard({}: IvaoIntegrationCardProps) {
       </CardContent>
 
       <CardHeader className="p-0">
-        <CardTitle className="text-lg font-semibold">IVAO</CardTitle>
+        <CardTitle className="text-lg font-semibold">Navigraph</CardTitle>
         <CardDescription className="text-muted-foreground">
           {t("ivao.description")}
         </CardDescription>

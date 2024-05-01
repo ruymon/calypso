@@ -1,11 +1,14 @@
+import { getProfile } from "@/lib/auth";
 import { getI18n } from "@/locales/server";
 import { IvaoIntegrationCard } from "./_components/ivao-integration-card";
+import { NavigraphIntegrationCard } from "./_components/navigraph-integration-card";
 import { VatsimIntegrationCard } from "./_components/vatsim-integration-card";
 
 interface AppSettingsIntegrationsPageProps {}
 
 export default async function AppSettingsIntegrationsPage({}: AppSettingsIntegrationsPageProps) {
   const t = await getI18n();
+  const user = getProfile();
 
   return (
     <main className="mx-auto flex max-w-xl flex-1 flex-col gap-8">
@@ -21,6 +24,7 @@ export default async function AppSettingsIntegrationsPage({}: AppSettingsIntegra
       <section className="flex flex-col gap-4">
         <IvaoIntegrationCard />
         <VatsimIntegrationCard />
+        <NavigraphIntegrationCard />
       </section>
 
       <header className="mx-auto flex flex-col items-center justify-center text-muted-foreground">
