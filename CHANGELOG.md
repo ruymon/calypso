@@ -1,3 +1,22 @@
+# [1.22.0](https://github.com/skyscope-app/skyscope-web/compare/v1.21.0...v1.22.0) (2024-05-01)
+
+
+### Bug Fixes
+
+* **themes:** Set default theme ([582492d](https://github.com/skyscope-app/skyscope-web/commit/582492d15c8b80345519552151057d42f8d2e9a4))
+
+
+### Features
+
+* **aircraftCard:** Display spotter credits ([e734249](https://github.com/skyscope-app/skyscope-web/commit/e7342496f7d179898fd152f5205eced0c17e1bc5))
+* **aircraftImage:** Maximize aircraft image inside modal ([1612cef](https://github.com/skyscope-app/skyscope-web/commit/1612cef5c2b2ed920c0770df1f2679cb16f9e9b2))
+* **airlines:** Display airline callsign ([1950210](https://github.com/skyscope-app/skyscope-web/commit/19502105423bf7ab2bcbbe5c2e6b29e20b5bd6a3))
+* **deploy:** Update build version ([61e2b3e](https://github.com/skyscope-app/skyscope-web/commit/61e2b3eea87fa878d3a27dea955719d33964c8d6))
+* **flightDetails:** Implement Vertical Path chart ([ef5a598](https://github.com/skyscope-app/skyscope-web/commit/ef5a598fc8eba693632573a1843954ef363ce4ff))
+* **skeleton:** Add airport loading skeleton ([adda935](https://github.com/skyscope-app/skyscope-web/commit/adda935f6dead0abbe56fa66a1faa9caa907dfd5))
+* **types:** Add callsign to airline ([d472b8e](https://github.com/skyscope-app/skyscope-web/commit/d472b8e243a1d3169f8c677be8aa1e03c2cbb64b))
+* **workspace:** Add environment visual badge ([33482e1](https://github.com/skyscope-app/skyscope-web/commit/33482e106a8e629898567f903025eb8673b81f25))
+
 # [1.21.0](https://github.com/skyscope-app/skyscope-web/compare/v1.20.0...v1.21.0) (2024-04-28)
 
 
