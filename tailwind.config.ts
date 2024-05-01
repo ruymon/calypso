@@ -107,8 +107,8 @@ const config = {
         vatsim: "linear-gradient(50deg, #29B473 0%, #2483C5 75%, #2B3990 100%)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
-        mono: ["var(--font-geist-mono)", ...fontFamily.mono],
+        sans: ["var(--font-geist-sans)", ...fontFamily.sans, "sans-serif"],
+        mono: ["var(--font-geist-mono)", ...fontFamily.mono, "monospace"],
         handwriting: ["var(--font-courgette)", "cursive"],
       },
       fontSize: {

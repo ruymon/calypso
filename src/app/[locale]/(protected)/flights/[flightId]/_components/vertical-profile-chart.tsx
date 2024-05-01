@@ -91,7 +91,7 @@ export default function VerticalProfileChart({
             // enabled: false,
             theme: resolvedTheme,
             style: {
-              fontFamily: "Geist",
+              fontFamily: "Geist, Helvetica, Arial, sans-serif",
               fontSize: "11px",
             },
             x: {
