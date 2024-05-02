@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/skyscope-app/skyscope-web/compare/v1.23.1...v1.23.2) (2024-05-02)
+
+
+### Bug Fixes
+
+* **build:** Update build version ([cc0dfd3](https://github.com/skyscope-app/skyscope-web/commit/cc0dfd345358727981c464319c1ee4111e49d7b1))
+
 ## [1.23.1](https://github.com/skyscope-app/skyscope-web/compare/v1.23.0...v1.23.1) (2024-05-02)
 
 
