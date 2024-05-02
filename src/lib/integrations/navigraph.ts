@@ -1,3 +1,4 @@
+import { NAVIGRAPH_INTEGRATION_REDIRECT_URI } from "@/config/integrations";
 import { API_BASE_URL } from "@/constants/api";
 import { env } from "@/env.mjs";
 import { NavigraphTokenResponse } from "@/types/integrations";
@@ -8,7 +9,7 @@ import { pkceChallenge } from "../pkce";
 const NAVIGRAPH_OAUTH_OPTIONS = {
   clientId: env.NEXT_PUBLIC_NAVIGRAPH_CLIENT_ID,
   clientSecret: env.NEXT_PUBLIC_NAVIGRAPH_CLIENT_SECRET,
-  redirectUri: "http://localhost:3000/auth/callback/navigraph",
+  redirectUri: NAVIGRAPH_INTEGRATION_REDIRECT_URI,
 };
 
 export async function redirectToNavigraphAuth() {

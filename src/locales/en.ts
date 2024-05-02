@@ -116,12 +116,27 @@ const en = {
     ivao: {
       description:
         "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network",
-      cannotChange: "At the moment, you cannot connect to your IVAO account",
+      unstable:
+        "This integration is a recent addition and may not work as expected.",
+      callback: {
+        title: "Integrating your IVAO account",
+        subtitle: "This process may take a few seconds.",
+      },
     },
     vatsim: {
       description:
         "The Virtual Air Traffic Simulation Network is an online platform that allows flight simulation enthusiasts to connect and fly together.",
       cannotChange: "At the moment, you cannot connect to your VATSIM account",
+    },
+    navigraph: {
+      description:
+        "Provider of aeronautical data for the flight-sim community. ",
+      unstable:
+        "This integration is a recent addition and may not work as expected.",
+      callback: {
+        title: "Integrating your Navigraph account",
+        subtitle: "This process may take a few seconds.",
+      },
     },
   },
 

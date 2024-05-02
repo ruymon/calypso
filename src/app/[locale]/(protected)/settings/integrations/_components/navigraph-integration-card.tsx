@@ -23,8 +23,6 @@ export function NavigraphIntegrationCard({}: NavigraphIntegrationCardProps) {
   const t = useScopedI18n("integrations");
 
   function handleConnect() {
-    //toast.error(t("ivao.cannotChange"));
-
     redirectToNavigraphAuth();
   }
 
@@ -32,7 +30,7 @@ export function NavigraphIntegrationCard({}: NavigraphIntegrationCardProps) {
     <Card className="flex flex-col gap-4 p-4">
       <CardContent className="mb-2 flex items-center justify-between gap-4 p-0">
         <Avatar className="rounded-md">
-          <AvatarImage src="https://pbs.twimg.com/profile_images/1502197605127839744/wS9ttQ02_400x400.jpg" />
+          <AvatarImage src="https://static.skyscope.app/integrations/navigraph.png" />
           <AvatarFallback />
         </Avatar>
 
@@ -50,13 +48,13 @@ export function NavigraphIntegrationCard({}: NavigraphIntegrationCardProps) {
       <CardHeader className="p-0">
         <CardTitle className="text-lg font-semibold">Navigraph</CardTitle>
         <CardDescription className="text-muted-foreground">
-          {t("ivao.description")}
+          {t("navigraph.description")}
         </CardDescription>
       </CardHeader>
 
       <CardFooter className="gap-2 p-0">
         <PiAlertTriangleStroke className="h-3 w-3 shrink-0" />
-        <span>{t("ivao.cannotChange")}</span>
+        <span>{t("navigraph.unstable")}</span>
       </CardFooter>
     </Card>
   );

@@ -2,6 +2,7 @@ import {
   exchangeTemporaryCodeForNavigraphToken,
   storeIntegrationCredentials,
 } from "@/lib/integrations/navigraph";
+import { getScopedI18n } from "@/locales/server";
 import { redirect } from "next/navigation";
 
 interface NavigraphIntegrationCallbackPageProps {
@@ -14,6 +15,7 @@ interface NavigraphIntegrationCallbackPageProps {
 export default async function NavigraphIntegrationCallbackPage({
   searchParams: { state, code },
 }: NavigraphIntegrationCallbackPageProps) {
+  const t = await getScopedI18n("integrations.navigraph.callback");
   const navigraphCredentials = await exchangeTemporaryCodeForNavigraphToken(
     code,
     state,
@@ -22,8 +24,11 @@ export default async function NavigraphIntegrationCallbackPage({
   redirect("/settings/integrations");
 
   return (
-    <div>
-      <h1>Redirecting...</h1>
-    </div>
+    <header className="flex flex-col items-center">
+      <h1 className="text-lg font-bold text-secondary-foreground">
+        {t("title")}
+      </h1>
+      <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
+    </header>
   );
 }

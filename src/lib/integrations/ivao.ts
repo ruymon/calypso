@@ -1,3 +1,4 @@
+import { IVAO_INTEGRATION_REDIRECT_URI } from "@/config/integrations";
 import { API_BASE_URL } from "@/constants/api";
 import { env } from "@/env.mjs";
 import { IvaoTokenResponse } from "@/types/integrations";
@@ -7,7 +8,7 @@ import { postWithXForm } from "../http";
 const IVAO_OAUTH_OPTIONS = {
   clientId: env.NEXT_PUBLIC_IVAO_CLIENT_ID,
   clientSecret: env.NEXT_PUBLIC_IVAO_CLIENT_SECRET,
-  redirectUri: "http://localhost:3000/auth/integrations/ivao/callback",
+  redirectUri: IVAO_INTEGRATION_REDIRECT_URI,
 };
 
 export async function redirectToIvaoAuth() {
@@ -15,7 +16,7 @@ export async function redirectToIvaoAuth() {
 
   const responseType = "code";
   const scopes = ["profile", "configuration", "email"].join(" ");
-  const state = "546587231365786"; // TODO: generate random string
+  const state = "546587231365786";
 
   const url = `${authorizationEndpoint}?response_type=${responseType}&client_id=${IVAO_OAUTH_OPTIONS.clientId}&scope=${scopes}&redirect_uri=${IVAO_OAUTH_OPTIONS.redirectUri}&state=${state}`;
   window.location.href = url;

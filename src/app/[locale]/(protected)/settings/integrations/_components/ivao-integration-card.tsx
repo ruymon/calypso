@@ -56,7 +56,7 @@ export function IvaoIntegrationCard({}: IvaoIntegrationCardProps) {
 
       <CardFooter className="gap-2 p-0">
         <PiAlertTriangleStroke className="h-3 w-3 shrink-0" />
-        <span>{t("ivao.cannotChange")}</span>
+        <span>{t("ivao.unstable")}</span>
       </CardFooter>
     </Card>
   );

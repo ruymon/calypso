@@ -14,7 +14,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { redirectToVatsimAuth } from "@/lib/integrations/vatsim";
 import { useScopedI18n } from "@/locales/client";
 
 interface VatsimIntegrationCardProps {}
@@ -23,8 +22,7 @@ export function VatsimIntegrationCard({}: VatsimIntegrationCardProps) {
   const t = useScopedI18n("integrations");
 
   function handleConnect() {
-    // toast.error(t("vatsim.cannotChange"));
-    redirectToVatsimAuth();
+    // TODO
   }
 
   return (
@@ -39,6 +37,7 @@ export function VatsimIntegrationCard({}: VatsimIntegrationCardProps) {
           variant="secondary"
           size="sm"
           className="gap-1"
+          disabled
           onClick={handleConnect}
         >
           <PiLinkChainSlantDuoStroke className="w-4" />
