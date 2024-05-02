@@ -1,3 +1,15 @@
+# [1.23.0](https://github.com/skyscope-app/skyscope-web/compare/v1.22.0...v1.23.0) (2024-05-02)
+
+
+### Bug Fixes
+
+* **verticalPathChart:** Font family ([9cfc846](https://github.com/skyscope-app/skyscope-web/commit/9cfc846dc854cc7ef02b146f4d7bbd3f533669c0))
+
+
+### Features
+
+* **integrations:** Add Navigraph integration ([2ce984b](https://github.com/skyscope-app/skyscope-web/commit/2ce984bf0575aa2579885fdf7ce791c55a46e668))
+
 # [1.22.0](https://github.com/skyscope-app/skyscope-web/compare/v1.21.0...v1.22.0) (2024-05-01)
 
 
