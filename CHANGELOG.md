@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/skyscope-app/skyscope-web/compare/v1.23.0...v1.23.1) (2024-05-02)
+
+
+### Bug Fixes
+
+* **deploy:** Update CI with Integration secrets ([ad2cd4e](https://github.com/skyscope-app/skyscope-web/commit/ad2cd4ed3c21407c1fa44be713e069dc1270a2e5))
+
 # [1.23.0](https://github.com/skyscope-app/skyscope-web/compare/v1.22.0...v1.23.0) (2024-05-02)
 
 
