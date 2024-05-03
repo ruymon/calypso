@@ -1,5 +1,33 @@
 import { API_BASE_URL } from "@/constants/api";
+import { UserProfile } from "@/types/profile";
 import { getAccessToken } from "./auth";
+
+export async function getProfile(): Promise<UserProfile> {
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) {
+    throw new Error("Access token not found");
+  }
+
+  const url = `${API_BASE_URL}/users/profile`;
+
+  const options: RequestInit = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  const result = await fetch(url, options);
+  const data = await result.json();
+
+  if (!result.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
 
 export async function updateProfileAvatar(file: File): Promise<any> {
   const accessToken = await getAccessToken();

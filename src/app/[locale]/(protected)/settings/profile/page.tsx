@@ -9,10 +9,9 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { getProfile } from "@/lib/auth";
+import { getProfile } from "@/lib/profile";
 import { getNameInitials } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
-import { notFound } from "next/navigation";
 import { DangerCollapsible } from "./_components/danger-collapsible";
 import { UpdateAvatarButton } from "./_components/update-avatar-button";
 
@@ -22,12 +21,7 @@ const dynamic = "force-dynamic";
 
 export default async function SettingsProfilePage({}: SettingsProfilePageProps) {
   const userProfile = await getProfile();
-
   const t = await getScopedI18n("settings.profile");
-
-  if (!userProfile) {
-    return notFound();
-  }
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">

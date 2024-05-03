@@ -23,8 +23,6 @@ export function IvaoIntegrationCard({}: IvaoIntegrationCardProps) {
   const t = useScopedI18n("integrations");
 
   function handleConnect() {
-    //toast.error(t("ivao.cannotChange"));
-
     redirectToIvaoAuth();
   }
 

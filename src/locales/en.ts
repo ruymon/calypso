@@ -112,16 +112,16 @@ const en = {
     comum: {
       connect: "Connect",
       unlink: "Unlink",
+      callback: {
+        title: "Integrating your {provider} account",
+        subtitle: "This process may take a few seconds.",
+      },
     },
     ivao: {
       description:
         "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network",
       unstable:
         "This integration is a recent addition and may not work as expected.",
-      callback: {
-        title: "Integrating your IVAO account",
-        subtitle: "This process may take a few seconds.",
-      },
     },
     vatsim: {
       description:
@@ -133,10 +133,6 @@ const en = {
         "Provider of aeronautical data for the flight-sim community. ",
       unstable:
         "This integration is a recent addition and may not work as expected.",
-      callback: {
-        title: "Integrating your Navigraph account",
-        subtitle: "This process may take a few seconds.",
-      },
     },
   },
 

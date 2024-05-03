@@ -2,7 +2,6 @@
 
 import { ForgotPasswordFormType } from "@/app/[locale]/(public)/auth/_components/forgot-password-form";
 import { LoginFormType } from "@/app/[locale]/(public)/auth/_components/login-form";
-import { API_BASE_URL } from "@/constants/api";
 import {
   COOKIE_DOMAIN,
   COOKIE_PREFIX,
@@ -10,7 +9,6 @@ import {
 } from "@/constants/cookies";
 import { env } from "@/env.mjs";
 import { firebaseAuth } from "@/lib/firebase";
-import { UserProfile } from "@/types/profile";
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -74,12 +72,7 @@ export async function getRefreshToken() {
   return refreshToken;
 }
 
-export async function refreshAccessToken(
-  refreshToken: string,
-  response: NextResponse,
-) {
-  if (!refreshToken) return;
-
+export async function exchangeRefreshTokenForAccessToken(refreshToken: string) {
   const firebaseApiKey = env.NEXT_PUBLIC_FIREBASE_API_KEY;
   const firebaseApiBaseUrl = `https://securetoken.googleapis.com/v1/token?key=${firebaseApiKey}`;
 
@@ -99,9 +92,18 @@ export async function refreshAccessToken(
   const result = await fetch(firebaseApiBaseUrl, options);
   const data = await result.json();
 
+  return data;
+}
+
+export async function refreshAccessTokenInMiddleware(
+  refreshToken: string,
+  response: NextResponse,
+) {
+  const data = await exchangeRefreshTokenForAccessToken(refreshToken);
+
   if (data.error) {
-    console.error("Error refreshing access token:", data.error);
-    return logout();
+    await logout();
+    return null;
   }
 
   response.cookies.set({
@@ -129,30 +131,40 @@ export async function refreshAccessToken(
   return response;
 }
 
-export async function getProfile(): Promise<UserProfile | null> {
-  const accessToken = await getAccessToken();
+export async function refreshAccessTokenInServer() {
+  const refreshToken = await getRefreshToken();
 
-  if (!accessToken) {
+  if (!refreshToken) {
+    await logout();
     return null;
   }
 
-  const url = `${API_BASE_URL}/users/profile`;
+  const data = await exchangeRefreshTokenForAccessToken(refreshToken);
 
-  const options: RequestInit = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-  };
-
-  const result = await fetch(url, options);
-  const data = await result.json();
-
-  if (result.status !== 200) {
-    console.error("Error fetching user profile", data);
+  if (data.error) {
+    await logout();
     return null;
   }
 
-  return data;
+  cookies().set({
+    name: `${COOKIE_PREFIX}access-token`,
+    value: data.access_token,
+    httpOnly: true,
+    sameSite: "lax",
+    expires: new Date(Date.now() + data.expires_in * 1000).getTime(),
+    path: "/",
+    domain: COOKIE_DOMAIN,
+    secure: IS_SECURE_COOKIE,
+  });
+
+  cookies().set({
+    name: `${COOKIE_PREFIX}refresh-token`,
+    value: data.refresh_token,
+    httpOnly: true,
+    sameSite: "lax",
+    expires: new Date(Date.now() + 100 * 365 * 24 * 60 * 60 * 1000).getTime(), // Refresh token doesn't expire
+    path: "/",
+    domain: COOKIE_DOMAIN,
+    secure: IS_SECURE_COOKIE,
+  });
 }

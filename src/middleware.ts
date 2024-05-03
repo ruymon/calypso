@@ -1,7 +1,7 @@
 import { createI18nMiddleware } from "next-international/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { COOKIE_PREFIX } from "./constants/cookies";
-import { refreshAccessToken } from "./lib/auth";
+import { refreshAccessTokenInMiddleware } from "./lib/auth";
 
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en"],
@@ -28,7 +28,7 @@ export default async function middleware(request: NextRequest) {
   )?.value;
 
   if (!accessToken && refreshToken) {
-    await refreshAccessToken(refreshToken, response);
+    await refreshAccessTokenInMiddleware(refreshToken, response);
     return response;
   }
 

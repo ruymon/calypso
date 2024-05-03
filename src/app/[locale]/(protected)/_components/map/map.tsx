@@ -61,18 +61,23 @@ export function Map({ airportsSummary, children }: MapProps) {
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
     refetchInterval: FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
+    retry: 3,
+    retryDelay: 1000,
   });
 
   const {
     data: ivaoFlightsData,
     error: ivaoFlightsError,
     isLoading: isIvaoFlightsLoading,
+    isPending: isIvaoFlightsPending,
   } = useQuery({
     queryKey: ["ivao-flights"],
     queryFn: () => getNetworkFlights("ivao"),
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
     refetchInterval: FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
+    retry: 3,
+    retryDelay: 1000,
   });
 
   const {
@@ -85,6 +90,8 @@ export function Map({ airportsSummary, children }: MapProps) {
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
     refetchInterval: ATCS_REFETCH_INTERVAL_IN_MILLISECONDS,
+    retry: 3,
+    retryDelay: 1000,
   });
 
   const {
@@ -97,6 +104,8 @@ export function Map({ airportsSummary, children }: MapProps) {
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
     refetchInterval: ATCS_REFETCH_INTERVAL_IN_MILLISECONDS,
+    retry: 3,
+    retryDelay: 1000,
   });
 
   const layers = [

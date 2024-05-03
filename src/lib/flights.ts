@@ -10,7 +10,7 @@ import { getAccessToken } from "./auth";
 
 export async function getNetworkFlights(
   network: Network,
-): Promise<LiveFlights | null> {
+): Promise<LiveFlights> {
   const accessToken = await getAccessToken();
   const url = `${API_BASE_URL}/networks/${network}/flights`;
 
@@ -29,17 +29,14 @@ export async function getNetworkFlights(
   const result = await fetch(url, options);
   const data = await result.json();
 
-  if (result.status !== 200) {
-    console.error(`Error fetching ${network} flights`, data);
-    return null;
+  if (!result.ok) {
+    throw new Error(`Error fetching ${network} flights: ${data.error}`);
   }
 
   return data;
 }
 
-export async function getNetworkATCs(
-  network: Network,
-): Promise<LiveATCs | null> {
+export async function getNetworkATCs(network: Network): Promise<LiveATCs> {
   const accessToken = await getAccessToken();
   const url = `${API_BASE_URL}/networks/${network}/atcs`;
 
@@ -58,9 +55,8 @@ export async function getNetworkATCs(
   const result = await fetch(url, options);
   const data = await result.json();
 
-  if (result.status !== 200) {
-    console.error(`Error fetching ${network} ATCs`, data);
-    return null;
+  if (!result.ok) {
+    throw new Error(`Error fetching ${network} ATCs: ${data.error}`);
   }
 
   return data;

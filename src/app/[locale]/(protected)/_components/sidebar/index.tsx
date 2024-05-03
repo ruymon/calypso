@@ -8,11 +8,13 @@ import {
   PiTroubleshootStroke,
 } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 import { siteConfig } from "@/config/site";
 import { IS_IN_DEVELOPMENT } from "@/constants/workspace";
 import { cn } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { Rotate3D } from "lucide-react";
+import { Suspense } from "react";
 import { SidebarAvatar } from "./sidebar-avatar";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarThemeSwitcher } from "./sidebar-theme-switcher";
@@ -106,7 +108,9 @@ export async function Sidebar({}: SidebarProps) {
 
       <Separator className="w-1/2" />
 
-      <SidebarAvatar />
+      <Suspense fallback={<Skeleton className="h-7 w-7 rounded-full" />}>
+        <SidebarAvatar />
+      </Suspense>
     </aside>
   );
 }

@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getProfile } from "@/lib/auth";
+import { getProfile } from "@/lib/profile";
 import { getNameInitials } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
@@ -22,7 +22,7 @@ export async function SidebarAvatar({}: SidebarAvatarProps) {
         <Link href="/settings">
           <Avatar className="h-7 w-7">
             <AvatarImage src={user?.avatarUrl} />
-            <AvatarFallback>
+            <AvatarFallback className="text-2xs font-semibold">
               {user?.name ? (
                 getNameInitials(user.name)
               ) : (
