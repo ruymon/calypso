@@ -1,3 +1,15 @@
+# [1.24.0](https://github.com/skyscope-app/skyscope-web/compare/v1.23.2...v1.24.0) (2024-05-03)
+
+
+### Bug Fixes
+
+* **middleware:** Token expiry ([9558c85](https://github.com/skyscope-app/skyscope-web/commit/9558c851af1532e7229872d0947c549b8022a37f))
+
+
+### Features
+
+* **integrations:** Callback page ([57b278d](https://github.com/skyscope-app/skyscope-web/commit/57b278dd9d4a67fa012ce20dd7e39691734b2e5f))
+
 ## [1.23.2](https://github.com/skyscope-app/skyscope-web/compare/v1.23.1...v1.23.2) (2024-05-02)
 
 
