@@ -24,7 +24,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
   const t = await getScopedI18n("settings.profile");
 
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
+    <div className="flex flex-1 flex-col gap-8">
       <header className="flex flex-col py-4">
         <h2 className="text-2xl font-bold text-foreground">{t("title")}</h2>
         <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
@@ -41,9 +41,9 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
 
           <CardContent className="flex flex-col gap-4 pt-4">
             <Avatar>
-              <AvatarImage src={userProfile.avatarUrl} />
+              <AvatarImage src={userProfile?.avatarUrl} />
               <AvatarFallback>
-                {userProfile.name ? (
+                {userProfile?.name ? (
                   getNameInitials(userProfile.name)
                 ) : (
                   <PiUserDefaultDuoStroke className="w-6" />
@@ -69,7 +69,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
           <Separator />
 
           <CardContent className="flex flex-col gap-4 pt-4">
-            {userProfile.name ? (
+            {userProfile?.name ? (
               <span className="font-medium text-accent-foreground">
                 {userProfile.name}
               </span>
@@ -96,7 +96,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
 
           <CardContent className="flex flex-col gap-4 pt-4">
             <span className="font-medium text-accent-foreground">
-              {userProfile.email}
+              {userProfile?.email}
             </span>
 
             <div className="flex items-center gap-1 text-xs text-muted-foreground">

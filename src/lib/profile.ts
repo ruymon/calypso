@@ -2,11 +2,11 @@ import { API_BASE_URL } from "@/constants/api";
 import { UserProfile } from "@/types/profile";
 import { getAccessToken } from "./auth";
 
-export async function getProfile(): Promise<UserProfile> {
+export async function getProfile(): Promise<UserProfile | null> {
   const accessToken = await getAccessToken();
 
   if (!accessToken) {
-    throw new Error("Access token not found");
+    return null;
   }
 
   const url = `${API_BASE_URL}/users/profile`;

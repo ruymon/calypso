@@ -12,7 +12,7 @@ export default function AppSettingsLayout({
   return (
     <PageShell width="full" hasTopNav={false}>
       <SettingSidebar />
-      {children}
+      <main className="mx-auto flex w-full max-w-xl flex-1">{children}</main>
     </PageShell>
   );
 }
