@@ -1,3 +1,17 @@
+# [1.25.0](https://github.com/skyscope-app/skyscope-web/compare/v1.24.0...v1.25.0) (2024-05-07)
+
+
+### Bug Fixes
+
+* **profile:** Just works ([27315a8](https://github.com/skyscope-app/skyscope-web/commit/27315a8fd01a6aad3f3ca4fa307e7512443f15d5))
+
+
+### Features
+
+* **deploy:** Updater build version ([715d588](https://github.com/skyscope-app/skyscope-web/commit/715d58818dcb33376af302da796993281772d99c))
+* **integrations:** Active integration badge status ([5ae98ec](https://github.com/skyscope-app/skyscope-web/commit/5ae98ec8f670a225b2619adf47757dd248b8ab6e))
+* **integrations:** Vatsim integration ([a904225](https://github.com/skyscope-app/skyscope-web/commit/a9042253c1c9473b2a0f13032f730317ab3397cf))
+
 # [1.24.0](https://github.com/skyscope-app/skyscope-web/compare/v1.23.2...v1.24.0) (2024-05-03)
 
 
