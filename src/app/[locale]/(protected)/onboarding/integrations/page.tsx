@@ -3,8 +3,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
-import { IvaoIntegrationCard } from "../../settings/integrations/_components/ivao-integration-card";
-import { VatsimIntegrationCard } from "../../settings/integrations/_components/vatsim-integration-card";
 
 interface OnboardingIntegrationsPageProps {}
 
@@ -29,9 +27,7 @@ export default async function OnboardingIntegrationsPage({}: OnboardingIntegrati
       </header>
 
       <section className="grid grid-cols-2 gap-4">
-        <IvaoIntegrationCard />
-
-        <VatsimIntegrationCard />
+        {/* TODO: Add the cards */}
       </section>
 
       <Link
