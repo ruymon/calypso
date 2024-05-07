@@ -1,7 +1,12 @@
 import { BASE_URL } from "@/constants/url";
+import { IS_IN_DEVELOPMENT } from "@/constants/workspace";
 
 export const IVAO_INTEGRATION_REDIRECT_URI = `${BASE_URL}/auth/callback/ivao`;
 export const NAVIGRAPH_INTEGRATION_REDIRECT_URI = `${BASE_URL}/auth/callback/navigraph`;
+export const VATSIM_INTEGRATION_REDIRECT_URI = `${BASE_URL}/auth/callback/vatsim`;
+export const VATSIM_INTEGRATION_BASE_URL = IS_IN_DEVELOPMENT
+  ? "https://auth-dev.vatsim.net"
+  : "https://auth.vatsim.net";
 
 export const INTEGRATION_PROVIDERS = {
   ivao: {

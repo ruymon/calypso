@@ -116,23 +116,20 @@ const en = {
         title: "Integrating your {provider} account",
         subtitle: "This process may take a few seconds.",
       },
+      unstable:
+        "This integration is a recent addition and may not work as expected.",
     },
     ivao: {
       description:
         "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network",
-      unstable:
-        "This integration is a recent addition and may not work as expected.",
     },
     vatsim: {
       description:
         "The Virtual Air Traffic Simulation Network is an online platform that allows flight simulation enthusiasts to connect and fly together.",
-      cannotChange: "At the moment, you cannot connect to your VATSIM account",
     },
     navigraph: {
       description:
         "Provider of aeronautical data for the flight-sim community. ",
-      unstable:
-        "This integration is a recent addition and may not work as expected.",
     },
   },
 

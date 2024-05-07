@@ -109,6 +109,14 @@ export function Map({ airportsSummary, children }: MapProps) {
   });
 
   const layers = [
+    // new PathLayer({
+    //   id: "flight-path-layer",
+    //   data: tracks ?? undefined,
+    //   getColor: (d) => hexToRGBAArray("#FF0000"),
+    //   getPath: (d: TrackPosition) => [d.lat, d.lng],
+    //   getWidth: 2,
+    //   widthUnits: "pixels",
+    // }),
     getNetworkATCsPolygonLayer({
       data: vatsimAtcsData ?? [],
       network: "vatsim",

@@ -1,12 +1,42 @@
-import { getI18n } from "@/locales/server";
-import { IvaoIntegrationCard } from "./_components/ivao-integration-card";
-import { NavigraphIntegrationCard } from "./_components/navigraph-integration-card";
-import { VatsimIntegrationCard } from "./_components/vatsim-integration-card";
+import { getIvaoIntegrationAuthorizationUrl } from "@/lib/integrations/ivao";
+import { getNavigraphIntegrationAuthorizationUrl } from "@/lib/integrations/navigraph";
+import { getVatsimIntegrationAuthorizeUrl } from "@/lib/integrations/vatsim";
+import { getI18n, getScopedI18n } from "@/locales/server";
+import { IntegrationCard } from "./_components/integration-card";
 
 interface AppSettingsIntegrationsPageProps {}
 
+const getIntegrationCards = async () => {
+  const t = await getScopedI18n("integrations");
+
+  return [
+    {
+      provider: "ivao",
+      logoUrl: "https://static.skyscope.app/networks/ivao.png",
+      title: "IVAO",
+      description: t("ivao.description"),
+      integrationUrl: await getIvaoIntegrationAuthorizationUrl(),
+    },
+    {
+      provider: "navigraph",
+      logoUrl: "https://static.skyscope.app/integrations/navigraph.png",
+      title: "Navigraph",
+      description: t("navigraph.description"),
+      integrationUrl: await getNavigraphIntegrationAuthorizationUrl(),
+    },
+    {
+      provider: "vatsim",
+      logoUrl: "https://static.skyscope.app/networks/vatsim.png",
+      title: "Vatsim",
+      description: t("vatsim.description"),
+      integrationUrl: await getVatsimIntegrationAuthorizeUrl(),
+    },
+  ];
+};
+
 export default async function AppSettingsIntegrationsPage({}: AppSettingsIntegrationsPageProps) {
   const t = await getI18n();
+  const integrationCards = await getIntegrationCards();
 
   return (
     <main className="mx-auto flex max-w-xl flex-1 flex-col gap-8">
@@ -20,9 +50,9 @@ export default async function AppSettingsIntegrationsPage({}: AppSettingsIntegra
       </header>
 
       <section className="flex flex-col gap-4">
-        <IvaoIntegrationCard />
-        <NavigraphIntegrationCard />
-        <VatsimIntegrationCard />
+        {integrationCards.map((item) => (
+          <IntegrationCard key={item.provider} {...item} />
+        ))}
       </section>
 
       <header className="mx-auto flex flex-col items-center justify-center text-muted-foreground">

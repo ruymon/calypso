@@ -1,6 +1,5 @@
 "use client";
 
-import { getParsedRouted } from "@/lib/flights";
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
 import { LiveFlightDetail } from "@/types/live-flights";
 import { useEffect } from "react";
@@ -15,28 +14,30 @@ export function StoreFlightData({ data }: StoreFlightDataProps) {
   if (!data) return null;
 
   useEffect(() => {
-    const routeString = data.flightPlan?.route;
-    const departureIcao = data.flightPlan?.departure?.icao;
-    const arrivalIcao = data.flightPlan?.arrival?.icao;
+    // const routeString = data.flightPlan?.route;
+    // const departureIcao = data.flightPlan?.departure?.icao;
+    // const arrivalIcao = data.flightPlan?.arrival?.icao;
 
-    if (routeString && departureIcao && arrivalIcao) {
-      const fetchParsedRoute = async () => {
-        const routeStringWithDepartureAndArrival = `${departureIcao} ${routeString} ${arrivalIcao}`;
-        const parsedRoute = await getParsedRouted(
-          routeStringWithDepartureAndArrival,
-        );
+    // if (routeString && departureIcao && arrivalIcao) {
+    //   const fetchParsedRoute = async () => {
+    //     const routeStringWithDepartureAndArrival = `${departureIcao} ${routeString} ${arrivalIcao}`;
+    //     const parsedRoute = await getParsedRouted(
+    //       routeStringWithDepartureAndArrival,
+    //     );
 
-        setParsedRoute(parsedRoute);
-      };
+    //     setParsedRoute(parsedRoute);
+    //   };
 
-      fetchParsedRoute();
-    }
+    //   fetchParsedRoute();
+    // }
 
-    //cleanup
-    return () => {
-      setParsedRoute(null);
-    };
-  }, []);
+    // //cleanup
+    // return () => {
+    //   setParsedRoute(null);
+    // };
+
+    setTracks(data.tracks);
+  }, [data]);
 
   return null;
 }

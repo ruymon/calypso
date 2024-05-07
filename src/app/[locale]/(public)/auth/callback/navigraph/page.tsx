@@ -1,7 +1,5 @@
-import {
-  exchangeTemporaryCodeForNavigraphToken,
-  storeIntegrationCredentials,
-} from "@/lib/integrations/navigraph";
+import { storeIntegrationCredentials } from "@/lib/integrations/comum";
+import { exchangeTemporaryCodeForNavigraphToken } from "@/lib/integrations/navigraph";
 import { IntegrationFinishRedirect } from "../_components/integration-finish-redirect";
 
 interface NavigraphIntegrationCallbackPageProps {
@@ -18,7 +16,7 @@ export default async function NavigraphIntegrationCallbackPage({
     code,
     state,
   );
-  await storeIntegrationCredentials(navigraphCredentials);
+  await storeIntegrationCredentials(navigraphCredentials, "navigraph");
 
   return <IntegrationFinishRedirect provider="navigraph" />;
 }

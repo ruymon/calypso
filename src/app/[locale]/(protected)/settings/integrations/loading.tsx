@@ -13,6 +13,7 @@ export default function SettingsIntegrationsLoadingPage({}: SettingsIntegrations
       <figure className="flex flex-col gap-4">
         <Skeleton className="h-32" />
         <Skeleton className="h-32" />
+        <Skeleton className="h-32" />
       </figure>
     </figure>
   );
