@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/skyscope-app/skyscope-web/compare/v1.25.0...v1.26.0) (2024-05-07)
+
+
+### Features
+
+* **build:** Trigger build + Update version ([fbecb33](https://github.com/skyscope-app/skyscope-web/commit/fbecb33c5eb394cbf5c392f450b73274bdbcbc9f))
+
 # [1.25.0](https://github.com/skyscope-app/skyscope-web/compare/v1.24.0...v1.25.0) (2024-05-07)
 
 
