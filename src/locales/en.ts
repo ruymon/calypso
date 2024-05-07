@@ -111,13 +111,19 @@ const en = {
   integrations: {
     comum: {
       connect: "Connect",
+      connected: "Connected",
       unlink: "Unlink",
+      changeAccount: "Change account",
       callback: {
         title: "Integrating your {provider} account",
         subtitle: "This process may take a few seconds.",
       },
       unstable:
         "This integration is a recent addition and may not work as expected.",
+    },
+    integrationDetailsTooltip: {
+      title: "Integration details",
+      accountId: "Account ID",
     },
     ivao: {
       description:

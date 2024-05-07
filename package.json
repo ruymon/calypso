@@ -36,6 +36,7 @@
     "firebase": "^10.11.1",
     "framer-motion": "^11.1.7",
     "geist": "^1.3.0",
+    "jose": "^5.2.4",
     "lucide-react": "^0.303.0",
     "mapbox-gl": "^3.3.0",
     "metar-decoder": "^1.0.3",

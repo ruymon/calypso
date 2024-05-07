@@ -1,13 +1,29 @@
 import { getIvaoIntegrationAuthorizationUrl } from "@/lib/integrations/ivao";
 import { getNavigraphIntegrationAuthorizationUrl } from "@/lib/integrations/navigraph";
 import { getVatsimIntegrationAuthorizeUrl } from "@/lib/integrations/vatsim";
+import { getProfile } from "@/lib/profile";
 import { getI18n, getScopedI18n } from "@/locales/server";
+import { Metadata } from "next";
 import { IntegrationCard } from "./_components/integration-card";
+
+export const metadata: Metadata = {
+  title: "Integrations",
+};
 
 interface AppSettingsIntegrationsPageProps {}
 
-const getIntegrationCards = async () => {
+export interface IntegrationCardProps {
+  provider: string;
+  logoUrl: string;
+  title: string;
+  description: string;
+  integrationUrl: string;
+  integratedAccount: string | null;
+}
+
+const getIntegrationCards = async (): Promise<IntegrationCardProps[]> => {
   const t = await getScopedI18n("integrations");
+  const userProfile = await getProfile();
 
   return [
     {
@@ -16,6 +32,7 @@ const getIntegrationCards = async () => {
       title: "IVAO",
       description: t("ivao.description"),
       integrationUrl: await getIvaoIntegrationAuthorizationUrl(),
+      integratedAccount: userProfile?.ivaoId ?? null,
     },
     {
       provider: "navigraph",
@@ -23,6 +40,7 @@ const getIntegrationCards = async () => {
       title: "Navigraph",
       description: t("navigraph.description"),
       integrationUrl: await getNavigraphIntegrationAuthorizationUrl(),
+      integratedAccount: userProfile?.navigraphId ?? null,
     },
     {
       provider: "vatsim",
@@ -30,6 +48,7 @@ const getIntegrationCards = async () => {
       title: "Vatsim",
       description: t("vatsim.description"),
       integrationUrl: await getVatsimIntegrationAuthorizeUrl(),
+      integratedAccount: userProfile?.vatsimId ?? null,
     },
   ];
 };

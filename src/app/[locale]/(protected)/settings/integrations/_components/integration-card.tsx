@@ -1,5 +1,3 @@
-"use client";
-
 import {
   PiAlertTriangleStroke,
   PiLinkChainSlantDuoStroke,
@@ -15,34 +13,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 import Link from "next/link";
+import { IntegrationCardProps } from "../page";
+import { ActiveIntegrationBadgeTooltip } from "./active-integration-badge-tooltip";
 
-interface IntegrationCardProps {
-  provider: string;
-  logoUrl: string;
-  title: string;
-  description: string;
-  integrationUrl: string;
-}
-
-export function IntegrationCard({
-  provider,
-  logoUrl,
-  title,
-  description,
-  integrationUrl,
-}: IntegrationCardProps) {
-  const t = useScopedI18n("integrations");
+export async function IntegrationCard(props: IntegrationCardProps) {
+  const t = await getScopedI18n("integrations");
 
   return (
     <Card className="flex flex-col gap-4 p-4">
       <CardContent className="mb-2 flex items-center justify-between gap-4 p-0">
         <Avatar className="rounded-md">
-          <AvatarImage src={logoUrl} />
+          <AvatarImage src={props.logoUrl} />
           <AvatarFallback />
         </Avatar>
-
         <Link
           className={cn(
             buttonVariants({
@@ -51,18 +36,29 @@ export function IntegrationCard({
               className: "gap-1",
             }),
           )}
-          href={integrationUrl}
-          title={`${t("comum.connect")} ${provider}`}
+          href={props.integrationUrl}
+          title={`${t("comum.connect")} ${props.provider}`}
         >
           <PiLinkChainSlantDuoStroke className="w-4" />
-          <span className="text-xs font-medium">{t("comum.connect")}</span>
+          <span className="text-xs font-medium">
+            {props.integratedAccount
+              ? t("comum.changeAccount")
+              : t("comum.connect")}
+          </span>
         </Link>
       </CardContent>
 
       <CardHeader className="p-0">
-        <CardTitle className="text-lg font-semibold">{title}</CardTitle>
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-lg font-semibold">{props.title}</CardTitle>
+          {props.integratedAccount && (
+            <ActiveIntegrationBadgeTooltip
+              integrationData={props.integratedAccount}
+            />
+          )}
+        </div>
         <CardDescription className="text-muted-foreground">
-          {description}
+          {props.description}
         </CardDescription>
       </CardHeader>
 

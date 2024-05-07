@@ -14,6 +14,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { decodeJwt } from "jose";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -167,4 +168,9 @@ export async function refreshAccessTokenInServer() {
     domain: COOKIE_DOMAIN,
     secure: IS_SECURE_COOKIE,
   });
+}
+
+export async function getUserIdFromAccessToken(accessToken: string) {
+  const jwtClaims = decodeJwt(accessToken);
+  return jwtClaims.user_id;
 }
