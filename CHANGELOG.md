@@ -1,3 +1,16 @@
+# [1.27.0](https://github.com/skyscope-app/skyscope-web/compare/v1.26.0...v1.27.0) (2024-05-10)
+
+
+### Bug Fixes
+
+* **styles:** Mapbox logo under footer ([800b0b9](https://github.com/skyscope-app/skyscope-web/commit/800b0b9dad417dde92bcede91d6d3db4d820f8f6))
+
+
+### Features
+
+* **deploy:** Update build version ([bfe99ce](https://github.com/skyscope-app/skyscope-web/commit/bfe99ce9bf38b8dc0c93676a989f0475f6fb32a3))
+* **flightTrack:** WIP Show flight track ([bcb4156](https://github.com/skyscope-app/skyscope-web/commit/bcb41569f68b4065554b343dcaae305e18264d52))
+
 # [1.26.0](https://github.com/skyscope-app/skyscope-web/compare/v1.25.0...v1.26.0) (2024-05-07)
 
 
