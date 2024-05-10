@@ -1,7 +1,6 @@
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
 import { TrackPosition } from "@/types/live-flights";
 import { GeoJsonLayer } from "deck.gl";
-import type { Feature, Geometry } from "geojson";
 import { hexToRGBAArray } from "../utils";
 //@ts-expect-error
 import { lineString } from "@turf/helpers";
@@ -25,14 +24,10 @@ export const getSelectedFlightPathLayer = () => {
   return new GeoJsonLayer({
     id: "GeoJsonLayer",
     data: !isEmpty && getTrackDataInGeoJson(flightTracks),
-
     stroked: true,
     pickable: false,
     pointType: "circle",
-
-    getLineColor: (f: Feature<Geometry>) => {
-      return hexToRGBAArray("#fff", 175);
-    },
+    getLineColor: (f) => hexToRGBAArray("#fff", 175),
     getLineWidth: 2,
     lineWidthUnits: "pixels",
   });
