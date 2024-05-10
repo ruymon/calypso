@@ -1,3 +1,11 @@
+# [1.28.0](https://github.com/skyscope-app/skyscope-web/compare/v1.27.1...v1.28.0) (2024-05-10)
+
+
+### Features
+
+* **deploy:** Update build version ([0864a4e](https://github.com/skyscope-app/skyscope-web/commit/0864a4efe727e67c90764fe1b21a09ffff81ae4f))
+* **map:** Revamp map settings ([0c91f21](https://github.com/skyscope-app/skyscope-web/commit/0c91f21327d6e30227de8d7d3f1e46e8fc647dac))
+
 ## [1.27.1](https://github.com/skyscope-app/skyscope-web/compare/v1.27.0...v1.27.1) (2024-05-10)
 
 
