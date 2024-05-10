@@ -7,6 +7,7 @@ const en = {
     joinDiscord: "Join our discord",
     contactSupport: "Contact support",
     comingSoon: "Coming soon",
+    active: "Active",
   },
 
   auth: {
@@ -73,6 +74,83 @@ const en = {
     profile: {
       title: "Profile",
       subtitle: "Manage your account settings",
+    },
+  },
+
+  map: {
+    toolbar: {
+      baseMap: {
+        tooltip: {
+          title: "Base map",
+          description: "Switch between different base maps",
+        },
+        title: "Base map",
+        currentlyActive: "Active",
+        satellite: {
+          title: "Satellite",
+          description: "Earth details",
+        },
+        light: {
+          title: "Light",
+          description: "Minimalistic",
+        },
+        dark: {
+          title: "Dark",
+          description: "Night mode with airport diagrams",
+        },
+        theme: {
+          title: "Sync with theme",
+          description:
+            "Switch between light and dark based on your system settings",
+        },
+      },
+      networkLayers: {
+        tooltip: {
+          title: "Network layers",
+          description: "Toggle network layers visibility",
+        },
+        quickActions: {
+          title: "Quick actions",
+          ivao: {
+            title: "IVAO",
+            description: "Only show IVAO flights and ATCs",
+          },
+          vatsim: {
+            title: "VATSIM",
+            description: "Only show Vatsim flights and ATCs",
+          },
+          combineNetworks: {
+            title: "Combine networks",
+            description: "Show flights and ATCs from all networks",
+          },
+          hideAll: {
+            title: "Hide all",
+            description: "Hide all flights and ATC from all networks",
+          },
+        },
+        vatsimLayers: {
+          title: "Vatsim layers settings",
+          showFlights: {
+            title: "Show flights",
+            description: "Green planes on the map",
+          },
+          showAtcs: {
+            title: "Show ATCs",
+            description: "Active air traffic controllers on the network",
+          },
+        },
+        ivaoLayers: {
+          title: "IVAO layers settings",
+          showFlights: {
+            title: "Show flights",
+            description: "Blue planes on the map",
+          },
+          showAtcs: {
+            title: "Show ATCs",
+            description: "Active air traffic controllers on the network",
+          },
+        },
+      },
     },
   },
 

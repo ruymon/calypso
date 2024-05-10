@@ -12,9 +12,13 @@ import {
   zinc,
 } from "tailwindcss/colors";
 
-export const MAP_STYLES = {
+export type MapStyles = "light" | "dark" | "satellite";
+export const BASE_MAP_STYLES: {
+  [key in MapStyles]: string;
+} = {
   light: "mapbox://styles/mapbox/outdoors-v11", //"mapbox://styles/filipecordovil/cls2lggkh01u201qo68uvfbrb",
   dark: "mapbox://styles/filipecordovil/clrpc6xop006301o83famdf0h",
+  satellite: "mapbox://styles/mapbox/satellite-v9",
 };
 
 export const MAP_SPRITES = {

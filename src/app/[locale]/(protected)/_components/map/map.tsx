@@ -8,19 +8,19 @@ import {
 import { getNetworkATCs, getNetworkFlights } from "@/lib/flights";
 import {
   getAirportSummaryLayer,
+  getBaseMapUrl,
   getMapCursor,
-  getMapStyleBasedOnTheme,
   getNetworkATCsFacilitiesLabelLayer,
   getNetworkATCsPolygonLayer,
   getNetworkFlightsLayer,
   getSelectedFlightPathLayer,
   getTooltipContentBasedOnLayer,
 } from "@/lib/map";
+import { useBaseMapStore } from "@/stores/base-map-store";
 import { useMapLayersStore } from "@/stores/map-layers-store";
 import "@/styles/map.css";
 import { AirportSummary, AirportSummaryList } from "@/types/airports";
 import { LiveFlight } from "@/types/live-flights";
-import { Theme } from "@/types/themes";
 import { useQuery } from "@tanstack/react-query";
 import { DeckGL } from "deck.gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -28,7 +28,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { ReactNode, useCallback, useState } from "react";
 import BaseMap from "react-map-gl";
-import { MapLayerControls } from "./map-layer-controls";
+import { MapToolbar } from "./map-toolbar";
 
 interface MapProps {
   airportsSummary: AirportSummaryList | null;
@@ -51,6 +51,8 @@ export function Map({ airportsSummary, children }: MapProps) {
     isVatsimATCsLayerVisible,
     isAirportsLayerVisible,
   } = useMapLayersStore();
+
+  const { baseMap } = useBaseMapStore();
 
   const {
     data: vatsimFlightsData,
@@ -182,6 +184,7 @@ export function Map({ airportsSummary, children }: MapProps) {
       className="absolute inset-0 h-full w-full"
       onContextMenu={(event) => event.preventDefault()}
     >
+      <MapToolbar />
       <DeckGL
         pickingRadius={10}
         controller={true}
@@ -194,12 +197,11 @@ export function Map({ airportsSummary, children }: MapProps) {
         <BaseMap
           attributionControl={false}
           reuseMaps={true}
-          mapStyle={getMapStyleBasedOnTheme(theme as Theme)}
+          mapStyle={getBaseMapUrl(baseMap)}
           antialias={true}
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
         />
         {children}
-        <MapLayerControls />
       </DeckGL>
     </figure>
   );

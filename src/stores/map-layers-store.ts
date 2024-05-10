@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type MapLayersStore = {
+export interface MapLayersStore {
   isVatsimFlightsLayerVisible: boolean;
   setIsVatsimFlightsLayerVisible: (visible: boolean) => void;
   isIvaoFlightsLayerVisible: boolean;
@@ -11,7 +11,7 @@ export type MapLayersStore = {
   setIsIvaoATCsLayerVisible: (visible: boolean) => void;
   isAirportsLayerVisible: boolean;
   setIsAirportsLayerVisible: (visible: boolean) => void;
-};
+}
 
 export const useMapLayersStore = create<MapLayersStore>((set) => ({
   isVatsimFlightsLayerVisible: true,

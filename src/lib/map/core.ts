@@ -1,8 +1,16 @@
-import { MAP_STYLES } from "@/config/map";
+import { BASE_MAP_STYLES } from "@/config/map";
+import { BaseMap } from "@/stores/base-map-store";
 import { Theme } from "@/types/themes";
+import { useTheme } from "next-themes";
 
-export function getMapStyleBasedOnTheme(theme: Theme) {
-  return theme === "light" ? MAP_STYLES.light : MAP_STYLES.dark;
+export function getBaseMapUrl(baseMap: BaseMap): string {
+  const { resolvedTheme } = useTheme();
+
+  if (baseMap === "theme") {
+    return BASE_MAP_STYLES[resolvedTheme as Theme];
+  }
+
+  return BASE_MAP_STYLES[baseMap];
 }
 
 export function getMapCursor({

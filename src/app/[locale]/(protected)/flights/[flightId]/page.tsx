@@ -3,6 +3,7 @@ import { NetworkIcon } from "@/components/network-icon";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getFlightDetails } from "@/lib/flights";
 import { getScopedI18n } from "@/locales/server";
+import { Metadata, ResolvingMetadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { AircraftCard } from "./_components/aircraft-card";
@@ -22,6 +23,17 @@ const VerticalProfileChart = dynamic(
 interface FlightsDetailPageProps {
   params: {
     flightId: string;
+  };
+}
+
+export async function generateMetadata(
+  { params: { flightId } }: FlightsDetailPageProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const data = await getFlightDetails(flightId);
+
+  return {
+    title: data?.callsign,
   };
 }
 
