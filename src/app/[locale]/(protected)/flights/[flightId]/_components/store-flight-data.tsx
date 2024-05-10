@@ -14,29 +14,12 @@ export function StoreFlightData({ data }: StoreFlightDataProps) {
   if (!data) return null;
 
   useEffect(() => {
-    // const routeString = data.flightPlan?.route;
-    // const departureIcao = data.flightPlan?.departure?.icao;
-    // const arrivalIcao = data.flightPlan?.arrival?.icao;
-
-    // if (routeString && departureIcao && arrivalIcao) {
-    //   const fetchParsedRoute = async () => {
-    //     const routeStringWithDepartureAndArrival = `${departureIcao} ${routeString} ${arrivalIcao}`;
-    //     const parsedRoute = await getParsedRouted(
-    //       routeStringWithDepartureAndArrival,
-    //     );
-
-    //     setParsedRoute(parsedRoute);
-    //   };
-
-    //   fetchParsedRoute();
-    // }
-
-    // //cleanup
-    // return () => {
-    //   setParsedRoute(null);
-    // };
-
     setTracks(data.tracks);
+
+    // Clean up the tracks when the component unmounts
+    return () => {
+      setTracks([]);
+    };
   }, [data]);
 
   return null;

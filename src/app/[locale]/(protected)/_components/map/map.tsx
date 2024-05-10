@@ -13,6 +13,7 @@ import {
   getNetworkATCsFacilitiesLabelLayer,
   getNetworkATCsPolygonLayer,
   getNetworkFlightsLayer,
+  getSelectedFlightPathLayer,
   getTooltipContentBasedOnLayer,
 } from "@/lib/map";
 import { useMapLayersStore } from "@/stores/map-layers-store";
@@ -25,7 +26,7 @@ import { DeckGL } from "deck.gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import { ReactNode, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 import BaseMap from "react-map-gl";
 import { MapLayerControls } from "./map-layer-controls";
 
@@ -39,9 +40,9 @@ export function Map({ airportsSummary, children }: MapProps) {
   const [mapViewState, setMapViewState] = useState(MAP_INITIAL_VIEW_STATE);
   const router = useRouter();
 
-  const handleViewStateChange = ({ viewState }: any) => {
+  const handleViewStateChange = useCallback(({ viewState }: any) => {
     setMapViewState(viewState);
-  };
+  }, []);
 
   const {
     isVatsimFlightsLayerVisible,
@@ -109,14 +110,6 @@ export function Map({ airportsSummary, children }: MapProps) {
   });
 
   const layers = [
-    // new PathLayer({
-    //   id: "flight-path-layer",
-    //   data: tracks ?? undefined,
-    //   getColor: (d) => hexToRGBAArray("#FF0000"),
-    //   getPath: (d: TrackPosition) => [d.lat, d.lng],
-    //   getWidth: 2,
-    //   widthUnits: "pixels",
-    // }),
     getNetworkATCsPolygonLayer({
       data: vatsimAtcsData ?? [],
       network: "vatsim",
@@ -131,6 +124,7 @@ export function Map({ airportsSummary, children }: MapProps) {
         isVisible: isIvaoATCsLayerVisible,
       },
     }),
+    getSelectedFlightPathLayer(),
     getNetworkFlightsLayer({
       data: vatsimFlightsData ?? [],
       network: "vatsim",

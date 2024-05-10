@@ -5,6 +5,7 @@ import { getFlightDetails } from "@/lib/flights";
 import { LiveFlightDetail } from "@/types/live-flights";
 import { useQuery } from "@tanstack/react-query";
 import { Heading } from "./heading";
+import { StoreFlightData } from "./store-flight-data";
 import { Transponder } from "./transponder";
 
 interface FlightTelemetryProps {
@@ -23,7 +24,7 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
 
   return (
     <>
-      {/* <StoreFlightData data={data} /> */}
+      <StoreFlightData data={data} />
       <div className="grid grid-cols-4 items-center gap-4 rounded-md border bg-background p-2">
         <div className="flex flex-col items-center">
           <span className="font-semibold text-accent-foreground">
