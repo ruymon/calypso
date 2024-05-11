@@ -1,3 +1,10 @@
+## [1.30.1](https://github.com/skyscope-app/skyscope-web/compare/v1.30.0...v1.30.1) (2024-05-11)
+
+
+### Bug Fixes
+
+* **types:** Typescript going nuts ([9b1a045](https://github.com/skyscope-app/skyscope-web/commit/9b1a045fb10592dc7164489e331593d13521f2fd))
+
 # [1.30.0](https://github.com/skyscope-app/skyscope-web/compare/v1.29.0...v1.30.0) (2024-05-11)
 
 
