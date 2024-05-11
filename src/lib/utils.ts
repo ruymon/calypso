@@ -1,4 +1,5 @@
 import { EMERGENCY_TRANSPONDER_CODES } from "@/constants/transponder";
+import { Network } from "@/types/networks";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -69,4 +70,22 @@ export function guaranteeFirstLetterCapitalizedInEveryWord(str: string) {
   });
 
   return capitalizedWords.join(" ");
+}
+
+export function getIvaoProfileUrl(vid: number): string {
+  return `https://ivao.aero/Member.aspx?ID=${vid}`;
+}
+
+export function getVatsimProfileUrl(cid: number): string {
+  return `https://stats.vatsim.net/stats/${cid}`;
+}
+
+export function getPilotNetworkProfileUrl(
+  id: number,
+  network: Network,
+): string {
+  if (network === "ivao") {
+    return getIvaoProfileUrl(id);
+  }
+  return getVatsimProfileUrl(id);
 }
