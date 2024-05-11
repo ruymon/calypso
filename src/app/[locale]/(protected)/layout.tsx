@@ -1,8 +1,8 @@
 import { ReactNode, Suspense } from "react";
-import { CommandDialogDemo } from "./_components/command-bar";
 import { MapContainer } from "./_components/map/map-container";
 import { MobileSidebar } from "./_components/mobile-sidebar";
 import { Sidebar } from "./_components/sidebar";
+import { Spotlight } from "./_components/spotlight";
 
 interface AppRootLayoutProps {
   children: ReactNode;
@@ -17,7 +17,7 @@ export default function AppRootLayout({ children }: AppRootLayoutProps) {
         <MobileSidebar />
       </div>
 
-      <CommandDialogDemo />
+      <Spotlight />
 
       <Suspense fallback={null}>
         <MapContainer />

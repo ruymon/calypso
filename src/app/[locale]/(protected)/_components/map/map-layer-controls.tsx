@@ -22,6 +22,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useScopedI18n } from "@/locales/client";
+import { useBaseMapStore } from "@/stores/base-map-store";
 import { useMapLayersStore } from "@/stores/map-layers-store";
 
 interface MapLayerControlsProps {}
@@ -38,6 +39,8 @@ export function MapLayerControls({}: MapLayerControlsProps) {
     isVatsimATCsLayerVisible,
     setIsVatsimATCsLayerVisible,
   } = useMapLayersStore();
+
+  const { setBaseMap, baseMap } = useBaseMapStore();
 
   const handleIvaoPreset = () => {
     setIsVatsimFlightsLayerVisible(false);
