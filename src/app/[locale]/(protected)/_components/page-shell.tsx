@@ -59,7 +59,7 @@ export function PageShell({
   return (
     <div
       className={cn(
-        "z-10 flex h-full w-full flex-col overflow-y-auto bg-background",
+        "z-20 flex h-full w-full flex-col overflow-y-auto bg-background",
         widthClassNames[width],
         className,
       )}
