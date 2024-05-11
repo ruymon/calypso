@@ -1,3 +1,17 @@
+# [1.29.0](https://github.com/skyscope-app/skyscope-web/compare/v1.28.0...v1.29.0) (2024-05-11)
+
+
+### Bug Fixes
+
+* **remove:** Delete git keep ([af75afe](https://github.com/skyscope-app/skyscope-web/commit/af75afeef3bbe730b15d61f10a25086ad93ab11d))
+* **zIndex:** Fix map toolbar zindex ([e3731dc](https://github.com/skyscope-app/skyscope-web/commit/e3731dc160ce1bcd41bf75eea18d5f1dab4ff9dd))
+
+
+### Features
+
+* **deploy:** New version ([eca3e6b](https://github.com/skyscope-app/skyscope-web/commit/eca3e6b38fd6047f2167fee3ffc1e9803400d2dc))
+* **spotlight:** initial version ([426a096](https://github.com/skyscope-app/skyscope-web/commit/426a096f98fd5bb9bbadc3fb9b3634d673643c46))
+
 # [1.28.0](https://github.com/skyscope-app/skyscope-web/compare/v1.27.1...v1.28.0) (2024-05-10)
 
 
