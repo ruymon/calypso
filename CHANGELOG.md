@@ -1,3 +1,12 @@
+# [1.30.0](https://github.com/skyscope-app/skyscope-web/compare/v1.29.0...v1.30.0) (2024-05-11)
+
+
+### Features
+
+* **crewCard:** Add link to profile ([67d694e](https://github.com/skyscope-app/skyscope-web/commit/67d694e420f6e62340fbc2a938e580dd25b834d7))
+* **deploy:** Change build version ([ca3c811](https://github.com/skyscope-app/skyscope-web/commit/ca3c81119836fea1a06e98fa3a1721d858cbcd92))
+* **map:** Add alternate path ([358ee52](https://github.com/skyscope-app/skyscope-web/commit/358ee52edff97528127d522f672459bb3304460d))
+
 # [1.29.0](https://github.com/skyscope-app/skyscope-web/compare/v1.28.0...v1.29.0) (2024-05-11)
 
 
