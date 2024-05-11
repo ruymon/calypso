@@ -9,7 +9,7 @@ import { useMemo } from "react";
 import { amber, teal } from "tailwindcss/colors";
 
 export const getSelectedFlightPathLayer = () => {
-  const { tracks, arrival, alternate, alternate2 } = useSelectedFlightStore();
+  const { tracks, arrival, alternate } = useSelectedFlightStore();
 
   const flightTracks = useMemo(() => {
     return tracks;
