@@ -1,6 +1,6 @@
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
 import { TrackPosition } from "@/types/live-flights";
-import { PathStyleExtension } from "@deck.gl/extensions";
+import { PathStyleExtension as BasePathStyleExtension } from "@deck.gl/extensions";
 import { GeoJsonLayer } from "deck.gl";
 import { hexToRGBAArray } from "../utils";
 //@ts-expect-error
@@ -15,11 +15,12 @@ export const getSelectedFlightPathLayer = () => {
     return tracks;
   }, [tracks]);
 
-  const getTrackDataInGeoJson = (tracks: TrackPosition[]) => {
-    const trackPoints = flightTracks.map((track) => [track.lat, track.lng]);
-    const currentPoint = [tracks[0]!.lat, tracks[0]!.lng];
-    const arrivalPoint = [arrival?.lng, arrival?.lat];
-    const alternatePoint = [alternate?.lng, alternate?.lat];
+  const getTrackDataInGeoJson = (trackData: TrackPosition[]) => {
+    const trackPoints = trackData.map((track) => [track.lat, track.lng]);
+    const currentPoint = [trackData[0]?.lat, trackData[0]?.lng];
+
+    const arrivalPoint = arrival && [arrival?.lng, arrival?.lat];
+    const alternatePoint = alternate && [alternate?.lng, alternate?.lat];
 
     const flightTrack = lineString(trackPoints, {
       dimmed: false,
@@ -28,22 +29,24 @@ export const getSelectedFlightPathLayer = () => {
       color: teal[500],
     });
 
-    const directPathToDestination = lineString([currentPoint, arrivalPoint], {
-      dimmed: true,
-      width: 2,
-      dashArray: [8, 8],
-      color: teal[500],
-    });
+    const directPathToDestination =
+      arrivalPoint &&
+      lineString([currentPoint, arrivalPoint], {
+        dimmed: true,
+        width: 2,
+        dashArray: [8, 8],
+        color: teal[500],
+      });
 
-    const directPathFromDestinationToAlternate = lineString(
-      [arrivalPoint, alternatePoint],
-      {
+    const directPathFromDestinationToAlternate =
+      arrivalPoint &&
+      alternatePoint &&
+      lineString([arrivalPoint, alternatePoint], {
         dimmed: true,
         width: 2,
         dashArray: [8, 8],
         color: amber[500],
-      },
-    );
+      });
 
     return featureCollection([
       flightTrack,
@@ -52,11 +55,11 @@ export const getSelectedFlightPathLayer = () => {
     ]);
   };
 
-  const isEmpty = flightTracks.length === 0;
+  const isTrackCompatible = flightTracks.length > 2;
 
   return new GeoJsonLayer({
     id: "GeoJsonLayer",
-    data: !isEmpty && getTrackDataInGeoJson(flightTracks),
+    data: isTrackCompatible ? getTrackDataInGeoJson(flightTracks) : null,
     stroked: true,
     pickable: false,
     pointType: "circle",
@@ -68,7 +71,7 @@ export const getSelectedFlightPathLayer = () => {
     getDashArray: (f: any) => f.properties.dashArray,
     dashJustified: true,
     dashGapPickable: true,
-    extensions: [new PathStyleExtension({ dash: true })],
+    extensions: [new BasePathStyleExtension({ dash: true })],
     lineWidthUnits: "pixels",
   });
 };
