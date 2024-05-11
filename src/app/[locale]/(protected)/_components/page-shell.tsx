@@ -2,7 +2,7 @@
 
 import {
   PiLinkChainSlantStroke,
-  PiSidebarLeftCloseStroke,
+  PiMultipleCrossCancelDefaultStroke,
 } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -79,7 +79,7 @@ export function PageShell({
               href={closeHref}
               className="rounded-sm p-2 transition-all hover:bg-muted hover:text-accent-foreground"
             >
-              <PiSidebarLeftCloseStroke className="h-3.5 w-3.5" />
+              <PiMultipleCrossCancelDefaultStroke className="h-3.5 w-3.5" />
             </Link>
           </nav>
         </header>

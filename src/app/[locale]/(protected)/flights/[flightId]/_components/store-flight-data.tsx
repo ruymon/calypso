@@ -9,7 +9,8 @@ interface StoreFlightDataProps {
 }
 
 export function StoreFlightData({ data }: StoreFlightDataProps) {
-  const { setTracks, setParsedRoute } = useSelectedFlightStore();
+  const { setTracks, setDeparture, setArrival, setAlternate, setAlternate2 } =
+    useSelectedFlightStore();
 
   if (!data) return null;
 
@@ -21,6 +22,21 @@ export function StoreFlightData({ data }: StoreFlightDataProps) {
       setTracks([]);
     };
   }, [data]);
+
+  useEffect(() => {
+    setDeparture(data.flightPlan?.departure || null);
+    setArrival(data.flightPlan?.arrival || null);
+    setAlternate(data.flightPlan?.alternate || null);
+    setAlternate2(data.flightPlan?.alternate2 || null);
+
+    // Clean up the tracks when the component unmounts
+    return () => {
+      setDeparture(null);
+      setArrival(null);
+      setAlternate(null);
+      setAlternate2(null);
+    };
+  }, []);
 
   return null;
 }
