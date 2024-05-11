@@ -1,3 +1,11 @@
+## [1.30.2](https://github.com/skyscope-app/skyscope-web/compare/v1.30.1...v1.30.2) (2024-05-11)
+
+
+### Bug Fixes
+
+* **deploy:** Version ([771d846](https://github.com/skyscope-app/skyscope-web/commit/771d846cb103160455159f534aecdc80efeb7d1c))
+* **trail:** Empty state ([175731d](https://github.com/skyscope-app/skyscope-web/commit/175731dbc968b61dfd184ed719a8efca6503e8b7))
+
 ## [1.30.1](https://github.com/skyscope-app/skyscope-web/compare/v1.30.0...v1.30.1) (2024-05-11)
 
 
