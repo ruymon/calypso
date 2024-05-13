@@ -1,3 +1,10 @@
+## [1.31.2](https://github.com/skyscope-app/skyscope-web/compare/v1.31.1...v1.31.2) (2024-05-13)
+
+
+### Bug Fixes
+
+* **i18n:** variable name ([39c2912](https://github.com/skyscope-app/skyscope-web/commit/39c291262a4181ee5eaea722b7c7ef3e9fbfdc0f))
+
 ## [1.31.1](https://github.com/skyscope-app/skyscope-web/compare/v1.31.0...v1.31.1) (2024-05-13)
 
 
