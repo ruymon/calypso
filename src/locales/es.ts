@@ -1,9 +1,9 @@
 import { siteConfig } from "@/config/site";
 const i18nKeys = {
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
+    open: "Abrir",
+    close: "Cerrar",
+    joinDiscord: "Únete a nuestro Discord",
     contactSupport: "Contact support",
     comingSoon: "Coming soon",
     active: "Active"
