@@ -1,11 +1,12 @@
 import { createI18nMiddleware } from "next-international/middleware";
 import { NextRequest, NextResponse } from "next/server";
+import { DEFAULT_LOCALE, LOCALES } from "./config/internationalization";
 import { COOKIE_PREFIX } from "./constants/cookies";
 import { refreshAccessTokenInMiddleware } from "./lib/auth";
 
 const I18nMiddleware = createI18nMiddleware({
-  locales: ["en"],
-  defaultLocale: "en",
+  locales: LOCALES,
+  defaultLocale: DEFAULT_LOCALE,
   urlMappingStrategy: "rewrite",
 });
 
