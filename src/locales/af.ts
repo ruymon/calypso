@@ -1,24 +1,24 @@
 import { siteConfig } from "@/config/site";
 export default ({
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
-    comingSoon: "Coming soon",
-    active: "Active"
+    open: "Maak oop",
+    close: "Maak toe",
+    joinDiscord: "Sluit aan by ons Discord groep",
+    contactSupport: "Kontak hulp",
+    comingSoon: "Dit kom binnekort",
+    active: "Aktief"
   },
   auth: {
     login: {
-      title: "Welcome back!",
-      subtitle: "Log in to your account to continue.",
-      email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
-      noAccount: "No account?",
-      join: "Join now",
-      loginError: "Oh no! Something went wrong.",
+      title: "Welkom terug!",
+      subtitle: "Teken in by jou profiel aan voort te gaan.",
+      email: "E-pos",
+      password: "Wagwoord",
+      signIn: "Teken in",
+      forgotPassword: "Wagwoord vergeet?",
+      noAccount: "Geen profiel nie?",
+      join: "Sluit nou aan",
+      loginError: "Agge nee! Iets het verkeerd gegaan.",
       loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
     },
     join: {
@@ -27,7 +27,7 @@ export default ({
     forgotPassword: {
       title: "Forgot your password?",
       subtitle: "Enter your email to reset your password.",
-      email: "Email",
+      email: "E-pos",
       sendEmail: "Send recovery email",
       backToLogin: "Remember your password?",
       resetError: "An error occurred while trying to reset your password.",
@@ -36,12 +36,12 @@ export default ({
       resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
     },
     supportCard: {
-      title: "Need help?"
+      title: "Kort jy hulp?"
     }
   },
   sidebar: {
     map: {
-      title: "World map",
+      title: "Wêreld kaart",
       subtitle: "Live network connections"
     },
     events: {
@@ -49,15 +49,15 @@ export default ({
       subtitle: "See current and upcoming events"
     },
     friends: {
-      title: "Friends",
-      subtitle: "Manage your friends list"
+      title: "Vriende",
+      subtitle: "Bestuur jou vriendelys"
     },
     feedback: {
-      title: "Feedback",
-      subtitle: "Help us improve our service"
+      title: "Terugvoer",
+      subtitle: "Help ons om ons dienste te verbeter"
     },
     help: {
-      title: "Support",
+      title: "Ondersteun ons",
       subtitle: "Get help with the app"
     },
     changelog: {
@@ -65,7 +65,7 @@ export default ({
       subtitle: "See what's new in the app"
     },
     profile: {
-      title: "Profile",
+      title: "Profiel",
       subtitle: "Manage your account settings"
     },
     themeSwitcher: {
@@ -81,17 +81,17 @@ export default ({
           description: "Switch between different base maps"
         },
         title: "Base map",
-        currentlyActive: "Active",
+        currentlyActive: "Aktief",
         satellite: {
           title: "Satellite",
           description: "Earth details"
         },
         light: {
-          title: "Light",
-          description: "Minimalistic"
+          title: "Lig",
+          description: "Minimaal"
         },
         dark: {
-          title: "Dark",
+          title: "Donker",
           description: "Night mode with airport diagrams"
         },
         theme: {
@@ -105,17 +105,17 @@ export default ({
           description: "Toggle network layers visibility"
         },
         quickActions: {
-          title: "Quick actions",
+          title: "Vinnige aksies",
           ivao: {
             title: "IVAO",
-            description: "Only show IVAO flights and ATCs"
+            description: "Wys slegs IVAO vlugte en ATCs"
           },
           vatsim: {
             title: "VATSIM",
-            description: "Only show Vatsim flights and ATCs"
+            description: "Wys slegs Vatsim vlugte en ATCs"
           },
           combineNetworks: {
-            title: "Combine networks",
+            title: "Kombineer beide netwerke",
             description: "Show flights and ATCs from all networks"
           },
           hideAll: {
@@ -126,11 +126,11 @@ export default ({
         vatsimLayers: {
           title: "Vatsim layers settings",
           showFlights: {
-            title: "Show flights",
-            description: "Green planes on the map"
+            title: "Wys vlugte",
+            description: "Groen vliegtuie op die kaart"
           },
           showAtcs: {
-            title: "Show ATCs",
+            title: "Wys ATCs",
             description: "Active air traffic controllers on the network"
           }
         },
@@ -154,11 +154,11 @@ export default ({
         description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
       },
       upToDateCycle: {
-        title: "Your AIRAC cycle is up to date",
-        description: "This cycle will expire in {distance}."
+        title: "Jou AIRAC siklus is op datum",
+        description: "Hierdie siklus sal verval in {distance}."
       },
       unknownCycle: {
-        title: "Unknown AIRAC cycle",
+        title: "Onbekende AIRAC siklus",
         description: "Unable to fetch the current cycle."
       }
     }
@@ -182,12 +182,12 @@ export default ({
         emptyState: "Not set"
       },
       avatarCard: {
-        title: "Profile picture",
+        title: "Profiel foto",
         subtitle: "Keeping a profile picture helps others recognize you."
       },
       dangerZone: {
-        title: "Danger zone",
-        deleteAccount: "Delete your account",
+        title: "Gevaarlike area",
+        deleteAccount: "Verwyder jou rekening en profiel",
         deleteAccountDescription: "Should you decide to delete your account, you will lose access to all of your data. This action cannot be undone and the process may take up to 24 hours."
       }
     },
