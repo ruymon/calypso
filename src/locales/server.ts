@@ -22,6 +22,7 @@ export const { getI18n, getScopedI18n, getStaticParams, getCurrentLocale } =
     no: () => import("./no"), // Norwegian
     pl: () => import("./pl"), // Polish
     pt: () => import("./pt"), // Portuguese
+    "pt-BR": () => import("./pt-BR"), // Portuguese (Brazil)
     ro: () => import("./ro"), // Romanian
     ru: () => import("./ru"), // Russian
     sr: () => import("./sr"), // Serbian
