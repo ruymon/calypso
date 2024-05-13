@@ -1,18 +1,18 @@
 import { siteConfig } from "@/config/site";
-const i18nKeys = {
+export default ({
   common: {
-    open: "افتح",
-    close: "اغلق",
+    open: "Open",
+    close: "Close",
     joinDiscord: "Join our discord",
     contactSupport: "Contact support",
-    comingSoon: "قريباً",
+    comingSoon: "Coming soon",
     active: "Active"
   },
   auth: {
     login: {
-      title: "أهلاً و سهلاً!",
+      title: "Welcome back!",
       subtitle: "Log in to your account to continue.",
-      email: "بريد إلكتروني",
+      email: "Email",
       password: "Password",
       signIn: "Sign in",
       forgotPassword: "Forgot password?",
@@ -27,7 +27,7 @@ const i18nKeys = {
     forgotPassword: {
       title: "Forgot your password?",
       subtitle: "Enter your email to reset your password.",
-      email: "بريد إلكتروني",
+      email: "Email",
       sendEmail: "Send recovery email",
       backToLogin: "Remember your password?",
       resetError: "An error occurred while trying to reset your password.",
@@ -36,20 +36,20 @@ const i18nKeys = {
       resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
     },
     supportCard: {
-      title: "تحتاج مساعدة؟"
+      title: "Need help?"
     }
   },
   sidebar: {
     map: {
-      title: "خريطة العالم",
+      title: "World map",
       subtitle: "Live network connections"
     },
     events: {
-      title: "الأحداث",
+      title: "Events",
       subtitle: "See current and upcoming events"
     },
     friends: {
-      title: "أصدقاء",
+      title: "Friends",
       subtitle: "Manage your friends list"
     },
     feedback: {
@@ -57,7 +57,7 @@ const i18nKeys = {
       subtitle: "Help us improve our service"
     },
     help: {
-      title: "مساعدة",
+      title: "Support",
       subtitle: "Get help with the app"
     },
     changelog: {
@@ -67,6 +67,10 @@ const i18nKeys = {
     profile: {
       title: "Profile",
       subtitle: "Manage your account settings"
+    },
+    themeSwitcher: {
+      title: "Theme switcher",
+      subtitle: "Toggle between light and dark mode"
     }
   },
   map: {
@@ -87,7 +91,7 @@ const i18nKeys = {
           description: "Minimalistic"
         },
         dark: {
-          title: "ظلام",
+          title: "Dark",
           description: "Night mode with airport diagrams"
         },
         theme: {
@@ -142,9 +146,29 @@ const i18nKeys = {
           }
         }
       }
+    },
+    airacCycleBadge: {
+      airacCycle: "AIRAC cycle",
+      outdatedCycle: {
+        title: "Outdated AIRAC cycle",
+        description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
+      },
+      upToDateCycle: {
+        title: "Your AIRAC cycle is up to date",
+        description: "This cycle will expire in {distance}."
+      },
+      unknownCycle: {
+        title: "Unknown AIRAC cycle",
+        description: "Unable to fetch the current cycle."
+      }
     }
   },
   settings: {
+    sidebar: {
+      title: "Settings",
+      profile: "Profile",
+      integrations: "Integrations"
+    },
     profile: {
       title: "Profile",
       subtitle: "Manage and update your profile settings",
@@ -153,7 +177,7 @@ const i18nKeys = {
         cannotChange: "You cannot change your email address"
       },
       nameCard: {
-        title: "اسم",
+        title: "Name",
         cannotChange: "You cannot change your name",
         emptyState: "Not set"
       },
@@ -202,7 +226,7 @@ const i18nKeys = {
   onboarding: {
     welcome: {
       hat: "Getting started",
-      title: `أهلاً و سهلاً بك في ${siteConfig.name}!`,
+      title: `Welcome to ${siteConfig.name}!`,
       subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
       getStarted: "Get started"
     },
@@ -295,5 +319,4 @@ const i18nKeys = {
       }
     }
   }
-};
-export default i18nKeys;
+} as const);
