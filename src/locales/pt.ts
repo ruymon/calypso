@@ -1,4 +1,4 @@
-import { siteConfig } from "";
+import { siteConfig } from "@/config/site";
 const i18nKeys = {
   common: {
     open: "Abrir",
