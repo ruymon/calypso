@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "";
 const i18nKeys = {
   common: {
     open: "Abrir",
@@ -92,7 +92,7 @@ const i18nKeys = {
         },
         theme: {
           title: "Sincronizar com o tema",
-          description: "Utilizar mapa base conforme o tema da interface"
+          description: "Utilizar mapa base conforme o tema da ‘interface’"
         }
       },
       networkLayers: {
