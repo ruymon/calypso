@@ -146,6 +146,21 @@ export default {
           }
         }
       }
+    },
+    airacCycleBadge: {
+      airacCycle: "AIRAC cycle",
+      outdatedCycle: {
+        title: "Outdated AIRAC cycle",
+        description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
+      },
+      upToDateCycle: {
+        title: "Your AIRAC cycle is up to date",
+        description: "This cycle will expire in {distance}."
+      },
+      unknownCycle: {
+        title: "Unknown AIRAC cycle",
+        description: "Unable to fetch the current cycle."
+      }
     }
   },
   settings: {
