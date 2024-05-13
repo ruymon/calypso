@@ -22,7 +22,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useScopedI18n } from "@/locales/client";
-import { useBaseMapStore } from "@/stores/base-map-store";
 import { useMapLayersStore } from "@/stores/map-layers-store";
 
 interface MapLayerControlsProps {}
@@ -40,7 +39,6 @@ export function MapLayerControls({}: MapLayerControlsProps) {
     setIsVatsimATCsLayerVisible,
   } = useMapLayersStore();
 
-  const { setBaseMap, baseMap } = useBaseMapStore();
 
   const handleIvaoPreset = () => {
     setIsVatsimFlightsLayerVisible(false);
@@ -257,9 +255,11 @@ export function MapLayerControls({}: MapLayerControlsProps) {
         className="flex flex-col rounded-sm px-2"
         sideOffset={12}
       >
-        <span className="text-xs font-semibold">Layers</span>
+        <span className="text-xs font-semibold">
+          {t("tooltip.title")}
+        </span>
         <span className="text-2xs text-muted-foreground">
-          Show or hide map elements
+          {t("tooltip.description")}
         </span>
       </TooltipContent>
     </Tooltip>
