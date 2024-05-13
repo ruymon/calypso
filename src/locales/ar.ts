@@ -1,18 +1,18 @@
 import { siteConfig } from "@/config/site";
 const i18nKeys = {
   common: {
-    open: "Open",
-    close: "Close",
+    open: "افتح",
+    close: "اغلق",
     joinDiscord: "Join our discord",
     contactSupport: "Contact support",
-    comingSoon: "Coming soon",
+    comingSoon: "قريباً",
     active: "Active"
   },
   auth: {
     login: {
-      title: "Welcome back!",
+      title: "أهلاً و سهلاً!",
       subtitle: "Log in to your account to continue.",
-      email: "Email",
+      email: "بريد إلكتروني",
       password: "Password",
       signIn: "Sign in",
       forgotPassword: "Forgot password?",
@@ -27,7 +27,7 @@ const i18nKeys = {
     forgotPassword: {
       title: "Forgot your password?",
       subtitle: "Enter your email to reset your password.",
-      email: "Email",
+      email: "بريد إلكتروني",
       sendEmail: "Send recovery email",
       backToLogin: "Remember your password?",
       resetError: "An error occurred while trying to reset your password.",
@@ -36,20 +36,20 @@ const i18nKeys = {
       resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
     },
     supportCard: {
-      title: "Need help?"
+      title: "تحتاج مساعدة؟"
     }
   },
   sidebar: {
     map: {
-      title: "World map",
+      title: "خريطة العالم",
       subtitle: "Live network connections"
     },
     events: {
-      title: "Events",
+      title: "الأحداث",
       subtitle: "See current and upcoming events"
     },
     friends: {
-      title: "Friends",
+      title: "أصدقاء",
       subtitle: "Manage your friends list"
     },
     feedback: {
@@ -57,7 +57,7 @@ const i18nKeys = {
       subtitle: "Help us improve our service"
     },
     help: {
-      title: "Support",
+      title: "مساعدة",
       subtitle: "Get help with the app"
     },
     changelog: {
@@ -87,7 +87,7 @@ const i18nKeys = {
           description: "Minimalistic"
         },
         dark: {
-          title: "Dark",
+          title: "ظلام",
           description: "Night mode with airport diagrams"
         },
         theme: {
@@ -153,7 +153,7 @@ const i18nKeys = {
         cannotChange: "You cannot change your email address"
       },
       nameCard: {
-        title: "Name",
+        title: "اسم",
         cannotChange: "You cannot change your name",
         emptyState: "Not set"
       },
@@ -202,7 +202,7 @@ const i18nKeys = {
   onboarding: {
     welcome: {
       hat: "Getting started",
-      title: `Welcome to ${siteConfig.name}!`,
+      title: `أهلاً و سهلاً بك في ${siteConfig.name}!`,
       subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
       getStarted: "Get started"
     },
