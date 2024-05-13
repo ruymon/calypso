@@ -1,94 +1,94 @@
 import { siteConfig } from "@/config/site";
 const i18nKeys = {
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
-    comingSoon: "Coming soon",
-    active: "Active"
+    open: "Abrir",
+    close: "Fechar",
+    joinDiscord: "Entrar na comunidade do Discord",
+    contactSupport: "Suporte técnico",
+    comingSoon: "Em breve",
+    active: "Ativo"
   },
   auth: {
     login: {
-      title: "Welcome back!",
-      subtitle: "Log in to your account to continue.",
+      title: "Bem-vindo de volta!",
+      subtitle: "Entre com a sua conta para continuar.",
       email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
-      noAccount: "No account?",
-      join: "Join now",
-      loginError: "Oh no! Something went wrong.",
-      loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
+      password: "Senha",
+      signIn: "Entrar",
+      forgotPassword: "Esqueceu a sua senha?",
+      noAccount: "Não tem uma conta?",
+      join: "Criar conta",
+      loginError: "Catapimbas! Algo deu errado.",
+      loginErrorDescription: "Um erro inesperado ocorreu durante o login. Tente novamente mais tarde ou peça ajuda na nossa comunidade do Discord."
     },
     join: {
-      inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
+      inviteOnly: "Atualmente, somente é possível criar uma conta mediante a um convite para o programa de beta."
     },
     forgotPassword: {
-      title: "Forgot your password?",
-      subtitle: "Enter your email to reset your password.",
+      title: "Esqueceu a sua senha?",
+      subtitle: "Digite o seu email para recuperar a sua senha.",
       email: "Email",
-      sendEmail: "Send recovery email",
-      backToLogin: "Remember your password?",
-      resetError: "An error occurred while trying to reset your password.",
-      resetErrorDescription: "Please try again later or contact support on Discord.",
-      resetEmailSent: "Password reset email sent!",
-      resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
+      sendEmail: "Enviar recuperação de senha",
+      backToLogin: "Lembrou a sua senha?",
+      resetError: "Um erro ocorreu ao tentar recuperar a sua senha.",
+      resetErrorDescription: "Tente novamente mais tarde ou peça ajuda no nosso Discord.",
+      resetEmailSent: "Email de recuperação de senha foi enviado!",
+      resetEmailSentIfAccountIsValid: "Se os dados digitados estiverem associados com uma conta, você receberá um email com instruções para recuperar a sua senha."
     },
     supportCard: {
-      title: "Need help?"
+      title: "Precisa de ajuda?"
     }
   },
   sidebar: {
     map: {
-      title: "World map",
-      subtitle: "Live network connections"
+      title: "Mapa",
+      subtitle: "Conexões ativas nas redes"
     },
     events: {
-      title: "Events",
-      subtitle: "See current and upcoming events"
+      title: "Eventos",
+      subtitle: "Detalhes dos próximos eventos"
     },
     friends: {
-      title: "Friends",
-      subtitle: "Manage your friends list"
+      title: "Amigos",
+      subtitle: "Gerenciar suas amizades"
     },
     feedback: {
       title: "Feedback",
-      subtitle: "Help us improve our service"
+      subtitle: "Ajude-nos a melhorar"
     },
     help: {
-      title: "Support",
-      subtitle: "Get help with the app"
+      title: "Suporte",
+      subtitle: "Peça ajuda para a comunidade"
     },
     changelog: {
       title: "Changelog",
-      subtitle: "See what's new in the app"
+      subtitle: "Confira as novidades"
     },
     profile: {
-      title: "Profile",
-      subtitle: "Manage your account settings"
+      title: "Perfil",
+      subtitle: "Detalhes da sua conta"
     }
   },
   map: {
     toolbar: {
       baseMap: {
         tooltip: {
-          title: "Base map",
-          description: "Switch between different base maps"
+          title: "Mapa base",
+          description: "Alternar entre os diferentes mapas base"
         },
-        title: "Base map",
-        currentlyActive: "Active",
+        title: "Mapa base",
+        currentlyActive: "Ativo",
         satellite: {
-          title: "Satellite",
-          description: "Earth details"
+          title: "Satélite",
+          description: "Detalhes do terreno"
         },
         light: {
-          title: "Light",
-          description: "Minimalistic"
+          title: "Claro",
+          description: "Minimalista"
         },
         dark: {
-          title: "Dark",
-          description: "Night mode with airport diagrams"
+          title: "Escuro",
+          description: "Modo noturno com diagramas de solo"
         },
         theme: {
           title: "Sync with theme",
@@ -196,87 +196,87 @@ const i18nKeys = {
       description: "The Virtual Air Traffic Simulation Network is an online platform that allows flight simulation enthusiasts to connect and fly together."
     },
     navigraph: {
-      description: "Provider of aeronautical data for the flight-sim community. "
+      description: "Provedor de dados aeronáuticos para a comunidade de entusiastas de aviação."
     }
   },
   onboarding: {
     welcome: {
-      hat: "Getting started",
-      title: `Welcome to ${siteConfig.name}!`,
-      subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
-      getStarted: "Get started"
+      hat: "Primeiros passos",
+      title: `Bem-vindo ao ${siteConfig.name}!`,
+      subtitle: "Estamos felizes de tê-lo a bordo. Vamos começar com algumas informações básicas.",
+      getStarted: "Começar"
     },
     integrations: {
-      hat: "Sync your details",
-      title: "Sync your details",
-      subtitle: "Connect your accounts to have a seamless experience.",
-      skip: "Continue without syncing"
+      hat: "Integrações",
+      title: "Sincronize serviços de terceiros",
+      subtitle: "Vincule as suas contas de outros serviços para ter uma melhor experiência.",
+      skip: "Continuar sem sincronizar"
     },
     finish: {
-      hat: "All set!",
-      title: "Let's get started?",
-      subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
-      getStarted: "Get started"
+      hat: "Tudo pronto!",
+      title: "Vamos começar?",
+      subtitle: `Tudo pronto! Clique no botão abaixo para começar a sua jornada no ${siteConfig.name}.`,
+      getStarted: "Começar"
     }
   },
   flightDetails: {
-    unknownAirline: "Unknown airline",
-    unknownCallsign: "Unknown callsign",
+    unknownAirline: "Companhia desconhecida",
+    unknownCallsign: "Indicativo de chamada desconhecido",
     routeDetails: {
-      title: "Route",
-      subtitle: "Detailed information about the aircraft's route.",
+      title: "Rota",
+      subtitle: "Detalhes da rota do voo.",
       airport: {
-        departure: "Departure",
-        arrival: "Arrival",
-        alternate: "Alternate",
-        alternate2: "Second alternate"
+        departure: "Partida",
+        arrival: "Chegada",
+        alternate: "Alternativo",
+        alternate2: "Alternativo secundário"
       }
     },
     aircraftDetails: {
-      title: "Aircraft details",
-      subtitle: "Detailed information about the aircraft.",
+      title: "Detalhes da aeronave",
+      subtitle: "Informações adicionais da aeronave.",
       aircraft: {
-        registration: "Registration",
+        registration: "Matrícula",
         transponder: "Transponder",
-        wakeTurbulence: "Wake turbulence",
-        photographer: "Photographer"
+        wakeTurbulence: "Esteira de turbulência",
+        photographer: "Fotógrafo"
       }
     },
     crewDetails: {
-      title: "Flight crew details",
-      subtitle: "Detailed information about the flight crew.",
+      title: "Detalhes da tripulação",
+      subtitle: "Informações adicionais da tripulação.",
       crew: {
-        pilotInCommand: "Pilot in command"
+        pilotInCommand: "Piloto em comando"
       }
     },
     analytics: {
-      title: "Analytics",
-      subtitle: "Data and statistics about the flight in real-time.",
+      title: "Análises",
+      subtitle: "Dados e estatísticas do voo em tempo real.",
       verticalPathChart: {
-        title: "Vertical path",
-        subtitle: "Altitude and vertical speed",
+        title: "Perfil vertical",
+        subtitle: "Altitude e velocidade vertical",
         altitude: "Altitude",
-        speed: "Ground speed"
+        speed: "Velocidade de solo"
       }
     },
     flightPlanDetails: {
-      title: "Flight plan details",
-      subtitle: "Detailed information about the flight plan.",
+      title: "Detalhes do plano de voo",
+      subtitle: "Informações completas do plano de voo.",
       viewTypes: {
-        simple: "Simple",
-        detailed: "Detailed"
+        simple: "Simples",
+        detailed: "Detalhada"
       },
-      flightRules: "Flight rules",
-      flightType: "Flight type",
-      route: "Route",
-      remarks: "Remarks",
-      icaoFplFormat: "ICAO FPL format"
+      flightRules: "Regra de voo",
+      flightType: "Tipo de voo",
+      route: "Rota",
+      remarks: "Observações",
+      icaoFplFormat: "Formato ICAO"
     },
     notFound: {
-      title: "Flight unavailable",
-      subtitle: "We couldn't find the flight you were looking for.",
+      title: "Voo indisponível",
+      subtitle: "Não conseguimos encontrar este voo.",
       troubleshooting: {
-        title: "Troubleshooting",
+        title: "Solução de problemas",
         subtitle: "Things you can do to possibly fix it. If this problem persists, please contact our support team.",
         steps: {
           verifyFlightExists: "Make sure the flight is currently flying in one of the supported networks",
