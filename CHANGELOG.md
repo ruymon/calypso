@@ -1,3 +1,15 @@
+# [1.32.0](https://github.com/skyscope-app/skyscope-web/compare/v1.31.2...v1.32.0) (2024-05-13)
+
+
+### Bug Fixes
+
+* **crowdin i18n:** setup files ([f0e3f1d](https://github.com/skyscope-app/skyscope-web/commit/f0e3f1d70b9c717c6729989d401d4730d9b67a82))
+
+
+### Features
+
+* **i18n:** Key files ([6c13e52](https://github.com/skyscope-app/skyscope-web/commit/6c13e526960654d2b32a0deac718cc7d79b5445b))
+
 ## [1.31.2](https://github.com/skyscope-app/skyscope-web/compare/v1.31.1...v1.31.2) (2024-05-13)
 
 
