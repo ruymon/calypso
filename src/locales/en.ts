@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site";
 
-const en = {
+const i18nKeys = {
   common: {
     open: "Open",
     close: "Close",
@@ -320,4 +320,4 @@ const en = {
   },
 };
 
-export default en;
+export default i18nKeys;
