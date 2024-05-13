@@ -1,4 +1,4 @@
-import { siteConfig } from "";
+import { siteConfig } from "@/config/site";
 export default ({
   common: {
     open: "Open",
