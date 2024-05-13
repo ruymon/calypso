@@ -1,3 +1,12 @@
+## [1.34.1](https://github.com/skyscope-app/skyscope-web/compare/v1.34.0...v1.34.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* **build:** Update build version ([2b0beac](https://github.com/skyscope-app/skyscope-web/commit/2b0beace24210f6388aa667f26d0d578c6c44fdf))
+* **i18n:** Brazilian portuguese ([cb6ed26](https://github.com/skyscope-app/skyscope-web/commit/cb6ed26d079365b6120a7d5b73013cb81f1a2709))
+* **i18n:** site config import ([17a1447](https://github.com/skyscope-app/skyscope-web/commit/17a14473256d242afd8c83d1ca3a1fca2a1863b1))
+
 # [1.34.0](https://github.com/skyscope-app/skyscope-web/compare/v1.33.0...v1.34.0) (2024-05-13)
 
 
