@@ -8,4 +8,5 @@ export const {
   useCurrentLocale,
 } = createI18nClient({
   en: () => import("./en"), // English
+  "pt-BR": () => import("./pt-BR"), // Portuguese (Brazil)
 });
