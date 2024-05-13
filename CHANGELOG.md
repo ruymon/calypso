@@ -1,3 +1,20 @@
+# [1.35.0](https://github.com/skyscope-app/skyscope-web/compare/v1.34.1...v1.35.0) (2024-05-13)
+
+
+### Bug Fixes
+
+* **i18n:** Add aproved translations ([12de1ee](https://github.com/skyscope-app/skyscope-web/commit/12de1eec8ed92ecfac2d1261944c5e13ea38569f))
+* **i18n:** Add settings key ([c4638b1](https://github.com/skyscope-app/skyscope-web/commit/c4638b1f96572d2636dad3b0d2fd9cbfb0a8d14c))
+* **i18n:** Add translation keys ([7a547d8](https://github.com/skyscope-app/skyscope-web/commit/7a547d8fad94861edb5406e7b1650921bd8f6214))
+* **i18n:** Layers tooltip text ([8f02e01](https://github.com/skyscope-app/skyscope-web/commit/8f02e01e31d4d5f41f4845d3bc44ac22376328ca))
+* **i18n:** Theme switcher text ([1a5bc50](https://github.com/skyscope-app/skyscope-web/commit/1a5bc502b5db0780dfd83695c3d116191d0ee04d))
+
+
+### Features
+
+* **i18n:** Portuguese ([79e0500](https://github.com/skyscope-app/skyscope-web/commit/79e05001b99ee5b2d63714f8b58881112425c3bc))
+* **i18n:** RTL ([52fa58d](https://github.com/skyscope-app/skyscope-web/commit/52fa58d778b49d77ac3ef434a7b8e585a1ca3bc0))
+
 ## [1.34.1](https://github.com/skyscope-app/skyscope-web/compare/v1.34.0...v1.34.1) (2024-05-13)
 
 
