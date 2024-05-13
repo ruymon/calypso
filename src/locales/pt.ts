@@ -1,31 +1,31 @@
 import { siteConfig } from "@/config/site";
 const en = {
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
-    comingSoon: "Coming soon",
-    active: "Active"
+    open: "Abrir",
+    close: "Fechar",
+    joinDiscord: "Entrar na comunidade do Discord",
+    contactSupport: "Suporte técnico",
+    comingSoon: "Em breve",
+    active: "Ativo"
   },
   auth: {
     login: {
-      title: "Welcome back!",
-      subtitle: "Log in to your account to continue.",
+      title: "Bem-vindo de volta!",
+      subtitle: "Entre com a sua conta para continuar.",
       email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
-      noAccount: "No account?",
-      join: "Join now",
-      loginError: "Oh no! Something went wrong.",
-      loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
+      password: "Senha",
+      signIn: "Entrar",
+      forgotPassword: "Esqueceu a senha?",
+      noAccount: "Sem conta?",
+      join: "Criar conta",
+      loginError: "Macacos me mordam! Algo deu errado.",
+      loginErrorDescription: "Um erro inesperado ocorreu durante a autenticação. Por favor, tente novamente mais tarde ou entre em contato com o suporte no Discord."
     },
     join: {
       inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
     },
     forgotPassword: {
-      title: "Forgot your password?",
+      title: "Esqueceu sua senha?",
       subtitle: "Enter your email to reset your password.",
       email: "Email",
       sendEmail: "Send recovery email",
