@@ -1,3 +1,11 @@
+# [1.31.0](https://github.com/skyscope-app/skyscope-web/compare/v1.30.2...v1.31.0) (2024-05-13)
+
+
+### Features
+
+* **deploy:** Update build version ([1ecf3fc](https://github.com/skyscope-app/skyscope-web/commit/1ecf3fc731e410f389630b3342f99bd581e6a7f7))
+* **events:** Events module core ([0543374](https://github.com/skyscope-app/skyscope-web/commit/054337466ecc5e6f037c68e030761dfd0bd73754))
+
 ## [1.30.2](https://github.com/skyscope-app/skyscope-web/compare/v1.30.1...v1.30.2) (2024-05-11)
 
 
