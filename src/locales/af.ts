@@ -4,7 +4,7 @@ export default ({
     open: "Maak oop",
     close: "Maak toe",
     joinDiscord: "Sluit aan by ons Discord groep",
-    contactSupport: "Kontak hulp",
+    contactSupport: "Kontak ons vir hulp",
     comingSoon: "Dit kom binnekort",
     active: "Aktief"
   },
@@ -57,7 +57,7 @@ export default ({
       subtitle: "Help ons om ons dienste te verbeter"
     },
     help: {
-      title: "Ondersteun ons",
+      title: "Hulp",
       subtitle: "Kry hulp met die toep"
     },
     changelog: {
@@ -66,7 +66,7 @@ export default ({
     },
     profile: {
       title: "Profiel",
-      subtitle: "Manage your account settings"
+      subtitle: "Bestuur jou profiel instellings"
     },
     themeSwitcher: {
       title: "Theme switcher",
@@ -101,7 +101,7 @@ export default ({
       },
       networkLayers: {
         tooltip: {
-          title: "Network layers",
+          title: "Netwerk lae",
           description: "Toggle network layers visibility"
         },
         quickActions: {
@@ -112,37 +112,37 @@ export default ({
           },
           vatsim: {
             title: "VATSIM",
-            description: "Wys slegs Vatsim vlugte en ATCs"
+            description: "Wys slegs VATSIM vlugte en ATCs"
           },
           combineNetworks: {
             title: "Kombineer beide netwerke",
-            description: "Show flights and ATCs from all networks"
+            description: "Wys alle vligte en ATCs van alle netwerke"
           },
           hideAll: {
-            title: "Hide all",
-            description: "Hide all flights and ATC from all networks"
+            title: "Steek alles weg",
+            description: "Steek alle vlugte en ATCs van alle netwerke weg"
           }
         },
         vatsimLayers: {
-          title: "Vatsim layers settings",
+          title: "Vatsim lae instellings",
           showFlights: {
             title: "Wys vlugte",
             description: "Groen vliegtuie op die kaart"
           },
           showAtcs: {
             title: "Wys ATCs",
-            description: "Active air traffic controllers on the network"
+            description: "Aktiewe lugverkeerbeheerders op die netwerk"
           }
         },
         ivaoLayers: {
-          title: "IVAO layers settings",
+          title: "IVAO lae instellings",
           showFlights: {
-            title: "Show flights",
-            description: "Blue planes on the map"
+            title: "Wys vlugte",
+            description: "Blou vliegtuie op die kaart"
           },
           showAtcs: {
             title: "Wys ATCs",
-            description: "Active air traffic controllers on the network"
+            description: "Aktiewe lugverkeerbeheerders op die netwerke"
           }
         }
       }
@@ -151,7 +151,7 @@ export default ({
       airacCycle: "AIRCAC siklus",
       outdatedCycle: {
         title: "Vervale AIRAC siklus",
-        description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
+        description: "Integreer 'n Navigraph profiel met 'n aktiewe subskrubsie om die nuutste siklus te kry."
       },
       upToDateCycle: {
         title: "Jou AIRAC siklus is op datum",
@@ -159,19 +159,19 @@ export default ({
       },
       unknownCycle: {
         title: "Onbekende AIRAC siklus",
-        description: "Unable to fetch the current cycle."
+        description: "Ongelukkig kan ons nie die huidige siklus kry nie."
       }
     }
   },
   settings: {
     sidebar: {
-      title: "Settings",
+      title: "Instellings",
       profile: "Profiel",
       integrations: "Intergrasies"
     },
     profile: {
       title: "Profiel",
-      subtitle: "Manage and update your profile settings",
+      subtitle: "Verander en dateer profielinstellings op",
       emailCard: {
         title: "E-pos adres",
         cannotChange: "Jy kan nie jou e-pos adres verander nie"
@@ -179,7 +179,7 @@ export default ({
       nameCard: {
         title: "Naam",
         cannotChange: "Jy kan nie jou naam verander nie",
-        emptyState: "Nie gestel of gekies nie"
+        emptyState: "Nie gestel nie of nie gekies nie"
       },
       avatarCard: {
         title: "Profiel foto",
@@ -237,33 +237,33 @@ export default ({
       skip: "Continue without syncing"
     },
     finish: {
-      hat: "All set!",
-      title: "Let's get started?",
+      hat: "Alles is reg!",
+      title: "Reg om te begin?",
       subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
-      getStarted: "Get started"
+      getStarted: "Kom ons begin"
     }
   },
   flightDetails: {
-    unknownAirline: "Unknown airline",
-    unknownCallsign: "Unknown callsign",
+    unknownAirline: "Onbekende lugredery",
+    unknownCallsign: "Onbekende roepsein",
     routeDetails: {
-      title: "Route",
+      title: "Roete",
       subtitle: "Detailed information about the aircraft's route.",
       airport: {
-        departure: "Departure",
-        arrival: "Arrival",
-        alternate: "Alternate",
-        alternate2: "Second alternate"
+        departure: "Vertrek",
+        arrival: "Aankoms",
+        alternate: "Alternatiewe",
+        alternate2: "Tweede alternatiewe"
       }
     },
     aircraftDetails: {
-      title: "Aircraft details",
+      title: "Vliegtuig besonderhede",
       subtitle: "Detailed information about the aircraft.",
       aircraft: {
-        registration: "Registration",
+        registration: "Registrasie",
         transponder: "Transponder",
         wakeTurbulence: "Wake turbulence",
-        photographer: "Photographer"
+        photographer: "Fotograaf"
       }
     },
     crewDetails: {
@@ -279,25 +279,25 @@ export default ({
       verticalPathChart: {
         title: "Vertical path",
         subtitle: "Altitude and vertical speed",
-        altitude: "Altitude",
-        speed: "Ground speed"
+        altitude: "Hoogte",
+        speed: "Grond spoed"
       }
     },
     flightPlanDetails: {
-      title: "Flight plan details",
+      title: "Vlugplan besonderhede",
       subtitle: "Detailed information about the flight plan.",
       viewTypes: {
-        simple: "Simple",
+        simple: "Maklike",
         detailed: "Detailed"
       },
       flightRules: "Flight rules",
-      flightType: "Flight type",
-      route: "Route",
+      flightType: "Vlug tipe",
+      route: "Roete",
       remarks: "Remarks",
       icaoFplFormat: "ICAO FPL format"
     },
     notFound: {
-      title: "Flight unavailable",
+      title: "Vlug onbeskikbaar",
       subtitle: "We couldn't find the flight you were looking for.",
       troubleshooting: {
         title: "Troubleshooting",
@@ -305,16 +305,16 @@ export default ({
         steps: {
           verifyFlightExists: "Make sure the flight is currently flying in one of the supported networks",
           refresh: "Refresh the page",
-          checkInternetConnection: "Check your internet connection",
-          checkLoginStatus: "Make sure you are logged in"
+          checkInternetConnection: "Kyk na jou internet konneksie",
+          checkLoginStatus: "Maak seker jy is ingeteken"
         }
       },
       systemLogs: {
         title: "System logs",
-        subtitle: "The following information might be useful for our support team.",
-        code: "Code",
-        flightId: "Flight id",
-        timestamp: "Timestamp",
+        subtitle: "Die volgende inligting mag dalk van waarde wees vir ons hulp span.",
+        code: "Kode",
+        flightId: "Vlug id",
+        timestamp: "Tydstempel",
         buildVersion: "Build version"
       }
     }
