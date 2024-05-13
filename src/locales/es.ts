@@ -1,9 +1,9 @@
 import { siteConfig } from "@/config/site";
-const i18nKeys = {
+export default ({
   common: {
-    open: "Abrir",
-    close: "Cerrar",
-    joinDiscord: "Únete a nuestro Discord",
+    open: "Open",
+    close: "Close",
+    joinDiscord: "Join our discord",
     contactSupport: "Contact support",
     comingSoon: "Coming soon",
     active: "Active"
@@ -67,6 +67,10 @@ const i18nKeys = {
     profile: {
       title: "Profile",
       subtitle: "Manage your account settings"
+    },
+    themeSwitcher: {
+      title: "Theme switcher",
+      subtitle: "Toggle between light and dark mode"
     }
   },
   map: {
@@ -142,9 +146,29 @@ const i18nKeys = {
           }
         }
       }
+    },
+    airacCycleBadge: {
+      airacCycle: "AIRAC cycle",
+      outdatedCycle: {
+        title: "Outdated AIRAC cycle",
+        description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
+      },
+      upToDateCycle: {
+        title: "Your AIRAC cycle is up to date",
+        description: "This cycle will expire in {distance}."
+      },
+      unknownCycle: {
+        title: "Unknown AIRAC cycle",
+        description: "Unable to fetch the current cycle."
+      }
     }
   },
   settings: {
+    sidebar: {
+      title: "Settings",
+      profile: "Profile",
+      integrations: "Integrations"
+    },
     profile: {
       title: "Profile",
       subtitle: "Manage and update your profile settings",
@@ -295,5 +319,4 @@ const i18nKeys = {
       }
     }
   }
-};
-export default i18nKeys;
+} as const);
