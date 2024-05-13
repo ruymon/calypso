@@ -12,7 +12,7 @@ export default ({
     login: {
       title: "Welkom terug!",
       subtitle: "Teken in by jou profiel aan voort te gaan.",
-      email: "E-pos",
+      email: "E-pos adres",
       password: "Wagwoord",
       signIn: "Teken in",
       forgotPassword: "Wagwoord vergeet?",
@@ -25,13 +25,13 @@ export default ({
       inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
     },
     forgotPassword: {
-      title: "Forgot your password?",
-      subtitle: "Enter your email to reset your password.",
-      email: "E-pos",
+      title: "Het jy jou wagwoord vergeet?",
+      subtitle: "Tik jou e-pos adres in om jou wagwoord weer te hergenereer.",
+      email: "E-pos adres",
       sendEmail: "Send recovery email",
-      backToLogin: "Remember your password?",
+      backToLogin: "Onthou jy jou wagwoord?",
       resetError: "An error occurred while trying to reset your password.",
-      resetErrorDescription: "Please try again later or contact support on Discord.",
+      resetErrorDescription: "Probeer asseblief later weer, of kontak die hulp departement op Discord.",
       resetEmailSent: "Password reset email sent!",
       resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
     },
@@ -42,11 +42,11 @@ export default ({
   sidebar: {
     map: {
       title: "Wêreld kaart",
-      subtitle: "Live network connections"
+      subtitle: "Lewendige netwerk konneksies"
     },
     events: {
-      title: "Events",
-      subtitle: "See current and upcoming events"
+      title: "Gebeurtenisse",
+      subtitle: "Kyk na die huidige en toekomstige gebeure"
     },
     friends: {
       title: "Vriende",
@@ -58,11 +58,11 @@ export default ({
     },
     help: {
       title: "Ondersteun ons",
-      subtitle: "Get help with the app"
+      subtitle: "Kry hulp met die toep"
     },
     changelog: {
       title: "Changelog",
-      subtitle: "See what's new in the app"
+      subtitle: "Kyk wat nuut is in die toep"
     },
     profile: {
       title: "Profiel",
@@ -83,7 +83,7 @@ export default ({
         title: "Base map",
         currentlyActive: "Aktief",
         satellite: {
-          title: "Satellite",
+          title: "Sateliet",
           description: "Earth details"
         },
         light: {
@@ -141,16 +141,16 @@ export default ({
             description: "Blue planes on the map"
           },
           showAtcs: {
-            title: "Show ATCs",
+            title: "Wys ATCs",
             description: "Active air traffic controllers on the network"
           }
         }
       }
     },
     airacCycleBadge: {
-      airacCycle: "AIRAC cycle",
+      airacCycle: "AIRCAC siklus",
       outdatedCycle: {
-        title: "Outdated AIRAC cycle",
+        title: "Vervale AIRAC siklus",
         description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
       },
       upToDateCycle: {
@@ -183,17 +183,17 @@ export default ({
       },
       avatarCard: {
         title: "Profiel foto",
-        subtitle: "Keeping a profile picture helps others recognize you."
+        subtitle: "'n Profiel foto help ander mense om jou uit te ken."
       },
       dangerZone: {
         title: "Gevaarlike area",
         deleteAccount: "Verwyder jou rekening en profiel",
-        deleteAccountDescription: "Should you decide to delete your account, you will lose access to all of your data. This action cannot be undone and the process may take up to 24 hours."
+        deleteAccountDescription: "Indien jy besluit om jou profiel te verwyder, sal jy toegang tot all jou geskiedenis en data verloor. Hierdie proses is permanent, en kan nie teruggekeer word nie. Die proses kan tot 24 ure neem om te voltooi."
       }
     },
     integrations: {
-      title: "Integrations",
-      subtitle: "Connect and sync third-party services to enhance your experience.",
+      title: "Integrasies",
+      subtitle: "Verbind, en sinchroniseer derdeparty-dienste om jou evaring te verbeter.",
       comingSoonDescription: "More integrations are coming soon."
     }
   },
