@@ -18,7 +18,7 @@ export async function ActiveIntegrationBadgeTooltip({
   return (
     <Tooltip delayDuration={400}>
       <TooltipTrigger>
-        <Badge variant="success" className="px-1 text-2xs leading-none">
+        <Badge variant="success-glass" className="px-1 text-2xs leading-none">
           {t("comum.connected")}
         </Badge>
       </TooltipTrigger>

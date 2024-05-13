@@ -9,8 +9,8 @@ export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
   return (
     <PageShell
       width="full"
-      hasTopNav={false}
-      className="absolute inset-0 z-50 items-center justify-center gap-4"
+      hideTopNav
+      shellClassName="absolute inset-0 z-50 items-center justify-center gap-4"
     >
       {children}
     </PageShell>

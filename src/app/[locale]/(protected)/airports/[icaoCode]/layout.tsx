@@ -9,7 +9,7 @@ export default function AirportDetailsLayout({
   children,
 }: AirportDetailsLayoutProps) {
   return (
-    <PageShell shellTitle="Aerodrome details" className="relative">
+    <PageShell shellTitle="Aerodrome details" shellClassName="relative">
       {children}
     </PageShell>
   );

@@ -1,6 +1,7 @@
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
 import { TrackPosition } from "@/types/live-flights";
-import { PathStyleExtension as BasePathStyleExtension } from "@deck.gl/extensions";
+//@ts-ignore
+import { PathStyleExtension } from "@deck.gl/extensions";
 import { GeoJsonLayer } from "deck.gl";
 import { hexToRGBAArray } from "../utils";
 //@ts-expect-error
@@ -71,7 +72,7 @@ export const getSelectedFlightPathLayer = () => {
     getDashArray: (f: any) => f.properties.dashArray,
     dashJustified: true,
     dashGapPickable: true,
-    extensions: [new BasePathStyleExtension({ dash: true })],
+    extensions: [new PathStyleExtension({ dash: true })],
     lineWidthUnits: "pixels",
   });
 };

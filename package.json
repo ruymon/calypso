@@ -50,6 +50,8 @@
     "react-map-gl": "^7.1.7",
     "react-oauth2-code-pkce": "^1.18.0",
     "react-wrap-balancer": "^1.1.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "sharp": "^0.33.3",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",

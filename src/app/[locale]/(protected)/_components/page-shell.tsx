@@ -11,15 +11,16 @@ import { toast } from "sonner";
 
 interface PageShellProps {
   children: ReactNode;
-  className?: string;
+  shellClassName?: string;
+  containerClassName?: string;
   /**
    * @default "md"
    */
-  width?: "sm" | "md" | "lg" | "xl" | "full";
+  width?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
   /**
-   * @default true
+   * @default false
    */
-  hasTopNav?: boolean;
+  hideTopNav?: boolean;
   shellTitle?: string;
   /**
    * @default "/"
@@ -40,14 +41,17 @@ const widthClassNames = {
   md: "lg:max-w-md",
   lg: "lg:max-w-lg",
   xl: "lg:max-w-xl",
+  "2xl": "lg:max-w-2xl",
+  "3xl": "lg:max-w-3xl",
   full: "lg:max-w-full",
 };
 
 export function PageShell({
   children,
-  className,
+  shellClassName,
+  containerClassName,
   width = DEFAULT_WIDTH,
-  hasTopNav = true,
+  hideTopNav = false,
   shellTitle,
   closeHref = "/",
 }: PageShellProps) {
@@ -61,10 +65,10 @@ export function PageShell({
       className={cn(
         "z-20 flex h-full w-full flex-col overflow-y-auto bg-background",
         widthClassNames[width],
-        className,
+        shellClassName,
       )}
     >
-      {hasTopNav && (
+      {!hideTopNav && (
         <header className="sticky top-0 z-20 flex items-center justify-between px-6 py-1.5 text-muted-foreground backdrop-blur-xl">
           <span className="text-xs">{shellTitle}</span>
           <nav className="flex items-center gap-0.5">
@@ -85,7 +89,9 @@ export function PageShell({
         </header>
       )}
 
-      <main className="flex flex-1 px-6 py-4">{children}</main>
+      <main className={cn("flex flex-1 px-6 py-2", containerClassName)}>
+        {children}
+      </main>
     </div>
   );
 }

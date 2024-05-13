@@ -9,7 +9,7 @@ export default function FlightsDetailsLayout({
   children,
 }: FlightsDetailsLayoutProps) {
   return (
-    <PageShell shellTitle="Flight details" className="relative">
+    <PageShell shellTitle="Flight details" shellClassName="relative">
       {children}
     </PageShell>
   );

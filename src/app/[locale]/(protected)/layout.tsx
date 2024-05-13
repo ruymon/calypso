@@ -11,7 +11,7 @@ interface AppRootLayoutProps {
 export default function AppRootLayout({ children }: AppRootLayoutProps) {
   return (
     <div className="relative flex h-screen w-screen overflow-clip">
-      <div className="flex w-full flex-1 flex-col lg:w-fit lg:flex-row">
+      <div className="flex w-full flex-1 flex-col justify-end lg:w-fit lg:flex-row lg:justify-normal">
         <Sidebar />
         {children}
         <MobileSidebar />

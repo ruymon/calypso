@@ -45,7 +45,7 @@
     --accent-foreground: 0 0% 90%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --ring: 240 4.9% 83.9%;
+    --ring: 240 3.7% 15.9%;
   }
 }
 
@@ -108,4 +108,20 @@
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track {
   @apply bg-transparent;
+}
+
+.navbar-transition {
+  @apply animate-[stickyNav_linear_forwards];
+
+  @supports (animation-timeline: view()) {
+    animation-timeline: view();
+    animation-range-start: calc(100vh + 20vh);
+    animation-range-end: calc(100vh + 30vh);
+  }
+}
+
+@keyframes stickyNav {
+  100% {
+    @apply bg-background backdrop-blur-lg;
+  }
 }

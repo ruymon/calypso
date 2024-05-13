@@ -10,9 +10,11 @@ export default function AppSettingsLayout({
   children,
 }: AppSettingsLayoutProps) {
   return (
-    <PageShell width="full" hasTopNav={false}>
+    <PageShell width="full" hideTopNav>
       <SettingSidebar />
-      <main className="mx-auto flex w-full max-w-xl flex-1">{children}</main>
+      <section className="mx-auto flex w-full max-w-xl flex-1">
+        {children}
+      </section>
     </PageShell>
   );
 }
