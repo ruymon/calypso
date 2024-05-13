@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/skyscope-app/skyscope-web/compare/v1.33.0...v1.34.0) (2024-05-13)
+
+
+### Features
+
+* **i18n:** Portuguese ([3cf40da](https://github.com/skyscope-app/skyscope-web/commit/3cf40dad70bd951a2a4e65727836570fc278599e))
+
 # [1.33.0](https://github.com/skyscope-app/skyscope-web/compare/v1.32.0...v1.33.0) (2024-05-13)
 
 
