@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/skyscope-app/skyscope-web/compare/v1.31.0...v1.31.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* **crowdin:** Config file ([24088c0](https://github.com/skyscope-app/skyscope-web/commit/24088c08e32b6415acbc207f141013e1f8f6afb7))
+
 # [1.31.0](https://github.com/skyscope-app/skyscope-web/compare/v1.30.2...v1.31.0) (2024-05-13)
 
 
