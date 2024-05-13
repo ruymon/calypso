@@ -67,6 +67,10 @@ export default {
     profile: {
       title: "Profile",
       subtitle: "Manage your account settings"
+    },
+    themeSwitcher: {
+      title: "Theme switcher",
+      subtitle: "Toggle between light and dark mode"
     }
   },
   map: {

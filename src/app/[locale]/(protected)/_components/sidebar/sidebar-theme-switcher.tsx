@@ -7,6 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useScopedI18n } from "@/locales/client";
 import { Theme } from "@/types/themes";
 import { useTheme } from "next-themes";
 import { ReactNode, useEffect, useState } from "react";
@@ -19,6 +20,7 @@ const themeIconVariants: { [key in Theme]: ReactNode } = {
 } as const;
 
 export function SidebarThemeSwitcher({}: SidebarThemeSwitcherProps) {
+  const t = useScopedI18n("sidebar.themeSwitcher");
   const [isMounted, setIsMounted] = useState(false);
   const { resolvedTheme, setTheme, themes } = useTheme();
 
@@ -53,7 +55,9 @@ export function SidebarThemeSwitcher({}: SidebarThemeSwitcherProps) {
           className="flex w-full items-center justify-center text-muted-foreground transition-all hover:text-accent-foreground dark:text-muted-foreground/50 dark:hover:text-muted-foreground"
         >
           {themeIconVariants[resolvedTheme as keyof typeof themeIconVariants]}
-          <span className="sr-only">Theme</span>
+          <span className="sr-only">
+            {t('title')}
+          </span>
         </button>
       </TooltipTrigger>
       <TooltipContent
@@ -61,9 +65,11 @@ export function SidebarThemeSwitcher({}: SidebarThemeSwitcherProps) {
         className="flex flex-col rounded-sm px-2"
         sideOffset={6}
       >
-        <span className="text-xs font-semibold">Theme switcher</span>
+        <span className="text-xs font-semibold">
+          {t('title')}
+        </span>
         <span className="text-2xs text-muted-foreground">
-          Change the app's appearance.
+          {t('subtitle')}
         </span>
       </TooltipContent>
     </Tooltip>
