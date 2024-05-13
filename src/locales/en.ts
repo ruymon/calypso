@@ -164,6 +164,11 @@ export default {
     }
   },
   settings: {
+    sidebar: {
+      title: "Settings",
+      profile: "Profile",
+      integrations: "Integrations"
+    },
     profile: {
       title: "Profile",
       subtitle: "Manage and update your profile settings",

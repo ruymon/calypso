@@ -36,7 +36,6 @@ export function IntegrationFinishRedirect({
 
       <div className="flex flex-col">
         <h1 className="text-xl font-bold text-secondary-foreground">
-          {/* @ts-expect-error */}
           {t("title", { provider: providerDetails.styledName ?? provider })}
         </h1>
         <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
