@@ -1,28 +1,28 @@
 import { siteConfig } from "@/config/site";
 export default ({
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
-    comingSoon: "Coming soon",
-    active: "Active"
+    open: "Ouvert",
+    close: "Fermer",
+    joinDiscord: "Rejoindre notre discord",
+    contactSupport: "Contacter le support",
+    comingSoon: "Bientôt",
+    active: "Sélectionné"
   },
   auth: {
     login: {
-      title: "Welcome back!",
-      subtitle: "Log in to your account to continue.",
-      email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
-      noAccount: "No account?",
-      join: "Join now",
-      loginError: "Oh no! Something went wrong.",
-      loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
+      title: "Ravi de vous revoir!",
+      subtitle: "Connecter vous pour continue.",
+      email: "Courriel",
+      password: "Mot de passe",
+      signIn: "Connexion",
+      forgotPassword: "Mot de passe oublier ?",
+      noAccount: "Pas de compte ?",
+      join: "Rejoindre maintenant",
+      loginError: "Oh non ! Il a eu un problème.",
+      loginErrorDescription: "Une erreur inattendue s'est produit lors de la connexion. Essayer plus tard ou contacter le support sur Discord."
     },
     join: {
-      inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
+      inviteOnly: "Nous sommes désolés, seul les personnes qui sont invitées peuvent rejoindre présentement."
     },
     forgotPassword: {
       title: "Forgot your password?",
