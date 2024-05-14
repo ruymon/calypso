@@ -1,3 +1,15 @@
+# [1.36.0](https://github.com/skyscope-app/skyscope-web/compare/v1.35.0...v1.36.0) (2024-05-14)
+
+
+### Bug Fixes
+
+* **map:** Hide wip filter ([77980b7](https://github.com/skyscope-app/skyscope-web/commit/77980b7f986490c5d789554c0a53bee777d7a6fa))
+
+
+### Features
+
+* **icon:** Update favicon based on theme ([76a76d1](https://github.com/skyscope-app/skyscope-web/commit/76a76d1ae8f8bff500077ae384f73699f884e67f))
+
 # [1.35.0](https://github.com/skyscope-app/skyscope-web/compare/v1.34.1...v1.35.0) (2024-05-13)
 
 
