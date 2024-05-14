@@ -1,5 +1,6 @@
 import { AIRPORT_SPRITE_ICON_MAPPING, MAP_SPRITES } from "@/config/map";
 import { AirportSummary, AirportSummaryList } from "@/types/airports";
+//@ts-ignore
 import { CollisionFilterExtension } from "@deck.gl/extensions";
 import { IconLayer } from "deck.gl";
 import { indigo } from "tailwindcss/colors";
