@@ -24,9 +24,8 @@ import { LiveFlight } from "@/types/live-flights";
 import { useQuery } from "@tanstack/react-query";
 import { DeckGL } from "deck.gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode } from "react";
 import BaseMap from "react-map-gl";
 import { MapToolbar } from "./map-toolbar";
 
@@ -36,13 +35,7 @@ interface MapProps {
 }
 
 export function Map({ airportsSummary, children }: MapProps) {
-  const { theme } = useTheme();
-  const [mapViewState, setMapViewState] = useState(MAP_INITIAL_VIEW_STATE);
   const router = useRouter();
-
-  const handleViewStateChange = useCallback(({ viewState }: any) => {
-    setMapViewState(viewState);
-  }, []);
 
   const {
     isVatsimFlightsLayerVisible,
@@ -154,7 +147,6 @@ export function Map({ airportsSummary, children }: MapProps) {
     getAirportSummaryLayer({
       data: airportsSummary,
       options: {
-        currentZoom: mapViewState.zoom,
         isVisible: isAirportsLayerVisible,
         onClick: (pickingInfo) => {
           const airport: AirportSummary = pickingInfo.object;
@@ -189,8 +181,7 @@ export function Map({ airportsSummary, children }: MapProps) {
         pickingRadius={10}
         controller={true}
         getTooltip={getTooltipContentBasedOnLayer}
-        viewState={mapViewState}
-        onViewStateChange={handleViewStateChange}
+        initialViewState={MAP_INITIAL_VIEW_STATE}
         layers={layers}
         getCursor={getMapCursor}
       >
