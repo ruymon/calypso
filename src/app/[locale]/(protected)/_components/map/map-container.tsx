@@ -1,5 +1,4 @@
 import { getAirportsSummary } from "@/lib/navdata";
-import { Suspense } from "react";
 import { Map } from "./map";
 import { MapFooter } from "./map-footer";
 
@@ -10,9 +9,7 @@ export async function MapContainer({}: MapContainerProps) {
 
   return (
     <Map airportsSummary={airportsSummary}>
-      <Suspense fallback={null}>
-        <MapFooter />
-      </Suspense>
+      <MapFooter />
     </Map>
   );
 }

@@ -1,5 +1,6 @@
 import { ReactNode, Suspense } from "react";
 import { MapContainer } from "./_components/map/map-container";
+import { MapSkeleton } from "./_components/map/map-skeleton";
 import { MobileSidebar } from "./_components/mobile-sidebar";
 import { Sidebar } from "./_components/sidebar";
 import { Spotlight } from "./_components/spotlight";
@@ -19,7 +20,7 @@ export default function AppRootLayout({ children }: AppRootLayoutProps) {
 
       <Spotlight />
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<MapSkeleton />}>
         <MapContainer />
       </Suspense>
     </div>
