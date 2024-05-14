@@ -81,7 +81,7 @@ export default ({
           description: "Switch between different base maps"
         },
         title: "Base map",
-        currentlyActive: "Active",
+        currentlyActive: "Aktivní",
         satellite: {
           title: "Satellite",
           description: "Earth details"
