@@ -48,6 +48,18 @@ export const metadata: Metadata = {
     "Realistic Flying",
     "Virtual Pilots",
   ],
+  icons: {
+    icon: [
+      {
+        url: "/light-icon.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/dark-icon.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -69,7 +81,6 @@ const courgette = Courgette({
   variable: "--font-courgette",
   subsets: ["latin", "latin-ext"],
 });
-
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -93,7 +104,7 @@ export default function RootLayout({
           courgette.variable,
         )}
       >
-         <Providers locale={locale}>{children}</Providers>
+        <Providers locale={locale}>{children}</Providers>
         <Toaster />
       </body>
     </html>
