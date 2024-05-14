@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/skyscope-app/skyscope-web/compare/v1.36.0...v1.37.0) (2024-05-14)
+
+
+### Features
+
+* **deploy:** This was the only way to trigger the deploy... ([c4175c7](https://github.com/skyscope-app/skyscope-web/commit/c4175c7dc234683f811bad1b9c44cf0b136bdecf))
+
 # [1.36.0](https://github.com/skyscope-app/skyscope-web/compare/v1.35.0...v1.36.0) (2024-05-14)
 
 
