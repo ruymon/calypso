@@ -27,7 +27,7 @@ export default ({
     forgotPassword: {
       title: "Forgot your password?",
       subtitle: "Enter your email to reset your password.",
-      email: "Email",
+      email: "Courriel",
       sendEmail: "Send recovery email",
       backToLogin: "Remember your password?",
       resetError: "An error occurred while trying to reset your password.",
@@ -81,7 +81,7 @@ export default ({
           description: "Switch between different base maps"
         },
         title: "Base map",
-        currentlyActive: "Active",
+        currentlyActive: "Sélectionné",
         satellite: {
           title: "Satellite",
           description: "Earth details"
@@ -173,7 +173,7 @@ export default ({
       title: "Profile",
       subtitle: "Manage and update your profile settings",
       emailCard: {
-        title: "Email",
+        title: "Courriel",
         cannotChange: "You cannot change your email address"
       },
       nameCard: {
