@@ -1,3 +1,12 @@
+# [1.38.0](https://github.com/skyscope-app/skyscope-web/compare/v1.37.0...v1.38.0) (2024-05-15)
+
+
+### Features
+
+* **deploy:** Update build version ([cbe78c8](https://github.com/skyscope-app/skyscope-web/commit/cbe78c8b75775806f84bb87f8a042ae88dc1a649))
+* **i18n:** Add map loading translation keys ([d6cbf32](https://github.com/skyscope-app/skyscope-web/commit/d6cbf32289ad035a380ffad49516bc17caf9d712))
+* **performance:** Add loading ([23f416f](https://github.com/skyscope-app/skyscope-web/commit/23f416f7cf20563f45a4542f94f1069a1335d672))
+
 # [1.37.0](https://github.com/skyscope-app/skyscope-web/compare/v1.36.0...v1.37.0) (2024-05-14)
 
 
