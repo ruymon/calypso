@@ -74,6 +74,10 @@ export default ({
     }
   },
   map: {
+    loading: {
+      title: "Carregando o mapa",
+      subtitle: "Dependendo da sua conexão, isso pode demorar um cadinho"
+    },
     toolbar: {
       baseMap: {
         tooltip: {
@@ -144,6 +148,21 @@ export default ({
             title: "Exibir controladores",
             description: "Polígono e etiqueta dos controladores ativos na rede"
           }
+        }
+      },
+      extraLayers: {
+        tooltip: {
+          title: "Camadas das redes",
+          description: "Gerir a visibilidade dos dados das redes"
+        },
+        title: "Extra layers",
+        airports: {
+          title: "Airports",
+          description: "Show airports on the map"
+        },
+        weatherRadar: {
+          title: "Weather radar",
+          description: "Show weather radar on the map"
         }
       }
     },
