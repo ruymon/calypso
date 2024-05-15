@@ -152,8 +152,8 @@ export default ({
       },
       extraLayers: {
         tooltip: {
-          title: "Camadas das redes",
-          description: "Gerir a visibilidade dos dados das redes"
+          title: "Extra layers",
+          description: "Toggle extra layers visibility"
         },
         title: "Extra layers",
         airports: {
