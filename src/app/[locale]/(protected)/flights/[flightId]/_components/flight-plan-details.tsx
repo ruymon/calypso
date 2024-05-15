@@ -1,10 +1,10 @@
 "use client";
 
+import { DataItemCard } from "@/app/[locale]/(protected)/_components/data-item-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { parseAltitudeToFlightLevel } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import { LiveFlightDetail } from "@/types/live-flights";
-import { DataItemCard } from "../../../_components/data-item-card";
 
 interface FlightPlanDetailsProps {
   data?: LiveFlightDetail;

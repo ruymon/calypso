@@ -158,8 +158,8 @@ export default {
       },
       extraLayers: {
         tooltip: {
-          title: "Network layers",
-          description: "Toggle network layers visibility",
+          title: "Extra layers",
+          description: "Toggle extra layers visibility",
         },
         title: "Extra layers",
         airports: {

@@ -58,7 +58,9 @@ export function Map({ initialData, children }: MapProps) {
       <MapToolbar />
       <DeckGL
         pickingRadius={10}
-        controller={true}
+        controller={{
+          doubleClickZoom: false,
+        }}
         getTooltip={getTooltipContentBasedOnLayer}
         initialViewState={MAP_INITIAL_VIEW_STATE}
         layers={layers}
