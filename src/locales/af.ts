@@ -74,6 +74,10 @@ export default ({
     }
   },
   map: {
+    loading: {
+      title: "Loading map",
+      subtitle: "This should take less than 10 seconds, depending on your connection"
+    },
     toolbar: {
       baseMap: {
         tooltip: {
@@ -144,6 +148,21 @@ export default ({
             title: "Wys ATCs",
             description: "Aktiewe lugverkeerbeheerders op die netwerke"
           }
+        }
+      },
+      extraLayers: {
+        tooltip: {
+          title: "Netwerk lae",
+          description: "Toggle network layers visibility"
+        },
+        title: "Extra layers",
+        airports: {
+          title: "Airports",
+          description: "Show airports on the map"
+        },
+        weatherRadar: {
+          title: "Weather radar",
+          description: "Show weather radar on the map"
         }
       }
     },
