@@ -3,9 +3,9 @@ import {
   MAP_LAYERS,
   MAP_SPRITES,
 } from "@/config/map";
+import { useMapExtraLayersStore } from "@/stores/map-extra-layers-store";
 import { AirportSummary, AirportSummaryList } from "@/types/airports";
 //@ts-ignore
-import { useMapExtraLayersStore } from "@/stores/map-extra-layers-store";
 import { CollisionFilterExtension } from "@deck.gl/extensions";
 import { IconLayer } from "deck.gl";
 import { useRouter } from "next/navigation";
