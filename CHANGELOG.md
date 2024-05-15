@@ -1,3 +1,10 @@
+# [1.39.0](https://github.com/skyscope-app/skyscope-web/compare/v1.38.0...v1.39.0) (2024-05-15)
+
+
+### Features
+
+* **deploy:** PLEASE WORK ([b2c12ff](https://github.com/skyscope-app/skyscope-web/commit/b2c12ffd70106fcbec632ab20436d3dbdd4fd027))
+
 # [1.38.0](https://github.com/skyscope-app/skyscope-web/compare/v1.37.0...v1.38.0) (2024-05-15)
 
 
