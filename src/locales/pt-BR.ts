@@ -149,6 +149,21 @@ export default ({
             description: "Polígono e etiqueta dos controladores ativos na rede"
           }
         }
+      },
+      extraLayers: {
+        tooltip: {
+          title: "Camadas das redes",
+          description: "Gerir a visibilidade dos dados das redes"
+        },
+        title: "Extra layers",
+        airports: {
+          title: "Airports",
+          description: "Show airports on the map"
+        },
+        weatherRadar: {
+          title: "Weather radar",
+          description: "Show weather radar on the map"
+        }
       }
     },
     airacCycleBadge: {
