@@ -1,1 +1,3 @@
-# Skyscope Web (Docker)
+# Skyscope Web
+
+Web version of Skyscope built using Nextjs.
