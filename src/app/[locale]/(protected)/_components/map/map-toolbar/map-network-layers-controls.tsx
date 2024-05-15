@@ -1,8 +1,8 @@
 "use client";
 
 import {
+  PiActivityStroke,
   PiEyeOffStroke,
-  PiLayerThreeStroke,
   PiMergeStroke,
 } from "@/components/icons";
 import { NetworkIcon } from "@/components/network-icon";
@@ -22,11 +22,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useScopedI18n } from "@/locales/client";
-import { useMapLayersStore } from "@/stores/map-layers-store";
+import { useMapNetworkLayersStore } from "@/stores/map-network-layers-store";
 
-interface MapLayerControlsProps {}
+interface MapNetworkLayerControlsProps {}
 
-export function MapLayerControls({}: MapLayerControlsProps) {
+export function MapNetworkLayerControls({}: MapNetworkLayerControlsProps) {
   const t = useScopedI18n("map.toolbar.networkLayers");
   const {
     isVatsimFlightsLayerVisible,
@@ -37,8 +37,7 @@ export function MapLayerControls({}: MapLayerControlsProps) {
     setIsIvaoATCsLayerVisible,
     isVatsimATCsLayerVisible,
     setIsVatsimATCsLayerVisible,
-  } = useMapLayersStore();
-
+  } = useMapNetworkLayersStore();
 
   const handleIvaoPreset = () => {
     setIsVatsimFlightsLayerVisible(false);
@@ -81,7 +80,7 @@ export function MapLayerControls({}: MapLayerControlsProps) {
               variant="secondary"
               className="h-auto w-auto rounded-sm bg-transparent p-1.5 text-muted-foreground transition-all duration-500 hover:bg-muted hover:text-accent-foreground data-[state='open']:bg-foreground data-[state='open']:text-background"
             >
-              <PiLayerThreeStroke className="h-4 w-4" />
+              <PiActivityStroke className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
         </DropdownMenuTrigger>
@@ -255,9 +254,7 @@ export function MapLayerControls({}: MapLayerControlsProps) {
         className="flex flex-col rounded-sm px-2"
         sideOffset={12}
       >
-        <span className="text-xs font-semibold">
-          {t("tooltip.title")}
-        </span>
+        <span className="text-xs font-semibold">{t("tooltip.title")}</span>
         <span className="text-2xs text-muted-foreground">
           {t("tooltip.description")}
         </span>

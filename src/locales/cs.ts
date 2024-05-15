@@ -1,12 +1,12 @@
 import { siteConfig } from "@/config/site";
 export default ({
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
-    comingSoon: "Coming soon",
-    active: "Active"
+    open: "Otevřít",
+    close: "Zavřít",
+    joinDiscord: "Připoj se na náš Discord",
+    contactSupport: "Kontaktovat podporu",
+    comingSoon: "Již brzy",
+    active: "Aktivní"
   },
   auth: {
     login: {
@@ -74,6 +74,10 @@ export default ({
     }
   },
   map: {
+    loading: {
+      title: "Loading map",
+      subtitle: "This should take less than 10 seconds, depending on your connection"
+    },
     toolbar: {
       baseMap: {
         tooltip: {
@@ -81,7 +85,7 @@ export default ({
           description: "Switch between different base maps"
         },
         title: "Base map",
-        currentlyActive: "Active",
+        currentlyActive: "Aktivní",
         satellite: {
           title: "Satellite",
           description: "Earth details"

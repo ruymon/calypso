@@ -2,7 +2,13 @@
   outline: none;
 }
 
-/* Override position to avoid covering Mapbox logo by Sidebar */
+/* 
+* Overide position to avoid covering Mapbox logo by UI elements
+* 
+* The bottom overide matches the map footer size.
+* The left overide matched the sidebar width
+* No padding needed. Mapbox logo already has some built-in margins.
+*/
 .mapboxgl-ctrl-bottom-left {
   @apply !bottom-5 !left-14 !z-0 opacity-30;
 }

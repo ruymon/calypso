@@ -74,6 +74,10 @@ export default ({
     }
   },
   map: {
+    loading: {
+      title: "Carregando o mapa",
+      subtitle: "Dependendo da sua conexão, isso pode demorar um cadinho"
+    },
     toolbar: {
       baseMap: {
         tooltip: {
