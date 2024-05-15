@@ -75,8 +75,8 @@ export default ({
   },
   map: {
     loading: {
-      title: "Loading map",
-      subtitle: "This should take less than 10 seconds, depending on your connection"
+      title: "Harita yükleniyor",
+      subtitle: "Bağlantı hızına göre bu işlem 10 saniye kadar sürebilir"
     },
     toolbar: {
       baseMap: {
@@ -112,41 +112,41 @@ export default ({
           title: "Kısayollar",
           ivao: {
             title: "IVAO",
-            description: "Only show IVAO flights and ATCs"
+            description: "Sadece IVAO'daki uçuşları ve ATC'leri göster"
           },
           vatsim: {
             title: "VATSIM",
-            description: "Only show Vatsim flights and ATCs"
+            description: "Sadece VATSIM'deki uçuşları ve ATC'leri göster"
           },
           combineNetworks: {
-            title: "Combine networks",
-            description: "Show flights and ATCs from all networks"
+            title: "Network'leri birleştir",
+            description: "Tüm network'lerdeki uçuşları ve ATC'leri göster"
           },
           hideAll: {
-            title: "Hide all",
-            description: "Hide all flights and ATC from all networks"
+            title: "Tümünü gizle",
+            description: "Tüm network'lerdeki uçuşları ve ATC'leri gizle"
           }
         },
         vatsimLayers: {
-          title: "Vatsim layers settings",
+          title: "Vatsim katman ayarları",
           showFlights: {
-            title: "Show flights",
-            description: "Green planes on the map"
+            title: "Uçuşları göster",
+            description: "Haritadaki yeşil uçaklar"
           },
           showAtcs: {
-            title: "Show ATCs",
-            description: "Active air traffic controllers on the network"
+            title: "ATC'leri göster",
+            description: "Network'deki aktif hava trafik kontrolörleri"
           }
         },
         ivaoLayers: {
-          title: "IVAO layers settings",
+          title: "IVAO katman ayarları",
           showFlights: {
-            title: "Show flights",
-            description: "Blue planes on the map"
+            title: "Uçuşları göster",
+            description: "Haritadaki mavi uçaklar"
           },
           showAtcs: {
-            title: "Show ATCs",
-            description: "Active air traffic controllers on the network"
+            title: "ATC'leri göster",
+            description: "Network'deki aktif hava trafik kontrolörleri"
           }
         }
       },
@@ -155,97 +155,97 @@ export default ({
           title: "Network Katmanları",
           description: "Farklı network katmanlarını göster/gizle"
         },
-        title: "Extra layers",
+        title: "Ekstra katmanlar",
         airports: {
-          title: "Airports",
-          description: "Show airports on the map"
+          title: "Havalimanları",
+          description: "Havalimanlarını haritada göster"
         },
         weatherRadar: {
-          title: "Weather radar",
-          description: "Show weather radar on the map"
+          title: "Yağış radarı",
+          description: "Yağış radarını haritada göster"
         }
       }
     },
     airacCycleBadge: {
-      airacCycle: "AIRAC cycle",
+      airacCycle: "AIRAC versiyonu",
       outdatedCycle: {
-        title: "Outdated AIRAC cycle",
-        description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
+        title: "Eski AIRAC versiyonu",
+        description: "Güncel AIRAC versiyonu için Navigraph hesabını eşle."
       },
       upToDateCycle: {
-        title: "Your AIRAC cycle is up to date",
-        description: "This cycle will expire in {distance}."
+        title: "AIRAC güncel",
+        description: "Bu AIRAC'in süresi {distance} tarihinde dolacak."
       },
       unknownCycle: {
-        title: "Unknown AIRAC cycle",
-        description: "Unable to fetch the current cycle."
+        title: "Bilinmeyen AIRAC versiyonu",
+        description: "Mevcut AIRAC versiyonu yüklenemedi."
       }
     }
   },
   settings: {
     sidebar: {
-      title: "Settings",
+      title: "Ayarlar",
       profile: "Profil",
-      integrations: "Integrations"
+      integrations: "Entegrasyonlar"
     },
     profile: {
       title: "Profil",
-      subtitle: "Manage and update your profile settings",
+      subtitle: "Profil ayarlarını yönet",
       emailCard: {
         title: "Email",
-        cannotChange: "You cannot change your email address"
+        cannotChange: "Email adresini değiştiremezsin"
       },
       nameCard: {
-        title: "Name",
-        cannotChange: "You cannot change your name",
-        emptyState: "Not set"
+        title: "İsim",
+        cannotChange: "İsmini değiştiremezsin",
+        emptyState: "Yok"
       },
       avatarCard: {
-        title: "Profile picture",
-        subtitle: "Keeping a profile picture helps others recognize you."
+        title: "Profil resmi",
+        subtitle: "Profil resmi başkalarının seni tanımasına yardımcı olur."
       },
       dangerZone: {
-        title: "Danger zone",
-        deleteAccount: "Delete your account",
-        deleteAccountDescription: "Should you decide to delete your account, you will lose access to all of your data. This action cannot be undone and the process may take up to 24 hours."
+        title: "Tehlikeli bölge",
+        deleteAccount: "Hesabını sil",
+        deleteAccountDescription: "Hesabını silmeye karar verdiğinde tüm verilerine erişimini kaybedeceksin. Bu işlemin gerçekleşmesi 24 saate kadar sürebilir ve geri alınamaz."
       }
     },
     integrations: {
-      title: "Integrations",
-      subtitle: "Connect and sync third-party services to enhance your experience.",
-      comingSoonDescription: "More integrations are coming soon."
+      title: "Entegrasyonlar",
+      subtitle: "Deneyimini iyileştirmek için 3. parti uygulamaları hesabına bağla ve senkronize et.",
+      comingSoonDescription: "Daha fazla entegrasyonlar çok yakında."
     }
   },
   integrations: {
     comum: {
-      connect: "Connect",
-      connected: "Connected",
-      unlink: "Unlink",
-      changeAccount: "Change account",
+      connect: "Bağla",
+      connected: "Bağlandı",
+      unlink: "Bağlantıyı kes",
+      changeAccount: "Hesabını değiştir",
       callback: {
-        title: "Integrating your {provider} account",
-        subtitle: "This process may take a few seconds."
+        title: "{provider} hesabını bağla",
+        subtitle: "Bu işlem birkaç saniye sürebilir."
       },
-      unstable: "This integration is a recent addition and may not work as expected."
+      unstable: "Bu entegrasyon yenidir ve beklendiği gibi çalışmayabilir."
     },
     integrationDetailsTooltip: {
-      title: "Integration details",
-      accountId: "Account ID"
+      title: "Entegrasyon detayları",
+      accountId: "Hesap ID"
     },
     ivao: {
-      description: "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network"
+      description: "International Virtual Aviation Organisation (IVAO) kar amacı gütmeyen bir kuruluş olup ücretsiz online uçuş simülasyon hizmeti vermektedir"
     },
     vatsim: {
-      description: "The Virtual Air Traffic Simulation Network is an online platform that allows flight simulation enthusiasts to connect and fly together."
+      description: "Virtual Air Traffic Simulation Network (VATSIM) kar amacı gütmeyen bir kuruluş olup ücretsiz online uçuş simülasyon hizmeti vermektedir."
     },
     navigraph: {
-      description: "Provider of aeronautical data for the flight-sim community. "
+      description: "Uçuş simülasyonu için navigasyonel veri sağlayacısı. "
     }
   },
   onboarding: {
     welcome: {
-      hat: "Getting started",
-      title: `Welcome to ${siteConfig.name}!`,
+      hat: "Başlıyoruz",
+      title: `Hoşgeldiniz ${siteConfig.name}!`,
       subtitle: "Seni aramızda görmekten mutluyuz. Birkaç basit bilgi ile başlayalım.",
       getStarted: "Başla"
     },
@@ -272,69 +272,69 @@ export default ({
         departure: "Kalkış",
         arrival: "Varış",
         alternate: "Alternatif",
-        alternate2: "Second alternate"
+        alternate2: "İkinci Alternatif"
       }
     },
     aircraftDetails: {
-      title: "Aircraft details",
-      subtitle: "Detailed information about the aircraft.",
+      title: "Uçak Bilgileri",
+      subtitle: "Uçak hakkında detaylı bilgiler.",
       aircraft: {
-        registration: "Registration",
+        registration: "Tescil",
         transponder: "Transponder",
-        wakeTurbulence: "Wake turbulence",
-        photographer: "Photographer"
+        wakeTurbulence: "Wake turbulence kategorisi",
+        photographer: "Fotoğrafçı"
       }
     },
     crewDetails: {
-      title: "Flight crew details",
-      subtitle: "Detailed information about the flight crew.",
+      title: "Ekip bilgisi",
+      subtitle: "Ekip hakkında detaylı bilgiler.",
       crew: {
-        pilotInCommand: "Pilot in command"
+        pilotInCommand: "Pilot"
       }
     },
     analytics: {
-      title: "Analytics",
-      subtitle: "Data and statistics about the flight in real-time.",
+      title: "İstatistikler",
+      subtitle: "Gerçek zamanlı uçuş verisi ve istatistikler.",
       verticalPathChart: {
-        title: "Vertical path",
-        subtitle: "Altitude and vertical speed",
-        altitude: "Altitude",
-        speed: "Ground speed"
+        title: "Düşey güzergah",
+        subtitle: "İrtifa ve düşey hız",
+        altitude: "İrtifa",
+        speed: "Yer hızı"
       }
     },
     flightPlanDetails: {
-      title: "Flight plan details",
-      subtitle: "Detailed information about the flight plan.",
+      title: "Uçuş planı detayları",
+      subtitle: "Uçuş planı hakkında detaylı bilgiler.",
       viewTypes: {
-        simple: "Simple",
-        detailed: "Detailed"
+        simple: "Basit",
+        detailed: "Detaylı"
       },
-      flightRules: "Flight rules",
-      flightType: "Flight type",
+      flightRules: "Uçuş kuralları",
+      flightType: "Uçuş tipi",
       route: "Rota",
-      remarks: "Remarks",
-      icaoFplFormat: "ICAO FPL format"
+      remarks: "Notlar",
+      icaoFplFormat: "ICAO Uçuş Planı Formatı"
     },
     notFound: {
-      title: "Flight unavailable",
-      subtitle: "We couldn't find the flight you were looking for.",
+      title: "Uçuş mevcut değil",
+      subtitle: "Aradığın uçuşu bulamadık.",
       troubleshooting: {
-        title: "Troubleshooting",
-        subtitle: "Things you can do to possibly fix it. If this problem persists, please contact our support team.",
+        title: "Sorun giderme",
+        subtitle: "Sorunu gidermek için yapabileceğin şeyler. Eğer sorun devam ediyorsa, lütfen destek ekibimizle iletişime geç.",
         steps: {
-          verifyFlightExists: "Make sure the flight is currently flying in one of the supported networks",
-          refresh: "Refresh the page",
-          checkInternetConnection: "Check your internet connection",
-          checkLoginStatus: "Make sure you are logged in"
+          verifyFlightExists: "Lütfen uçuşun desteklenen network'lerde olduğundan emin ol",
+          refresh: "Sayfayı yenile",
+          checkInternetConnection: "İnternet bağlantını kontrol et",
+          checkLoginStatus: "Giriş yaptığında emin ol"
         }
       },
       systemLogs: {
-        title: "System logs",
-        subtitle: "The following information might be useful for our support team.",
-        code: "Code",
-        flightId: "Flight id",
-        timestamp: "Timestamp",
-        buildVersion: "Build version"
+        title: "Sistem kayıtları",
+        subtitle: "Aşağıdaki bilgiler destek ekibimiz için faydalı olabilir.",
+        code: "Kod",
+        flightId: "Uçuş ID",
+        timestamp: "Zaman",
+        buildVersion: "Uygulama versiyonu"
       }
     }
   }
