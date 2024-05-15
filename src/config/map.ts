@@ -103,3 +103,11 @@ export const DECK_GL_TOOLTIP_STYLE_OVERRIDE = {
   boxSizing: "border-box",
   pointerEvents: "none",
 };
+
+export const MAP_LAYERS = {
+  NETWORK_FLIGHTS_LAYER_ID: "networks-flights-layer",
+  NETWORK_ATCS_SHAPES_LAYER_ID: "networks-atcs-shapes-layer",
+  NETWORK_ATCS_LABEL_LAYER_ID: "networks-atcs-label-layer",
+  AIRPORTS_LAYER_ID: "airports-layer",
+  SELECTED_FLIGHT_LAYER_ID: "selected-flight-path-layer",
+};

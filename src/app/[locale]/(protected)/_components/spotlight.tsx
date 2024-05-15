@@ -10,7 +10,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { useBaseMapStore } from "@/stores/base-map-store";
-import { useMapLayersStore } from "@/stores/map-layers-store";
+import { useMapNetworkLayersStore } from "@/stores/map-network-layers-store";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -23,7 +23,7 @@ export function Spotlight() {
     setIsIvaoFlightsLayerVisible,
     setIsIvaoATCsLayerVisible,
     setIsVatsimATCsLayerVisible,
-  } = useMapLayersStore();
+  } = useMapNetworkLayersStore();
 
   const { setBaseMap, baseMap } = useBaseMapStore();
 

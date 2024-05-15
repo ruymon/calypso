@@ -22,7 +22,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useScopedI18n } from "@/locales/client";
-import { useMapLayersStore } from "@/stores/map-layers-store";
+import { useMapNetworkLayersStore } from "@/stores/map-network-layers-store";
 
 interface MapNetworkLayerControlsProps {}
 
@@ -37,7 +37,7 @@ export function MapNetworkLayerControls({}: MapNetworkLayerControlsProps) {
     setIsIvaoATCsLayerVisible,
     isVatsimATCsLayerVisible,
     setIsVatsimATCsLayerVisible,
-  } = useMapLayersStore();
+  } = useMapNetworkLayersStore();
 
   const handleIvaoPreset = () => {
     setIsVatsimFlightsLayerVisible(false);

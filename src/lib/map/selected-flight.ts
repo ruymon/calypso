@@ -1,3 +1,4 @@
+import { MAP_LAYERS } from "@/config/map";
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
 import { TrackPosition } from "@/types/live-flights";
 //@ts-ignore
@@ -59,7 +60,7 @@ export const getSelectedFlightPathLayer = () => {
   const isTrackCompatible = flightTracks.length > 2;
 
   return new GeoJsonLayer({
-    id: "GeoJsonLayer",
+    id: MAP_LAYERS.SELECTED_FLIGHT_LAYER_ID,
     data: isTrackCompatible ? getTrackDataInGeoJson(flightTracks) : null,
     stroked: true,
     pickable: false,
