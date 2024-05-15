@@ -1,76 +1,76 @@
 import { siteConfig } from "@/config/site";
 export default ({
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
-    comingSoon: "Coming soon",
-    active: "Active"
+    open: "Aç",
+    close: "Kapat",
+    joinDiscord: "Discord kanalımıza katıl",
+    contactSupport: "Destek",
+    comingSoon: "Çok yakında",
+    active: "Aktif"
   },
   auth: {
     login: {
-      title: "Welcome back!",
-      subtitle: "Log in to your account to continue.",
+      title: "Hoşgeldin!",
+      subtitle: "Devam etmek için giriş yap.",
       email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
-      noAccount: "No account?",
-      join: "Join now",
-      loginError: "Oh no! Something went wrong.",
-      loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
+      password: "Şifre",
+      signIn: "Giriş yap",
+      forgotPassword: "Şifremi unuttum?",
+      noAccount: "Hesabın mı yok?",
+      join: "Kayıt ol",
+      loginError: "Olamaz! Ters giden bir şeyler var.",
+      loginErrorDescription: "Giriş yapmaya çalışırken beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar dene veya Discord üzerinden destek al."
     },
     join: {
-      inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
+      inviteOnly: "Özür dileriz, şimdilik üyelik sadece davet edilen kullanıcılara açık."
     },
     forgotPassword: {
-      title: "Forgot your password?",
-      subtitle: "Enter your email to reset your password.",
+      title: "Şifremi unuttum?",
+      subtitle: "Şifreni sıfırlamak için email adresini gir.",
       email: "Email",
-      sendEmail: "Send recovery email",
-      backToLogin: "Remember your password?",
-      resetError: "An error occurred while trying to reset your password.",
-      resetErrorDescription: "Please try again later or contact support on Discord.",
-      resetEmailSent: "Password reset email sent!",
-      resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
+      sendEmail: "Kurtarma email'i gönder",
+      backToLogin: "Şifreni mi hatırladın?",
+      resetError: "Şifreni sıfırlarken bir hata oluştu.",
+      resetErrorDescription: "Lütfen daha sonra tekrar dene veya Discord üzerinden destek al.",
+      resetEmailSent: "Şifre sıfırlama email'i gönderildi!",
+      resetEmailSentIfAccountIsValid: "Girdiğin email adresi üyelik ile uyuşuyorsa şifre sıfırlama linkini email'inde bulacaksın."
     },
     supportCard: {
-      title: "Need help?"
+      title: "Yardıma mı ihtiyacın var?"
     }
   },
   sidebar: {
     map: {
-      title: "World map",
-      subtitle: "Live network connections"
+      title: "Dünya haritası",
+      subtitle: "Canlı bağlantılar"
     },
     events: {
-      title: "Events",
-      subtitle: "See current and upcoming events"
+      title: "Etkinlikler",
+      subtitle: "Şu anki ve gelecekteki etkinliklere bak"
     },
     friends: {
-      title: "Friends",
-      subtitle: "Manage your friends list"
+      title: "Arkadaşlar",
+      subtitle: "Arkadaş listeni düzenle"
     },
     feedback: {
-      title: "Feedback",
-      subtitle: "Help us improve our service"
+      title: "Geribildirim",
+      subtitle: "Hizmetimizi geliştirmemize yardımcı ol"
     },
     help: {
-      title: "Support",
-      subtitle: "Get help with the app"
+      title: "Destek",
+      subtitle: "Uygulama hakkında yardım al"
     },
     changelog: {
-      title: "Changelog",
-      subtitle: "See what's new in the app"
+      title: "Değişiklik listesi",
+      subtitle: "Uygulamadaki yenilikleri gör"
     },
     profile: {
-      title: "Profile",
-      subtitle: "Manage your account settings"
+      title: "Profil",
+      subtitle: "Hesabını yönet"
     },
     themeSwitcher: {
-      title: "Theme switcher",
-      subtitle: "Toggle between light and dark mode"
+      title: "Tema değiştirici",
+      subtitle: "Parlak ve karanlık temalar arasında geçiş yap"
     }
   },
   map: {
@@ -81,35 +81,35 @@ export default ({
     toolbar: {
       baseMap: {
         tooltip: {
-          title: "Base map",
-          description: "Switch between different base maps"
+          title: "Harita tabanı",
+          description: "Farklı harita tabanlarını seç"
         },
-        title: "Base map",
-        currentlyActive: "Active",
+        title: "Harita tabanı",
+        currentlyActive: "Aktif",
         satellite: {
-          title: "Satellite",
-          description: "Earth details"
+          title: "Uydu Görüntüsü",
+          description: "Yeryüzü Detayları"
         },
         light: {
-          title: "Light",
-          description: "Minimalistic"
+          title: "Parlak",
+          description: "Minimalistik"
         },
         dark: {
-          title: "Dark",
-          description: "Night mode with airport diagrams"
+          title: "Karanlık",
+          description: "Havalimanları diagramlarını içeren karanlık tema"
         },
         theme: {
-          title: "Sync with theme",
-          description: "Switch between light and dark based on your system settings"
+          title: "Tema ile senkronize et",
+          description: "Bilgisayar tema ayarlarına göre parlak ve karanlık tema"
         }
       },
       networkLayers: {
         tooltip: {
-          title: "Network layers",
-          description: "Toggle network layers visibility"
+          title: "Network Katmanları",
+          description: "Farklı network katmanlarını göster/gizle"
         },
         quickActions: {
-          title: "Quick actions",
+          title: "Kısayollar",
           ivao: {
             title: "IVAO",
             description: "Only show IVAO flights and ATCs"
@@ -185,11 +185,11 @@ export default ({
   settings: {
     sidebar: {
       title: "Settings",
-      profile: "Profile",
+      profile: "Profil",
       integrations: "Integrations"
     },
     profile: {
-      title: "Profile",
+      title: "Profil",
       subtitle: "Manage and update your profile settings",
       emailCard: {
         title: "Email",
@@ -246,33 +246,33 @@ export default ({
     welcome: {
       hat: "Getting started",
       title: `Welcome to ${siteConfig.name}!`,
-      subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
-      getStarted: "Get started"
+      subtitle: "Seni aramızda görmekten mutluyuz. Birkaç basit bilgi ile başlayalım.",
+      getStarted: "Başla"
     },
     integrations: {
-      hat: "Sync your details",
-      title: "Sync your details",
-      subtitle: "Connect your accounts to have a seamless experience.",
-      skip: "Continue without syncing"
+      hat: "Bilgilerini eşle",
+      title: "Bilgilerini eşle",
+      subtitle: "Kusursuz bir deneyim için hesaplarını bağla.",
+      skip: "Eşlemeden devam et"
     },
     finish: {
-      hat: "All set!",
-      title: "Let's get started?",
-      subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
-      getStarted: "Get started"
+      hat: "Her şey tamam!",
+      title: "Başlayalım mı?",
+      subtitle: `Hazırsın! Başlamak için aşağıdaki butona tıkla ${siteConfig.name}.`,
+      getStarted: "Başla"
     }
   },
   flightDetails: {
-    unknownAirline: "Unknown airline",
-    unknownCallsign: "Unknown callsign",
+    unknownAirline: "Bilinmeyen havayolu",
+    unknownCallsign: "Bilinmeyen çağrı adı",
     routeDetails: {
-      title: "Route",
-      subtitle: "Detailed information about the aircraft's route.",
+      title: "Rota",
+      subtitle: "Uçak rotası hakkında detaylı bilgi.",
       airport: {
-        departure: "Departure",
-        arrival: "Arrival",
-        alternate: "Alternate",
-        alternate2: "Second alternate"
+        departure: "Kalkış",
+        arrival: "Varış",
+        alternate: "Alternatif",
+        alternate2: "İkinci Alternatif"
       }
     },
     aircraftDetails: {
@@ -311,7 +311,7 @@ export default ({
       },
       flightRules: "Flight rules",
       flightType: "Flight type",
-      route: "Route",
+      route: "Rota",
       remarks: "Remarks",
       icaoFplFormat: "ICAO FPL format"
     },
