@@ -156,6 +156,21 @@ export default {
           },
         },
       },
+      extraLayers: {
+        tooltip: {
+          title: "Network layers",
+          description: "Toggle network layers visibility",
+        },
+        title: "Extra layers",
+        airports: {
+          title: "Airports",
+          description: "Show airports on the map",
+        },
+        weatherRadar: {
+          title: "Weather radar",
+          description: "Show weather radar on the map",
+        },
+      },
     },
     airacCycleBadge: {
       airacCycle: "AIRAC cycle",
