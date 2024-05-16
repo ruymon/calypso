@@ -1,34 +1,34 @@
 import { siteConfig } from "@/config/site";
 export default ({
   common: {
-    open: "Open",
-    close: "Close",
+    open: "Öffnen",
+    close: "Schließen",
     joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
+    contactSupport: "Support kontaktieren",
     comingSoon: "Coming soon",
-    active: "Active"
+    active: "Aktiv"
   },
   auth: {
     login: {
-      title: "Welcome back!",
+      title: "Willkommen zurück!",
       subtitle: "Log in to your account to continue.",
-      email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
-      noAccount: "No account?",
+      email: "E-Mail",
+      password: "Passwort",
+      signIn: "Einloggen",
+      forgotPassword: "Passwort vergessen?",
+      noAccount: "Kein Konto?",
       join: "Join now",
-      loginError: "Oh no! Something went wrong.",
+      loginError: "Oh nein! Etwas ist schiefgelaufen.",
       loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
     },
     join: {
       inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
     },
     forgotPassword: {
-      title: "Forgot your password?",
+      title: "Dein Passwort vergessen?",
       subtitle: "Enter your email to reset your password.",
-      email: "Email",
-      sendEmail: "Send recovery email",
+      email: "E-Mail",
+      sendEmail: "Wiederherstellungs-E-Mail senden",
       backToLogin: "Remember your password?",
       resetError: "An error occurred while trying to reset your password.",
       resetErrorDescription: "Please try again later or contact support on Discord.",
@@ -85,7 +85,7 @@ export default ({
           description: "Switch between different base maps"
         },
         title: "Base map",
-        currentlyActive: "Active",
+        currentlyActive: "Aktiv",
         satellite: {
           title: "Satellite",
           description: "Earth details"
@@ -192,7 +192,7 @@ export default ({
       title: "Profile",
       subtitle: "Manage and update your profile settings",
       emailCard: {
-        title: "Email",
+        title: "E-Mail",
         cannotChange: "You cannot change your email address"
       },
       nameCard: {
