@@ -100,7 +100,7 @@ export default ({
         },
         theme: {
           title: "Sync with theme",
-          description: "Switch between light and dark based on your system settings"
+          description: "Umschalten zwischen hell und dunkel je nach Systemeinstellung"
         }
       },
       networkLayers: {
