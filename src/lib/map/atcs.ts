@@ -13,28 +13,17 @@ import { useQuery } from "@tanstack/react-query";
 import { IconLayer, PolygonLayer } from "deck.gl";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
-import { getNetworkATCs } from "../flights";
+import { getNetworkATCs } from "../atcs";
 import { hexToRGBAArray } from "../utils";
 
-interface NetworkATCsLayerProps {
-  vatsimAtcsInitialData: LiveATCs | null;
-  ivaoAtcsInitialData: LiveATCs | null;
-}
-
-export const getNetworkATCsLayer = ({
-  vatsimAtcsInitialData,
-  ivaoAtcsInitialData,
-}: NetworkATCsLayerProps) => {
+export const getNetworkATCsLayer = () => {
   const router = useRouter();
   const { isIvaoATCsLayerVisible, isVatsimATCsLayerVisible } =
     useMapNetworkLayersStore();
 
   const { data: vatsimAtcsData } = useQuery({
     queryKey: ["vatsim-atcs"],
-    initialData: vatsimAtcsInitialData,
     queryFn: () => getNetworkATCs("vatsim"),
-    refetchOnReconnect: true,
-    refetchOnWindowFocus: true,
     refetchInterval: ATCS_REFETCH_INTERVAL_IN_MILLISECONDS,
     retry: 3,
     retryDelay: 1000,
@@ -42,10 +31,7 @@ export const getNetworkATCsLayer = ({
 
   const { data: ivaoAtcsData } = useQuery({
     queryKey: ["ivao-atcs"],
-    initialData: ivaoAtcsInitialData,
     queryFn: () => getNetworkATCs("ivao"),
-    refetchOnReconnect: true,
-    refetchOnWindowFocus: true,
     refetchInterval: ATCS_REFETCH_INTERVAL_IN_MILLISECONDS,
     retry: 3,
     retryDelay: 1000,

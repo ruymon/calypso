@@ -26,7 +26,7 @@ export async function getCurrentAiracCycle(): Promise<AiracCycle | null> {
   return data;
 }
 
-export async function getAirportsSummary(): Promise<AirportSummaryList | null> {
+export async function getAirportsSummary(): Promise<AirportSummaryList> {
   const accessToken = await getAccessToken();
 
   const url = `${API_BASE_URL}/airports/summary`;
@@ -42,8 +42,8 @@ export async function getAirportsSummary(): Promise<AirportSummaryList | null> {
   const result = await fetch(url, options);
   const data = await result.json();
 
-  if (result.status !== 200) {
-    return null;
+  if (!result.ok) {
+    throw new Error(data.message);
   }
 
   return data;

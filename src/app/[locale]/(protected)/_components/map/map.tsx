@@ -13,8 +13,6 @@ import {
 import { useBaseMapStore } from "@/stores/base-map-store";
 import "@/styles/map.css";
 import { AirportSummaryList } from "@/types/airports";
-import { LiveATCs } from "@/types/atcs";
-import { LiveFlights } from "@/types/live-flights";
 import { DeckGL } from "deck.gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { ReactNode } from "react";
@@ -23,11 +21,7 @@ import { MapToolbar } from "./map-toolbar";
 
 interface MapProps {
   initialData: {
-    airportsSummary: AirportSummaryList | null;
-    vatsimFlightsInitialData: LiveFlights | null;
-    ivaoFlightsInitialData: LiveFlights | null;
-    vatsimAtcsInitialData: LiveATCs | null;
-    ivaoAtcsInitialData: LiveATCs | null;
+    airportsSummary: AirportSummaryList;
   };
   children?: ReactNode;
 }
@@ -36,14 +30,8 @@ export function Map({ initialData, children }: MapProps) {
   const { baseMap } = useBaseMapStore();
 
   const layers = [
-    getNetworkATCsLayer({
-      ivaoAtcsInitialData: initialData.ivaoAtcsInitialData,
-      vatsimAtcsInitialData: initialData.vatsimAtcsInitialData,
-    }),
-    getNetworkFlightsLayer({
-      ivaoFlightsInitialData: initialData.ivaoFlightsInitialData,
-      vatsimFlightsInitialData: initialData.vatsimFlightsInitialData,
-    }),
+    getNetworkATCsLayer(),
+    getNetworkFlightsLayer(),
     getSelectedFlightPathLayer(),
     getAirportsLayer({
       data: initialData.airportsSummary,

@@ -19,36 +19,22 @@ import {
   isEmergencyTransponder,
 } from "../utils";
 
-interface NetworkFlightsLayerProps {
-  ivaoFlightsInitialData: LiveFlights | null;
-  vatsimFlightsInitialData: LiveFlights | null;
-}
-
-export const getNetworkFlightsLayer = ({
-  ivaoFlightsInitialData,
-  vatsimFlightsInitialData,
-}: NetworkFlightsLayerProps) => {
+export const getNetworkFlightsLayer = () => {
   const router = useRouter();
   const { isIvaoFlightsLayerVisible, isVatsimFlightsLayerVisible } =
     useMapNetworkLayersStore();
 
   const { data: vatsimFlightsData } = useQuery({
-    initialData: vatsimFlightsInitialData,
     queryKey: ["vatsim-flights"],
     queryFn: () => getNetworkFlights("vatsim"),
-    refetchOnReconnect: true,
-    refetchOnWindowFocus: true,
     refetchInterval: FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
     retry: 3,
     retryDelay: 1000,
   });
 
   const { data: ivaoFlightsData } = useQuery({
-    initialData: ivaoFlightsInitialData,
     queryKey: ["ivao-flights"],
     queryFn: () => getNetworkFlights("ivao"),
-    refetchOnReconnect: true,
-    refetchOnWindowFocus: true,
     refetchInterval: FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS,
     retry: 3,
     retryDelay: 1000,

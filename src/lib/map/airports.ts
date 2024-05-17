@@ -13,7 +13,7 @@ import { indigo } from "tailwindcss/colors";
 import { hexToRGBAArray } from "../utils";
 
 interface AirportLayerProps {
-  data: AirportSummaryList | null;
+  data: AirportSummaryList;
 }
 
 export const getAirportsLayer = ({ data }: AirportLayerProps) => {
