@@ -1,3 +1,10 @@
+## [1.39.1](https://github.com/skyscope-app/skyscope-web/compare/v1.39.0...v1.39.1) (2024-05-17)
+
+
+### Bug Fixes
+
+* **data:** Remove Server fetch ([7fbe056](https://github.com/skyscope-app/skyscope-web/commit/7fbe056f590249c44e996032fea5158683356bba))
+
 # [1.39.0](https://github.com/skyscope-app/skyscope-web/compare/v1.38.0...v1.39.0) (2024-05-15)
 
 
