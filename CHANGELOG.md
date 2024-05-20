@@ -1,3 +1,10 @@
+## [1.39.2](https://github.com/skyscope-app/skyscope-web/compare/v1.39.1...v1.39.2) (2024-05-20)
+
+
+### Bug Fixes
+
+* **tracks:** use correct coordinates to plot track of aircraft ([78ee377](https://github.com/skyscope-app/skyscope-web/commit/78ee37750e6afb604f829d5ae1ed6898cae64bac))
+
 ## [1.39.1](https://github.com/skyscope-app/skyscope-web/compare/v1.39.0...v1.39.1) (2024-05-17)
 
 
