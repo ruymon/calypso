@@ -1,3 +1,10 @@
+## [1.39.3](https://github.com/skyscope-app/skyscope-web/compare/v1.39.2...v1.39.3) (2024-05-21)
+
+
+### Bug Fixes
+
+* trigger deploy ([1229ecf](https://github.com/skyscope-app/skyscope-web/commit/1229ecffd10a10bd93dea70a693e3e449761d27f))
+
 ## [1.39.2](https://github.com/skyscope-app/skyscope-web/compare/v1.39.1...v1.39.2) (2024-05-20)
 
 
