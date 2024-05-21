@@ -10,38 +10,38 @@ export default ({
   },
   auth: {
     login: {
-      title: "Welcome back!",
+      title: "欢迎回来！",
       subtitle: "Log in to your account to continue.",
-      email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
+      email: "电子邮箱",
+      password: "密码",
+      signIn: "登录",
+      forgotPassword: "忘记密码？",
       noAccount: "No account?",
       join: "Join now",
-      loginError: "Oh no! Something went wrong.",
+      loginError: "糟糕！出了些问题。",
       loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
     },
     join: {
       inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
     },
     forgotPassword: {
-      title: "Forgot your password?",
-      subtitle: "Enter your email to reset your password.",
-      email: "Email",
+      title: "忘记你的密码？",
+      subtitle: "输入你的电子邮箱来重置密码。",
+      email: "电子邮箱",
       sendEmail: "Send recovery email",
       backToLogin: "Remember your password?",
       resetError: "An error occurred while trying to reset your password.",
-      resetErrorDescription: "Please try again later or contact support on Discord.",
-      resetEmailSent: "Password reset email sent!",
+      resetErrorDescription: "请稍后重试或在 Discord 上联系客服。",
+      resetEmailSent: "密码充值邮件已发送！",
       resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
     },
     supportCard: {
-      title: "Need help?"
+      title: "需要帮助？"
     }
   },
   sidebar: {
     map: {
-      title: "World map",
+      title: "世界地图",
       subtitle: "Live network connections"
     },
     events: {
@@ -49,12 +49,12 @@ export default ({
       subtitle: "See current and upcoming events"
     },
     friends: {
-      title: "Friends",
-      subtitle: "Manage your friends list"
+      title: "好友",
+      subtitle: "管理好友列表"
     },
     feedback: {
-      title: "Feedback",
-      subtitle: "Help us improve our service"
+      title: "反馈",
+      subtitle: "帮助我们改进服务"
     },
     help: {
       title: "Support",
@@ -66,10 +66,10 @@ export default ({
     },
     profile: {
       title: "Profile",
-      subtitle: "Manage your account settings"
+      subtitle: "管理用户设置"
     },
     themeSwitcher: {
-      title: "Theme switcher",
+      title: "主题选择",
       subtitle: "Toggle between light and dark mode"
     }
   },
@@ -87,15 +87,15 @@ export default ({
         title: "Base map",
         currentlyActive: "Active",
         satellite: {
-          title: "Satellite",
-          description: "Earth details"
+          title: "卫星",
+          description: "展示地球细节"
         },
         light: {
-          title: "Light",
+          title: "白天",
           description: "Minimalistic"
         },
         dark: {
-          title: "Dark",
+          title: "夜晚",
           description: "Night mode with airport diagrams"
         },
         theme: {
@@ -192,12 +192,12 @@ export default ({
       title: "Profile",
       subtitle: "Manage and update your profile settings",
       emailCard: {
-        title: "Email",
+        title: "电子邮箱",
         cannotChange: "You cannot change your email address"
       },
       nameCard: {
-        title: "Name",
-        cannotChange: "You cannot change your name",
+        title: "姓名",
+        cannotChange: "无法更改姓名",
         emptyState: "Not set"
       },
       avatarCard: {
@@ -218,9 +218,9 @@ export default ({
   },
   integrations: {
     comum: {
-      connect: "Connect",
-      connected: "Connected",
-      unlink: "Unlink",
+      connect: "连接",
+      connected: "已连接",
+      unlink: "断开连接",
       changeAccount: "Change account",
       callback: {
         title: "Integrating your {provider} account",
@@ -230,7 +230,7 @@ export default ({
     },
     integrationDetailsTooltip: {
       title: "Integration details",
-      accountId: "Account ID"
+      accountId: "用户ID"
     },
     ivao: {
       description: "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network"
@@ -263,14 +263,14 @@ export default ({
     }
   },
   flightDetails: {
-    unknownAirline: "Unknown airline",
-    unknownCallsign: "Unknown callsign",
+    unknownAirline: "未知航线",
+    unknownCallsign: "未知呼号",
     routeDetails: {
-      title: "Route",
-      subtitle: "Detailed information about the aircraft's route.",
+      title: "路线",
+      subtitle: "飞机路线的详细信息",
       airport: {
-        departure: "Departure",
-        arrival: "Arrival",
+        departure: "离开",
+        arrival: "到达",
         alternate: "Alternate",
         alternate2: "Second alternate"
       }
@@ -311,7 +311,7 @@ export default ({
       },
       flightRules: "Flight rules",
       flightType: "Flight type",
-      route: "Route",
+      route: "路线",
       remarks: "Remarks",
       icaoFplFormat: "ICAO FPL format"
     },
