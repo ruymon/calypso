@@ -22,7 +22,7 @@ export default ({
       loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
     },
     join: {
-      inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
+      inviteOnly: "我们很抱歉，现在加入只对受到邀请的用户可用"
     },
     forgotPassword: {
       title: "忘记你的密码？",
@@ -81,10 +81,10 @@ export default ({
     toolbar: {
       baseMap: {
         tooltip: {
-          title: "Base map",
-          description: "Switch between different base maps"
+          title: "基础地图",
+          description: "切换不同的基础地图"
         },
-        title: "Base map",
+        title: "基础地图",
         currentlyActive: "Active",
         satellite: {
           title: "卫星",
@@ -99,7 +99,7 @@ export default ({
           description: "Night mode with airport diagrams"
         },
         theme: {
-          title: "Sync with theme",
+          title: "同步主题",
           description: "Switch between light and dark based on your system settings"
         }
       },
@@ -123,30 +123,30 @@ export default ({
             description: "Show flights and ATCs from all networks"
           },
           hideAll: {
-            title: "Hide all",
+            title: "隐藏全部",
             description: "Hide all flights and ATC from all networks"
           }
         },
         vatsimLayers: {
           title: "Vatsim layers settings",
           showFlights: {
-            title: "Show flights",
-            description: "Green planes on the map"
+            title: "显示航班",
+            description: "地图上会出现绿色的飞机"
           },
           showAtcs: {
-            title: "Show ATCs",
-            description: "Active air traffic controllers on the network"
+            title: "显示空中交通管制系统",
+            description: "在网络上启用空中交通管制系统"
           }
         },
         ivaoLayers: {
           title: "IVAO layers settings",
           showFlights: {
-            title: "Show flights",
-            description: "Blue planes on the map"
+            title: "显示航班",
+            description: "地图上将出现蓝色的飞机"
           },
           showAtcs: {
-            title: "Show ATCs",
-            description: "Active air traffic controllers on the network"
+            title: "显示空中交通管制系统",
+            description: "在网络上启用空中交通管制系统"
           }
         }
       },
