@@ -1,3 +1,13 @@
+## [1.39.5](https://github.com/skyscope-app/skyscope-web/compare/v1.39.4...v1.39.5) (2024-05-24)
+
+
+### Bug Fixes
+
+* **atc:** Make WIP page instead of 404 ([c4fd61a](https://github.com/skyscope-app/skyscope-web/commit/c4fd61a45a97941d7a2803ed747a4d24f83a5c1c))
+* **flight track:** Current point ([0bf61f0](https://github.com/skyscope-app/skyscope-web/commit/0bf61f0eea25af9b346fcbf74003c712ed7159e3))
+* **layer order:** Put selected flight track bellow planes ([22ddfc8](https://github.com/skyscope-app/skyscope-web/commit/22ddfc8daf82ddd13cf65092f9649267a34cd37b))
+* **layers:** ATC format ([5d12568](https://github.com/skyscope-app/skyscope-web/commit/5d125687d2f06270adfe1c8e2d72fd3fbc938936))
+
 ## [1.39.4](https://github.com/skyscope-app/skyscope-web/compare/v1.39.3...v1.39.4) (2024-05-21)
 
 
