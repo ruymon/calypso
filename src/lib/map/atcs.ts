@@ -40,7 +40,7 @@ export const getNetworkATCsLayer = () => {
     const atc: LiveATC = d.object;
     if (!atc) return;
 
-    router.push(`/atcs/${atc.callsign.toLowerCase()}`);
+    router.push(`/atcs/${atc.id}`);
   };
 
   const atcsData = useMemo(() => {

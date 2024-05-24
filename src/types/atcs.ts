@@ -28,3 +28,5 @@ export type ATCFacility =
   | "CTR"
   | "FSS"
   | "UNKNOWN";
+
+export interface LiveATCDetail extends LiveATC {}
