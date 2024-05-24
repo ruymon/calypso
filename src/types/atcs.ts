@@ -1,15 +1,14 @@
-import { Network } from "./networks";
-
 export type LiveATCs = LiveATC[];
 
 export interface LiveATC {
-  network: Network;
+  id: string;
+  network: "IVAO" | "VATSIM"; // TODO: Revert to Network
   callsign: string;
   rating: string;
   user: {
     id: string;
-    name: string;
     rating: string;
+    name: string;
   };
   onlineAt: string;
   atis: string[];
@@ -17,12 +16,7 @@ export interface LiveATC {
   latitude: number;
   longitude: number;
   facility: ATCFacility;
-  geometry: LiveATCGeometry[];
-}
-
-export interface LiveATCGeometry {
-  latitude: number;
-  longitude: number;
+  geometry: Array<[number, number]> | [];
 }
 
 export type ATCFacility =

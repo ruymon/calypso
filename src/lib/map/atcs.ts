@@ -7,8 +7,7 @@ import {
 } from "@/config/map";
 import { ATCS_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
 import { useMapNetworkLayersStore } from "@/stores/map-network-layers-store";
-import { ATCFacility, LiveATC, LiveATCGeometry, LiveATCs } from "@/types/atcs";
-import { Network } from "@/types/networks";
+import { ATCFacility, LiveATC, LiveATCs } from "@/types/atcs";
 import { useQuery } from "@tanstack/react-query";
 import { IconLayer, PolygonLayer } from "deck.gl";
 import { useRouter } from "next/navigation";
@@ -60,30 +59,11 @@ export const getNetworkATCsLayer = () => {
     isVatsimATCsLayerVisible,
   ]);
 
-  const getATCPolygonShape = (data: LiveATC) => {
-    if (data.network === "vatsim") {
-      return [
-        data.geometry.map((coord: LiveATCGeometry) => [
-          coord.longitude,
-          coord.latitude,
-        ]),
-      ];
-    }
-    if (data.network === "ivao") {
-      return [
-        data.geometry.map((coord: LiveATCGeometry) => [
-          coord.latitude,
-          coord.longitude,
-        ]),
-      ];
-    }
-  };
-
-  const shouldBeVisible = (network: Network) => {
+  const shouldBeVisible = (network: "IVAO" | "VATSIM") => {
     switch (network) {
-      case "vatsim":
+      case "VATSIM":
         return isVatsimATCsLayerVisible;
-      case "ivao":
+      case "IVAO":
         return isIvaoATCsLayerVisible;
     }
   };
@@ -104,7 +84,7 @@ export const getNetworkATCsLayer = () => {
   const shapesLayer = new PolygonLayer({
     id: MAP_LAYERS.NETWORK_ATCS_SHAPES_LAYER_ID,
     data: atcsData.shapeFacilities,
-    getPolygon: getATCPolygonShape,
+    getPolygon: (d: LiveATC) => d.geometry,
     getLineColor: (d) =>
       getATCColor(d, {
         overrideOpacity: true,
