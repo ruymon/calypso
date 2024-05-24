@@ -2,6 +2,7 @@
 
 import { MAPBOX_ACCESS_TOKEN, MAP_INITIAL_VIEW_STATE } from "@/config/map";
 import {
+  getAirportsLayer,
   getBaseMapUrl,
   getMapCursor,
   getNetworkATCsLayer,
@@ -11,6 +12,7 @@ import {
 } from "@/lib/map";
 import { useBaseMapStore } from "@/stores/base-map-store";
 import "@/styles/map.css";
+import { AirportSummaryList } from "@/types/airports";
 import { DeckGL } from "deck.gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { ReactNode } from "react";
@@ -18,22 +20,22 @@ import BaseMap from "react-map-gl";
 import { MapToolbar } from "./map-toolbar";
 
 interface MapProps {
-  // initialData: {
-  //   airportsSummary: AirportSummaryList;
-  // };
+  initialData: {
+    airportsSummary: AirportSummaryList;
+  };
   children?: ReactNode;
 }
 
-export function Map({ children }: MapProps) {
+export function Map({ children, initialData }: MapProps) {
   const { baseMap } = useBaseMapStore();
 
   const layers = [
     getNetworkATCsLayer(),
     getSelectedFlightPathLayer(),
     getNetworkFlightsLayer(),
-    // getAirportsLayer({
-    //   data: initialData.airportsSummary,
-    // }),
+    getAirportsLayer({
+      data: initialData.airportsSummary,
+    }),
   ];
 
   return (
