@@ -29,8 +29,8 @@ export function Map({ children }: MapProps) {
 
   const layers = [
     getNetworkATCsLayer(),
-    getNetworkFlightsLayer(),
     getSelectedFlightPathLayer(),
+    getNetworkFlightsLayer(),
     // getAirportsLayer({
     //   data: initialData.airportsSummary,
     // }),
