@@ -2,6 +2,7 @@ import {
   ATC_FACILITIES_ACCENT_COLOR,
   ATC_FACILITIES_SPRITE_ICON_MAPPING,
   ATC_FACILITIES_THAT_HAVE_LABEL,
+  ATC_FACILITIES_Z_INDEX,
   MAP_LAYERS,
   MAP_SPRITES,
 } from "@/config/map";
@@ -45,12 +46,21 @@ export const getNetworkATCsLayer = () => {
 
   const atcsData = useMemo(() => {
     const joinedData = [...(vatsimAtcsData || []), ...(ivaoAtcsData || [])];
-    const shapeFacilities = filterOnlyShapeFacilities(joinedData);
-    const labelFacilities = filterOnlyLabelFacilities(joinedData);
+    const filteredShapesFacilites = filterOnlyShapeFacilities(joinedData);
+    const filteredLabelFacilites = filterOnlyLabelFacilities(joinedData);
+
+    const sortedShapeFacilitiesByZIndex = filteredShapesFacilites.sort(
+      (a, b) => {
+        const aIndex = ATC_FACILITIES_Z_INDEX[a.facility as ATCFacility];
+        const bIndex = ATC_FACILITIES_Z_INDEX[b.facility as ATCFacility];
+
+        return aIndex - bIndex;
+      },
+    );
 
     return {
-      shapeFacilities,
-      labelFacilities,
+      shapeFacilities: sortedShapeFacilitiesByZIndex,
+      labelFacilities: filteredLabelFacilites,
     };
   }, [
     ivaoAtcsData,
@@ -70,9 +80,11 @@ export const getNetworkATCsLayer = () => {
 
   const getATCColor = (
     { facility, network }: LiveATC,
-    options?: { overrideOpacity: boolean },
+    options?: { overrideOpacity: boolean; opacity?: number },
   ) => {
-    const DEFAULT_OPACITY = options?.overrideOpacity ? undefined : 40;
+    const DEFAULT_OPACITY = options?.overrideOpacity
+      ? undefined
+      : options?.opacity || 20;
 
     const isVisible = shouldBeVisible(network);
     const opacity = isVisible ? DEFAULT_OPACITY : 0;
@@ -91,11 +103,15 @@ export const getNetworkATCsLayer = () => {
       }),
     getFillColor: (d) => getATCColor(d),
     colorFormat: "RGBA",
+    depthTest: true,
     filled: true,
     getLineWidth: 20,
     lineWidthMinPixels: 1,
     pickable: true,
     autoHighlight: true,
+    highlightColor({ object }) {
+      return getATCColor(object, { overrideOpacity: false, opacity: 60 });
+    },
     onClick: handleClick,
   });
 

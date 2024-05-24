@@ -3,11 +3,11 @@ import { ATCFacility } from "@/types/atcs";
 import { Network } from "@/types/networks";
 import { MapViewState } from "deck.gl";
 import {
-  amber,
   blue,
+  emerald,
   green,
+  orange,
   red,
-  teal,
   violet,
   zinc,
 } from "tailwindcss/colors";
@@ -64,14 +64,25 @@ export const MAP_INITIAL_VIEW_STATE: MapViewState = {
 };
 
 export const ATC_FACILITIES_ACCENT_COLOR: { [key in ATCFacility]: string } = {
-  APP: amber[500],
-  CTR: teal[500],
-  DEP: violet[500],
+  APP: red[400],
+  DEP: emerald[500],
+  CTR: orange[400],
   DEL: blue[500],
   FSS: violet[500],
   GND: green[500],
   TWR: red[500],
   UNKNOWN: zinc[500],
+};
+
+export const ATC_FACILITIES_Z_INDEX: { [key in ATCFacility]: number } = {
+  TWR: 3,
+  DEP: 3,
+  DEL: 3,
+  GND: 3,
+  APP: 2,
+  CTR: 1,
+  FSS: 0,
+  UNKNOWN: 0,
 };
 
 export const FLIGHT_ICON_ACCENT_COLOR: { [key in Network]: string } = {
