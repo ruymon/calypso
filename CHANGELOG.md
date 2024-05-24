@@ -1,3 +1,19 @@
+# [1.40.0](https://github.com/skyscope-app/skyscope-web/compare/v1.39.5...v1.40.0) (2024-05-24)
+
+
+### Bug Fixes
+
+* **atc layers:** Layer z index precedence ([5d6020f](https://github.com/skyscope-app/skyscope-web/commit/5d6020fffd6c4ac084c66ddcee2a16411013297d))
+* **refactor:** Cleanup ([9321fdd](https://github.com/skyscope-app/skyscope-web/commit/9321fdd606910ed47dafa89caf1101bd6e80f9fb))
+
+
+### Features
+
+* **aiports:** Enable layer back ([e1ffd3d](https://github.com/skyscope-app/skyscope-web/commit/e1ffd3df38d6715b7fae4bf52f00d57d739b6f73))
+* **deploy:** Update version ([e282602](https://github.com/skyscope-app/skyscope-web/commit/e282602e87f4c23a5b41f9f5362f14f551610048))
+* **layers:** Persist state ([47ae6fc](https://github.com/skyscope-app/skyscope-web/commit/47ae6fc7f78fb47733937faebf366e4066a98914))
+* **spotlight:** Add other options ([0d7ff5a](https://github.com/skyscope-app/skyscope-web/commit/0d7ff5ababed8413c541aa7bb216c401f42357ac))
+
 ## [1.39.5](https://github.com/skyscope-app/skyscope-web/compare/v1.39.4...v1.39.5) (2024-05-24)
 
 
