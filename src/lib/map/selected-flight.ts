@@ -19,7 +19,10 @@ export const getSelectedFlightPathLayer = () => {
 
   const getTrackDataInGeoJson = (trackData: TrackPosition[]) => {
     const trackPoints = trackData.map((track) => [track.lng, track.lat]);
-    const currentPoint = [trackData[0]?.lng, trackData[0]?.lat];
+    const currentPoint = [
+      trackData[trackData.length - 1]?.lng,
+      trackData[trackData.length - 1]?.lat,
+    ];
 
     const arrivalPoint = arrival && [arrival?.lng, arrival?.lat];
     const alternatePoint = alternate && [alternate?.lng, alternate?.lat];
