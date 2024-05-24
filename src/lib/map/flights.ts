@@ -62,8 +62,7 @@ export const getNetworkFlightsLayer = () => {
 
   const getIconAccentColor = ({ network, position }: LiveFlight) => {
     const opacity = shouldBeVisible(network) ? undefined : 0;
-    const squawkCode = position.transponder;
-    const isEmergency = isEmergencyTransponder(squawkCode);
+    const isEmergency = isEmergencyTransponder(position.transponder);
 
     const accentColor = isEmergency
       ? FLIGHT_ICON_EMERGENCY_ACCENT_COLOR
