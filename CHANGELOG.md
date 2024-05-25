@@ -1,3 +1,12 @@
+## [1.40.1](https://github.com/skyscope-app/skyscope-web/compare/v1.40.0...v1.40.1) (2024-05-25)
+
+
+### Bug Fixes
+
+* **deploy:** Change version ([dbaf9c3](https://github.com/skyscope-app/skyscope-web/commit/dbaf9c3843736b13aacd76508cfad5a97af9270f))
+* **loading:** Remove async meta ([f7aaec0](https://github.com/skyscope-app/skyscope-web/commit/f7aaec0aace42429c0c68b6a2b31afb9d3b9c0a3))
+* **map:** Loading ([4e7755c](https://github.com/skyscope-app/skyscope-web/commit/4e7755c1f96640aa63d00926ec665727b1acdf0e))
+
 # [1.40.0](https://github.com/skyscope-app/skyscope-web/compare/v1.39.5...v1.40.0) (2024-05-24)
 
 
