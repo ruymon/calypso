@@ -23,21 +23,8 @@ export default async function AirportDetailsPage({
 
   const data = await getAirportDetails(icaoCode);
 
-  // mock delay for testing the skeleton loading
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
   if (!data) {
     return notFound();
-  }
-  {
-    /* <figure className="absolute inset-0 top-0 -z-10 max-h-56 before:absolute before:inset-0 before:z-10 before:bg-gradient-to-r before:from-background before:via-background/75 before:to-background/5 before:content-[''] after:absolute after:inset-0 after:bg-gradient-to-b after:from-background after:via-background/5 after:to-background after:content-['']">
-        <Image
-          alt="weather image"
-          src="https://images.unsplash.com/photo-1501691223387-dd0500403074?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          fill
-          className="object-cover"
-        />
-      </figure> */
   }
 
   return (

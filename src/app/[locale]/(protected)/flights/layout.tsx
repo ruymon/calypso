@@ -1,5 +1,5 @@
-import { PageShell } from "@/app/[locale]/(protected)/_components/page-shell";
 import { ReactNode } from "react";
+import { PageShell } from "../_components/page-shell";
 
 interface FlightsDetailsLayoutProps {
   children: ReactNode;

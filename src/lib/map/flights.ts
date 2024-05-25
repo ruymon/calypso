@@ -74,7 +74,10 @@ export const getNetworkFlightsLayer = () => {
   const handleClick = (d: any) => {
     const flight: LiveFlight = d.object;
     if (!flight) return;
-    router.push(`/flights/${flight.id}`);
+
+    router.push(`/flights/${flight.id}`, {
+      scroll: false,
+    });
   };
 
   return new IconLayer({
