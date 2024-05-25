@@ -4,21 +4,26 @@ import {
   MAP_SPRITES,
 } from "@/config/map";
 import { useMapExtraLayersStore } from "@/stores/map-extra-layers-store";
-import { AirportSummary, AirportSummaryList } from "@/types/airports";
+import { AirportSummary } from "@/types/airports";
 //@ts-ignore
 import { CollisionFilterExtension } from "@deck.gl/extensions";
+import { useQuery } from "@tanstack/react-query";
 import { IconLayer } from "deck.gl";
 import { useRouter } from "next/navigation";
 import { indigo } from "tailwindcss/colors";
+import { getAirportsSummary } from "../navdata";
 import { hexToRGBAArray } from "../utils";
 
-interface AirportLayerProps {
-  data: AirportSummaryList;
-}
-
-export const getAirportsLayer = ({ data }: AirportLayerProps) => {
+export const getAirportsLayer = () => {
   const { isAirportsLayerVisible } = useMapExtraLayersStore();
   const router = useRouter();
+
+  const { data } = useQuery({
+    queryKey: ["airports-summary"],
+    queryFn: () => getAirportsSummary(),
+    retry: 3,
+    retryDelay: 1000,
+  });
 
   const handleClick = (d: any) => {
     const airport: AirportSummary = d.object;
