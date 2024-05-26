@@ -1,3 +1,10 @@
+# [1.41.0](https://github.com/skyscope-app/skyscope-web/compare/v1.40.1...v1.41.0) (2024-05-26)
+
+
+### Features
+
+* Fly to ([95fd3ae](https://github.com/skyscope-app/skyscope-web/commit/95fd3ae5f612ac2ee317077c9d90609c04268b5c))
+
 ## [1.40.1](https://github.com/skyscope-app/skyscope-web/compare/v1.40.0...v1.40.1) (2024-05-25)
 
 
