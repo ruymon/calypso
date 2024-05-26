@@ -26,6 +26,7 @@
     "@t3-oss/env-nextjs": "^0.7.3",
     "@tanstack/react-query": "^5.32.1",
     "@tanstack/react-query-devtools": "^5.32.1",
+    "@turf/distance": "^6.5.0",
     "@turf/helpers": "^6.5.0",
     "apexcharts": "^3.49.0",
     "class-variance-authority": "^0.7.0",

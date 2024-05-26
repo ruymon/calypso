@@ -56,6 +56,9 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: ^5.32.1
         version: 5.32.1(@tanstack/react-query@5.32.1(react@18.3.1))(react@18.3.1)
+      '@turf/distance':
+        specifier: ^6.5.0
+        version: 6.5.0
       '@turf/helpers':
         specifier: ^6.5.0
         version: 6.5.0
@@ -1647,6 +1650,9 @@ packages:
   '@turf/clone@5.1.5':
     resolution: {integrity: sha512-//pITsQ8xUdcQ9pVb4JqXiSqG4dos5Q9N4sYFoWghX21tfOV2dhc5TGqYOhnHrQS7RiKQL1vQ48kIK34gQ5oRg==}
 
+  '@turf/distance@6.5.0':
+    resolution: {integrity: sha512-xzykSLfoURec5qvQJcfifw/1mJa+5UwByZZ5TZ8iaqjGYN0vomhV9aiSLeYdUGtYRESZ+DYC/OzY+4RclZYgMg==}
+
   '@turf/helpers@5.1.5':
     resolution: {integrity: sha512-/lF+JR+qNDHZ8bF9d+Cp58nxtZWJ3sqFe6n3u3Vpj+/0cqkjk4nXKYBSY0azm+GIYB5mWKxUXvuP/m0ZnKj1bw==}
 
@@ -1655,6 +1661,9 @@ packages:
 
   '@turf/invariant@5.2.0':
     resolution: {integrity: sha512-28RCBGvCYsajVkw2EydpzLdcYyhSA77LovuOvgCJplJWaNVyJYH6BOR3HR9w50MEkPqb/Vc/jdo6I6ermlRtQA==}
+
+  '@turf/invariant@6.5.0':
+    resolution: {integrity: sha512-Wv8PRNCtPD31UVbdJE/KVAWKe7l6US+lJItRR/HOEW3eh+U/JwRCSUl/KZ7bmjM/C+zLNoreM2TU6OoLACs4eg==}
 
   '@turf/meta@5.2.0':
     resolution: {integrity: sha512-ZjQ3Ii62X9FjnK4hhdsbT+64AYRpaI8XMBMcyftEOGSmPMUVnkbvuv3C9geuElAXfQU7Zk1oWGOcrGOD9zr78Q==}
@@ -6064,6 +6073,11 @@ snapshots:
     dependencies:
       '@turf/helpers': 5.1.5
 
+  '@turf/distance@6.5.0':
+    dependencies:
+      '@turf/helpers': 6.5.0
+      '@turf/invariant': 6.5.0
+
   '@turf/helpers@5.1.5': {}
 
   '@turf/helpers@6.5.0': {}
@@ -6071,6 +6085,10 @@ snapshots:
   '@turf/invariant@5.2.0':
     dependencies:
       '@turf/helpers': 5.1.5
+
+  '@turf/invariant@6.5.0':
+    dependencies:
+      '@turf/helpers': 6.5.0
 
   '@turf/meta@5.2.0':
     dependencies:
