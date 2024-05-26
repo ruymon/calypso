@@ -152,8 +152,8 @@ export default ({
       },
       extraLayers: {
         tooltip: {
-          title: "Network Katmanları",
-          description: "Farklı network katmanlarını göster/gizle"
+          title: "Ekstra katmanlar",
+          description: "Ekstra katmanlarını görünürlüğünü aç veya kapat"
         },
         title: "Ekstra katmanlar",
         airports: {
