@@ -152,8 +152,8 @@ export default ({
       },
       extraLayers: {
         tooltip: {
-          title: "Netzwerkebenen",
-          description: "Sichtbarkeit der Netzwerkebenen umschalten"
+          title: "Zusätzliche Ebenen",
+          description: "Sichtbarkeit der zusätzlichen Ebenen umschalten"
         },
         title: "Zusätzliche Ebenen",
         airports: {
