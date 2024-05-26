@@ -11,12 +11,12 @@ export default ({
   auth: {
     login: {
       title: "欢迎回来！",
-      subtitle: "Log in to your account to continue.",
+      subtitle: "登录你的账号以继续",
       email: "电子邮箱",
       password: "密码",
       signIn: "登录",
       forgotPassword: "忘记密码？",
-      noAccount: "No account?",
+      noAccount: "没有账号？",
       join: "Join now",
       loginError: "糟糕！出了些问题。",
       loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
@@ -28,8 +28,8 @@ export default ({
       title: "忘记你的密码？",
       subtitle: "输入你的电子邮箱来重置密码。",
       email: "电子邮箱",
-      sendEmail: "Send recovery email",
-      backToLogin: "Remember your password?",
+      sendEmail: "发送重置邮件",
+      backToLogin: "记得你的密码？",
       resetError: "An error occurred while trying to reset your password.",
       resetErrorDescription: "请稍后重试或在 Discord 上联系客服。",
       resetEmailSent: "密码重置邮件已发送！",
@@ -206,8 +206,8 @@ export default ({
       },
       dangerZone: {
         title: "Danger zone",
-        deleteAccount: "Delete your account",
-        deleteAccountDescription: "Should you decide to delete your account, you will lose access to all of your data. This action cannot be undone and the process may take up to 24 hours."
+        deleteAccount: "删除账号",
+        deleteAccountDescription: "如果你决定删除你的账号，你将无法访问所有你的数据。此操作不可逆。24小时后生效。"
       }
     },
     integrations: {
@@ -221,7 +221,7 @@ export default ({
       connect: "连接",
       connected: "已连接",
       unlink: "断开连接",
-      changeAccount: "Change account",
+      changeAccount: "切换账号",
       callback: {
         title: "Integrating your {provider} account",
         subtitle: "This process may take a few seconds."
