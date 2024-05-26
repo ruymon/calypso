@@ -5,16 +5,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getProfile } from "@/lib/profile";
 import { getNameInitials } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
+import { UserProfile } from "@/types/profile";
 import Link from "next/link";
 
-interface SidebarAvatarProps {}
+interface SidebarAvatarProps {
+  user: UserProfile;
+}
 
-export async function SidebarAvatar({}: SidebarAvatarProps) {
+export async function SidebarAvatar({ user }: SidebarAvatarProps) {
   const t = await getScopedI18n("sidebar.profile");
-  const user = await getProfile();
 
   return (
     <Tooltip delayDuration={400}>

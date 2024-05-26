@@ -1,3 +1,4 @@
+import { UserIntegrations } from "@/app/[locale]/(protected)/_components/map";
 import {
   ATC_FACILITIES_ACCENT_COLOR,
   ATC_FACILITIES_SPRITE_ICON_MAPPING,
@@ -16,7 +17,13 @@ import { useMemo } from "react";
 import { getNetworkATCs } from "../atcs";
 import { hexToRGBAArray } from "../utils";
 
-export const getNetworkATCsLayer = () => {
+interface getNetworkATCsLayerProps {
+  userIntegrations: UserIntegrations;
+}
+
+export const getNetworkATCsLayer = ({
+  userIntegrations,
+}: getNetworkATCsLayerProps) => {
   const router = useRouter();
   const { isIvaoATCsLayerVisible, isVatsimATCsLayerVisible } =
     useMapNetworkLayersStore();

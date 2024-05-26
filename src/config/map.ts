@@ -9,6 +9,7 @@ import {
   orange,
   red,
   violet,
+  yellow,
   zinc,
 } from "tailwindcss/colors";
 
@@ -90,7 +91,16 @@ export const FLIGHT_ICON_ACCENT_COLOR: { [key in Network]: string } = {
   ivao: blue[500],
 };
 
+export const FLIGHT_TRACK_ACCENT_COLOR: { [key in Network]: string } = {
+  vatsim: green[600],
+  ivao: blue[600],
+};
+
 export const FLIGHT_ICON_EMERGENCY_ACCENT_COLOR = red[500];
+export const FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR = red[500];
+
+export const FLIGHT_ICON_USER_ACCENT_COLOR = yellow[500];
+export const FLIGHT_TRACK_USER_ACCENT_COLOR = yellow[500];
 
 export const ATC_FACILITIES_THAT_HAVE_LABEL: ATCFacility[] = [
   "DEL",
@@ -115,5 +125,6 @@ export const MAP_LAYERS = {
   NETWORK_ATCS_SHAPES_LAYER_ID: "networks-atcs-shapes-layer",
   NETWORK_ATCS_LABEL_LAYER_ID: "networks-atcs-label-layer",
   AIRPORTS_LAYER_ID: "airports-layer",
-  SELECTED_FLIGHT_LAYER_ID: "selected-flight-path-layer",
+  SELECTED_FLIGHT_TRACK_LAYER_ID: "selected-flight-track-layer",
+  SELECTED_FLIGHT_ICON_LAYER_ID: "selected-flight-icon-layer",
 };

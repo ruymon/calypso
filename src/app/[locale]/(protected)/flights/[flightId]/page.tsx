@@ -11,6 +11,7 @@ import { BlurBackdrop } from "./_components/blur-backdrop";
 import { CrewCard } from "./_components/crew-card";
 import { FlightPlanDetails } from "./_components/flight-plan-details";
 import { FlightTelemetry } from "./_components/flight-telemetry";
+import { FlyToPlaneButton } from "./_components/fly-to-plane-button";
 const VerticalProfileChart = dynamic(
   () => import("./_components/vertical-profile-chart"),
   {
@@ -50,8 +51,7 @@ export default async function FlightsDetailPage({
           <div className="flex flex-col">
             <h1 className="text-3xl font-bold">{data.callsign}</h1>
             <span className="text-sm text-muted-foreground">
-              {data.airline?.callsign || t("unknownCallsign")} &bull;{" "}
-              {data.airline?.name || t("unknownAirline")}
+              {data.airline?.callsign || t("unknownCallsign")}
             </span>
           </div>
         </div>
@@ -133,6 +133,7 @@ export default async function FlightsDetailPage({
       </section>
 
       <FlightPlanDetails data={data} />
+      <FlyToPlaneButton />
     </div>
   );
 }

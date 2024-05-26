@@ -1,6 +1,6 @@
 "use client";
 
-import { MAPBOX_ACCESS_TOKEN, MAP_INITIAL_VIEW_STATE } from "@/config/map";
+import { MAPBOX_ACCESS_TOKEN } from "@/config/map";
 import {
   getAirportsLayer,
   getBaseMapUrl,
@@ -11,7 +11,9 @@ import {
   getTooltipContentBasedOnLayer,
 } from "@/lib/map";
 import { useBaseMapStore } from "@/stores/base-map-store";
+import { useMapViewStateStore } from "@/stores/map-view-state-store";
 import "@/styles/map.css";
+import { UserProfile } from "@/types/profile";
 import { DeckGL } from "deck.gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { ReactNode, useState } from "react";
@@ -19,18 +21,31 @@ import BaseMap from "react-map-gl";
 import { MapSkeleton } from "./map-skeleton";
 import { MapToolbar } from "./map-toolbar";
 
+export type UserIntegrations = {
+  ivaoId: UserProfile["ivaoId"];
+  vatsimId: UserProfile["vatsimId"];
+};
+
 interface MapProps {
   children?: ReactNode;
+  userIntegrations: UserIntegrations;
 }
 
-export function Map({ children }: MapProps) {
+export function Map({ children, userIntegrations }: MapProps) {
   const { baseMap } = useBaseMapStore();
   const [isMapLoading, setIsMapLoading] = useState(true);
+  const { viewState } = useMapViewStateStore();
 
   const layers = [
-    getNetworkATCsLayer(),
-    getSelectedFlightPathLayer(),
-    getNetworkFlightsLayer(),
+    getNetworkATCsLayer({
+      userIntegrations,
+    }),
+    getSelectedFlightPathLayer({
+      userIntegrations,
+    }),
+    getNetworkFlightsLayer({
+      userIntegrations,
+    }),
     getAirportsLayer(),
   ];
 
@@ -48,7 +63,7 @@ export function Map({ children }: MapProps) {
             doubleClickZoom: false,
           }}
           getTooltip={getTooltipContentBasedOnLayer}
-          initialViewState={MAP_INITIAL_VIEW_STATE}
+          initialViewState={viewState}
           layers={layers}
           getCursor={getMapCursor}
         >
