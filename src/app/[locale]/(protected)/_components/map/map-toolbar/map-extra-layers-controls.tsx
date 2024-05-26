@@ -30,8 +30,8 @@ export function MapExtraLayerControls({}: MapExtraLayerControlsProps) {
   } = useMapExtraLayersStore();
 
   return (
-    <Tooltip disableHoverableContent>
-      <DropdownMenu>
+    <DropdownMenu>
+      <Tooltip>
         <DropdownMenuTrigger asChild>
           <TooltipTrigger asChild>
             <Button
@@ -88,18 +88,18 @@ export function MapExtraLayerControls({}: MapExtraLayerControlsProps) {
             />
           </div> */}
         </DropdownMenuContent>
-      </DropdownMenu>
-      <TooltipContent
-        side="left"
-        align="start"
-        className="flex flex-col rounded-sm px-2"
-        sideOffset={12}
-      >
-        <span className="text-xs font-semibold">{t("tooltip.title")}</span>
-        <span className="text-2xs text-muted-foreground">
-          {t("tooltip.description")}
-        </span>
-      </TooltipContent>
-    </Tooltip>
+        <TooltipContent
+          side="left"
+          align="start"
+          className="flex flex-col rounded-sm px-2"
+          sideOffset={12}
+        >
+          <span className="text-xs font-semibold">{t("tooltip.title")}</span>
+          <span className="text-2xs text-muted-foreground">
+            {t("tooltip.description")}
+          </span>
+        </TooltipContent>
+      </Tooltip>
+    </DropdownMenu>
   );
 }
