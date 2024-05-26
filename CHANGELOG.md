@@ -1,3 +1,10 @@
+## [1.41.1](https://github.com/skyscope-app/skyscope-web/compare/v1.41.0...v1.41.1) (2024-05-26)
+
+
+### Bug Fixes
+
+* **types:** any ([334bd36](https://github.com/skyscope-app/skyscope-web/commit/334bd36816bb37196c11823a70d1d4cded68e2f3))
+
 # [1.41.0](https://github.com/skyscope-app/skyscope-web/compare/v1.40.1...v1.41.0) (2024-05-26)
 
 
