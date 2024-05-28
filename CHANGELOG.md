@@ -1,3 +1,11 @@
+## [1.41.3](https://github.com/skyscope-app/skyscope-web/compare/v1.41.2...v1.41.3) (2024-05-28)
+
+
+### Bug Fixes
+
+* **auth:** Break on access token refresh ([5de7476](https://github.com/skyscope-app/skyscope-web/commit/5de7476aad262330b54e010cf0d527844ddaa68b))
+* **deploy:** Build version ([b68c94a](https://github.com/skyscope-app/skyscope-web/commit/b68c94a5e007d9fcfd2692718df789c959a6118c))
+
 ## [1.41.2](https://github.com/skyscope-app/skyscope-web/compare/v1.41.1...v1.41.2) (2024-05-26)
 
 
