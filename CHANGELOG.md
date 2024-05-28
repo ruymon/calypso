@@ -1,3 +1,11 @@
+## [1.41.4](https://github.com/skyscope-app/skyscope-web/compare/v1.41.3...v1.41.4) (2024-05-28)
+
+
+### Bug Fixes
+
+* **atcs:** Vatsim Shape ([55cc9cd](https://github.com/skyscope-app/skyscope-web/commit/55cc9cd0b7928b3aa7907e3098f71b7b825f52d5))
+* **deploy:** Build version ([6b9723d](https://github.com/skyscope-app/skyscope-web/commit/6b9723db62a3fb979896713ba27ff62f3245a789))
+
 ## [1.41.3](https://github.com/skyscope-app/skyscope-web/compare/v1.41.2...v1.41.3) (2024-05-28)
 
 

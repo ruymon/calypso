@@ -1,6 +1,6 @@
 {
   "name": "skyscope-web",
-  "version": "1.41.3",
+  "version": "1.41.4",
   "private": true,
   "type": "module",
   "scripts": {
