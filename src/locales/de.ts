@@ -112,7 +112,7 @@ export default ({
           title: "Schnellzugriff",
           ivao: {
             title: "IVAO",
-            description: "Nur IVAO Flüge und ATCs anzeigen"
+            description: "Nur IVAO-Flüge und -Lotsen anzeigen"
           },
           vatsim: {
             title: "VATISM",
