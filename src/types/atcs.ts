@@ -16,7 +16,7 @@ export interface LiveATC {
   latitude: number;
   longitude: number;
   facility: ATCFacility;
-  geometry: Array<[number, number]> | [];
+  geometry: [number, number][] | [];
 }
 
 export type ATCFacility =
