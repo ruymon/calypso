@@ -12,14 +12,6 @@ const I18nMiddleware = createI18nMiddleware({
 
 export default async function middleware(request: NextRequest) {
   const response = I18nMiddleware(request);
-  const nextUrl = request.nextUrl;
-
-  const pathnameLocale = nextUrl.pathname.split("/", 2)?.[1];
-  const pathnameWithoutLocale = nextUrl.pathname.slice(
-    pathnameLocale!.length + 1,
-  );
-
-  const newUrl = new URL(pathnameWithoutLocale || "/", request.url);
 
   const accessToken = request.cookies.get(
     `${COOKIE_PREFIX}access-token`,
@@ -28,18 +20,23 @@ export default async function middleware(request: NextRequest) {
     `${COOKIE_PREFIX}refresh-token`,
   )?.value;
 
-  if (!accessToken && refreshToken) {
-    await refreshAccessTokenInMiddleware(refreshToken, response);
-    return response;
+  const isPublicAuthRoute = request.nextUrl.pathname.includes("/auth");
+  const isInLoginPage = request.nextUrl.pathname.includes("/auth/login");
+
+  if (!accessToken && !refreshToken && !isPublicAuthRoute) {
+    return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  if (
-    !accessToken &&
-    !refreshToken &&
-    newUrl.pathname !== "/auth/login" &&
-    newUrl.pathname !== "/auth/forgot-password"
-  ) {
-    return NextResponse.redirect(new URL("/auth/login", request.url));
+  if (!accessToken && refreshToken) {
+    try {
+      await refreshAccessTokenInMiddleware(refreshToken, response);
+    } catch (error) {
+      return NextResponse.redirect(new URL("/auth/login", request.url));
+    }
+  }
+
+  if (accessToken && refreshToken && isInLoginPage) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return response;
