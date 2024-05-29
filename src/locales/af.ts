@@ -26,14 +26,14 @@ export default ({
     },
     forgotPassword: {
       title: "Het jy jou wagwoord vergeet?",
-      subtitle: "Tik jou e-pos adres in om jou wagwoord weer te hergenereer.",
+      subtitle: "Tik jou e-pos adres in om jou wagwoord weer te regenereer.",
       email: "E-pos adres",
-      sendEmail: "Send recovery email",
+      sendEmail: "Stuur 'n e-pos om jou profiel te red",
       backToLogin: "Onthou jy jou wagwoord?",
-      resetError: "An error occurred while trying to reset your password.",
+      resetError: "'n Probleem het voorgekom tydens die proses om jou wagwoord te regenereer.",
       resetErrorDescription: "Probeer asseblief later weer, of kontak die hulp departement op Discord.",
-      resetEmailSent: "Password reset email sent!",
-      resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
+      resetEmailSent: "Wagwoord regenerasie e-pos gestuur!",
+      resetEmailSentIfAccountIsValid: "Indien die e-pos adres wat jy ingevoer het met 'n geldige profiel geassosieer word, sal jy 'n in jou e-posse, 'n skakel ontvang om jou wagwoord te regenereer."
     },
     supportCard: {
       title: "Kort jy hulp?"
@@ -58,55 +58,55 @@ export default ({
     },
     help: {
       title: "Hulp",
-      subtitle: "Kry hulp met die toep"
+      subtitle: "Kry hulp met die toep / webwerf"
     },
     changelog: {
-      title: "Changelog",
-      subtitle: "Kyk wat nuut is in die toep"
+      title: "Geskiedenis van alle veranderinge aan die toep / webwerf",
+      subtitle: "Kyk wat nuut is in die toep / webwerf"
     },
     profile: {
       title: "Profiel",
       subtitle: "Bestuur jou profiel instellings"
     },
     themeSwitcher: {
-      title: "Theme switcher",
-      subtitle: "Toggle between light and dark mode"
+      title: "Kleur verstellings",
+      subtitle: "Verander tussen lig en donker"
     }
   },
   map: {
     loading: {
-      title: "Loading map",
-      subtitle: "This should take less than 10 seconds, depending on your connection"
+      title: "Dit laai tans die kaart",
+      subtitle: "Dit behoort minder as 10 sekondes te neem, afhangend van jou internet spoed"
     },
     toolbar: {
       baseMap: {
         tooltip: {
-          title: "Base map",
-          description: "Switch between different base maps"
+          title: "Onderste kaart",
+          description: "Wissel tussen kaarte"
         },
-        title: "Base map",
+        title: "Onderste kaart",
         currentlyActive: "Aktief",
         satellite: {
           title: "Sateliet",
-          description: "Earth details"
+          description: "Opsie met die aarde se besonderhede"
         },
         light: {
           title: "Lig",
-          description: "Minimaal"
+          description: "Minimale opsie"
         },
         dark: {
           title: "Donker",
-          description: "Night mode with airport diagrams"
+          description: "Donker opsie met lughawe diagramme"
         },
         theme: {
-          title: "Sync with theme",
-          description: "Switch between light and dark based on your system settings"
+          title: "Sinchroniseer met jou toestel",
+          description: "Verander tussen lig en donker gebaseer op jou toestel se instellings"
         }
       },
       networkLayers: {
         tooltip: {
           title: "Netwerk lae",
-          description: "Toggle network layers visibility"
+          description: "Verstel netwerk lae wat sigbaar is"
         },
         quickActions: {
           title: "Vinnige aksies",
@@ -152,17 +152,17 @@ export default ({
       },
       extraLayers: {
         tooltip: {
-          title: "Extra layers",
-          description: "Toggle extra layers visibility"
+          title: "Ekstra lae",
+          description: "Verstel die ekstra lae se sigbaarheid"
         },
-        title: "Extra layers",
+        title: "Ekstra lae",
         airports: {
-          title: "Airports",
-          description: "Show airports on the map"
+          title: "Luhhawens",
+          description: "Wys lughawens op die kaart"
         },
         weatherRadar: {
-          title: "Weather radar",
-          description: "Show weather radar on the map"
+          title: "Weer radar",
+          description: "Wys die weer radar op die kaart"
         }
       }
     },
@@ -190,7 +190,7 @@ export default ({
     },
     profile: {
       title: "Profiel",
-      subtitle: "Verander en dateer profielinstellings op",
+      subtitle: "Verander en dateer profiel instellings op",
       emailCard: {
         title: "E-pos adres",
         cannotChange: "Jy kan nie jou e-pos adres verander nie"
@@ -213,52 +213,52 @@ export default ({
     integrations: {
       title: "Integrasies",
       subtitle: "Verbind, en sinchroniseer derdeparty-dienste om jou evaring te verbeter.",
-      comingSoonDescription: "More integrations are coming soon."
+      comingSoonDescription: "Nog meer intergrasies kom binnekort."
     }
   },
   integrations: {
     comum: {
-      connect: "Connect",
-      connected: "Connected",
-      unlink: "Unlink",
-      changeAccount: "Change account",
+      connect: "Verbind",
+      connected: "Suksesvol verbind",
+      unlink: "Ontkoppel",
+      changeAccount: "Verander profiel",
       callback: {
-        title: "Integrating your {provider} account",
-        subtitle: "This process may take a few seconds."
+        title: "Integreer jou {provider} profiel",
+        subtitle: "Hierdie proses mag dalk 'n paar sekondes duur."
       },
-      unstable: "This integration is a recent addition and may not work as expected."
+      unstable: "Hierdie integrasie is onlangs bygevoeg en dit mag dalk nie werk soos wat U verwag nie."
     },
     integrationDetailsTooltip: {
-      title: "Integration details",
-      accountId: "Account ID"
+      title: "Integrasie besonderhede",
+      accountId: "Profiel ID"
     },
     ivao: {
-      description: "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network"
+      description: "Die \"Internation Virtual Aviation Organisation\" (VZW) is 'n nie-winsgewende vereniging wat 'n gratis, aanlyn vliegsimulasie netwerk aan bied"
     },
     vatsim: {
-      description: "The Virtual Air Traffic Simulation Network is an online platform that allows flight simulation enthusiasts to connect and fly together."
+      description: "Die \"Virtual Air Traffic Simulation Network\" is 'n aanlyn platform wat vlugsimulasie-entoesiaste toelaat om te verbind en saam te vlieg."
     },
     navigraph: {
-      description: "Provider of aeronautical data for the flight-sim community. "
+      description: "Verskaffer van lugvaartdata vir die vliegsimulasie-gemeenskap. "
     }
   },
   onboarding: {
     welcome: {
-      hat: "Getting started",
-      title: `Welcome to ${siteConfig.name}!`,
-      subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
-      getStarted: "Get started"
+      hat: "Begin hier",
+      title: `Welkom by ${siteConfig.name}!`,
+      subtitle: "Ons is bly om jou hier te hê. Kom ons begin met 'n paar maklike besonderhede.",
+      getStarted: "Kom ons begin"
     },
     integrations: {
-      hat: "Sync your details",
-      title: "Sync your details",
-      subtitle: "Connect your accounts to have a seamless experience.",
-      skip: "Continue without syncing"
+      hat: "Sinkroniseer jou besonderhede",
+      title: "Sinkroniseer jou besonderhede",
+      subtitle: "Koppel al jou profiele om 'n naatlose en maklike ervaring te hê.",
+      skip: "Begin sonder om te sinkroniseer"
     },
     finish: {
       hat: "Alles is reg!",
       title: "Reg om te begin?",
-      subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
+      subtitle: `Jy is heeltemaal reg! Drul die knoppie hier onder om ${siteConfig.name} te begin gebruik.`,
       getStarted: "Kom ons begin"
     }
   },
@@ -267,74 +267,74 @@ export default ({
     unknownCallsign: "Onbekende roepsein",
     routeDetails: {
       title: "Roete",
-      subtitle: "Detailed information about the aircraft's route.",
+      subtitle: "Gedetailleerde inligting oor die vliegtuig se roete.",
       airport: {
         departure: "Vertrek",
         arrival: "Aankoms",
-        alternate: "Alternatiewe",
-        alternate2: "Tweede alternatiewe"
+        alternate: "Alternatief",
+        alternate2: "Tweede alternatief"
       }
     },
     aircraftDetails: {
       title: "Vliegtuig besonderhede",
-      subtitle: "Detailed information about the aircraft.",
+      subtitle: "Gedetailleerde inligting oor die vliegtuig.",
       aircraft: {
         registration: "Registrasie",
-        transponder: "Transponder",
-        wakeTurbulence: "Wake turbulence",
+        transponder: "Transponeerder",
+        wakeTurbulence: "Turbulensie kategorie",
         photographer: "Fotograaf"
       }
     },
     crewDetails: {
-      title: "Flight crew details",
-      subtitle: "Detailed information about the flight crew.",
+      title: "Inligting oor die lugbemanning",
+      subtitle: "Gedetailleerde inligting oor die lugbemanning.",
       crew: {
-        pilotInCommand: "Pilot in command"
+        pilotInCommand: "Vlieënier in beheer"
       }
     },
     analytics: {
-      title: "Analytics",
-      subtitle: "Data and statistics about the flight in real-time.",
+      title: "Analise",
+      subtitle: "Lewendige inligting en statistieke oor die vlug.",
       verticalPathChart: {
-        title: "Vertical path",
-        subtitle: "Altitude and vertical speed",
+        title: "Vertikale pad",
+        subtitle: "Hoogte en vertikale spoed",
         altitude: "Hoogte",
         speed: "Grond spoed"
       }
     },
     flightPlanDetails: {
       title: "Vlugplan besonderhede",
-      subtitle: "Detailed information about the flight plan.",
+      subtitle: "Gedetailleerde inligting oor die vlugplan.",
       viewTypes: {
         simple: "Maklike",
-        detailed: "Detailed"
+        detailed: "Gedetailleerd"
       },
-      flightRules: "Flight rules",
+      flightRules: "Vlug reëls",
       flightType: "Vlug tipe",
       route: "Roete",
-      remarks: "Remarks",
-      icaoFplFormat: "ICAO FPL format"
+      remarks: "Opmerkings",
+      icaoFplFormat: "ICAO FPL formaat"
     },
     notFound: {
       title: "Vlug onbeskikbaar",
-      subtitle: "We couldn't find the flight you were looking for.",
+      subtitle: "Ons kon ongelukkig nie die vlug vind wat jy gesoek het nie.",
       troubleshooting: {
-        title: "Troubleshooting",
-        subtitle: "Things you can do to possibly fix it. If this problem persists, please contact our support team.",
+        title: "Probleemoplossing",
+        subtitle: "Dinge wat jy kan probeer om die probleem op te los. Indien die probleem aanhou, kontak asseblief ons ondersteunings-en hulpspan.",
         steps: {
-          verifyFlightExists: "Make sure the flight is currently flying in one of the supported networks",
-          refresh: "Refresh the page",
+          verifyFlightExists: "Maak seker die vlug vlieg tans op een van die ondersteunde netwerke",
+          refresh: "Herlaai die toep en webwerf",
           checkInternetConnection: "Kyk na jou internet konneksie",
           checkLoginStatus: "Maak seker jy is ingeteken"
         }
       },
       systemLogs: {
-        title: "System logs",
+        title: "Stelsel logs",
         subtitle: "Die volgende inligting mag dalk van waarde wees vir ons hulp span.",
         code: "Kode",
         flightId: "Vlug id",
         timestamp: "Tydstempel",
-        buildVersion: "Build version"
+        buildVersion: "Weergawe van die toep / webwerf"
       }
     }
   }
