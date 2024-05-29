@@ -15,14 +15,14 @@ export default ({
       email: "E-pos adres",
       password: "Wagwoord",
       signIn: "Teken in",
-      forgotPassword: "Wagwoord vergeet?",
+      forgotPassword: "Het jy jou wagwoord vergeet?",
       noAccount: "Geen profiel nie?",
       join: "Sluit nou aan",
       loginError: "Agge nee! Iets het verkeerd gegaan.",
-      loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
+      loginErrorDescription: "'n Onverwagte probleem het voorgekom tydens die in teken proses. Probeer asseblief later weer of kontak vir hulp op Discord."
     },
     join: {
-      inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
+      inviteOnly: "Ons is jammer, maar tans is aansluiting ongelukkig slegs beskikbaar vir enkele uitgenooide gebruikers."
     },
     forgotPassword: {
       title: "Het jy jou wagwoord vergeet?",
