@@ -1,3 +1,96 @@
+## [1.41.4](https://github.com/skyscope-app/skyscope-web/compare/v1.41.3...v1.41.4) (2024-05-28)
+
+
+### Bug Fixes
+
+* **atcs:** Vatsim Shape ([55cc9cd](https://github.com/skyscope-app/skyscope-web/commit/55cc9cd0b7928b3aa7907e3098f71b7b825f52d5))
+* **deploy:** Build version ([6b9723d](https://github.com/skyscope-app/skyscope-web/commit/6b9723db62a3fb979896713ba27ff62f3245a789))
+
+## [1.41.3](https://github.com/skyscope-app/skyscope-web/compare/v1.41.2...v1.41.3) (2024-05-28)
+
+
+### Bug Fixes
+
+* **auth:** Break on access token refresh ([5de7476](https://github.com/skyscope-app/skyscope-web/commit/5de7476aad262330b54e010cf0d527844ddaa68b))
+* **deploy:** Build version ([b68c94a](https://github.com/skyscope-app/skyscope-web/commit/b68c94a5e007d9fcfd2692718df789c959a6118c))
+
+## [1.41.2](https://github.com/skyscope-app/skyscope-web/compare/v1.41.1...v1.41.2) (2024-05-26)
+
+
+### Bug Fixes
+
+* types ([15ae131](https://github.com/skyscope-app/skyscope-web/commit/15ae1319b35343ba468163813b3ece298353746b))
+
+## [1.41.1](https://github.com/skyscope-app/skyscope-web/compare/v1.41.0...v1.41.1) (2024-05-26)
+
+
+### Bug Fixes
+
+* **types:** any ([334bd36](https://github.com/skyscope-app/skyscope-web/commit/334bd36816bb37196c11823a70d1d4cded68e2f3))
+
+# [1.41.0](https://github.com/skyscope-app/skyscope-web/compare/v1.40.1...v1.41.0) (2024-05-26)
+
+
+### Features
+
+* Fly to ([95fd3ae](https://github.com/skyscope-app/skyscope-web/commit/95fd3ae5f612ac2ee317077c9d90609c04268b5c))
+
+## [1.40.1](https://github.com/skyscope-app/skyscope-web/compare/v1.40.0...v1.40.1) (2024-05-25)
+
+
+### Bug Fixes
+
+* **deploy:** Change version ([dbaf9c3](https://github.com/skyscope-app/skyscope-web/commit/dbaf9c3843736b13aacd76508cfad5a97af9270f))
+* **loading:** Remove async meta ([f7aaec0](https://github.com/skyscope-app/skyscope-web/commit/f7aaec0aace42429c0c68b6a2b31afb9d3b9c0a3))
+* **map:** Loading ([4e7755c](https://github.com/skyscope-app/skyscope-web/commit/4e7755c1f96640aa63d00926ec665727b1acdf0e))
+
+# [1.40.0](https://github.com/skyscope-app/skyscope-web/compare/v1.39.5...v1.40.0) (2024-05-24)
+
+
+### Bug Fixes
+
+* **atc layers:** Layer z index precedence ([5d6020f](https://github.com/skyscope-app/skyscope-web/commit/5d6020fffd6c4ac084c66ddcee2a16411013297d))
+* **refactor:** Cleanup ([9321fdd](https://github.com/skyscope-app/skyscope-web/commit/9321fdd606910ed47dafa89caf1101bd6e80f9fb))
+
+
+### Features
+
+* **aiports:** Enable layer back ([e1ffd3d](https://github.com/skyscope-app/skyscope-web/commit/e1ffd3df38d6715b7fae4bf52f00d57d739b6f73))
+* **deploy:** Update version ([e282602](https://github.com/skyscope-app/skyscope-web/commit/e282602e87f4c23a5b41f9f5362f14f551610048))
+* **layers:** Persist state ([47ae6fc](https://github.com/skyscope-app/skyscope-web/commit/47ae6fc7f78fb47733937faebf366e4066a98914))
+* **spotlight:** Add other options ([0d7ff5a](https://github.com/skyscope-app/skyscope-web/commit/0d7ff5ababed8413c541aa7bb216c401f42357ac))
+
+## [1.39.5](https://github.com/skyscope-app/skyscope-web/compare/v1.39.4...v1.39.5) (2024-05-24)
+
+
+### Bug Fixes
+
+* **atc:** Make WIP page instead of 404 ([c4fd61a](https://github.com/skyscope-app/skyscope-web/commit/c4fd61a45a97941d7a2803ed747a4d24f83a5c1c))
+* **flight track:** Current point ([0bf61f0](https://github.com/skyscope-app/skyscope-web/commit/0bf61f0eea25af9b346fcbf74003c712ed7159e3))
+* **layer order:** Put selected flight track bellow planes ([22ddfc8](https://github.com/skyscope-app/skyscope-web/commit/22ddfc8daf82ddd13cf65092f9649267a34cd37b))
+* **layers:** ATC format ([5d12568](https://github.com/skyscope-app/skyscope-web/commit/5d125687d2f06270adfe1c8e2d72fd3fbc938936))
+
+## [1.39.4](https://github.com/skyscope-app/skyscope-web/compare/v1.39.3...v1.39.4) (2024-05-21)
+
+
+### Bug Fixes
+
+* trigger deploy ([6019ad7](https://github.com/skyscope-app/skyscope-web/commit/6019ad7cefa70ab83787c636156a5a96c9c50926))
+
+## [1.39.3](https://github.com/skyscope-app/skyscope-web/compare/v1.39.2...v1.39.3) (2024-05-21)
+
+
+### Bug Fixes
+
+* trigger deploy ([1229ecf](https://github.com/skyscope-app/skyscope-web/commit/1229ecffd10a10bd93dea70a693e3e449761d27f))
+
+## [1.39.2](https://github.com/skyscope-app/skyscope-web/compare/v1.39.1...v1.39.2) (2024-05-20)
+
+
+### Bug Fixes
+
+* **tracks:** use correct coordinates to plot track of aircraft ([78ee377](https://github.com/skyscope-app/skyscope-web/commit/78ee37750e6afb604f829d5ae1ed6898cae64bac))
+
 ## [1.39.1](https://github.com/skyscope-app/skyscope-web/compare/v1.39.0...v1.39.1) (2024-05-17)
 
 

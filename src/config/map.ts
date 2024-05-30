@@ -3,12 +3,13 @@ import { ATCFacility } from "@/types/atcs";
 import { Network } from "@/types/networks";
 import { MapViewState } from "deck.gl";
 import {
-  amber,
   blue,
+  emerald,
   green,
+  orange,
   red,
-  teal,
   violet,
+  yellow,
   zinc,
 } from "tailwindcss/colors";
 
@@ -64,9 +65,9 @@ export const MAP_INITIAL_VIEW_STATE: MapViewState = {
 };
 
 export const ATC_FACILITIES_ACCENT_COLOR: { [key in ATCFacility]: string } = {
-  APP: amber[500],
-  CTR: teal[500],
-  DEP: violet[500],
+  APP: red[400],
+  DEP: emerald[500],
+  CTR: orange[400],
   DEL: blue[500],
   FSS: violet[500],
   GND: green[500],
@@ -74,17 +75,32 @@ export const ATC_FACILITIES_ACCENT_COLOR: { [key in ATCFacility]: string } = {
   UNKNOWN: zinc[500],
 };
 
+export const ATC_FACILITIES_Z_INDEX: { [key in ATCFacility]: number } = {
+  TWR: 3,
+  DEP: 3,
+  DEL: 3,
+  GND: 3,
+  APP: 2,
+  CTR: 1,
+  FSS: 0,
+  UNKNOWN: 0,
+};
+
 export const FLIGHT_ICON_ACCENT_COLOR: { [key in Network]: string } = {
   vatsim: green[500],
   ivao: blue[500],
 };
 
-export const FLIGHT_ICON_EMERGENCY_ACCENT_COLOR = red[500];
-
-export const FLIGHT_ICON_HOVER_ACCENT_COLOR: { [key in Network]: string } = {
-  vatsim: green[400],
-  ivao: blue[400],
+export const FLIGHT_TRACK_ACCENT_COLOR: { [key in Network]: string } = {
+  vatsim: green[600],
+  ivao: blue[600],
 };
+
+export const FLIGHT_ICON_EMERGENCY_ACCENT_COLOR = red[500];
+export const FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR = red[500];
+
+export const FLIGHT_ICON_USER_ACCENT_COLOR = yellow[500];
+export const FLIGHT_TRACK_USER_ACCENT_COLOR = yellow[500];
 
 export const ATC_FACILITIES_THAT_HAVE_LABEL: ATCFacility[] = [
   "DEL",
@@ -109,5 +125,6 @@ export const MAP_LAYERS = {
   NETWORK_ATCS_SHAPES_LAYER_ID: "networks-atcs-shapes-layer",
   NETWORK_ATCS_LABEL_LAYER_ID: "networks-atcs-label-layer",
   AIRPORTS_LAYER_ID: "airports-layer",
-  SELECTED_FLIGHT_LAYER_ID: "selected-flight-path-layer",
+  SELECTED_FLIGHT_TRACK_LAYER_ID: "selected-flight-track-layer",
+  SELECTED_FLIGHT_ICON_LAYER_ID: "selected-flight-icon-layer",
 };

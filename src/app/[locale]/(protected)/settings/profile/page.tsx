@@ -12,13 +12,8 @@ import { Separator } from "@/components/ui/separator";
 import { getProfile } from "@/lib/profile";
 import { getNameInitials } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
-import { Metadata } from "next";
 import { DangerCollapsible } from "./_components/danger-collapsible";
 import { UpdateAvatarButton } from "./_components/update-avatar-button";
-
-export const metadata: Metadata = {
-  title: "Profile Settings",
-};
 
 interface SettingsProfilePageProps {}
 

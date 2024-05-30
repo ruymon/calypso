@@ -15,7 +15,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { decodeJwt } from "jose";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function login({ email, password }: LoginFormType) {
@@ -63,17 +63,37 @@ export async function passwordReset({ email }: ForgotPasswordFormType) {
   sendPasswordResetEmail(firebaseAuth, email);
 }
 
+function getAccessTokenFromHeaders() {
+  const setCookieHeaderValue = headers().get("set-cookie");
+  const accessTokenFromSetCookieHeader = setCookieHeaderValue
+    ?.split(";")
+    .find((cookie) => cookie.startsWith(`${COOKIE_PREFIX}access-token`))
+    ?.replace(`${COOKIE_PREFIX}access-token=`, "");
+
+  return accessTokenFromSetCookieHeader;
+}
 export async function getAccessToken() {
-  const accessToken = cookies().get(`${COOKIE_PREFIX}access-token`)?.value;
+  const accessToken =
+    cookies().get(`${COOKIE_PREFIX}access-token`)?.value ||
+    getAccessTokenFromHeaders();
+
   return accessToken;
 }
 
 export async function getRefreshToken() {
-  const refreshToken = cookies().get(`${COOKIE_PREFIX}refresh-token`)?.value;
+  const refreshToken =
+    cookies().get(`${COOKIE_PREFIX}refresh-token`)?.value ||
+    headers().get(`${COOKIE_PREFIX}refresh-token`);
   return refreshToken;
 }
 
-export async function exchangeRefreshTokenForAccessToken(refreshToken: string) {
+export async function exchangeRefreshTokenForAccessToken(
+  refreshToken: string,
+): Promise<{
+  access_token: string;
+  expires_in: number;
+  refresh_token: string;
+}> {
   const firebaseApiKey = env.NEXT_PUBLIC_FIREBASE_API_KEY;
   const firebaseApiBaseUrl = `https://securetoken.googleapis.com/v1/token?key=${firebaseApiKey}`;
 
@@ -93,6 +113,10 @@ export async function exchangeRefreshTokenForAccessToken(refreshToken: string) {
   const result = await fetch(firebaseApiBaseUrl, options);
   const data = await result.json();
 
+  if (!result.ok) {
+    throw new Error(data.error.message);
+  }
+
   return data;
 }
 
@@ -100,12 +124,11 @@ export async function refreshAccessTokenInMiddleware(
   refreshToken: string,
   response: NextResponse,
 ) {
-  const data = await exchangeRefreshTokenForAccessToken(refreshToken);
-
-  if (data.error) {
-    await logout();
-    return null;
-  }
+  const data = await exchangeRefreshTokenForAccessToken(refreshToken).catch(
+    (error) => {
+      throw new Error(error.message);
+    },
+  );
 
   response.cookies.set({
     name: `${COOKIE_PREFIX}access-token`,
@@ -116,6 +139,7 @@ export async function refreshAccessTokenInMiddleware(
     path: "/",
     domain: COOKIE_DOMAIN,
     secure: IS_SECURE_COOKIE,
+    priority: "high",
   });
 
   response.cookies.set({
@@ -127,7 +151,10 @@ export async function refreshAccessTokenInMiddleware(
     path: "/",
     domain: COOKIE_DOMAIN,
     secure: IS_SECURE_COOKIE,
+    priority: "high",
   });
+
+  console.log("accessToken in middleware", `${COOKIE_PREFIX}access-token`);
 
   return response;
 }
@@ -140,12 +167,12 @@ export async function refreshAccessTokenInServer() {
     return null;
   }
 
-  const data = await exchangeRefreshTokenForAccessToken(refreshToken);
-
-  if (data.error) {
-    await logout();
-    return null;
-  }
+  const data = await exchangeRefreshTokenForAccessToken(refreshToken).catch(
+    async (error) => {
+      await logout();
+      throw new Error(error.message);
+    },
+  );
 
   cookies().set({
     name: `${COOKIE_PREFIX}access-token`,

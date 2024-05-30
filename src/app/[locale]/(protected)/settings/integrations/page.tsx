@@ -3,12 +3,7 @@ import { getNavigraphIntegrationAuthorizationUrl } from "@/lib/integrations/navi
 import { getVatsimIntegrationAuthorizeUrl } from "@/lib/integrations/vatsim";
 import { getProfile } from "@/lib/profile";
 import { getI18n, getScopedI18n } from "@/locales/server";
-import { Metadata } from "next";
 import { IntegrationCard } from "./_components/integration-card";
-
-export const metadata: Metadata = {
-  title: "Integrations",
-};
 
 interface AppSettingsIntegrationsPageProps {}
 

@@ -1,14 +1,15 @@
+import { UserIntegrations } from "@/app/[locale]/(protected)/_components/map";
 import {
   ATC_FACILITIES_ACCENT_COLOR,
   ATC_FACILITIES_SPRITE_ICON_MAPPING,
   ATC_FACILITIES_THAT_HAVE_LABEL,
+  ATC_FACILITIES_Z_INDEX,
   MAP_LAYERS,
   MAP_SPRITES,
 } from "@/config/map";
 import { ATCS_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
 import { useMapNetworkLayersStore } from "@/stores/map-network-layers-store";
-import { ATCFacility, LiveATC, LiveATCGeometry, LiveATCs } from "@/types/atcs";
-import { Network } from "@/types/networks";
+import { ATCFacility, LiveATC, LiveATCs } from "@/types/atcs";
 import { useQuery } from "@tanstack/react-query";
 import { IconLayer, PolygonLayer } from "deck.gl";
 import { useRouter } from "next/navigation";
@@ -16,7 +17,13 @@ import { useMemo } from "react";
 import { getNetworkATCs } from "../atcs";
 import { hexToRGBAArray } from "../utils";
 
-export const getNetworkATCsLayer = () => {
+interface getNetworkATCsLayerProps {
+  userIntegrations: UserIntegrations;
+}
+
+export const getNetworkATCsLayer = ({
+  userIntegrations,
+}: getNetworkATCsLayerProps) => {
   const router = useRouter();
   const { isIvaoATCsLayerVisible, isVatsimATCsLayerVisible } =
     useMapNetworkLayersStore();
@@ -41,17 +48,26 @@ export const getNetworkATCsLayer = () => {
     const atc: LiveATC = d.object;
     if (!atc) return;
 
-    router.push(`/atcs/${atc.callsign.toLowerCase()}`);
+    router.push(`/atcs/${atc.id}`);
   };
 
   const atcsData = useMemo(() => {
     const joinedData = [...(vatsimAtcsData || []), ...(ivaoAtcsData || [])];
-    const shapeFacilities = filterOnlyShapeFacilities(joinedData);
-    const labelFacilities = filterOnlyLabelFacilities(joinedData);
+    const filteredShapesFacilites = filterOnlyShapeFacilities(joinedData);
+    const filteredLabelFacilites = filterOnlyLabelFacilities(joinedData);
+
+    const sortedShapeFacilitiesByZIndex = filteredShapesFacilites.sort(
+      (a, b) => {
+        const aIndex = ATC_FACILITIES_Z_INDEX[a.facility as ATCFacility];
+        const bIndex = ATC_FACILITIES_Z_INDEX[b.facility as ATCFacility];
+
+        return aIndex - bIndex;
+      },
+    );
 
     return {
-      shapeFacilities,
-      labelFacilities,
+      shapeFacilities: sortedShapeFacilitiesByZIndex,
+      labelFacilities: filteredLabelFacilites,
     };
   }, [
     ivaoAtcsData,
@@ -60,39 +76,22 @@ export const getNetworkATCsLayer = () => {
     isVatsimATCsLayerVisible,
   ]);
 
-  const getATCPolygonShape = (data: LiveATC) => {
-    if (data.network === "vatsim") {
-      return [
-        data.geometry.map((coord: LiveATCGeometry) => [
-          coord.longitude,
-          coord.latitude,
-        ]),
-      ];
-    }
-    if (data.network === "ivao") {
-      return [
-        data.geometry.map((coord: LiveATCGeometry) => [
-          coord.latitude,
-          coord.longitude,
-        ]),
-      ];
-    }
-  };
-
-  const shouldBeVisible = (network: Network) => {
+  const shouldBeVisible = (network: "IVAO" | "VATSIM") => {
     switch (network) {
-      case "vatsim":
+      case "VATSIM":
         return isVatsimATCsLayerVisible;
-      case "ivao":
+      case "IVAO":
         return isIvaoATCsLayerVisible;
     }
   };
 
   const getATCColor = (
     { facility, network }: LiveATC,
-    options?: { overrideOpacity: boolean },
+    options?: { overrideOpacity: boolean; opacity?: number },
   ) => {
-    const DEFAULT_OPACITY = options?.overrideOpacity ? undefined : 40;
+    const DEFAULT_OPACITY = options?.overrideOpacity
+      ? undefined
+      : options?.opacity || 20;
 
     const isVisible = shouldBeVisible(network);
     const opacity = isVisible ? DEFAULT_OPACITY : 0;
@@ -104,18 +103,22 @@ export const getNetworkATCsLayer = () => {
   const shapesLayer = new PolygonLayer({
     id: MAP_LAYERS.NETWORK_ATCS_SHAPES_LAYER_ID,
     data: atcsData.shapeFacilities,
-    getPolygon: getATCPolygonShape,
+    getPolygon: ({ geometry }: LiveATC) => geometry,
     getLineColor: (d) =>
       getATCColor(d, {
         overrideOpacity: true,
       }),
     getFillColor: (d) => getATCColor(d),
     colorFormat: "RGBA",
+    depthTest: true,
     filled: true,
     getLineWidth: 20,
     lineWidthMinPixels: 1,
     pickable: true,
     autoHighlight: true,
+    highlightColor({ object }) {
+      return getATCColor(object, { overrideOpacity: false, opacity: 60 });
+    },
     onClick: handleClick,
   });
 
@@ -149,7 +152,7 @@ function filterOnlyShapeFacilities(data: LiveATCs) {
   return data.filter((atc: LiveATC) => {
     return (
       !ATC_FACILITIES_THAT_HAVE_LABEL.includes(atc.facility) &&
-      atc.geometry.length > 4
+      atc.network !== "IVAO"
     );
   });
 }

@@ -43,7 +43,7 @@ export async function getAirportsSummary(): Promise<AirportSummaryList> {
   const data = await result.json();
 
   if (!result.ok) {
-    throw new Error(data.message);
+    throw new Error(`Failed to fetch airports summary: ${data}`);
   }
 
   return data;

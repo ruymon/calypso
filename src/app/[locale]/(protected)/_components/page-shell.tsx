@@ -1,13 +1,9 @@
 "use client";
 
-import {
-  PiLinkChainSlantStroke,
-  PiMultipleCrossCancelDefaultStroke,
-} from "@/components/icons";
+import { PiMultipleCrossCancelDefaultStroke } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { toast } from "sonner";
 
 interface PageShellProps {
   children: ReactNode;
@@ -55,11 +51,6 @@ export function PageShell({
   shellTitle,
   closeHref = "/",
 }: PageShellProps) {
-  function handleCopyUrlToClipboard() {
-    navigator.clipboard.writeText(window.location.href);
-    toast.success("Copied to clipboard");
-  }
-
   return (
     <div
       className={cn(
@@ -69,16 +60,9 @@ export function PageShell({
       )}
     >
       {!hideTopNav && (
-        <header className="sticky top-0 z-20 flex items-center justify-between px-6 py-1.5 text-muted-foreground backdrop-blur-xl">
+        <header className="sticky top-0 z-20 flex min-h-10 items-center justify-between px-6 py-1.5 text-muted-foreground backdrop-blur-xl">
           <span className="text-xs">{shellTitle}</span>
           <nav className="flex items-center gap-0.5">
-            <button
-              onClick={handleCopyUrlToClipboard}
-              className="rounded-sm p-2 transition-all hover:bg-muted hover:text-accent-foreground"
-            >
-              <PiLinkChainSlantStroke className="h-3.5 w-3.5" />
-            </button>
-
             <Link
               href={closeHref}
               className="rounded-sm p-2 transition-all hover:bg-muted hover:text-accent-foreground"

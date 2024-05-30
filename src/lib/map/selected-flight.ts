@@ -1,34 +1,78 @@
-import { MAP_LAYERS } from "@/config/map";
+import { UserIntegrations } from "@/app/[locale]/(protected)/_components/map";
+import {
+  AIRCRAFT_SPRITE_ICON_MAPPING,
+  FLIGHT_TRACK_ACCENT_COLOR,
+  FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR,
+  FLIGHT_TRACK_USER_ACCENT_COLOR,
+  MAP_LAYERS,
+  MAP_SPRITES,
+} from "@/config/map";
+import { useBaseMapStore } from "@/stores/base-map-store";
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
-import { TrackPosition } from "@/types/live-flights";
+import { LiveFlightDetail } from "@/types/live-flights";
 //@ts-ignore
 import { PathStyleExtension } from "@deck.gl/extensions";
-import { GeoJsonLayer } from "deck.gl";
-import { hexToRGBAArray } from "../utils";
+import { GeoJsonLayer, IconLayer } from "deck.gl";
+import {
+  convertHeadingToAngle,
+  hexToRGBAArray,
+  isEmergencyTransponder,
+} from "../utils";
 //@ts-expect-error
 import { featureCollection, lineString } from "@turf/helpers";
-import { useMemo } from "react";
-import { amber, teal } from "tailwindcss/colors";
+import { useTheme } from "next-themes";
+import { amber, white, zinc } from "tailwindcss/colors";
+import { getIconBasedOnAircraftType, isUserFlight } from "./flights";
 
-export const getSelectedFlightPathLayer = () => {
-  const { tracks, arrival, alternate } = useSelectedFlightStore();
+interface getSelectedFlightPathLayerProps {
+  userIntegrations: UserIntegrations;
+}
 
-  const flightTracks = useMemo(() => {
-    return tracks;
-  }, [tracks]);
+export const getSelectedFlightPathLayer = ({
+  userIntegrations,
+}: getSelectedFlightPathLayerProps) => {
+  const { selectedFlight } = useSelectedFlightStore();
+  const { baseMap } = useBaseMapStore();
+  const { resolvedTheme } = useTheme();
 
-  const getTrackDataInGeoJson = (trackData: TrackPosition[]) => {
-    const trackPoints = trackData.map((track) => [track.lat, track.lng]);
-    const currentPoint = [trackData[0]?.lat, trackData[0]?.lng];
+  const getLineColor = ({ network, pilot, position }: LiveFlightDetail) => {
+    const isEmergency = isEmergencyTransponder(position?.transponder);
+    const isUser = isUserFlight(network, pilot, userIntegrations);
 
-    const arrivalPoint = arrival && [arrival?.lng, arrival?.lat];
-    const alternatePoint = alternate && [alternate?.lng, alternate?.lat];
+    if (isEmergency) {
+      return FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR;
+    } else if (isUser) {
+      return FLIGHT_TRACK_USER_ACCENT_COLOR;
+    } else {
+      return FLIGHT_TRACK_ACCENT_COLOR[network];
+    }
+  };
+
+  const getTrackDataInGeoJson = (flightData: LiveFlightDetail | null) => {
+    if (!flightData) return null;
+
+    const { tracks, flightPlan } = flightData;
+
+    const trackPoints = tracks.map((track) => [track.lng, track.lat]);
+    const currentPoint = [
+      tracks[tracks.length - 1]?.lng,
+      tracks[tracks.length - 1]?.lat,
+    ];
+
+    const arrivalPoint = flightPlan?.arrival && [
+      flightPlan?.arrival?.lng,
+      flightPlan?.arrival?.lat,
+    ];
+    const alternatePoint = flightPlan?.alternate && [
+      flightPlan?.alternate?.lng,
+      flightPlan?.alternate?.lat,
+    ];
 
     const flightTrack = lineString(trackPoints, {
       dimmed: false,
       width: 3,
       dashArray: null,
-      color: teal[500],
+      color: getLineColor(flightData),
     });
 
     const directPathToDestination =
@@ -37,7 +81,7 @@ export const getSelectedFlightPathLayer = () => {
         dimmed: true,
         width: 2,
         dashArray: [8, 8],
-        color: teal[500],
+        color: getLineColor(flightData),
       });
 
     const directPathFromDestinationToAlternate =
@@ -57,11 +101,26 @@ export const getSelectedFlightPathLayer = () => {
     ]);
   };
 
-  const isTrackCompatible = flightTracks.length > 2;
+  const getPlaneIconColor = () => {
+    switch (baseMap) {
+      case "dark":
+        return hexToRGBAArray(white);
+      case "light":
+        return hexToRGBAArray(zinc[950]);
+      case "satellite":
+        return hexToRGBAArray(zinc[950]);
+      case "theme":
+        return resolvedTheme === "dark"
+          ? hexToRGBAArray(white)
+          : hexToRGBAArray(zinc[950]);
+      default:
+        return hexToRGBAArray(zinc[950]);
+    }
+  };
 
-  return new GeoJsonLayer({
-    id: MAP_LAYERS.SELECTED_FLIGHT_LAYER_ID,
-    data: isTrackCompatible ? getTrackDataInGeoJson(flightTracks) : null,
+  const trackLayer = new GeoJsonLayer({
+    id: MAP_LAYERS.SELECTED_FLIGHT_TRACK_LAYER_ID,
+    data: getTrackDataInGeoJson(selectedFlight),
     stroked: true,
     pickable: false,
     pointType: "circle",
@@ -76,4 +135,26 @@ export const getSelectedFlightPathLayer = () => {
     extensions: [new PathStyleExtension({ dash: true })],
     lineWidthUnits: "pixels",
   });
+
+  const planeIconLayer = new IconLayer({
+    id: MAP_LAYERS.SELECTED_FLIGHT_ICON_LAYER_ID,
+    data: selectedFlight ? [selectedFlight] : null,
+    iconAtlas: MAP_SPRITES.AIRCRAFT_ICONS,
+    iconMapping: AIRCRAFT_SPRITE_ICON_MAPPING,
+    getIcon: getIconBasedOnAircraftType,
+    sizeUnits: "common",
+    sizeMinPixels: 14,
+    sizeMaxPixels: 32,
+    sizeScale: 1.5,
+    getPosition: ({ position }: LiveFlightDetail) => [
+      position.lng,
+      position.lat,
+    ],
+    getAngle: ({ position }: LiveFlightDetail) =>
+      convertHeadingToAngle(position.heading),
+    billboard: false,
+    getColor: getPlaneIconColor,
+  });
+
+  return [trackLayer, planeIconLayer];
 };

@@ -97,6 +97,7 @@ export function MapFilterControls({}: MapFilterControlsProps) {
         <DropdownMenuTrigger asChild>
           <TooltipTrigger asChild>
             <Button
+              disabled
               variant="secondary"
               className="h-auto w-auto rounded-sm bg-transparent p-1.5 text-muted-foreground transition-all duration-500 hover:bg-muted hover:text-accent-foreground data-[state='open']:bg-foreground data-[state='open']:text-background"
             >
@@ -215,6 +216,7 @@ export function MapFilterControls({}: MapFilterControlsProps) {
               </div>
             </CollapsibleContent>
           </Collapsible>
+
         </DropdownMenuContent>
       </DropdownMenu>
       <TooltipContent

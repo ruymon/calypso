@@ -1,13 +1,8 @@
 import { PiFilterHorizontalStroke } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Metadata } from "next";
 import { EventCard } from "./_components/event-card";
 import { FeaturedEventCard } from "./_components/featured-event-card";
-
-export const metadata: Metadata = {
-  title: "Events",
-};
 
 interface EventsCataloguePageProps {}
 
