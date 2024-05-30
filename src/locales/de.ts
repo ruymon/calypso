@@ -258,7 +258,7 @@ export default ({
     finish: {
       hat: "Alles startklar!",
       title: "Fangen wir an?",
-      subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
+      subtitle: `Sie sind bereit! Klicken Sie auf die Schaltfläche unten und verwenden Sie ${siteConfig.name}.`,
       getStarted: "Los geht's"
     }
   },
