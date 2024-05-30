@@ -1,4 +1,5 @@
 import { MAP_INITIAL_VIEW_STATE } from "@/config/map";
+// @ts-ignore
 import { MapViewState } from "@deck.gl/core";
 import { create } from "zustand";
 

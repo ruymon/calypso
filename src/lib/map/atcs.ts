@@ -103,7 +103,7 @@ export const getNetworkATCsLayer = ({
   const shapesLayer = new PolygonLayer({
     id: MAP_LAYERS.NETWORK_ATCS_SHAPES_LAYER_ID,
     data: atcsData.shapeFacilities,
-    getPolygon: (d: LiveATC) => d.geometry,
+    getPolygon: ({ geometry }: LiveATC) => geometry,
     getLineColor: (d) =>
       getATCColor(d, {
         overrideOpacity: true,
@@ -152,7 +152,7 @@ function filterOnlyShapeFacilities(data: LiveATCs) {
   return data.filter((atc: LiveATC) => {
     return (
       !ATC_FACILITIES_THAT_HAVE_LABEL.includes(atc.facility) &&
-      atc.geometry.length > 4
+      atc.network !== "IVAO"
     );
   });
 }

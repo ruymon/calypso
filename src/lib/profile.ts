@@ -1,12 +1,14 @@
+"use server";
+
 import { API_BASE_URL } from "@/constants/api";
 import { UserProfile } from "@/types/profile";
 import { getAccessToken } from "./auth";
 
-export async function getProfile(): Promise<UserProfile | null> {
+export async function getProfile(): Promise<UserProfile> {
   const accessToken = await getAccessToken();
 
   if (!accessToken) {
-    return null;
+    throw new Error("Error fetching user profile: Access token is missing.");
   }
 
   const url = `${API_BASE_URL}/users/profile`;

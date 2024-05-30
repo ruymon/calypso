@@ -1,3 +1,40 @@
+## [1.41.4](https://github.com/skyscope-app/skyscope-web/compare/v1.41.3...v1.41.4) (2024-05-28)
+
+
+### Bug Fixes
+
+* **atcs:** Vatsim Shape ([55cc9cd](https://github.com/skyscope-app/skyscope-web/commit/55cc9cd0b7928b3aa7907e3098f71b7b825f52d5))
+* **deploy:** Build version ([6b9723d](https://github.com/skyscope-app/skyscope-web/commit/6b9723db62a3fb979896713ba27ff62f3245a789))
+
+## [1.41.3](https://github.com/skyscope-app/skyscope-web/compare/v1.41.2...v1.41.3) (2024-05-28)
+
+
+### Bug Fixes
+
+* **auth:** Break on access token refresh ([5de7476](https://github.com/skyscope-app/skyscope-web/commit/5de7476aad262330b54e010cf0d527844ddaa68b))
+* **deploy:** Build version ([b68c94a](https://github.com/skyscope-app/skyscope-web/commit/b68c94a5e007d9fcfd2692718df789c959a6118c))
+
+## [1.41.2](https://github.com/skyscope-app/skyscope-web/compare/v1.41.1...v1.41.2) (2024-05-26)
+
+
+### Bug Fixes
+
+* types ([15ae131](https://github.com/skyscope-app/skyscope-web/commit/15ae1319b35343ba468163813b3ece298353746b))
+
+## [1.41.1](https://github.com/skyscope-app/skyscope-web/compare/v1.41.0...v1.41.1) (2024-05-26)
+
+
+### Bug Fixes
+
+* **types:** any ([334bd36](https://github.com/skyscope-app/skyscope-web/commit/334bd36816bb37196c11823a70d1d4cded68e2f3))
+
+# [1.41.0](https://github.com/skyscope-app/skyscope-web/compare/v1.40.1...v1.41.0) (2024-05-26)
+
+
+### Features
+
+* Fly to ([95fd3ae](https://github.com/skyscope-app/skyscope-web/commit/95fd3ae5f612ac2ee317077c9d90609c04268b5c))
+
 ## [1.40.1](https://github.com/skyscope-app/skyscope-web/compare/v1.40.0...v1.40.1) (2024-05-25)
 
 
