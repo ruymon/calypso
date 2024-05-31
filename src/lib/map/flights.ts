@@ -8,6 +8,7 @@ import {
   MAP_SPRITES,
 } from "@/config/map";
 import { FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
+import { MapFilterKey, useMapFiltersStore } from "@/stores/map-filters-store";
 import { useMapNetworkLayersStore } from "@/stores/map-network-layers-store";
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
 import { LiveFlight, LiveFlights, Pilot } from "@/types/live-flights";
@@ -54,6 +55,7 @@ export const getNetworkFlightsLayer = ({
   const { isIvaoFlightsLayerVisible, isVatsimFlightsLayerVisible } =
     useMapNetworkLayersStore();
   const { selectedFlight } = useSelectedFlightStore();
+  const { filters } = useMapFiltersStore();
 
   const { data: vatsimFlightsData } = useQuery({
     queryKey: ["vatsim-flights"],
@@ -76,29 +78,117 @@ export const getNetworkFlightsLayer = ({
     ...(ivaoFlightsData || []),
   ] as LiveFlights;
 
-  const shouldBeVisible = (network: Network, flightId: LiveFlight["id"]) => {
-    if (selectedFlight?.id === flightId) return false;
+  const isFiltered = (data: LiveFlight) => {
+    const noActiveFilters = Object.values(filters).every((f) => f.length === 0);
 
-    switch (network) {
+    if (noActiveFilters) return true;
+
+    const activeFilters = Object.keys(filters).filter(
+      (f) => filters[f as MapFilterKey].length > 0,
+    );
+
+    const isCallsignInFilter = filters.callsign
+      .map((f) => data.callsign.toLowerCase().includes(f.toLowerCase()))
+      .includes(true);
+
+    const isOriginInFilter = filters.origin
+      .map((f) =>
+        data.flightPlan?.departure?.icao
+          ?.toLowerCase()
+          .includes(f.toLowerCase()),
+      )
+      .includes(true);
+
+    const isDestinationInFilter = filters.destination
+      .map((f) =>
+        data.flightPlan?.arrival?.icao?.toLowerCase().includes(f.toLowerCase()),
+      )
+      .includes(true);
+
+    const isAirportInFilter = filters.airport
+      .map(
+        (f) =>
+          data.flightPlan?.arrival?.icao
+            ?.toLowerCase()
+            .includes(f.toLowerCase()) ||
+          data.flightPlan?.departure?.icao
+            ?.toLowerCase()
+            .includes(f.toLowerCase()),
+      )
+      .includes(true);
+
+    const isAircraftTypeInFilter = filters.aircraft
+      .map((f) =>
+        data.flightPlan?.aircraft?.icao
+          ?.toLowerCase()
+          .includes(f.toLowerCase()),
+      )
+      .includes(true);
+
+    const isRegistrationInFilter = filters.registration
+      .map((f) =>
+        data.flightPlan?.aircraft?.registration
+          ?.toLowerCase()
+          .includes(f.toLowerCase()),
+      )
+      .includes(true);
+
+    const isSquawkInFilter = filters.squawk
+      .map((f) =>
+        data.position.transponder?.toLowerCase().includes(f.toLowerCase()),
+      )
+      .includes(true);
+
+    const isOriginOrDestinationOrAirportInFilter =
+      isOriginInFilter || isDestinationInFilter || isAirportInFilter;
+
+    const filterMatches = activeFilters.map((f) => {
+      switch (f) {
+        case "callsign":
+          return isCallsignInFilter;
+        case "origin":
+          return isOriginOrDestinationOrAirportInFilter;
+        case "destination":
+          return isOriginOrDestinationOrAirportInFilter;
+        case "airport":
+          return isOriginOrDestinationOrAirportInFilter;
+        case "aircraft":
+          return isAircraftTypeInFilter;
+        case "registration":
+          return isRegistrationInFilter;
+        case "squawk":
+          return isSquawkInFilter;
+        default:
+          return true;
+      }
+    });
+
+    return filterMatches.every((f) => f);
+  };
+
+  const shouldBeVisible = (data: LiveFlight) => {
+    if (selectedFlight?.id === data.id) return false;
+
+    switch (data.network) {
       case "vatsim":
-        return isVatsimFlightsLayerVisible;
+        return isVatsimFlightsLayerVisible && isFiltered(data);
       case "ivao":
-        return isIvaoFlightsLayerVisible;
+        return isIvaoFlightsLayerVisible && isFiltered(data);
     }
   };
 
-  const getIconAccentColor = ({ network, position, pilot, id }: LiveFlight) => {
-    const opacity = shouldBeVisible(network, id) ? undefined : 0;
-    const isEmergency = isEmergencyTransponder(position.transponder);
+  const getIconAccentColor = (data: LiveFlight) => {
+    const opacity = shouldBeVisible(data) ? undefined : 0;
+    const isEmergency = isEmergencyTransponder(data.position.transponder);
 
-    const isUser = isUserFlight(network, pilot, userIntegrations);
+    const isUser = isUserFlight(data.network, data.pilot, userIntegrations);
 
     if (isEmergency) {
       return hexToRGBAArray(FLIGHT_ICON_EMERGENCY_ACCENT_COLOR, opacity);
     } else if (isUser) {
       return hexToRGBAArray(FLIGHT_ICON_USER_ACCENT_COLOR, opacity);
     } else {
-      return hexToRGBAArray(FLIGHT_ICON_ACCENT_COLOR[network], opacity);
+      return hexToRGBAArray(FLIGHT_ICON_ACCENT_COLOR[data.network], opacity);
     }
   };
 

@@ -3,6 +3,8 @@
 import { Separator } from "@/components/ui/separator";
 import { FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
 import { getFlightDetails } from "@/lib/flights";
+import { convertKilometersToNauticalMiles } from "@/lib/units";
+import { cn } from "@/lib/utils";
 import { LiveFlightDetail } from "@/types/live-flights";
 import { useQuery } from "@tanstack/react-query";
 import { Heading } from "./heading";
@@ -38,11 +40,14 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
   ]);
   const currentCoordinates = point([data?.position?.lat, data?.position?.lng]);
 
-  const directCurrentPositionArrivalDistance = distance(
+  const directCurrentPositionToArrivalDistance = distance(
     currentCoordinates,
     arrivalCoordinates,
     { units: "kilometers" },
   );
+
+  const directCurrentPositionToArrivalDistanceInNauticalMiles =
+    convertKilometersToNauticalMiles(directCurrentPositionToArrivalDistance);
 
   const directCurrentPositionDepartureDistance = distance(
     departureCoordinates,
@@ -105,22 +110,64 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
           </div>
         </div>
         <Separator />
-        <div className="flex flex-col gap-4 px-4 py-3">
-          <div className="flex items-center">
-            <div
-              className="h-1 grow rounded-full bg-green-500"
-              style={{
-                width: `${flightProgress}%`,
-              }}
-            />
-            <PlaneIcon className="-mx-1 h-6 w-6 shrink-0 rotate-45 fill-accent-foreground text-transparent" />
-            <div className="h-1 grow rounded-full bg-muted" />
+        <div className="flex flex-col items-center gap-2 px-4 py-3">
+          <div className="flex w-full items-center gap-4">
+            <span className="text-sm font-semibold uppercase text-accent-foreground">
+              {data?.flightPlan?.departure?.icao || "tbn"}
+            </span>
+
+            <div className="flex flex-1 items-center">
+              <div
+                className={cn(
+                  "h-1 rounded-full",
+                  data?.network === "ivao" && "bg-ivao",
+                  data?.network === "vatsim" && "bg-vatsim",
+                )}
+                style={{
+                  width: `${flightProgress}%`,
+                }}
+              />
+              <PlaneIcon className="-mx-1 h-6 w-6 shrink-0 rotate-45 fill-accent-foreground text-transparent" />
+              <div className="h-1 grow rounded-full bg-muted" />
+            </div>
+
+            <span className="text-sm font-semibold uppercase text-accent-foreground">
+              {data?.flightPlan?.arrival?.icao || "tbn"}
+            </span>
           </div>
 
-          <span className="text-xs text-muted-foreground">
-            Direct DEP - ARR dist: {directDepartureArrivalDistance.toFixed(2)}{" "}
-            km
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground">
+              {flightProgress.toFixed(2)}%
+            </span>
+            <span className="text-xs text-muted-foreground">
+              {directCurrentPositionToArrivalDistanceInNauticalMiles.toFixed(0)}
+              nm to arrival
+            </span>
+          </div>
+
+          {/* <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-1">
+              <span className="text-xs font-medium text-accent-foreground">
+                Distance to arrival:
+              </span>
+              <span className="text-xs text-muted-foreground">
+                {directCurrentPositionToArrivalDistanceInNauticalMiles.toFixed(
+                  0,
+                )}
+                nm
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1">
+              <span className="text-xs font-medium text-accent-foreground">
+                Flight progress:
+              </span>
+              <span className="text-xs text-muted-foreground">
+                {flightProgress.toFixed(2)}%
+              </span>
+            </div>
+          </div> */}
         </div>
       </div>
     </>

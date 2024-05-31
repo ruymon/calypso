@@ -32,9 +32,7 @@ export async function getNetworkATCs(network: Network): Promise<LiveATCs> {
   return data;
 }
 
-export async function getATCDetails(
-  atcId: string,
-): Promise<LiveATCDetail | null> {
+export async function getATCDetails(atcId: string): Promise<LiveATCDetail> {
   const accessToken = await getAccessToken();
   const url = `${API_BASE_URL}/networks/atcs/${atcId}`;
 
@@ -52,8 +50,8 @@ export async function getATCDetails(
   const result = await fetch(url, options);
   const data = await result.json();
 
-  if (result.status !== 200) {
-    return null;
+  if (!result.ok) {
+    throw new Error(`Error fetching ATC details: ${data.error}`);
   }
 
   return data;
