@@ -10,6 +10,7 @@ import {
   getSelectedFlightPathLayer,
   getTooltipContentBasedOnLayer,
 } from "@/lib/map";
+import { getNatLayer } from "@/lib/map/prescribed-tracks";
 import { useBaseMapStore } from "@/stores/base-map-store";
 import { useMapViewStateStore } from "@/stores/map-view-state-store";
 import "@/styles/map.css";
@@ -47,6 +48,7 @@ export function Map({ children, userIntegrations }: MapProps) {
       userIntegrations,
     }),
     getAirportsLayer(),
+    getNatLayer(),
   ];
 
   return (

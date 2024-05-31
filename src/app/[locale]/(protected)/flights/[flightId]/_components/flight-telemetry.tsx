@@ -142,7 +142,7 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
             </span>
             <span className="text-xs text-muted-foreground">
               {directCurrentPositionToArrivalDistanceInNauticalMiles.toFixed(0)}
-              nm to arrival
+              nm to destination
             </span>
           </div>
 

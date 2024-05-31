@@ -25,7 +25,11 @@ export function MapExtraLayerControls({}: MapExtraLayerControlsProps) {
   const {
     setIsAirportsLayerVisible,
     isAirportsLayerVisible,
+    isEastNatTracksLayerVisible,
+    setIsEastNatTracksLayerVisible,
     isWeatherLayerVisible,
+    isWestNatTracksLayerVisible,
+    setIsWestNatTracksLayerVisible,
     setIsWeatherLayerVisible,
   } = useMapExtraLayersStore();
 
@@ -66,6 +70,42 @@ export function MapExtraLayerControls({}: MapExtraLayerControlsProps) {
               checked={isAirportsLayerVisible}
               onCheckedChange={() =>
                 setIsAirportsLayerVisible(!isAirportsLayerVisible)
+              }
+            />
+          </div>
+
+          <div className="flex items-center justify-between gap-4 px-2">
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-accent-foreground">
+                Display eastbound NAT tracks
+              </span>
+              <span className="text-xs text-muted-foreground">
+                Eastbound prescribed tracks for North Atlantic crossings
+              </span>
+            </div>
+            <Switch
+              id="nat-layer"
+              checked={isEastNatTracksLayerVisible}
+              onCheckedChange={() =>
+                setIsEastNatTracksLayerVisible(!isEastNatTracksLayerVisible)
+              }
+            />
+          </div>
+
+          <div className="flex items-center justify-between gap-4 px-2">
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-accent-foreground">
+                Display westbound NAT tracks
+              </span>
+              <span className="text-xs text-muted-foreground">
+                Westbound prescribed tracks for North Atlantic crossings
+              </span>
+            </div>
+            <Switch
+              id="nat-layer"
+              checked={isWestNatTracksLayerVisible}
+              onCheckedChange={() =>
+                setIsWestNatTracksLayerVisible(!isWestNatTracksLayerVisible)
               }
             />
           </div>

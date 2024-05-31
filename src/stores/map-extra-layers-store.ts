@@ -6,6 +6,10 @@ export interface MapExtraLayersStore {
   setIsAirportsLayerVisible: (visible: boolean) => void;
   isWeatherLayerVisible: boolean;
   setIsWeatherLayerVisible: (visible: boolean) => void;
+  isEastNatTracksLayerVisible: boolean;
+  setIsEastNatTracksLayerVisible: (visible: boolean) => void;
+  isWestNatTracksLayerVisible: boolean;
+  setIsWestNatTracksLayerVisible: (visible: boolean) => void;
 }
 
 export const useMapExtraLayersStore = create(
@@ -17,6 +21,12 @@ export const useMapExtraLayersStore = create(
       isWeatherLayerVisible: false,
       setIsWeatherLayerVisible: (visible: boolean) =>
         set({ isWeatherLayerVisible: visible }),
+      isEastNatTracksLayerVisible: false,
+      setIsEastNatTracksLayerVisible: (visible: boolean) =>
+        set({ isEastNatTracksLayerVisible: visible }),
+      isWestNatTracksLayerVisible: false,
+      setIsWestNatTracksLayerVisible: (visible: boolean) =>
+        set({ isWestNatTracksLayerVisible: visible }),
     }),
     {
       name: "map-extra-layers-store",

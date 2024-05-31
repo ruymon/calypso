@@ -127,4 +127,6 @@ export const MAP_LAYERS = {
   AIRPORTS_LAYER_ID: "airports-layer",
   SELECTED_FLIGHT_TRACK_LAYER_ID: "selected-flight-track-layer",
   SELECTED_FLIGHT_ICON_LAYER_ID: "selected-flight-icon-layer",
+  NAT_EAST_TRACKS_LAYER_ID: "nat-east-tracks-layer",
+  NAT_WEST_TRACKS_LAYER_ID: "nat-west-tracks-layer",
 };
