@@ -1,3 +1,11 @@
+# [1.42.0](https://github.com/skyscope-app/skyscope-web/compare/v1.41.4...v1.42.0) (2024-05-31)
+
+
+### Features
+
+* **deploy:** Update build version ([96c7cfa](https://github.com/skyscope-app/skyscope-web/commit/96c7cfae222653f74d7d30770de049e3af8cfd46))
+* **filters+progress:** New features ([1766a6a](https://github.com/skyscope-app/skyscope-web/commit/1766a6a654d182e626c06aa7041ecb12b506a3b2))
+
 ## [1.41.4](https://github.com/skyscope-app/skyscope-web/compare/v1.41.3...v1.41.4) (2024-05-28)
 
 
