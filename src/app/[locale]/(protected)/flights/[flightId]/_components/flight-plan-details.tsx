@@ -31,7 +31,7 @@ export function FlightPlanDetails({ data }: FlightPlanDetailsProps) {
       </header>
 
       <TabsContent value="simple">
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-4 gap-3">
           <DataItemCard
             title={t("flightRules")}
             data={data?.flightPlan?.flightRules}
@@ -42,7 +42,15 @@ export function FlightPlanDetails({ data }: FlightPlanDetailsProps) {
           />
 
           <DataItemCard title="tas" data={data?.flightPlan?.cruiseTas} />
-          <DataItemCard title="fl" data={data?.flightPlan?.level} />
+
+          <DataItemCard
+            title="alt"
+            data={
+              data?.flightPlan?.level
+                ? parseAltitudeToFlightLevel(data.flightPlan.level)
+                : undefined
+            }
+          />
 
           <DataItemCard
             title={t("route")}

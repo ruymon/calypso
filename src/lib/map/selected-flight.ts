@@ -53,6 +53,10 @@ export const getSelectedFlightPathLayer = ({
 
     const { tracks, flightPlan } = flightData;
 
+    const isEmptyTrack = !tracks || tracks.length < 2;
+
+    if (isEmptyTrack) return null;
+
     const trackPoints = tracks.map((track) => [track.lng, track.lat]);
     const currentPoint = [
       tracks[tracks.length - 1]?.lng,
