@@ -1,3 +1,11 @@
+# [1.43.0](https://github.com/skyscope-app/skyscope-web/compare/v1.42.0...v1.43.0) (2024-05-31)
+
+
+### Features
+
+* **deploy:** Save workspace build ([47e563c](https://github.com/skyscope-app/skyscope-web/commit/47e563c213451541063b47be4efc76d34d9c94e7))
+* **nat:** Add nat layer ([c970f3c](https://github.com/skyscope-app/skyscope-web/commit/c970f3cde769438f9746358f072cdfe36f249fe2))
+
 # [1.42.0](https://github.com/skyscope-app/skyscope-web/compare/v1.41.4...v1.42.0) (2024-05-31)
 
 
