@@ -1,17 +1,10 @@
-import { WEATHER_REFETCH_INTERVAL_IN_SECONDS } from "@/constants/api";
-import { WeatherRadar } from "@/types/weather";
-
-export async function getWeatherRadar(): Promise<WeatherRadar> {
-  const url = "https://api.rainviewer.com/public/weather-maps.json";
+export async function getWeatherRadarTime(): Promise<number> {
+  const url = "https://tilecache.rainviewer.com/api/maps.json";
 
   const options: RequestInit = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-    },
-    next: {
-      revalidate: WEATHER_REFETCH_INTERVAL_IN_SECONDS,
-      tags: ["weather-radar"],
     },
   };
 
@@ -22,5 +15,5 @@ export async function getWeatherRadar(): Promise<WeatherRadar> {
     throw new Error(`Error fetching weather radar data: ${data.error}`);
   }
 
-  return data;
+  return data[0];
 }

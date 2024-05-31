@@ -110,7 +110,7 @@ export function MapExtraLayerControls({}: MapExtraLayerControlsProps) {
             />
           </div>
 
-          {/* <div className="flex items-center justify-between gap-4 px-2">
+          <div className="flex items-center justify-between gap-4 px-2">
             <div className="flex flex-col">
               <span className="text-sm font-semibold text-accent-foreground">
                 {t("weatherRadar.title")}
@@ -126,7 +126,7 @@ export function MapExtraLayerControls({}: MapExtraLayerControlsProps) {
                 setIsWeatherLayerVisible(!isWeatherLayerVisible)
               }
             />
-          </div> */}
+          </div>
         </DropdownMenuContent>
         <TooltipContent
           side="left"

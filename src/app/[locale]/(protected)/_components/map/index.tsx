@@ -11,6 +11,7 @@ import {
   getTooltipContentBasedOnLayer,
 } from "@/lib/map";
 import { getNatLayer } from "@/lib/map/prescribed-tracks";
+import { getWeatherLayer } from "@/lib/map/weather";
 import { useBaseMapStore } from "@/stores/base-map-store";
 import { useMapViewStateStore } from "@/stores/map-view-state-store";
 import "@/styles/map.css";
@@ -41,14 +42,15 @@ export function Map({ children, userIntegrations }: MapProps) {
     getNetworkATCsLayer({
       userIntegrations,
     }),
-    getSelectedFlightPathLayer({
-      userIntegrations,
-    }),
+    getWeatherLayer(),
+    getNatLayer(),
+    getAirportsLayer(),
     getNetworkFlightsLayer({
       userIntegrations,
     }),
-    getAirportsLayer(),
-    getNatLayer(),
+    getSelectedFlightPathLayer({
+      userIntegrations,
+    }),
   ];
 
   return (

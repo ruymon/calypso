@@ -23,6 +23,7 @@ export const getAirportsLayer = () => {
     queryFn: () => getAirportsSummary(),
     retry: 3,
     retryDelay: 1000,
+    enabled: isAirportsLayerVisible,
   });
 
   const handleClick = (d: any) => {

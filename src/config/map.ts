@@ -129,4 +129,6 @@ export const MAP_LAYERS = {
   SELECTED_FLIGHT_ICON_LAYER_ID: "selected-flight-icon-layer",
   NAT_EAST_TRACKS_LAYER_ID: "nat-east-tracks-layer",
   NAT_WEST_TRACKS_LAYER_ID: "nat-west-tracks-layer",
+  WEATHER_LAYER_ID: "weather-layer",
+  WEATHER_BITMAP_LAYER_ID: "weather-bitmap-layer",
 };

@@ -1,33 +1,31 @@
+import { MAP_LAYERS } from "@/config/map";
 import { WEATHER_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
-import { WeatherRadar } from "@/types/weather";
+import { useMapExtraLayersStore } from "@/stores/map-extra-layers-store";
 import { useQuery } from "@tanstack/react-query";
 import { BitmapLayer, TileLayer } from "deck.gl";
-import { getWeatherRadar } from "../weather";
+import { getWeatherRadarTime } from "../weather";
 
-export interface WeatherLayerProps {
-  weatherRadarInitialData: WeatherRadar;
-}
-export const getWeatherLayer = ({
-  weatherRadarInitialData,
-}: WeatherLayerProps) => {
-  const { data: weatherData } = useQuery({
-    queryKey: ["weather"],
-    queryFn: () => getWeatherRadar(),
-    initialData: weatherRadarInitialData,
+export const getWeatherLayer = () => {
+  const { isWeatherLayerVisible } = useMapExtraLayersStore();
+
+  const { data: tileTimestamp } = useQuery({
+    queryKey: ["weather-radar-timestamp"],
+    queryFn: () => getWeatherRadarTime(),
     refetchInterval: WEATHER_REFETCH_INTERVAL_IN_MILLISECONDS,
+    enabled: isWeatherLayerVisible,
   });
 
-  const weatherTilePath = weatherData.radar.nowcast.pop()?.path;
-
   const tileLayer = new TileLayer<ImageBitmap>({
-    id: "weather-tile-layer",
-    data: `https://tilecache.rainviewer.com/v2/radar/${weatherTilePath}/256/{z}/{x}/{y}/1/0_1.png`,
+    id: MAP_LAYERS.WEATHER_LAYER_ID,
+    data: `https://tilecache.rainviewer.com/v2/radar/${tileTimestamp}/256/{z}/{x}/{y}/7/1_1.png`,
 
     tileSize: 256,
+    visible: isWeatherLayerVisible,
+    opacity: 0.05,
     renderSubLayers: (props: any) => {
       const { boundingBox } = props.tile;
       return new BitmapLayer(props, {
-        id: "weather-bitmap-layer",
+        id: MAP_LAYERS.WEATHER_BITMAP_LAYER_ID,
         data: undefined,
         image: props.data,
         bounds: [
@@ -36,6 +34,7 @@ export const getWeatherLayer = ({
           boundingBox[1][0],
           boundingBox[1][1],
         ],
+        opacity: 0.05,
       });
     },
   });
