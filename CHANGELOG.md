@@ -1,3 +1,11 @@
+# [1.44.0](https://github.com/skyscope-app/skyscope-web/compare/v1.43.0...v1.44.0) (2024-05-31)
+
+
+### Features
+
+* **deploy:** Change build version ([6d15f72](https://github.com/skyscope-app/skyscope-web/commit/6d15f72f69ac72dda5e809f67c323847c916ee75))
+* **weather radar:** new layer ([5d01782](https://github.com/skyscope-app/skyscope-web/commit/5d01782edb9c3e2cc6768176f82dc99ca2ad3987))
+
 # [1.43.0](https://github.com/skyscope-app/skyscope-web/compare/v1.42.0...v1.43.0) (2024-05-31)
 
 
