@@ -1,3 +1,10 @@
+## [1.44.2](https://github.com/skyscope-app/skyscope-web/compare/v1.44.1...v1.44.2) (2024-06-01)
+
+
+### Bug Fixes
+
+* animations ([a984de8](https://github.com/skyscope-app/skyscope-web/commit/a984de85943a0a0e99ff67ab601650ba0f0f2bde))
+
 ## [1.44.1](https://github.com/skyscope-app/skyscope-web/compare/v1.44.0...v1.44.1) (2024-06-01)
 
 
