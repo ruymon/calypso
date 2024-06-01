@@ -1,3 +1,10 @@
+## [1.44.1](https://github.com/skyscope-app/skyscope-web/compare/v1.44.0...v1.44.1) (2024-06-01)
+
+
+### Bug Fixes
+
+* trigger deploy ([f3c64cd](https://github.com/skyscope-app/skyscope-web/commit/f3c64cdc31def6934a01a094d1d98fb7068a31a7))
+
 # [1.44.0](https://github.com/skyscope-app/skyscope-web/compare/v1.43.0...v1.44.0) (2024-05-31)
 
 
