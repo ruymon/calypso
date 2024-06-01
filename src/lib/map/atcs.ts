@@ -150,10 +150,7 @@ export const getNetworkATCsLayer = ({
 
 function filterOnlyShapeFacilities(data: LiveATCs) {
   return data.filter((atc: LiveATC) => {
-    return (
-      !ATC_FACILITIES_THAT_HAVE_LABEL.includes(atc.facility) &&
-      atc.network !== "IVAO"
-    );
+    return !ATC_FACILITIES_THAT_HAVE_LABEL.includes(atc.facility);
   });
 }
 
