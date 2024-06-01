@@ -20,6 +20,8 @@ import {
 } from "../utils";
 //@ts-expect-error
 import { featureCollection, lineString } from "@turf/helpers";
+// //@ts-expect-error
+// import { bezierSpline } from "@turf/bezier-spline";
 import { useTheme } from "next-themes";
 import { amber, white, zinc } from "tailwindcss/colors";
 import { getIconBasedOnAircraftType, isUserFlight } from "./flights";
@@ -138,6 +140,7 @@ export const getSelectedFlightPathLayer = ({
     dashGapPickable: true,
     extensions: [new PathStyleExtension({ dash: true })],
     lineWidthUnits: "pixels",
+    wrapLongitude: true,
   });
 
   const planeIconLayer = new IconLayer({

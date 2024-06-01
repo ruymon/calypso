@@ -115,6 +115,10 @@ export const getNetworkATCsLayer = ({
     getLineWidth: 20,
     lineWidthMinPixels: 1,
     pickable: true,
+    transitions: {
+      getFillColor: 250,
+      getLineColor: 250,
+    },
     autoHighlight: true,
     highlightColor({ object }) {
       return getATCColor(object, { overrideOpacity: false, opacity: 60 });
