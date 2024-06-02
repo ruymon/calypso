@@ -81,9 +81,13 @@ export function getVatsimProfileUrl(cid: number): string {
 }
 
 export function getNetworkMemberProfileUrl(
-  id: number,
+  id: number | string,
   network: Network,
 ): string {
+  if (typeof id === "string") {
+    id = Number(id);
+  }
+
   if (network === "ivao") {
     return getIvaoProfileUrl(id);
   }
