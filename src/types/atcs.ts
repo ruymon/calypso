@@ -4,6 +4,7 @@ export interface LiveATC {
   id: string;
   network: "IVAO" | "VATSIM"; // TODO: Revert to Network
   callsign: string;
+  radioCallsign: string;
   rating: string;
   user: {
     id: string;

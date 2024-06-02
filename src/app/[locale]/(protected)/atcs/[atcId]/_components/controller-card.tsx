@@ -4,22 +4,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getNetworkUserPilotRating } from "@/lib/rating";
+import { getNetworkUserAtcRating } from "@/lib/rating";
 import { cn, getNetworkMemberProfileUrl } from "@/lib/utils";
-import { getScopedI18n } from "@/locales/server";
-import { Pilot } from "@/types/live-flights";
+import { LiveATCDetail } from "@/types/atcs";
 import { Network } from "@/types/networks";
 import Link from "next/link";
 
-interface CrewCardProps {
+interface ControllerCardProps {
   className?: string;
-  data: Pilot;
+  data: LiveATCDetail["user"];
   network: Network;
 }
 
-export async function CrewCard({ className, data, network }: CrewCardProps) {
-  const t = await getScopedI18n("flightDetails.crewDetails.crew");
-  const rating = getNetworkUserPilotRating(data.rating, network);
+export async function ControllerCard({
+  className,
+  data,
+  network,
+}: ControllerCardProps) {
+  const rating = getNetworkUserAtcRating(data.rating, network);
 
   const url = getNetworkMemberProfileUrl(data.id, network);
 
@@ -28,7 +30,7 @@ export async function CrewCard({ className, data, network }: CrewCardProps) {
       <Card className="transition-all group-hover:bg-accent">
         <CardHeader className="gap-0.5">
           <span className="font-mono text-2xs font-medium uppercase text-muted-foreground">
-            {t("pilotInCommand")}
+            flight controller
           </span>
           <CardTitle>{data.name || data.id}</CardTitle>
           <CardDescription>

@@ -80,7 +80,7 @@ export function getVatsimProfileUrl(cid: number): string {
   return `https://stats.vatsim.net/stats/${cid}`;
 }
 
-export function getPilotNetworkProfileUrl(
+export function getNetworkMemberProfileUrl(
   id: number,
   network: Network,
 ): string {

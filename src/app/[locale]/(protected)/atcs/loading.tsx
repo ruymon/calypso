@@ -24,20 +24,6 @@ export default function ATCDetailsLoadingPage() {
           <Skeleton className="h-4 w-1/4" />
         </header>
 
-        <div className="grid grid-cols-2 gap-3">
-          <Skeleton className="col-span-2 h-28" />
-          <Skeleton className="col-span-2 h-28" />
-          <Skeleton className="h-24" />
-          <Skeleton className="h-24" />
-        </div>
-      </section>
-
-      <section className="flex flex-col gap-4">
-        <header className="flex flex-col gap-1">
-          <Skeleton className="h-8 w-2/4" />
-          <Skeleton className="h-4 w-1/4" />
-        </header>
-
         <Skeleton className="h-28" />
       </section>
     </div>

@@ -2,6 +2,8 @@ import { NetworkIcon } from "@/components/network-icon";
 import { getATCDetails } from "@/lib/atcs";
 import { Network } from "@/types/networks";
 import { notFound } from "next/navigation";
+import { ControllerCard } from "./_components/controller-card";
+import { SessionDuration } from "./_components/session-duration";
 
 interface ATCDetailsPageProps {
   params: {
@@ -26,7 +28,7 @@ export default async function ATCDetailsPage({
         <div className="flex flex-col">
           <h1 className="text-3xl font-bold">{data.callsign}</h1>
           <span className="text-sm text-muted-foreground">
-            SÃO PAULO CONTROL
+            {data.radioCallsign}
           </span>
         </div>
 
@@ -36,18 +38,15 @@ export default async function ATCDetailsPage({
         />
       </header>
 
-      <div className="grid grid-cols-2 items-center gap-4 bg-background p-2">
-        <div className="flex flex-col items-center">
-          <span className="font-semibold text-accent-foreground">24</span>
-          <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
-            time
-          </span>
-        </div>
+      <div className="grid grid-cols-2 items-center gap-4 rounded-lg bg-muted p-2">
+        <SessionDuration onlineAt={data.onlineAt} />
 
         <div className="flex flex-col items-center">
-          <span className="font-semibold text-accent-foreground">129.00</span>
+          <span className="font-semibold text-accent-foreground">
+            {data.frequency}
+          </span>
           <span className="text-center font-mono text-xs font-medium uppercase text-muted-foreground">
-            freq
+            frequency
           </span>
         </div>
       </div>
@@ -59,6 +58,11 @@ export default async function ATCDetailsPage({
             Detailed information about the controller
           </span>
         </header>
+
+        <ControllerCard
+          data={data.user}
+          network={data.network.toLowerCase() as Network}
+        />
 
         {/* <div className="grid grid-cols-2 gap-3">
         <AirportCard

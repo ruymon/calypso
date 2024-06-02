@@ -3,7 +3,7 @@ import {
   MetarExpirationStatus,
   getMetarExpirationStatus,
 } from "@/lib/airports";
-import { getRelativeTime, getZuluTimeString } from "@/lib/time";
+import { getRelativeTimeInWords, getZuluTimeString } from "@/lib/time";
 import { cn } from "@/lib/utils";
 import { DecodedMetar } from "metar-decoder/lib/types";
 
@@ -28,7 +28,7 @@ export function DecodedMetarCard({ data }: { data: DecodedMetar }) {
             {getZuluTimeString(data.recorded_at)}
           </span>
           <span className="text-xs leading-none text-muted-foreground">
-            ({getRelativeTime(data.recorded_at)})
+            ({getRelativeTimeInWords(data.recorded_at)})
           </span>
 
           <MetarExpirationStatusBadge recordedAt={new Date(data.recorded_at)} />
