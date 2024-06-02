@@ -1,3 +1,15 @@
+# [1.45.0](https://github.com/skyscope-app/skyscope-web/compare/v1.44.4...v1.45.0) (2024-06-02)
+
+
+### Bug Fixes
+
+* change build version ([72fc7ca](https://github.com/skyscope-app/skyscope-web/commit/72fc7ca52a6790e34a9c62003892fb75898a822a))
+
+
+### Features
+
+* Mobile drawer ([0a96bfd](https://github.com/skyscope-app/skyscope-web/commit/0a96bfdb94ccc7aa76bde912f881dc03ee90191b))
+
 ## [1.44.4](https://github.com/skyscope-app/skyscope-web/compare/v1.44.3...v1.44.4) (2024-06-02)
 
 
