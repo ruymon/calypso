@@ -1,3 +1,13 @@
+## [1.44.3](https://github.com/skyscope-app/skyscope-web/compare/v1.44.2...v1.44.3) (2024-06-02)
+
+
+### Bug Fixes
+
+* Atc details page ([9417794](https://github.com/skyscope-app/skyscope-web/commit/941779458db27f0072f3f24c9d1d9e160f42b1f6))
+* **atcs layer:** tooltip and zindex ([bf5b11b](https://github.com/skyscope-app/skyscope-web/commit/bf5b11b7e5867454c888294339dc234ce686cd82))
+* **atcs:** Remove unused var ([af55159](https://github.com/skyscope-app/skyscope-web/commit/af55159f779abfe2e45948a69729d32ad7a57a7c))
+* deploy version ([3a3753f](https://github.com/skyscope-app/skyscope-web/commit/3a3753f2b95a05237f3f8147024177c9175062e0))
+
 ## [1.44.2](https://github.com/skyscope-app/skyscope-web/compare/v1.44.1...v1.44.2) (2024-06-01)
 
 
