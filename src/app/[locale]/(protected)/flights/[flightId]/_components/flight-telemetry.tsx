@@ -65,6 +65,11 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
     (directCurrentPositionDepartureDistance / directDepartureArrivalDistance) *
     100;
 
+  const formattedFlightProgress = Math.min(
+    100,
+    Math.max(0, flightProgress),
+  ).toFixed(0);
+
   return (
     <>
       <StoreFlightData data={data} />
@@ -138,7 +143,7 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
 
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground">
-              {flightProgress.toFixed(2)}%
+              {formattedFlightProgress}%
             </span>
             <span className="text-xs text-muted-foreground">
               {directCurrentPositionToArrivalDistanceInNauticalMiles.toFixed(0)}
