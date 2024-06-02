@@ -39,9 +39,7 @@ export function Map({ children, userIntegrations }: MapProps) {
   const { viewState } = useMapViewStateStore();
 
   const layers = [
-    getNetworkATCsLayer({
-      userIntegrations,
-    }),
+    getNetworkATCsLayer(),
     getWeatherLayer(),
     getNatLayer(),
     getAirportsLayer(),
