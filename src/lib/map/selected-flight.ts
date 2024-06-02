@@ -20,8 +20,6 @@ import {
 } from "../utils";
 //@ts-expect-error
 import { featureCollection, lineString } from "@turf/helpers";
-// //@ts-expect-error
-// import { bezierSpline } from "@turf/bezier-spline";
 import { useTheme } from "next-themes";
 import { amber, white, zinc } from "tailwindcss/colors";
 import { getIconBasedOnAircraftType, isUserFlight } from "./flights";

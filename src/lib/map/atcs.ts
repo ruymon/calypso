@@ -51,10 +51,10 @@ export const getNetworkATCsLayer = ({
     router.push(`/atcs/${atc.id}`);
   };
 
-  const atcsData = useMemo(() => {
-    const joinedData = [...(vatsimAtcsData || []), ...(ivaoAtcsData || [])];
-    const filteredShapesFacilites = filterOnlyShapeFacilities(joinedData);
-    const filteredLabelFacilites = filterOnlyLabelFacilities(joinedData);
+  const vatsimData = useMemo(() => {
+    if (!vatsimAtcsData) return { shapeFacilities: [], labelFacilities: [] };
+    const filteredShapesFacilites = filterOnlyShapeFacilities(vatsimAtcsData);
+    const filteredLabelFacilites = filterOnlyLabelFacilities(vatsimAtcsData);
 
     const sortedShapeFacilitiesByZIndex = filteredShapesFacilites.sort(
       (a, b) => {
@@ -70,11 +70,44 @@ export const getNetworkATCsLayer = ({
       labelFacilities: filteredLabelFacilites,
     };
   }, [
-    ivaoAtcsData,
     vatsimAtcsData,
+    ivaoAtcsData,
     isIvaoATCsLayerVisible,
     isVatsimATCsLayerVisible,
   ]);
+
+  const ivaoData = useMemo(() => {
+    if (!ivaoAtcsData) return { shapeFacilities: [], labelFacilities: [] };
+
+    const filteredShapesFacilites = filterOnlyShapeFacilities(ivaoAtcsData);
+    const filteredLabelFacilites = filterOnlyLabelFacilities(ivaoAtcsData);
+
+    const sortedShapeFacilitiesByZIndex = filteredShapesFacilites.sort(
+      (a, b) => {
+        const aIndex = ATC_FACILITIES_Z_INDEX[a.facility as ATCFacility];
+        const bIndex = ATC_FACILITIES_Z_INDEX[b.facility as ATCFacility];
+
+        return aIndex - bIndex;
+      },
+    );
+
+    return {
+      shapeFacilities: sortedShapeFacilitiesByZIndex,
+      labelFacilities: filteredLabelFacilites,
+    };
+  }, [ivaoAtcsData, isIvaoATCsLayerVisible]);
+
+  const getATCColor = (
+    { facility }: LiveATC,
+    options?: { overrideOpacity: boolean; opacity?: number },
+  ) => {
+    const opacity = options?.overrideOpacity
+      ? undefined
+      : options?.opacity || 20;
+
+    const accentColor = ATC_FACILITIES_ACCENT_COLOR[facility as ATCFacility];
+    return hexToRGBAArray(accentColor, opacity);
+  };
 
   const shouldBeVisible = (network: "IVAO" | "VATSIM") => {
     switch (network) {
@@ -85,24 +118,9 @@ export const getNetworkATCsLayer = ({
     }
   };
 
-  const getATCColor = (
-    { facility, network }: LiveATC,
-    options?: { overrideOpacity: boolean; opacity?: number },
-  ) => {
-    const DEFAULT_OPACITY = options?.overrideOpacity
-      ? undefined
-      : options?.opacity || 20;
-
-    const isVisible = shouldBeVisible(network);
-    const opacity = isVisible ? DEFAULT_OPACITY : 0;
-
-    const accentColor = ATC_FACILITIES_ACCENT_COLOR[facility as ATCFacility];
-    return hexToRGBAArray(accentColor, opacity);
-  };
-
-  const shapesLayer = new PolygonLayer({
-    id: MAP_LAYERS.NETWORK_ATCS_SHAPES_LAYER_ID,
-    data: atcsData.shapeFacilities,
+  const ivaoShapesLayer = new PolygonLayer({
+    id: MAP_LAYERS.IVAO_ATCS_SHAPES_LAYER_ID,
+    data: ivaoData.shapeFacilities,
     getPolygon: ({ geometry }: LiveATC) => geometry,
     getLineColor: (d) =>
       getATCColor(d, {
@@ -123,12 +141,40 @@ export const getNetworkATCsLayer = ({
     highlightColor({ object }) {
       return getATCColor(object, { overrideOpacity: false, opacity: 60 });
     },
+    visible: isIvaoATCsLayerVisible,
+    onClick: handleClick,
+  });
+
+  const vatsimShapesLayer = new PolygonLayer({
+    id: MAP_LAYERS.VATSIM_ATCS_SHAPES_LAYER_ID,
+    data: vatsimData.shapeFacilities,
+    getPolygon: ({ geometry }: LiveATC) => geometry,
+    getLineColor: (d) =>
+      getATCColor(d, {
+        overrideOpacity: true,
+      }),
+    getFillColor: (d) => getATCColor(d),
+    colorFormat: "RGBA",
+    depthTest: true,
+    filled: true,
+    getLineWidth: 20,
+    lineWidthMinPixels: 1,
+    pickable: true,
+    transitions: {
+      getFillColor: 250,
+      getLineColor: 250,
+    },
+    autoHighlight: true,
+    highlightColor({ object }) {
+      return getATCColor(object, { overrideOpacity: false, opacity: 60 });
+    },
+    visible: isVatsimATCsLayerVisible,
     onClick: handleClick,
   });
 
   const labelLayer = new IconLayer({
     id: MAP_LAYERS.NETWORK_ATCS_LABEL_LAYER_ID,
-    data: atcsData.labelFacilities,
+    data: [...vatsimData.labelFacilities, ...ivaoData.labelFacilities],
     iconAtlas: MAP_SPRITES.ATC_FACILITIES,
     iconMapping: ATC_FACILITIES_SPRITE_ICON_MAPPING,
     getIcon: ({ facility }: LiveATC) => facility,
@@ -149,7 +195,7 @@ export const getNetworkATCsLayer = ({
     onClick: handleClick,
   });
 
-  return [shapesLayer, labelLayer];
+  return [ivaoShapesLayer, vatsimShapesLayer, labelLayer];
 };
 
 function filterOnlyShapeFacilities(data: LiveATCs) {

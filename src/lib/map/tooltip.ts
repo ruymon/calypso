@@ -62,7 +62,8 @@ export const getTooltipContentBasedOnLayer = ({
   }
 
   if (
-    layer.id === MAP_LAYERS.NETWORK_ATCS_SHAPES_LAYER_ID ||
+    layer.id === MAP_LAYERS.IVAO_ATCS_SHAPES_LAYER_ID ||
+    layer.id === MAP_LAYERS.VATSIM_ATCS_SHAPES_LAYER_ID ||
     layer.id === MAP_LAYERS.NETWORK_ATCS_LABEL_LAYER_ID
   ) {
     return atcLayerTooltip(object);
