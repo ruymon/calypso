@@ -1,3 +1,10 @@
+## [1.44.4](https://github.com/skyscope-app/skyscope-web/compare/v1.44.3...v1.44.4) (2024-06-02)
+
+
+### Bug Fixes
+
+* User id types discrepency between atc and pilot ([7e6a105](https://github.com/skyscope-app/skyscope-web/commit/7e6a105355a2dbf0c31b4fbb3b60819a47760387))
+
 ## [1.44.3](https://github.com/skyscope-app/skyscope-web/compare/v1.44.2...v1.44.3) (2024-06-02)
 
 
