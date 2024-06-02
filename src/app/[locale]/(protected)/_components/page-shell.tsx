@@ -3,54 +3,87 @@
 import { PiMultipleCrossCancelDefaultStroke } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
+
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { useRouter } from "next/navigation";
 
 interface PageShellProps {
   children: ReactNode;
   shellClassName?: string;
   containerClassName?: string;
-  /**
-   * @default "md"
-   */
   width?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
-  /**
-   * @default false
-   */
   hideTopNav?: boolean;
   shellTitle?: string;
-  /**
-   * @default "/"
-   */
   closeHref?: string;
+  mobileDrawerSnapPoints?: [number | string, number | string, number | string];
 }
 
-/**
- * Page Shell component
- * @description This component is used to wrap the content of a floating page in the app. It monitors the search params and handles sizing behaviors by adapting the max width of the page.
- * @param {PageShellProps} { children, className, width }
- */
-
-const DEFAULT_WIDTH = "md";
-
 const widthClassNames = {
-  sm: "lg:max-w-sm",
-  md: "lg:max-w-md",
-  lg: "lg:max-w-lg",
-  xl: "lg:max-w-xl",
-  "2xl": "lg:max-w-2xl",
-  "3xl": "lg:max-w-3xl",
-  full: "lg:max-w-full",
+  sm: "md:max-w-sm",
+  md: "md:max-w-md",
+  lg: "md:max-w-lg",
+  xl: "md:max-w-xl",
+  "2xl": "md:max-w-2xl",
+  "3xl": "md:max-w-3xl",
+  full: "md:max-w-full",
 };
 
 export function PageShell({
   children,
   shellClassName,
   containerClassName,
-  width = DEFAULT_WIDTH,
+  width = "md",
   hideTopNav = false,
   shellTitle,
   closeHref = "/",
+  mobileDrawerSnapPoints = [0.2, 0.5, 1],
 }: PageShellProps) {
+  const [drawerSnap, setDrawerSnap] = useState<number | string | null>(
+    mobileDrawerSnapPoints[1],
+  );
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
+  const handleDrawerClose = () => {
+    router.push(closeHref);
+  };
+
+  if (!isDesktop) {
+    return (
+      <Drawer
+        onClose={handleDrawerClose}
+        shouldScaleBackground={false}
+        open={true}
+        snapPoints={mobileDrawerSnapPoints}
+        activeSnapPoint={drawerSnap}
+        setActiveSnapPoint={setDrawerSnap}
+        modal={false}
+      >
+        <DrawerContent>
+          <div
+            className={cn("flex w-full flex-1 flex-col px-6 pt-8", {
+              "overflow-y-auto": drawerSnap === 1,
+              "overflow-hidden": drawerSnap !== 1,
+            })}
+          >
+            {children}
+          </div>
+        </DrawerContent>
+      </Drawer>
+    );
+  }
+
   return (
     <div
       className={cn(

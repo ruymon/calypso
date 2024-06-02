@@ -54,7 +54,7 @@ export default async function AppSettingsIntegrationsPage({}: AppSettingsIntegra
 
   return (
     <main className="mx-auto flex max-w-xl flex-1 flex-col gap-8">
-      <header className="flex flex-col py-4">
+      <header className="flex flex-col">
         <h2 className="text-2xl font-bold text-foreground">
           {t("settings.integrations.title")}
         </h2>

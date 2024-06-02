@@ -9,7 +9,10 @@ export default function ATCsDetailsLayout({
   children,
 }: ATCsDetailsLayoutProps) {
   return (
-    <PageShell shellTitle="Air traffic controller details">
+    <PageShell
+      shellTitle="Air traffic controller details"
+      mobileDrawerSnapPoints={[0.19, 0.31, 1]}
+    >
       {children}
     </PageShell>
   );

@@ -25,7 +25,7 @@ export default async function SettingsProfilePage({}: SettingsProfilePageProps) 
 
   return (
     <div className="flex flex-1 flex-col gap-8">
-      <header className="flex flex-col py-4">
+      <header className="flex flex-col">
         <h2 className="text-2xl font-bold text-foreground">{t("title")}</h2>
         <span className="text-sm text-muted-foreground">{t("subtitle")}</span>
       </header>

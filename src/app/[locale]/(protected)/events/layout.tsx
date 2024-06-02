@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { PageShell } from "../_components/page-shell";
 
 interface EventsLayoutProps {
   children: ReactNode;
@@ -7,13 +6,8 @@ interface EventsLayoutProps {
 
 export default function EventsLayout({ children }: EventsLayoutProps) {
   return (
-    <PageShell
-      hideTopNav
-      width="full"
-      shellClassName="relative"
-      containerClassName="max-w-none gap-0 p-0"
-    >
+    <div className="z-20 flex h-full w-full overflow-y-auto bg-background px-4 py-2 md:px-6">
       {children}
-    </PageShell>
+    </div>
   );
 }

@@ -26,7 +26,7 @@ export async function Sidebar({ user }: SidebarProps) {
   const t = await getScopedI18n("sidebar");
 
   return (
-    <aside className="z-30 hidden w-14 shrink-0 flex-col items-center gap-4 bg-background py-4 lg:flex">
+    <aside className="z-30 hidden w-14 shrink-0 flex-col items-center gap-4 bg-background py-4 md:flex">
       <header className="flex w-full flex-col items-center gap-1">
         <Rotate3D
           className={cn(

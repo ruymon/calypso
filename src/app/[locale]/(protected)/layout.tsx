@@ -15,7 +15,7 @@ export default async function AppRootLayout({ children }: AppRootLayoutProps) {
 
   return (
     <div className="relative flex h-screen w-screen overflow-clip">
-      <div className="flex w-full flex-1 flex-col justify-end lg:w-fit lg:flex-row lg:justify-normal">
+      <div className="flex w-full flex-1 flex-col justify-end md:w-fit md:flex-row md:justify-normal">
         <Sidebar user={user} />
         {children}
         <MobileSidebar />

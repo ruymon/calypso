@@ -5,7 +5,7 @@ interface SettingsProfileLoadingProps {}
 export default function SettingsProfileLoading({}: SettingsProfileLoadingProps) {
   return (
     <figure className="mx-auto flex max-w-xl flex-1 flex-col gap-8">
-      <figure className="flex flex-col gap-1 py-4">
+      <figure className="flex flex-col gap-1">
         <Skeleton className="h-8 w-1/4" />
         <Skeleton className="h-4 w-1/2" />
       </figure>
