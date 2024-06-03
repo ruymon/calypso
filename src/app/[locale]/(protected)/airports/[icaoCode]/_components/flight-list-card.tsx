@@ -1,7 +1,16 @@
+"use client";
+
 import { AirlineTail } from "@/components/airline-tail";
-import { PiArrowRightDownSolid, PiArrowRightUpSolid } from "@/components/icons";
+import {
+  PiAlertTriangleSolid,
+  PiArrowRightDownSolid,
+  PiArrowRightUpSolid,
+  PiEye02OffContrast,
+} from "@/components/icons";
 import { NetworkIcon } from "@/components/network-icon";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import { useMapNetworkLayersStore } from "@/stores/map-network-layers-store";
 import { AirportNetworkFlight, AirportStats } from "@/types/airports";
 import { Network } from "@/types/networks";
 import Link from "next/link";
@@ -13,21 +22,56 @@ interface FlightListCardProps {
 export function FlightListCard({
   data: { ivao: ivaoStats, vatsim: vatsimStats },
 }: FlightListCardProps) {
-  const departureList: FlightItemProps[] = [
-    ...vatsimStats.departure.map((flight) => ({
-      ...flight,
-      network: "vatsim",
-    })),
-    ...ivaoStats.departure.map((flight) => ({ ...flight, network: "ivao" })),
-  ].sort((a, b) => a.callsign.localeCompare(b.callsign));
+  const { isVatsimFlightsLayerVisible, isIvaoFlightsLayerVisible } =
+    useMapNetworkLayersStore();
 
-  const arrivalList: FlightItemProps[] = [
-    ...vatsimStats.arrival.map((flight) => ({
-      ...flight,
-      network: "vatsim",
-    })),
-    ...ivaoStats.arrival.map((flight) => ({ ...flight, network: "ivao" })),
-  ].sort((a, b) => a.callsign.localeCompare(b.callsign));
+  const getDepartureList = (): FlightItemProps[] => {
+    const departures = [];
+
+    if (isVatsimFlightsLayerVisible) {
+      departures.push(
+        ...vatsimStats.departure.map((flight) => ({
+          ...flight,
+          network: "vatsim",
+        })),
+      );
+    }
+
+    if (isIvaoFlightsLayerVisible) {
+      departures.push(
+        ...ivaoStats.departure.map((flight) => ({
+          ...flight,
+          network: "ivao",
+        })),
+      );
+    }
+
+    return departures.sort((a, b) => a.callsign.localeCompare(b.callsign));
+  };
+
+  const getArrivalList = (): FlightItemProps[] => {
+    const arrivals = [];
+
+    if (isVatsimFlightsLayerVisible) {
+      arrivals.push(
+        ...vatsimStats.arrival.map((flight) => ({
+          ...flight,
+          network: "vatsim",
+        })),
+      );
+    }
+
+    if (isIvaoFlightsLayerVisible) {
+      arrivals.push(
+        ...ivaoStats.arrival.map((flight) => ({
+          ...flight,
+          network: "ivao",
+        })),
+      );
+    }
+
+    return arrivals.sort((a, b) => a.callsign.localeCompare(b.callsign));
+  };
 
   return (
     <section className="flex flex-col gap-6">
@@ -37,6 +81,14 @@ export function FlightListCard({
           Departure and arrival ratio insights among the networks
         </span>
       </header>
+
+      <Alert className="border-dashed border-amber-500/50 bg-amber-500/5">
+        <PiAlertTriangleSolid className="h-4 w-4" />
+        <AlertTitle>Heads up!</AlertTitle>
+        <AlertDescription>
+          Schedule list is synced with your visible networks layers.
+        </AlertDescription>
+      </Alert>
 
       <div className="flex flex-col gap-4">
         <header className="flex gap-3">
@@ -53,9 +105,21 @@ export function FlightListCard({
         </header>
 
         <div className="flex flex-col">
-          {departureList.map((flight) => (
+          {getDepartureList().map((flight) => (
             <FlightItem key={flight.id} {...flight} />
           ))}
+
+          {!isIvaoFlightsLayerVisible && !isVatsimFlightsLayerVisible && (
+            <div className="flex flex-col items-center justify-center rounded-lg bg-border p-4 text-center text-muted-foreground">
+              <PiEye02OffContrast className="mb-2 h-4 w-4" />
+              <span className="text-sm font-medium">
+                No departures available
+              </span>
+              <span className="text-xs">
+                Enable one or more network layers to see departures
+              </span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -75,9 +139,19 @@ export function FlightListCard({
         </header>
 
         <div className="flex flex-col">
-          {arrivalList.map((flight) => (
+          {getArrivalList().map((flight) => (
             <FlightItem key={flight.id} {...flight} />
           ))}
+
+          {!isIvaoFlightsLayerVisible && !isVatsimFlightsLayerVisible && (
+            <div className="flex flex-col items-center justify-center rounded-lg bg-border p-4 text-center text-muted-foreground">
+              <PiEye02OffContrast className="mb-2 h-4 w-4" />
+              <span className="text-sm font-medium">No arrivals available</span>
+              <span className="text-xs">
+                Enable one or more network layers to see departures
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </section>
