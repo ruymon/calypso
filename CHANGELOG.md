@@ -1,3 +1,11 @@
+## [1.45.2](https://github.com/skyscope-app/skyscope-web/compare/v1.45.1...v1.45.2) (2024-06-03)
+
+
+### Bug Fixes
+
+* build version ([525c167](https://github.com/skyscope-app/skyscope-web/commit/525c1678330a698d1ca736e0e614f2f3340fd716))
+* Google analytics ([86e1920](https://github.com/skyscope-app/skyscope-web/commit/86e1920f6131179d6d85664ea2d127b3bc3d7fda))
+
 ## [1.45.1](https://github.com/skyscope-app/skyscope-web/compare/v1.45.0...v1.45.1) (2024-06-03)
 
 
