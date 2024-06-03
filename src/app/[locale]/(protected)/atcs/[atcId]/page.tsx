@@ -20,8 +20,6 @@ export default async function ATCDetailsPage({
 
   const data = await getATCDetails(atcId);
 
-  console.log(data);
-
   return (
     <div className="flex flex-1 flex-col gap-8">
       <header className="flex items-center justify-between gap-4">

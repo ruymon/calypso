@@ -154,8 +154,6 @@ export async function refreshAccessTokenInMiddleware(
     priority: "high",
   });
 
-  console.log("accessToken in middleware", `${COOKIE_PREFIX}access-token`);
-
   return response;
 }
 
