@@ -1,3 +1,10 @@
+## [1.45.3](https://github.com/skyscope-app/skyscope-web/compare/v1.45.2...v1.45.3) (2024-06-03)
+
+
+### Bug Fixes
+
+* **flights:** reduce fetching interval of flights to 15 seconds ([6611049](https://github.com/skyscope-app/skyscope-web/commit/6611049bd6097513d800956ea7ac6229363a7f88))
+
 ## [1.45.2](https://github.com/skyscope-app/skyscope-web/compare/v1.45.1...v1.45.2) (2024-06-03)
 
 
