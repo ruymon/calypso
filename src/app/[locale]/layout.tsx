@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -9,6 +10,7 @@ import { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
 import { BASE_URL } from "@/constants/url";
+import { firebaseConfig } from "@/lib/firebase";
 import "@/styles/globals.css";
 import { getLangDir } from "rtl-detect";
 import { Toaster } from "sonner";
@@ -106,6 +108,7 @@ export default function RootLayout({
       >
         <Providers locale={locale}>{children}</Providers>
         <Toaster />
+        <GoogleAnalytics gaId={firebaseConfig.measurementId!} />
       </body>
     </html>
   );
