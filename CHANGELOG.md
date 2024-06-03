@@ -1,3 +1,13 @@
+## [1.45.1](https://github.com/skyscope-app/skyscope-web/compare/v1.45.0...v1.45.1) (2024-06-03)
+
+
+### Bug Fixes
+
+* auth error page ([e026e97](https://github.com/skyscope-app/skyscope-web/commit/e026e977893c9eabc4a0beadc96b5ec64080bf25))
+* build version ([c6afd06](https://github.com/skyscope-app/skyscope-web/commit/c6afd065227bd76d51d52fc8e6eca4380d956951))
+* flight progress ([9216884](https://github.com/skyscope-app/skyscope-web/commit/921688427db3d1096c77a8888555bef7a6af5567))
+* hide hidden data from flight list ([02118b8](https://github.com/skyscope-app/skyscope-web/commit/02118b8cd90cb46c440afdd78924fbdc609c4a89))
+
 # [1.45.0](https://github.com/skyscope-app/skyscope-web/compare/v1.44.4...v1.45.0) (2024-06-02)
 
 
