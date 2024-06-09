@@ -282,7 +282,7 @@ export default ({
         registration: "Registration",
         transponder: "Transponder",
         wakeTurbulence: "Wake turbulence",
-        photographer: "Photographer"
+        photographer: "照相机"
       }
     },
     crewDetails: {
