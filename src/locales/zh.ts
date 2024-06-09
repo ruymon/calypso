@@ -3,9 +3,9 @@ export default ({
   common: {
     open: "打开",
     close: "关闭",
-    joinDiscord: "Join our discord",
+    joinDiscord: "加入我们的Discord",
     contactSupport: "Contact support",
-    comingSoon: "Coming soon",
+    comingSoon: "即将到来",
     active: "Active"
   },
   auth: {
@@ -193,7 +193,7 @@ export default ({
       subtitle: "Manage and update your profile settings",
       emailCard: {
         title: "电子邮箱",
-        cannotChange: "You cannot change your email address"
+        cannotChange: "你不能更改你的电子邮箱地址"
       },
       nameCard: {
         title: "姓名",
@@ -244,10 +244,10 @@ export default ({
   },
   onboarding: {
     welcome: {
-      hat: "Getting started",
-      title: `Welcome to ${siteConfig.name}!`,
+      hat: "现在开始",
+      title: `欢迎 ${siteConfig.name}!`,
       subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
-      getStarted: "Get started"
+      getStarted: "现在开始"
     },
     integrations: {
       hat: "Sync your details",
@@ -257,9 +257,9 @@ export default ({
     },
     finish: {
       hat: "All set!",
-      title: "Let's get started?",
+      title: "让我们开始吧？",
       subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
-      getStarted: "Get started"
+      getStarted: "现在开始"
     }
   },
   flightDetails: {
@@ -323,17 +323,17 @@ export default ({
         subtitle: "Things you can do to possibly fix it. If this problem persists, please contact our support team.",
         steps: {
           verifyFlightExists: "Make sure the flight is currently flying in one of the supported networks",
-          refresh: "Refresh the page",
-          checkInternetConnection: "Check your internet connection",
+          refresh: "刷新此页",
+          checkInternetConnection: "检查你的互联网连接",
           checkLoginStatus: "Make sure you are logged in"
         }
       },
       systemLogs: {
-        title: "System logs",
+        title: "系统日志",
         subtitle: "The following information might be useful for our support team.",
         code: "Code",
-        flightId: "Flight id",
-        timestamp: "Timestamp",
+        flightId: "航班号",
+        timestamp: "时间戳",
         buildVersion: "Build version"
       }
     }
