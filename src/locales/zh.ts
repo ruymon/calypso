@@ -75,7 +75,7 @@ export default ({
   },
   map: {
     loading: {
-      title: "Loading map",
+      title: "地图加载中",
       subtitle: "This should take less than 10 seconds, depending on your connection"
     },
     toolbar: {
@@ -152,17 +152,17 @@ export default ({
       },
       extraLayers: {
         tooltip: {
-          title: "Extra layers",
-          description: "Toggle extra layers visibility"
+          title: "更多图层",
+          description: "切换更多图层可见性"
         },
-        title: "Extra layers",
+        title: "更多图层",
         airports: {
-          title: "Airports",
-          description: "Show airports on the map"
+          title: "机场",
+          description: "在地图上显示机场"
         },
         weatherRadar: {
-          title: "Weather radar",
-          description: "Show weather radar on the map"
+          title: "气象雷达",
+          description: "在地图上显示气象雷达"
         }
       }
     },
@@ -276,8 +276,8 @@ export default ({
       }
     },
     aircraftDetails: {
-      title: "Aircraft details",
-      subtitle: "Detailed information about the aircraft.",
+      title: "飞行器信息",
+      subtitle: "你的飞行器的详细信息",
       aircraft: {
         registration: "Registration",
         transponder: "Transponder",
