@@ -10,6 +10,7 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: "rewrite",
 });
 
+
 export default async function middleware(request: NextRequest) {
   const response = I18nMiddleware(request);
 
@@ -20,7 +21,7 @@ export default async function middleware(request: NextRequest) {
     `${COOKIE_PREFIX}refresh-token`,
   )?.value;
 
-  const isPublicAuthRoute = request.nextUrl.pathname.includes("/auth");
+  const isPublicAuthRoute = request.nextUrl.pathname.includes("auth");
   const isInLoginPage = request.nextUrl.pathname.includes("/auth/login");
 
   if (!accessToken && !refreshToken && !isPublicAuthRoute) {
@@ -44,4 +45,5 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
+  
 };

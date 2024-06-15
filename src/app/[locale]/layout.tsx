@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { VercelToolbar } from '@vercel/toolbar/next';
 
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -10,6 +13,7 @@ import { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
 import { BASE_URL } from "@/constants/url";
+import { IS_IN_DEVELOPMENT } from "@/constants/workspace";
 import { firebaseConfig } from "@/lib/firebase";
 import "@/styles/globals.css";
 import { getLangDir } from "rtl-detect";
@@ -94,9 +98,10 @@ export default function RootLayout({
   params: { locale },
 }: RootLayoutProps) {
   const dir = getLangDir(locale);
+  const shouldInjectToolbar = IS_IN_DEVELOPMENT;
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html lang={locale} dir={dir}>
       <head />
       <body
         className={cn(
@@ -106,9 +111,15 @@ export default function RootLayout({
           courgette.variable,
         )}
       >
-        <Providers locale={locale}>{children}</Providers>
+        <Providers locale={locale}>
+          {children}
+          
+          {shouldInjectToolbar && <VercelToolbar />}
+        </Providers>
         <Toaster />
         <GoogleAnalytics gaId={firebaseConfig.measurementId!} />
+        <SpeedInsights />
+        <Analytics/>
       </body>
     </html>
   );

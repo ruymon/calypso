@@ -1,5 +1,5 @@
 import { NAVIGRAPH_INTEGRATION_REDIRECT_URI } from "@/config/integrations";
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import { NavigraphTokenResponse } from "@/types/integrations";
 import { postWithXForm } from "../http";
 import { pkceChallenge } from "../pkce";

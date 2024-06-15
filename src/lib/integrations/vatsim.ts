@@ -2,7 +2,7 @@ import {
   VATSIM_INTEGRATION_BASE_URL,
   VATSIM_INTEGRATION_REDIRECT_URI,
 } from "@/config/integrations";
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import { VatsimTokenResponse } from "@/types/integrations";
 import { postWithXForm } from "../http";
 

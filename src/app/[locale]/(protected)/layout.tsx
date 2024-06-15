@@ -1,4 +1,5 @@
 import { getProfile } from "@/lib/profile";
+import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { Map } from "./_components/map";
 import { MapFooter } from "./_components/map/map-footer";
@@ -11,7 +12,7 @@ interface AppRootLayoutProps {
 }
 
 export default async function AppRootLayout({ children }: AppRootLayoutProps) {
-  const user = await getProfile();
+  const user = await getProfile().catch(() => redirect("/auth/login"));
 
   return (
     <div className="relative flex h-screen w-screen overflow-clip">

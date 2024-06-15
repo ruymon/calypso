@@ -1,4 +1,4 @@
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 
 export const BASE_URL = env.NEXT_PUBLIC_BASE_URL
   ? `https://${env.NEXT_PUBLIC_BASE_URL}`

@@ -7,7 +7,7 @@ import {
   COOKIE_PREFIX,
   IS_SECURE_COOKIE,
 } from "@/constants/cookies";
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import { firebaseAuth } from "@/lib/firebase";
 import {
   sendPasswordResetEmail,
@@ -74,16 +74,13 @@ function getAccessTokenFromHeaders() {
 }
 export async function getAccessToken() {
   const accessToken =
-    cookies().get(`${COOKIE_PREFIX}access-token`)?.value ||
-    getAccessTokenFromHeaders();
-
+    cookies().get(`${COOKIE_PREFIX}access-token`)?.value
   return accessToken;
 }
 
 export async function getRefreshToken() {
   const refreshToken =
-    cookies().get(`${COOKIE_PREFIX}refresh-token`)?.value ||
-    headers().get(`${COOKIE_PREFIX}refresh-token`);
+    cookies().get(`${COOKIE_PREFIX}refresh-token`)?.value
   return refreshToken;
 }
 
@@ -193,6 +190,8 @@ export async function refreshAccessTokenInServer() {
     domain: COOKIE_DOMAIN,
     secure: IS_SECURE_COOKIE,
   });
+
+  return data;
 }
 
 export async function getUserIdFromAccessToken(accessToken: string) {

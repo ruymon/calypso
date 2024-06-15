@@ -91,6 +91,12 @@
   }
 }
 
+html,
+body {
+  /* wth https://github.com/vercel/geist-font/issues/65#issuecomment-1837402864 */
+  font-synthesis-weight: none;
+}
+
 ::-webkit-scrollbar {
   @apply h-0 w-1.5;
   scrollbar-width: 0.375rem;

@@ -1,4 +1,4 @@
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import { ATCFacility } from "@/types/atcs";
 import { Network } from "@/types/networks";
 import { MapViewState } from "deck.gl";

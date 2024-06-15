@@ -1,5 +1,5 @@
 import { IVAO_INTEGRATION_REDIRECT_URI } from "@/config/integrations";
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import { IvaoTokenResponse } from "@/types/integrations";
 import { postWithXForm } from "../http";
 
