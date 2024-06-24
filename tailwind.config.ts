@@ -109,7 +109,6 @@ const config = {
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans, "sans-serif"],
         mono: ["var(--font-geist-mono)", ...fontFamily.mono, "monospace"],
-        handwriting: ["var(--font-courgette)", "cursive"],
       },
       fontSize: {
         "2xs": "0.625rem",

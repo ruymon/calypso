@@ -6,7 +6,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { getNameInitials } from "@/lib/utils";
-import { getScopedI18n } from "@/locales/server";
+import { useScopedI18n } from "@/locales/client";
 import { UserProfile } from "@/types/profile";
 import Link from "next/link";
 
@@ -14,8 +14,8 @@ interface SidebarAvatarProps {
   user: UserProfile;
 }
 
-export async function SidebarAvatar({ user }: SidebarAvatarProps) {
-  const t = await getScopedI18n("sidebar.profile");
+export function SidebarAvatar({ user }: SidebarAvatarProps) {
+  const t = useScopedI18n("sidebar.profile");
 
   return (
     <Tooltip delayDuration={400}>
@@ -24,7 +24,7 @@ export async function SidebarAvatar({ user }: SidebarAvatarProps) {
           <Avatar className="h-7 w-7">
             <AvatarImage src={user?.avatarUrl} />
             <AvatarFallback className="text-2xs font-semibold">
-              {user?.name ? (
+              {user.name ? (
                 getNameInitials(user.name)
               ) : (
                 <PiUserDefaultDuoStroke className="w-4" />

@@ -41,7 +41,7 @@ export function PageShell({
   mobileDrawerSnapPoints = [0.2, 0.5, 1],
 }: PageShellProps) {
   const [drawerSnap, setDrawerSnap] = useState<number | string | null>(
-    mobileDrawerSnapPoints[1],
+    mobileDrawerSnapPoints[1]
   );
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isClient, setIsClient] = useState(false);
@@ -89,7 +89,7 @@ export function PageShell({
       className={cn(
         "z-20 flex h-full w-full flex-col overflow-y-auto bg-background",
         widthClassNames[width],
-        shellClassName,
+        shellClassName
       )}
     >
       {!hideTopNav && (

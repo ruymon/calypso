@@ -1,5 +1,4 @@
 import { getProfile } from "@/lib/profile";
-import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { Map } from "./_components/map";
 import { MapFooter } from "./_components/map/map-footer";
@@ -12,24 +11,25 @@ interface AppRootLayoutProps {
 }
 
 export default async function AppRootLayout({ children }: AppRootLayoutProps) {
-  const user = await getProfile().catch(() => redirect("/auth/login"));
+  const user = await getProfile();
 
   return (
-    <div className="relative flex h-screen w-screen overflow-clip">
-      <div className="flex w-full flex-1 flex-col justify-end md:w-fit md:flex-row md:justify-normal">
-        <Sidebar user={user} />
-        {children}
-        <MobileSidebar />
-      </div>
+    <div className="relative flex h-screen w-screen flex-col justify-end md:flex-row md:justify-normal">
       <Spotlight />
+      <Sidebar user={user} />
+
+      {children}
+
       <Map
         userIntegrations={{
-          ivaoId: user.ivaoId,
-          vatsimId: user.vatsimId,
+          ivaoId: user?.ivaoId,
+          vatsimId: user?.vatsimId,
         }}
       >
         <MapFooter />
       </Map>
+
+      <MobileSidebar />
     </div>
   );
 }

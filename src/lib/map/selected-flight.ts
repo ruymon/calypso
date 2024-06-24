@@ -1,11 +1,11 @@
-import { UserIntegrations } from "@/app/[locale]/(protected)/_components/map";
+import { UserIntegrations } from "@/app/[locale]/(map)/_components/map";
 import {
-  AIRCRAFT_SPRITE_ICON_MAPPING,
-  FLIGHT_TRACK_ACCENT_COLOR,
-  FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR,
-  FLIGHT_TRACK_USER_ACCENT_COLOR,
-  MAP_LAYERS,
-  MAP_SPRITES,
+    AIRCRAFT_SPRITE_ICON_MAPPING,
+    FLIGHT_TRACK_ACCENT_COLOR,
+    FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR,
+    FLIGHT_TRACK_USER_ACCENT_COLOR,
+    MAP_LAYERS,
+    MAP_SPRITES,
 } from "@/config/map";
 import { useBaseMapStore } from "@/stores/base-map-store";
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
@@ -14,9 +14,9 @@ import { LiveFlightDetail } from "@/types/live-flights";
 import { PathStyleExtension } from "@deck.gl/extensions";
 import { GeoJsonLayer, IconLayer } from "deck.gl";
 import {
-  convertHeadingToAngle,
-  hexToRGBAArray,
-  isEmergencyTransponder,
+    convertHeadingToAngle,
+    hexToRGBAArray,
+    isEmergencyTransponder,
 } from "../utils";
 //@ts-expect-error
 import { featureCollection, lineString } from "@turf/helpers";

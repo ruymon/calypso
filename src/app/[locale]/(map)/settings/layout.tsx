@@ -9,7 +9,7 @@ export default function AppSettingsLayout({
   children,
 }: AppSettingsLayoutProps) {
   return (
-    <div className="z-20 flex h-full w-full overflow-y-auto bg-background px-4 py-6 md:px-6">
+    <div className="absolute inset-0 z-30 flex overflow-y-auto bg-background/75 px-4 py-6 backdrop-blur-md md:left-14 md:w-[calc(100%-3.5rem)] md:px-6">
       <SettingSidebar />
       <section className="mx-auto flex w-full max-w-xl flex-1">
         {children}

@@ -7,14 +7,14 @@ import { Network } from "@/types/networks";
 import { getAccessToken } from "./auth";
 
 export async function getNetworkATCs(network: Network): Promise<LiveATCs> {
-  const accessToken = await getAccessToken();
+  // const accessToken = await getAccessToken();
   const url = `${API_BASE_URL}/networks/${network}/atcs`;
 
   const options: RequestInit = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
+      // Authorization: `Bearer ${accessToken}`,
     },
     next: {
       revalidate: FLIGHTS_REFETCH_INTERVAL_IN_SECONDS,

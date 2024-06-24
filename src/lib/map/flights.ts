@@ -1,11 +1,11 @@
-import { UserIntegrations } from "@/app/[locale]/(protected)/_components/map";
+import { UserIntegrations } from "@/app/[locale]/(map)/_components/map";
 import {
-  AIRCRAFT_SPRITE_ICON_MAPPING,
-  FLIGHT_ICON_ACCENT_COLOR,
-  FLIGHT_ICON_EMERGENCY_ACCENT_COLOR,
-  FLIGHT_ICON_USER_ACCENT_COLOR,
-  MAP_LAYERS,
-  MAP_SPRITES,
+    AIRCRAFT_SPRITE_ICON_MAPPING,
+    FLIGHT_ICON_ACCENT_COLOR,
+    FLIGHT_ICON_EMERGENCY_ACCENT_COLOR,
+    FLIGHT_ICON_USER_ACCENT_COLOR,
+    MAP_LAYERS,
+    MAP_SPRITES,
 } from "@/config/map";
 import { FLIGHTS_REFETCH_INTERVAL_IN_MILLISECONDS } from "@/constants/api";
 import { MapFilterKey, useMapFiltersStore } from "@/stores/map-filters-store";
@@ -18,9 +18,9 @@ import { IconLayer } from "deck.gl";
 import { useRouter } from "next/navigation";
 import { getNetworkFlights } from "../flights";
 import {
-  convertHeadingToAngle,
-  hexToRGBAArray,
-  isEmergencyTransponder,
+    convertHeadingToAngle,
+    hexToRGBAArray,
+    isEmergencyTransponder,
 } from "../utils";
 
 interface getNetworkFlightsLayerProps {

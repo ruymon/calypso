@@ -24,8 +24,8 @@ import { MapSkeleton } from "./map-skeleton";
 import { MapToolbar } from "./map-toolbar";
 
 export type UserIntegrations = {
-  ivaoId: UserProfile["ivaoId"];
-  vatsimId: UserProfile["vatsimId"];
+  ivaoId?: UserProfile["ivaoId"];
+  vatsimId?: UserProfile["vatsimId"];
 };
 
 interface MapProps {
@@ -54,8 +54,8 @@ export function Map({ children, userIntegrations }: MapProps) {
   return (
     <>
       <figure
-        className="absolute inset-0 flex h-full w-full"
-        onContextMenu={(event) => event.preventDefault()}
+        className="relative flex flex-1"
+        onContextMenu={event => event.preventDefault()}
       >
         <MapSkeleton isMapLoading={isMapLoading} />
         <MapToolbar />
@@ -63,6 +63,10 @@ export function Map({ children, userIntegrations }: MapProps) {
           pickingRadius={10}
           controller={{
             doubleClickZoom: false,
+          }}
+          style={{
+            position: "absolute",
+            inset: "0",
           }}
           getTooltip={getTooltipContentBasedOnLayer}
           initialViewState={viewState}

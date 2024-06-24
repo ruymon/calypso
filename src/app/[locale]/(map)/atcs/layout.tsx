@@ -1,4 +1,4 @@
-import { PageShell } from "@/app/[locale]/(protected)/_components/page-shell";
+import { PageShell } from "@/app/[locale]/(map)/_components/page-shell";
 import { ReactNode } from "react";
 
 interface ATCsDetailsLayoutProps {

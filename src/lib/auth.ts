@@ -1,7 +1,7 @@
 "use server";
 
-import { ForgotPasswordFormType } from "@/app/[locale]/(public)/auth/_components/forgot-password-form";
-import { LoginFormType } from "@/app/[locale]/(public)/auth/_components/login-form";
+import { ForgotPasswordFormType } from "@/app/[locale]/(map)/auth/_components/forgot-password-form";
+import { LoginFormType } from "@/app/[locale]/(map)/auth/_components/login-form";
 import {
   COOKIE_DOMAIN,
   COOKIE_PREFIX,
@@ -15,7 +15,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { decodeJwt } from "jose";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function login({ email, password }: LoginFormType) {
@@ -63,15 +63,6 @@ export async function passwordReset({ email }: ForgotPasswordFormType) {
   sendPasswordResetEmail(firebaseAuth, email);
 }
 
-function getAccessTokenFromHeaders() {
-  const setCookieHeaderValue = headers().get("set-cookie");
-  const accessTokenFromSetCookieHeader = setCookieHeaderValue
-    ?.split(";")
-    .find((cookie) => cookie.startsWith(`${COOKIE_PREFIX}access-token`))
-    ?.replace(`${COOKIE_PREFIX}access-token=`, "");
-
-  return accessTokenFromSetCookieHeader;
-}
 export async function getAccessToken() {
   const accessToken =
     cookies().get(`${COOKIE_PREFIX}access-token`)?.value

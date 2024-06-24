@@ -15,7 +15,7 @@ export function MapSkeleton({ isMapLoading }: MapSkeletonProps) {
     <figure
       className={cn(
         "relative flex flex-1 items-center justify-center bg-background/75 backdrop-blur-md transition-all delay-1000 duration-1000",
-        isMapLoading ? "visible z-20 opacity-100" : "invisible -z-10 opacity-0",
+        isMapLoading ? "visible z-20 opacity-100" : "invisible -z-10 opacity-0"
       )}
     >
       <div className="flex max-w-sm flex-col items-center gap-0.5">

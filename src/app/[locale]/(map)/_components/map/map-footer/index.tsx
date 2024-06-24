@@ -8,7 +8,7 @@ interface MapFooterProps {}
 
 export function MapFooter({}: MapFooterProps) {
   return (
-    <footer className="absolute bottom-0 right-0 flex h-5 w-[calc(100%-3.5rem)] items-center justify-end gap-2 bg-card/30 px-4 text-2xs text-muted-foreground backdrop-blur-md">
+    <footer className="absolute bottom-0 right-0 flex h-5 w-full items-center justify-end gap-2 bg-card/30 px-4 text-2xs text-muted-foreground backdrop-blur-md">
       <Suspense fallback={<Skeleton className="h-5 w-24 rounded-none" />}>
         <AiracCycleBadge />
       </Suspense>

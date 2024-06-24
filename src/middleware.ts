@@ -21,12 +21,6 @@ export default async function middleware(request: NextRequest) {
     `${COOKIE_PREFIX}refresh-token`,
   )?.value;
 
-  const isPublicAuthRoute = request.nextUrl.pathname.includes("auth");
-  const isInLoginPage = request.nextUrl.pathname.includes("/auth/login");
-
-  if (!accessToken && !refreshToken && !isPublicAuthRoute) {
-    return NextResponse.redirect(new URL("/auth/login", request.url));
-  }
 
   if (!accessToken && refreshToken) {
     try {
@@ -34,10 +28,6 @@ export default async function middleware(request: NextRequest) {
     } catch (error) {
       return NextResponse.redirect(new URL("/auth/login", request.url));
     }
-  }
-
-  if (accessToken && refreshToken && isInLoginPage) {
-    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return response;

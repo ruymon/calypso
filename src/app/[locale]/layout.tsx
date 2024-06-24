@@ -6,7 +6,6 @@ import { VercelToolbar } from '@vercel/toolbar/next';
 
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import { Courgette } from "next/font/google";
 
 import type { Metadata } from "next";
 import { ReactNode } from "react";
@@ -82,12 +81,6 @@ export const metadata: Metadata = {
   },
 };
 
-const courgette = Courgette({
-  weight: "400",
-  variable: "--font-courgette",
-  subsets: ["latin", "latin-ext"],
-});
-
 interface RootLayoutProps {
   children: ReactNode;
   params: { locale: string };
@@ -105,15 +98,14 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "overscroll-none whitespace-pre-line",
+          "overscroll-none whitespace-pre-line min-h-screen w-full",
           GeistSans.variable,
           GeistMono.variable,
-          courgette.variable,
         )}
       >
         <Providers locale={locale}>
           {children}
-          
+
           {shouldInjectToolbar && <VercelToolbar />}
         </Providers>
         <Toaster />

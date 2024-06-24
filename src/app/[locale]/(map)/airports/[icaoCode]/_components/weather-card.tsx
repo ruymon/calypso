@@ -1,4 +1,4 @@
-import { DataItemCard } from "@/app/[locale]/(protected)/_components/data-item-card";
+import { DataItemCard } from "@/app/[locale]/(map)/_components/data-item-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getDecodedMetar } from "@/lib/airports";
 import { DecodedMetarCard } from "./decoded-metar";

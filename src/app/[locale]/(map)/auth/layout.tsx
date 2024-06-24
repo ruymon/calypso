@@ -9,10 +9,10 @@ interface AuthLayoutProps {
 
 export default async function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="flex flex-1 flex-col items-center justify-between gap-8 px-4 py-8">
+    <div className="fixed inset-0 top-0 z-30 flex flex-col items-center justify-center gap-8 bg-background/45 px-4 py-6 backdrop-blur-lg md:px-6">
       <LogoIcon variant="muted" />
 
-      <main className="mx-auto flex w-full max-w-56 flex-col gap-5">
+      <main className="mx-auto flex w-full max-w-xs flex-col gap-3">
         {children}
         <SupportCard />
       </main>
