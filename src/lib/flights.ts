@@ -17,7 +17,7 @@ export async function getNetworkFlights(
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
+    //  Authorization: `Bearer ${accessToken}`,
     },
     next: {
       revalidate: FLIGHTS_REFETCH_INTERVAL_IN_SECONDS,
