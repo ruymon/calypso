@@ -9,8 +9,9 @@ import {
 } from "@/config/map";
 import { useBaseMapStore } from "@/stores/base-map-store";
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
-import { LiveFlightDetail } from "@/types/live-flights";
+import { LiveFlightDetail, Pilot } from "@/types/live-flights";
 //@ts-ignore
+import { Network } from "@/types/networks";
 import { PathStyleExtension } from "@deck.gl/extensions";
 import { GeoJsonLayer, IconLayer } from "deck.gl";
 import {
@@ -22,11 +23,26 @@ import {
 import { featureCollection, lineString } from "@turf/helpers";
 import { useTheme } from "next-themes";
 import { amber, white, zinc } from "tailwindcss/colors";
-import { getIconBasedOnAircraftType, isUserFlight } from "./flights";
+import { getIconBasedOnAircraftType } from "./flights";
 
 interface getSelectedFlightPathLayerProps {
   userIntegrations: UserIntegrations;
 }
+
+const isUserFlight = (
+  network: Network,
+  pilot: Pilot,
+  userIntegrations: UserIntegrations
+) => {
+  switch (network) {
+    case "vatsim":
+      return pilot.id === Number(userIntegrations.vatsimId);
+    case "ivao":
+      return pilot.id === Number(userIntegrations.ivaoId);
+    default:
+      return false;
+  }
+};
 
 export const getSelectedFlightPathLayer = ({
   userIntegrations,

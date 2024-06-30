@@ -27,7 +27,7 @@ interface getNetworkFlightsLayerProps {
   userIntegrations: UserIntegrations;
 }
 
-export const isUserFlight = (
+const isUserFlight = (
   network: Network,
   pilotId: LiveFlight["pilotId"],
   userIntegrations: UserIntegrations
