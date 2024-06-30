@@ -1,11 +1,11 @@
 import { UserIntegrations } from "@/app/[locale]/(map)/_components/map";
 import {
-    AIRCRAFT_SPRITE_ICON_MAPPING,
-    FLIGHT_TRACK_ACCENT_COLOR,
-    FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR,
-    FLIGHT_TRACK_USER_ACCENT_COLOR,
-    MAP_LAYERS,
-    MAP_SPRITES,
+  AIRCRAFT_SPRITE_ICON_MAPPING,
+  FLIGHT_TRACK_ACCENT_COLOR,
+  FLIGHT_TRACK_EMERGENCY_ACCENT_COLOR,
+  FLIGHT_TRACK_USER_ACCENT_COLOR,
+  MAP_LAYERS,
+  MAP_SPRITES,
 } from "@/config/map";
 import { useBaseMapStore } from "@/stores/base-map-store";
 import { useSelectedFlightStore } from "@/stores/selected-flight-store";
@@ -14,9 +14,9 @@ import { LiveFlightDetail } from "@/types/live-flights";
 import { PathStyleExtension } from "@deck.gl/extensions";
 import { GeoJsonLayer, IconLayer } from "deck.gl";
 import {
-    convertHeadingToAngle,
-    hexToRGBAArray,
-    isEmergencyTransponder,
+  convertHeadingToAngle,
+  hexToRGBAArray,
+  isEmergencyTransponder,
 } from "../utils";
 //@ts-expect-error
 import { featureCollection, lineString } from "@turf/helpers";
@@ -57,7 +57,7 @@ export const getSelectedFlightPathLayer = ({
 
     if (isEmptyTrack) return null;
 
-    const trackPoints = tracks.map((track) => [track.lng, track.lat]);
+    const trackPoints = tracks.map(track => [track.lng, track.lat]);
     const currentPoint = [
       tracks[tracks.length - 1]?.lng,
       tracks[tracks.length - 1]?.lat,
@@ -74,7 +74,7 @@ export const getSelectedFlightPathLayer = ({
 
     const flightTrack = lineString(trackPoints, {
       dimmed: false,
-      width: 3,
+      width: 4,
       dashArray: null,
       color: getLineColor(flightData),
     });
@@ -139,6 +139,9 @@ export const getSelectedFlightPathLayer = ({
     extensions: [new PathStyleExtension({ dash: true })],
     lineWidthUnits: "pixels",
     wrapLongitude: true,
+    getPolygonOffset: ({ layerIndex }) => {
+      return [0, -layerIndex * 900];
+    },
   });
 
   const planeIconLayer = new IconLayer({
@@ -149,7 +152,7 @@ export const getSelectedFlightPathLayer = ({
     getIcon: getIconBasedOnAircraftType,
     sizeUnits: "common",
     sizeMinPixels: 14,
-    sizeMaxPixels: 32,
+    sizeMaxPixels: 40,
     sizeScale: 1.5,
     getPosition: ({ position }: LiveFlightDetail) => [
       position.lng,
@@ -159,6 +162,10 @@ export const getSelectedFlightPathLayer = ({
       convertHeadingToAngle(position.heading),
     billboard: false,
     getColor: getPlaneIconColor,
+
+    getPolygonOffset: ({ layerIndex }) => {
+      return [0, -layerIndex * 1000];
+    },
   });
 
   return [trackLayer, planeIconLayer];

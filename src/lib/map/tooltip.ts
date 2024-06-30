@@ -4,17 +4,13 @@ import { LiveATC } from "@/types/atcs";
 import { LiveFlight } from "@/types/live-flights";
 import { PickingInfo } from "deck.gl";
 
-export const flightLayerTooltip = ({
-  callsign,
-  flightPlan,
-  network,
-}: LiveFlight) => {
+export const flightLayerTooltip = (flight: LiveFlight) => {
   return {
     html: `
       <div class="flex flex-col border bg-card text-card-foreground gap-1 rounded-sm py-2 px-3">
-        <span class="text-sm font-semibold">${callsign}</span>
-        <span class="text-xs text-muted-foreground">${flightPlan?.departure?.icao || "TBN"} - ${flightPlan?.arrival?.icao || "TBN"}</span>
-        <span class="text-2xs text-muted-foreground">${flightPlan?.aircraft?.icao} ${flightPlan?.aircraft?.icao && "&bull;"} <span class="uppercase">${network}</span></span>
+        <span class="text-sm font-semibold">${flight.callsign}</span>
+        <span class="text-xs text-muted-foreground">${flight.departure || "TBN"} - ${flight.arrival || "TBN"}</span>
+        <span class="text-2xs text-muted-foreground">${flight.aircraft} ${flight.aircraftType && "&bull;"} <span class="uppercase">${flight.network}</span></span>
       </div>
     `,
     style: DECK_GL_TOOLTIP_STYLE_OVERRIDE,

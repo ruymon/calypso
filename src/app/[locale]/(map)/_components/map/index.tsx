@@ -49,41 +49,40 @@ export function Map({ children, userIntegrations }: MapProps) {
     getSelectedFlightPathLayer({
       userIntegrations,
     }),
+    // getRouteTrackLayer(),
   ];
 
   return (
-    <>
-      <figure
-        className="relative flex flex-1"
-        onContextMenu={event => event.preventDefault()}
+    <figure
+      className="relative flex flex-1"
+      onContextMenu={event => event.preventDefault()}
+    >
+      <MapSkeleton isMapLoading={isMapLoading} />
+      <MapToolbar />
+      <DeckGL
+        pickingRadius={10}
+        controller={{
+          doubleClickZoom: false,
+        }}
+        style={{
+          position: "absolute",
+          inset: "0",
+        }}
+        getTooltip={getTooltipContentBasedOnLayer}
+        initialViewState={viewState}
+        layers={layers}
+        getCursor={getMapCursor}
       >
-        <MapSkeleton isMapLoading={isMapLoading} />
-        <MapToolbar />
-        <DeckGL
-          pickingRadius={10}
-          controller={{
-            doubleClickZoom: false,
-          }}
-          style={{
-            position: "absolute",
-            inset: "0",
-          }}
-          getTooltip={getTooltipContentBasedOnLayer}
-          initialViewState={viewState}
-          layers={layers}
-          getCursor={getMapCursor}
-        >
-          <BaseMap
-            attributionControl={false}
-            reuseMaps={true}
-            mapStyle={getBaseMapUrl(baseMap)}
-            antialias={true}
-            mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-            onLoad={() => setIsMapLoading(false)}
-          />
-          {children}
-        </DeckGL>
-      </figure>
-    </>
+        <BaseMap
+          attributionControl={false}
+          reuseMaps={true}
+          mapStyle={getBaseMapUrl(baseMap)}
+          antialias={true}
+          mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+          onLoad={() => setIsMapLoading(false)}
+        />
+        {children}
+      </DeckGL>
+    </figure>
   );
 }

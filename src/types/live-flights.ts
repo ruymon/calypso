@@ -13,11 +13,28 @@ export type AircraftWakeTurbulenceCategory =
 
 export interface LiveFlight {
   id: string;
-  pilot: Pilot;
   callsign: string;
+  departure: string | null;
+  departureLat: number | null;
+  departureLng: number | null;
+  arrival: string | null;
+  arrivalLat: number | null;
+  arrivalLng: number | null;
+  alternative: string | null;
+  alternativeLat: number | null;
+  alternativeLng: number | null;
+  alternative2: string | null;
+  alternative2Lat: number | null;
+  alternative2Lng: number | null;
+  aircraft: string | null;
+  aircraftRegistration: string | null;
+  aircraftType: AircraftWakeTurbulenceCategory | null;
+  transponder: string;
   network: Network;
-  position: Position;
-  flightPlan?: FlightPlan;
+  pilotId: string;
+  lat: number;
+  lng: number;
+  heading: number;
 }
 
 export interface TrackPosition {

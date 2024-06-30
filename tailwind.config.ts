@@ -11,7 +11,7 @@ const config = {
     "./src/**/*.{ts,tsx}",
   ],
   safelist: [
-    ...Array.from(Array(360).keys()).map((i) => `rotate-${i}`),
+    ...Array.from(Array(360).keys()).map(i => `rotate-${i}`),
     "bg-vatsim",
     "bg-ivao",
   ],

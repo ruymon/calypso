@@ -2,7 +2,6 @@ import { PiCalendarDefaultStroke, PiCloudSunStroke } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getAirportDetails } from "@/lib/airports";
 import { PlaneIcon, RadarIcon } from "lucide-react";
-import { notFound } from "next/navigation";
 import { FlightListCard } from "./_components/flight-list-card";
 import { WeatherCard } from "./_components/weather-card";
 
@@ -17,15 +16,7 @@ export default async function AirportDetailsPage({
 }: AirportDetailsPageProps) {
   // const t = await getScopedI18n("flightDetails");
 
-  if (!icaoCode) {
-    return notFound();
-  }
-
   const data = await getAirportDetails(icaoCode);
-
-  if (!data) {
-    return notFound();
-  }
 
   return (
     <Tabs defaultValue="weather" className="flex flex-1 flex-col gap-4">

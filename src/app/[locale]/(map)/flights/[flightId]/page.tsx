@@ -17,7 +17,7 @@ const VerticalProfileChart = dynamic(
   {
     ssr: false,
     loading: () => <Skeleton className="h-52 w-full" />,
-  },
+  }
 );
 
 interface FlightsDetailPageProps {
@@ -36,10 +36,6 @@ export default async function FlightsDetailPage({
   }
 
   const data = await getFlightDetails(flightId);
-
-  if (!data) {
-    return notFound();
-  }
 
   return (
     <div className="flex flex-1 flex-col gap-8">

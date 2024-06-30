@@ -4,7 +4,6 @@ import {
 } from "@/constants/api";
 import { LiveATCDetail, LiveATCs } from "@/types/atcs";
 import { Network } from "@/types/networks";
-import { getAccessToken } from "./auth";
 
 export async function getNetworkATCs(network: Network): Promise<LiveATCs> {
   // const accessToken = await getAccessToken();
@@ -33,17 +32,12 @@ export async function getNetworkATCs(network: Network): Promise<LiveATCs> {
 }
 
 export async function getATCDetails(atcId: string): Promise<LiveATCDetail> {
-  const accessToken = await getAccessToken();
   const url = `${API_BASE_URL}/networks/atcs/${atcId}`;
 
   const options: RequestInit = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    next: {
-      revalidate: 60 * 5, // 5 minutes
     },
   };
 

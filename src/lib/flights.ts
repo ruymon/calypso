@@ -1,27 +1,18 @@
-import {
-  API_BASE_URL,
-  FLIGHTS_REFETCH_INTERVAL_IN_SECONDS,
-} from "@/constants/api";
+import { API_BASE_URL } from "@/constants/api";
 import { LiveFlightDetail, LiveFlights } from "@/types/live-flights";
 import { ParsedRoute } from "@/types/navigraph";
 import { Network } from "@/types/networks";
 import { getAccessToken } from "./auth";
 
 export async function getNetworkFlights(
-  network: Network,
+  network: Network
 ): Promise<LiveFlights> {
-  const accessToken = await getAccessToken();
   const url = `${API_BASE_URL}/networks/${network}/flights`;
 
   const options: RequestInit = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-    //  Authorization: `Bearer ${accessToken}`,
-    },
-    next: {
-      revalidate: FLIGHTS_REFETCH_INTERVAL_IN_SECONDS,
-      tags: [`${network}-live-flights`],
     },
   };
 
@@ -29,41 +20,36 @@ export async function getNetworkFlights(
   const data = await result.json();
 
   if (!result.ok) {
-    throw new Error(`Error fetching ${network} flights: ${data.error}`);
+    throw new Error(`Error fetching ${network} flights:`, data);
   }
 
   return data;
 }
 
 export async function getFlightDetails(
-  flightId: string,
-): Promise<LiveFlightDetail | null> {
-  const accessToken = await getAccessToken();
+  flightId: string
+): Promise<LiveFlightDetail> {
   const url = `${API_BASE_URL}/networks/flights/${flightId}`;
 
   const options: RequestInit = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    next: {
-      revalidate: 60 * 5, // 5 minutes
     },
   };
 
   const result = await fetch(url, options);
   const data = await result.json();
 
-  if (result.status !== 200) {
-    return null;
+  if (!result.ok) {
+    throw new Error("Error fetching flight details:", data);
   }
 
   return data;
 }
 
 export async function getParsedRouted(
-  route: string,
+  route: string
 ): Promise<ParsedRoute | null> {
   const accessToken = await getAccessToken();
 
@@ -113,7 +99,7 @@ export interface AircraftImage {
 }
 
 export async function getAircraftImage(
-  registration: string,
+  registration: string
 ): Promise<AircraftImage | null> {
   const url = `https://api.planespotters.net/pub/photos/reg/${registration}`;
 

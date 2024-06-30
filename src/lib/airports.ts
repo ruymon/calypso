@@ -6,12 +6,8 @@ import { DecodedMetar } from "metar-decoder/lib/types";
 import { getAccessToken } from "./auth";
 
 export async function getAirportDetails(
-  icaoCode: string,
-): Promise<AirportDetails | null> {
-  if (!icaoCode) {
-    return null;
-  }
-
+  icaoCode: string
+): Promise<AirportDetails> {
   const accessToken = await getAccessToken();
   const url = `${API_BASE_URL}/airports/${icaoCode}`;
 
@@ -26,8 +22,8 @@ export async function getAirportDetails(
   const result = await fetch(url, options);
   const data = await result.json();
 
-  if (result.status !== 200) {
-    return null;
+  if (!result.ok) {
+    throw new Error("Error fetching airport details:", data);
   }
 
   return data;
@@ -44,7 +40,7 @@ export function getAltimeterValueInHpa(qnh: number): number {
 export type MetarExpirationStatus = "expired" | "fresh" | "closeToExpiration";
 
 export function getMetarExpirationStatus(
-  recordedAt: Date | string,
+  recordedAt: Date | string
 ): MetarExpirationStatus {
   if (typeof recordedAt === "string") {
     recordedAt = new Date(recordedAt);

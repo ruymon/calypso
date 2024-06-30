@@ -2,8 +2,7 @@ import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { VercelToolbar } from '@vercel/toolbar/next';
-
+import { VercelToolbar } from "@vercel/toolbar/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
@@ -11,7 +10,6 @@ import type { Metadata } from "next";
 import { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
-import { BASE_URL } from "@/constants/url";
 import { IS_IN_DEVELOPMENT } from "@/constants/workspace";
 import { firebaseConfig } from "@/lib/firebase";
 import "@/styles/globals.css";
@@ -20,7 +18,7 @@ import { Toaster } from "sonner";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL("https://skyscope.app"),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -68,7 +66,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: BASE_URL,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
@@ -98,9 +95,9 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "overscroll-none whitespace-pre-line min-h-screen w-full",
+          "min-h-screen w-full overscroll-none whitespace-pre-line",
           GeistSans.variable,
-          GeistMono.variable,
+          GeistMono.variable
         )}
       >
         <Providers locale={locale}>
@@ -111,7 +108,7 @@ export default function RootLayout({
         <Toaster />
         <GoogleAnalytics gaId={firebaseConfig.measurementId!} />
         <SpeedInsights />
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   );

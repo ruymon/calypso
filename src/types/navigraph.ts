@@ -1,5 +1,3 @@
-import { Airport } from "./live-flights";
-
 export type ParsedRouteSegment =
   | "SID"
   | "STAR"
@@ -18,10 +16,17 @@ export interface ParsedRoutePoint {
   };
 }
 
+export interface ParsedRouteAirport {
+  icao: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
 export interface ParsedRoute {
-  departure: Airport;
+  departure: ParsedRouteAirport;
   points: ParsedRoutePoint[] | [];
-  arrival: Airport;
+  arrival: ParsedRouteAirport;
 }
 
 export type AiracCycleStatus = "current" | "outdated";
