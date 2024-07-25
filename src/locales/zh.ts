@@ -1,47 +1,47 @@
 import { siteConfig } from "@/config/site";
 export default ({
   common: {
-    open: "打开",
-    close: "关闭",
-    joinDiscord: "加入我们的Discord",
+    open: "Open",
+    close: "Close",
+    joinDiscord: "Join our discord",
     contactSupport: "Contact support",
-    comingSoon: "即将到来",
+    comingSoon: "Coming soon",
     active: "Active"
   },
   auth: {
     login: {
-      title: "欢迎回来！",
-      subtitle: "登录你的账号以继续",
-      email: "电子邮箱",
-      password: "密码",
-      signIn: "登录",
-      forgotPassword: "忘记密码？",
-      noAccount: "没有账号？",
+      title: "Welcome back!",
+      subtitle: "Log in to your account to continue.",
+      email: "Email",
+      password: "Password",
+      signIn: "Sign in",
+      forgotPassword: "Forgot password?",
+      noAccount: "No account?",
       join: "Join now",
-      loginError: "糟糕！出了些问题。",
+      loginError: "Oh no! Something went wrong.",
       loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
     },
     join: {
-      inviteOnly: "我们很抱歉，现在加入只对受到邀请的用户可用"
+      inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
     },
     forgotPassword: {
-      title: "忘记你的密码？",
-      subtitle: "输入你的电子邮箱来重置密码。",
-      email: "电子邮箱",
-      sendEmail: "发送重置邮件",
-      backToLogin: "记得你的密码？",
+      title: "Forgot your password?",
+      subtitle: "Enter your email to reset your password.",
+      email: "Email",
+      sendEmail: "Send recovery email",
+      backToLogin: "Remember your password?",
       resetError: "An error occurred while trying to reset your password.",
-      resetErrorDescription: "请稍后重试或在 Discord 上联系客服。",
-      resetEmailSent: "密码重置邮件已发送！",
+      resetErrorDescription: "Please try again later or contact support on Discord.",
+      resetEmailSent: "Password reset email sent!",
       resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
     },
     supportCard: {
-      title: "需要帮助？"
+      title: "Need help?"
     }
   },
   sidebar: {
     map: {
-      title: "世界地图",
+      title: "World map",
       subtitle: "Live network connections"
     },
     events: {
@@ -49,27 +49,27 @@ export default ({
       subtitle: "See current and upcoming events"
     },
     friends: {
-      title: "好友",
-      subtitle: "管理好友列表"
+      title: "Friends",
+      subtitle: "Manage your friends list"
     },
     feedback: {
-      title: "反馈",
-      subtitle: "帮助我们改进服务"
+      title: "Feedback",
+      subtitle: "Help us improve our service"
     },
     help: {
       title: "Support",
       subtitle: "Get help with the app"
     },
     changelog: {
-      title: "更新日志",
+      title: "Changelog",
       subtitle: "See what's new in the app"
     },
     profile: {
       title: "Profile",
-      subtitle: "管理用户设置"
+      subtitle: "Manage your account settings"
     },
     themeSwitcher: {
-      title: "主题选择",
+      title: "Theme switcher",
       subtitle: "Toggle between light and dark mode"
     },
     login: {
@@ -79,31 +79,31 @@ export default ({
   },
   map: {
     loading: {
-      title: "地图加载中",
+      title: "Loading map",
       subtitle: "This should take less than 10 seconds, depending on your connection"
     },
     toolbar: {
       baseMap: {
         tooltip: {
-          title: "基础地图",
-          description: "切换不同的基础地图"
+          title: "Base map",
+          description: "Switch between different base maps"
         },
-        title: "基础地图",
+        title: "Base map",
         currentlyActive: "Active",
         satellite: {
-          title: "卫星",
-          description: "展示地球细节"
+          title: "Satellite",
+          description: "Earth details"
         },
         light: {
-          title: "白天",
+          title: "Light",
           description: "Minimalistic"
         },
         dark: {
-          title: "夜晚",
+          title: "Dark",
           description: "Night mode with airport diagrams"
         },
         theme: {
-          title: "同步主题",
+          title: "Sync with theme",
           description: "Switch between light and dark based on your system settings"
         }
       },
@@ -127,46 +127,46 @@ export default ({
             description: "Show flights and ATCs from all networks"
           },
           hideAll: {
-            title: "隐藏全部",
+            title: "Hide all",
             description: "Hide all flights and ATC from all networks"
           }
         },
         vatsimLayers: {
           title: "Vatsim layers settings",
           showFlights: {
-            title: "显示航班",
-            description: "地图上会出现绿色的飞机"
+            title: "Show flights",
+            description: "Green planes on the map"
           },
           showAtcs: {
-            title: "显示空中交通管制系统",
-            description: "在网络上启用空中交通管制系统"
+            title: "Show ATCs",
+            description: "Active air traffic controllers on the network"
           }
         },
         ivaoLayers: {
           title: "IVAO layers settings",
           showFlights: {
-            title: "显示航班",
-            description: "地图上将出现蓝色的飞机"
+            title: "Show flights",
+            description: "Blue planes on the map"
           },
           showAtcs: {
-            title: "显示空中交通管制系统",
-            description: "在网络上启用空中交通管制系统"
+            title: "Show ATCs",
+            description: "Active air traffic controllers on the network"
           }
         }
       },
       extraLayers: {
         tooltip: {
-          title: "更多图层",
-          description: "切换更多图层可见性"
+          title: "Extra layers",
+          description: "Toggle extra layers visibility"
         },
-        title: "更多图层",
+        title: "Extra layers",
         airports: {
-          title: "机场",
-          description: "在地图上显示机场"
+          title: "Airports",
+          description: "Show airports on the map"
         },
         weatherRadar: {
-          title: "气象雷达",
-          description: "在地图上显示气象雷达"
+          title: "Weather radar",
+          description: "Show weather radar on the map"
         }
       }
     },
@@ -188,7 +188,7 @@ export default ({
   },
   settings: {
     sidebar: {
-      title: "设置",
+      title: "Settings",
       profile: "Profile",
       integrations: "Integrations"
     },
@@ -196,12 +196,12 @@ export default ({
       title: "Profile",
       subtitle: "Manage and update your profile settings",
       emailCard: {
-        title: "电子邮箱",
-        cannotChange: "你不能更改你的电子邮箱地址"
+        title: "Email",
+        cannotChange: "You cannot change your email address"
       },
       nameCard: {
-        title: "姓名",
-        cannotChange: "无法更改姓名",
+        title: "Name",
+        cannotChange: "You cannot change your name",
         emptyState: "Not set"
       },
       avatarCard: {
@@ -210,8 +210,8 @@ export default ({
       },
       dangerZone: {
         title: "Danger zone",
-        deleteAccount: "删除账号",
-        deleteAccountDescription: "如果你决定删除你的账号，你将无法访问所有你的数据。此操作不可逆。24小时后生效。"
+        deleteAccount: "Delete your account",
+        deleteAccountDescription: "Should you decide to delete your account, you will lose access to all of your data. This action cannot be undone and the process may take up to 24 hours."
       }
     },
     integrations: {
@@ -222,10 +222,10 @@ export default ({
   },
   integrations: {
     comum: {
-      connect: "连接",
-      connected: "已连接",
-      unlink: "断开连接",
-      changeAccount: "切换账号",
+      connect: "Connect",
+      connected: "Connected",
+      unlink: "Unlink",
+      changeAccount: "Change account",
       callback: {
         title: "Integrating your {provider} account",
         subtitle: "This process may take a few seconds."
@@ -234,7 +234,7 @@ export default ({
     },
     integrationDetailsTooltip: {
       title: "Integration details",
-      accountId: "用户ID"
+      accountId: "Account ID"
     },
     ivao: {
       description: "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network"
@@ -248,10 +248,10 @@ export default ({
   },
   onboarding: {
     welcome: {
-      hat: "现在开始",
-      title: `欢迎 ${siteConfig.name}!`,
+      hat: "Getting started",
+      title: `Welcome to ${siteConfig.name}!`,
       subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
-      getStarted: "现在开始"
+      getStarted: "Get started"
     },
     integrations: {
       hat: "Sync your details",
@@ -261,32 +261,32 @@ export default ({
     },
     finish: {
       hat: "All set!",
-      title: "让我们开始吧？",
+      title: "Let's get started?",
       subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
-      getStarted: "现在开始"
+      getStarted: "Get started"
     }
   },
   flightDetails: {
-    unknownAirline: "未知航线",
-    unknownCallsign: "未知呼号",
+    unknownAirline: "Unknown airline",
+    unknownCallsign: "Unknown callsign",
     routeDetails: {
-      title: "路线",
-      subtitle: "飞机路线的详细信息",
+      title: "Route",
+      subtitle: "Detailed information about the aircraft's route.",
       airport: {
-        departure: "离开",
-        arrival: "到达",
+        departure: "Departure",
+        arrival: "Arrival",
         alternate: "Alternate",
         alternate2: "Second alternate"
       }
     },
     aircraftDetails: {
-      title: "飞行器信息",
-      subtitle: "你的飞行器的详细信息",
+      title: "Aircraft details",
+      subtitle: "Detailed information about the aircraft.",
       aircraft: {
         registration: "Registration",
         transponder: "Transponder",
         wakeTurbulence: "Wake turbulence",
-        photographer: "照相机"
+        photographer: "Photographer"
       }
     },
     crewDetails: {
@@ -315,7 +315,7 @@ export default ({
       },
       flightRules: "Flight rules",
       flightType: "Flight type",
-      route: "路线",
+      route: "Route",
       remarks: "Remarks",
       icaoFplFormat: "ICAO FPL format"
     },
@@ -327,17 +327,17 @@ export default ({
         subtitle: "Things you can do to possibly fix it. If this problem persists, please contact our support team.",
         steps: {
           verifyFlightExists: "Make sure the flight is currently flying in one of the supported networks",
-          refresh: "刷新此页",
-          checkInternetConnection: "检查你的互联网连接",
+          refresh: "Refresh the page",
+          checkInternetConnection: "Check your internet connection",
           checkLoginStatus: "Make sure you are logged in"
         }
       },
       systemLogs: {
-        title: "系统日志",
+        title: "System logs",
         subtitle: "The following information might be useful for our support team.",
         code: "Code",
-        flightId: "航班号",
-        timestamp: "时间戳",
+        flightId: "Flight id",
+        timestamp: "Timestamp",
         buildVersion: "Build version"
       }
     }
