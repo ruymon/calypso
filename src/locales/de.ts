@@ -71,6 +71,10 @@ export default ({
     themeSwitcher: {
       title: "Theme switcher",
       subtitle: "Zwischen Hell- und Dunkelmodus umschalten"
+    },
+    login: {
+      title: "Login",
+      subtitle: "Login to your account"
     }
   },
   map: {
