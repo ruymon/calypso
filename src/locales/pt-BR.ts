@@ -71,6 +71,10 @@ export default ({
     themeSwitcher: {
       title: "Tema",
       subtitle: "Alterne o modo de exibição"
+    },
+    login: {
+      title: "Login",
+      subtitle: "Login to your account"
     }
   },
   map: {
