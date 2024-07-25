@@ -22,7 +22,7 @@ export async function login({ email, password }: LoginFormType) {
   const userCredentials = await signInWithEmailAndPassword(
     firebaseAuth,
     email,
-    password,
+    password
   );
 
   const userAccessToken = await userCredentials.user.getIdTokenResult();
@@ -49,8 +49,9 @@ export async function login({ email, password }: LoginFormType) {
 }
 
 export async function logout() {
-  cookies().delete(`${COOKIE_PREFIX}access-token`);
-  cookies().delete(`${COOKIE_PREFIX}refresh-token`);
+  // @see https://nextjs.org/docs/app/api-reference/functions/cookies#deleting-cookies
+  cookies().set(`${COOKIE_PREFIX}access-token`, "", { maxAge: 0 });
+  cookies().set(`${COOKIE_PREFIX}refresh-token`, "", { maxAge: 0 });
 
   try {
     await signOut(firebaseAuth);
@@ -64,19 +65,17 @@ export async function passwordReset({ email }: ForgotPasswordFormType) {
 }
 
 export async function getAccessToken() {
-  const accessToken =
-    cookies().get(`${COOKIE_PREFIX}access-token`)?.value
+  const accessToken = cookies().get(`${COOKIE_PREFIX}access-token`)?.value;
   return accessToken;
 }
 
 export async function getRefreshToken() {
-  const refreshToken =
-    cookies().get(`${COOKIE_PREFIX}refresh-token`)?.value
+  const refreshToken = cookies().get(`${COOKIE_PREFIX}refresh-token`)?.value;
   return refreshToken;
 }
 
 export async function exchangeRefreshTokenForAccessToken(
-  refreshToken: string,
+  refreshToken: string
 ): Promise<{
   access_token: string;
   expires_in: number;
@@ -110,12 +109,12 @@ export async function exchangeRefreshTokenForAccessToken(
 
 export async function refreshAccessTokenInMiddleware(
   refreshToken: string,
-  response: NextResponse,
+  response: NextResponse
 ) {
   const data = await exchangeRefreshTokenForAccessToken(refreshToken).catch(
-    (error) => {
+    error => {
       throw new Error(error.message);
-    },
+    }
   );
 
   response.cookies.set({
@@ -154,10 +153,10 @@ export async function refreshAccessTokenInServer() {
   }
 
   const data = await exchangeRefreshTokenForAccessToken(refreshToken).catch(
-    async (error) => {
+    async error => {
       await logout();
       throw new Error(error.message);
-    },
+    }
   );
 
   cookies().set({
