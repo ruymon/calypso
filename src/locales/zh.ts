@@ -71,6 +71,10 @@ export default ({
     themeSwitcher: {
       title: "主题选择",
       subtitle: "Toggle between light and dark mode"
+    },
+    login: {
+      title: "Login",
+      subtitle: "Login to your account"
     }
   },
   map: {
