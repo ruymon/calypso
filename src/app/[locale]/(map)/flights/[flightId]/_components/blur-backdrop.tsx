@@ -18,10 +18,10 @@ export function BlurBackdrop({ callsign }: BlurBackdropProps) {
     <Image
       src={imageSrc}
       fill
-      className="pointer-events-none absolute inset-0 top-0 -z-10 max-h-64 scale-y-[-1] opacity-0 blur-[360px] saturate-150 transition-opacity duration-1000 ease-in-out"
+      className="pointer-events-none absolute inset-0 top-0 -z-10 max-h-64 scale-y-[-1] opacity-0 blur-[240px] saturate-150 transition-opacity duration-1000 ease-in-out"
       alt="Illustration"
       draggable={false}
-      onLoad={(e) => {
+      onLoad={e => {
         e.currentTarget.classList.remove("opacity-0");
         e.currentTarget.classList.add("opacity-100");
       }}

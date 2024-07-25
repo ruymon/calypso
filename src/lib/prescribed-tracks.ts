@@ -1,6 +1,7 @@
 import { API_BASE_URL } from "@/constants/api";
 import { NatTracks } from "@/types/prescribed-tracks";
 import { getAccessToken } from "./auth";
+import { addErrorToastToQueue } from "./toast";
 
 export async function getNatTracks(): Promise<NatTracks> {
   const accessToken = await getAccessToken();
@@ -18,7 +19,10 @@ export async function getNatTracks(): Promise<NatTracks> {
   const data = await result.json();
 
   if (!result.ok) {
-    throw new Error(`Error fetching NAT tracks: ${data.error}`);
+    const errorMsg = `Error fetching NAT tracks: ${data.error}`;
+
+    addErrorToastToQueue(errorMsg);
+    throw new Error(errorMsg);
   }
 
   return data;

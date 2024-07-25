@@ -1,3 +1,5 @@
+import { addErrorToastToQueue } from "./toast";
+
 export async function getWeatherRadarTime(): Promise<number> {
   const url = "https://tilecache.rainviewer.com/api/maps.json";
 
@@ -12,7 +14,10 @@ export async function getWeatherRadarTime(): Promise<number> {
   const data = await result.json();
 
   if (!result.ok) {
-    throw new Error(`Error fetching weather radar data: ${data.error}`);
+    const errorMsg = `Error fetching weather radar time: ${data.error}`;
+
+    addErrorToastToQueue(errorMsg);
+    throw new Error(errorMsg);
   }
 
   return data[0];

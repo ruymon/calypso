@@ -3,6 +3,7 @@ import { LiveFlightDetail, LiveFlights } from "@/types/live-flights";
 import { ParsedRoute } from "@/types/navigraph";
 import { Network } from "@/types/networks";
 import { getAccessToken } from "./auth";
+import { addErrorToastToQueue } from "./toast";
 
 export async function getNetworkFlights(
   network: Network
@@ -20,7 +21,10 @@ export async function getNetworkFlights(
   const data = await result.json();
 
   if (!result.ok) {
-    throw new Error(`Error fetching ${network} flights:`, data);
+    const errorMsg = `Error fetching ${network.toUpperCase()} flights: ${data.error}`;
+
+    addErrorToastToQueue(errorMsg);
+    throw new Error(errorMsg);
   }
 
   return data;

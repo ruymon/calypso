@@ -55,7 +55,7 @@ export const getNetworkATCsLayer = () => {
         const bIndex = ATC_FACILITIES_Z_INDEX[b.facility as ATCFacility];
 
         return aIndex - bIndex;
-      },
+      }
     );
 
     return {
@@ -81,7 +81,7 @@ export const getNetworkATCsLayer = () => {
         const bIndex = ATC_FACILITIES_Z_INDEX[b.facility as ATCFacility];
 
         return aIndex - bIndex;
-      },
+      }
     );
 
     return {
@@ -92,7 +92,7 @@ export const getNetworkATCsLayer = () => {
 
   const getATCColor = (
     { facility }: LiveATC,
-    options?: { overrideOpacity: boolean; opacity?: number },
+    options?: { overrideOpacity: boolean; opacity?: number }
   ) => {
     const opacity = options?.overrideOpacity
       ? undefined
@@ -115,11 +115,11 @@ export const getNetworkATCsLayer = () => {
     id: MAP_LAYERS.IVAO_ATCS_SHAPES_LAYER_ID,
     data: ivaoData.shapeFacilities,
     getPolygon: ({ geometry }: LiveATC) => geometry,
-    getLineColor: (d) =>
+    getLineColor: d =>
       getATCColor(d, {
         overrideOpacity: true,
       }),
-    getFillColor: (d) => getATCColor(d),
+    getFillColor: d => getATCColor(d),
     colorFormat: "RGBA",
     depthTest: true,
     filled: true,
@@ -142,11 +142,11 @@ export const getNetworkATCsLayer = () => {
     id: MAP_LAYERS.VATSIM_ATCS_SHAPES_LAYER_ID,
     data: vatsimData.shapeFacilities,
     getPolygon: ({ geometry }: LiveATC) => geometry,
-    getLineColor: (d) =>
+    getLineColor: d =>
       getATCColor(d, {
         overrideOpacity: true,
       }),
-    getFillColor: (d) => getATCColor(d),
+    getFillColor: d => getATCColor(d),
     colorFormat: "RGBA",
     depthTest: true,
     filled: true,

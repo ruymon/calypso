@@ -25,7 +25,7 @@ export async function getProfile(): Promise<UserProfile | null> {
   const data = await result.json();
 
   if (!result.ok) {
-    throw new Error(data.message);
+    return null;
   }
 
   return data;

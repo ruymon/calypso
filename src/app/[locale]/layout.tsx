@@ -18,7 +18,7 @@ import { Toaster } from "sonner";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://skyscope.app"),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -51,6 +51,41 @@ export const metadata: Metadata = {
     "Realistic Flying",
     "Virtual Pilots",
   ],
+  authors: [
+    {
+      name: "Ruy Monteiro",
+      url: "https://github.com/ruymon",
+    },
+    {
+      name: "Luciano Santos",
+      url: "https://github.com/lcnssantos",
+    },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    creator: "@skyscope_app",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       {
@@ -62,19 +97,6 @@ export const metadata: Metadata = {
         media: "(prefers-color-scheme: dark)",
       },
     ],
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    creator: "@ruyymon",
   },
 };
 

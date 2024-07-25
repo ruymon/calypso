@@ -2,6 +2,7 @@ import { API_BASE_URL } from "@/constants/api";
 import { AirportSummaryList } from "@/types/airports";
 import { AiracCycle } from "@/types/navigraph";
 import { getAccessToken } from "./auth";
+import { addErrorToastToQueue } from "./toast";
 
 export async function getCurrentAiracCycle(): Promise<AiracCycle | null> {
   const accessToken = await getAccessToken();
@@ -43,7 +44,10 @@ export async function getAirportsSummary(): Promise<AirportSummaryList> {
   const data = await result.json();
 
   if (!result.ok) {
-    throw new Error(`Failed to fetch airports summary: ${data}`);
+    const errorMsg = `Error fetching airports summary: ${data.error}`;
+
+    addErrorToastToQueue(errorMsg);
+    throw new Error(errorMsg);
   }
 
   return data;
