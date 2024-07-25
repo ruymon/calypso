@@ -71,6 +71,10 @@ export default ({
     themeSwitcher: {
       title: "Tema değiştirici",
       subtitle: "Parlak ve karanlık temalar arasında geçiş yap"
+    },
+    login: {
+      title: "Login",
+      subtitle: "Login to your account"
     }
   },
   map: {
