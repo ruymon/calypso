@@ -71,6 +71,10 @@ export default ({
     themeSwitcher: {
       title: "Kleur verstellings",
       subtitle: "Verander tussen lig en donker"
+    },
+    login: {
+      title: "Login",
+      subtitle: "Login to your account"
     }
   },
   map: {
