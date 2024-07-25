@@ -11,7 +11,6 @@ import {
   getTooltipContentBasedOnLayer,
 } from "@/lib/map";
 import { getNatLayer } from "@/lib/map/prescribed-tracks";
-import { getRouteTrackLayer } from "@/lib/map/route-track";
 import { getWeatherLayer } from "@/lib/map/weather";
 import { useBaseMapStore } from "@/stores/base-map-store";
 import { useMapViewStateStore } from "@/stores/map-view-state-store";
@@ -50,7 +49,7 @@ export function Map({ children, userIntegrations }: MapProps) {
     getSelectedFlightPathLayer({
       userIntegrations,
     }),
-    getRouteTrackLayer(),
+    // getRouteTrackLayer(),
   ];
 
   return (

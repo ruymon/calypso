@@ -76,6 +76,10 @@ export default {
       title: "Theme switcher",
       subtitle: "Toggle between light and dark mode",
     },
+    login: {
+      title: "Login",
+      subtitle: "Login to your account",
+    },
   },
   map: {
     loading: {

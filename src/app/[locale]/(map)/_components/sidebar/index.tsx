@@ -93,8 +93,8 @@ export function Sidebar({ user }: SidebarProps) {
           <SidebarItem
             href="/auth/login"
             icon={<PiLogInLeftStroke className="w-5" />}
-            title={t("changelog.title")}
-            label={t("changelog.subtitle")}
+            title={t("login.title")}
+            label={t("login.subtitle")}
           />
         )}
       </div>

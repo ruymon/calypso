@@ -124,9 +124,9 @@ export default function RootLayout({
       >
         <Providers locale={locale}>
           {children}
-
           {shouldInjectToolbar && <VercelToolbar />}
         </Providers>
+
         <Toaster />
         <GoogleAnalytics gaId={firebaseConfig.measurementId!} />
         <SpeedInsights />

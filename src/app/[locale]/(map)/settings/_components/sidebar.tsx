@@ -1,4 +1,5 @@
 import { getScopedI18n } from "@/locales/server";
+import { LogoutButton } from "./logout-button";
 import { SettingSidebarItem } from "./sidebar-item";
 
 interface SettingSidebarProps {}
@@ -8,9 +9,7 @@ export async function SettingSidebar({}: SettingSidebarProps) {
 
   return (
     <aside className="flex w-full max-w-52 flex-col gap-6">
-      <h2 className="text-xl font-semibold text-foreground">
-        {t("title")}
-      </h2>
+      <h2 className="text-xl font-semibold text-foreground">{t("title")}</h2>
 
       <nav className="flex flex-col gap-1">
         <SettingSidebarItem href="/settings/profile">
@@ -20,6 +19,8 @@ export async function SettingSidebar({}: SettingSidebarProps) {
         <SettingSidebarItem href="/settings/integrations">
           {t("integrations")}
         </SettingSidebarItem>
+
+        <LogoutButton />
       </nav>
     </aside>
   );
