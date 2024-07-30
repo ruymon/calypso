@@ -13,6 +13,7 @@ import { siteConfig } from "@/config/site";
 import { IS_IN_DEVELOPMENT } from "@/constants/workspace";
 import { firebaseConfig } from "@/lib/firebase";
 import "@/styles/globals.css";
+import { LogSnagProvider } from "@logsnag/next";
 import { getLangDir } from "rtl-detect";
 import { Toaster } from "sonner";
 import { Providers } from "./providers";
@@ -126,7 +127,10 @@ export default function RootLayout({
           {children}
           {shouldInjectToolbar && <VercelToolbar />}
         </Providers>
-
+        <LogSnagProvider
+          token="f337c938614cec433562bda0b3ef1463"
+          project="skyscope"
+        />
         <Toaster />
         <GoogleAnalytics gaId={firebaseConfig.measurementId!} />
         <SpeedInsights />

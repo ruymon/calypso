@@ -16,6 +16,7 @@ import {
 } from "firebase/auth";
 import { decodeJwt } from "jose";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
 export async function login({ email, password }: LoginFormType) {
@@ -49,15 +50,17 @@ export async function login({ email, password }: LoginFormType) {
 }
 
 export async function logout() {
-  // @see https://nextjs.org/docs/app/api-reference/functions/cookies#deleting-cookies
-  cookies().set(`${COOKIE_PREFIX}access-token`, "", { maxAge: 0 });
-  cookies().set(`${COOKIE_PREFIX}refresh-token`, "", { maxAge: 0 });
+  //@see https://nextjs.org/docs/app/api-reference/functions/cookies#deleting-cookies
+  cookies().delete(`${COOKIE_PREFIX}access-token`);
+  cookies().delete(`${COOKIE_PREFIX}refresh-token`);
 
   try {
     await signOut(firebaseAuth);
   } catch (error) {
     console.error("Error signing out:", error);
   }
+
+  redirect("/");
 }
 
 export async function passwordReset({ email }: ForgotPasswordFormType) {

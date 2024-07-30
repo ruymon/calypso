@@ -1,4 +1,5 @@
 import { getProfile } from "@/lib/profile";
+import { SetUserIdServerComponent } from "@logsnag/next";
 import { ReactNode } from "react";
 import { Map } from "./_components/map";
 import { MapFooter } from "./_components/map/map-footer";
@@ -17,6 +18,7 @@ export default async function AppRootLayout({ children }: AppRootLayoutProps) {
     <div className="relative flex h-screen w-screen flex-col justify-end md:flex-row md:justify-normal">
       <Spotlight />
       <Sidebar user={user} />
+      <SetUserIdServerComponent userId={user?.id ?? null} />
 
       {children}
 

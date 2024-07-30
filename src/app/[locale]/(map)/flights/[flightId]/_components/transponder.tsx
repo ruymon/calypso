@@ -59,7 +59,7 @@ export function Transponder({ code, className }: TransponderProps) {
             className={cn(
               "inline-flex items-center gap-1.5 rounded p-1 leading-none",
               className,
-              emergencyTransponder?.color,
+              emergencyTransponder?.color
             )}
           >
             {code}
@@ -67,7 +67,7 @@ export function Transponder({ code, className }: TransponderProps) {
         </TooltipTrigger>
         {emergencyTransponder && (
           <TooltipContent
-            side="right"
+            side="left"
             align="start"
             className="flex min-w-56 flex-col gap-2 py-3"
           >

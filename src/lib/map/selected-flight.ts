@@ -13,16 +13,15 @@ import { LiveFlightDetail, Pilot } from "@/types/live-flights";
 //@ts-ignore
 import { Network } from "@/types/networks";
 import { PathStyleExtension } from "@deck.gl/extensions";
+import { featureCollection, lineString } from "@turf/helpers";
 import { GeoJsonLayer, IconLayer } from "deck.gl";
+import { useTheme } from "next-themes";
+import { amber, white, zinc } from "tailwindcss/colors";
 import {
   convertHeadingToAngle,
   hexToRGBAArray,
   isEmergencyTransponder,
 } from "../utils";
-//@ts-expect-error
-import { featureCollection, lineString } from "@turf/helpers";
-import { useTheme } from "next-themes";
-import { amber, white, zinc } from "tailwindcss/colors";
 import { getIconBasedOnAircraftType } from "./flights";
 
 interface getSelectedFlightPathLayerProps {
@@ -75,8 +74,8 @@ export const getSelectedFlightPathLayer = ({
 
     const trackPoints = tracks.map(track => [track.lng, track.lat]);
     const currentPoint = [
-      tracks[tracks.length - 1]?.lng,
-      tracks[tracks.length - 1]?.lat,
+      tracks[tracks.length - 1]?.lng || 0,
+      tracks[tracks.length - 1]?.lat || 0,
     ];
 
     const arrivalPoint = flightPlan?.arrival && [
@@ -114,9 +113,13 @@ export const getSelectedFlightPathLayer = ({
         color: amber[500],
       });
 
+    const featureElements = [];
+
     return featureCollection([
       flightTrack,
+      // @ts-ignore
       directPathToDestination,
+      // @ts-ignore
       directPathFromDestinationToAlternate,
     ]);
   };
@@ -140,7 +143,7 @@ export const getSelectedFlightPathLayer = ({
 
   const trackLayer = new GeoJsonLayer({
     id: MAP_LAYERS.SELECTED_FLIGHT_TRACK_LAYER_ID,
-    data: getTrackDataInGeoJson(selectedFlight),
+    data: getTrackDataInGeoJson(selectedFlight) || "",
     stroked: true,
     pickable: false,
     pointType: "circle",

@@ -117,6 +117,18 @@ export default async function FlightsDetailPage({
         <CrewCard data={data.pilot} network={data.network} />
       </section>
 
+      {/* <section className="flex flex-col gap-4">
+        <header className="flex flex-col">
+          <span className="text-xl font-semibold">{t("analytics.title")}</span>
+          <span className="text-xs text-muted-foreground">
+            {t("analytics.subtitle")}
+          </span>
+        </header>
+
+
+        <FlightTelemetryChart data={data.tracks} />
+      </section> */}
+
       <section className="flex flex-col gap-4">
         <header className="flex flex-col">
           <span className="text-xl font-semibold">{t("analytics.title")}</span>
@@ -127,7 +139,6 @@ export default async function FlightsDetailPage({
 
         <VerticalProfileChart data={data.tracks} />
       </section>
-
       <FlightPlanDetails data={data} />
       <FlyToPlaneButton />
     </div>

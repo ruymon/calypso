@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 export function getNameInitials(name: string) {
   const initials = name
     .split(" ")
-    .map((n) => n[0])
+    .map(n => n[0])
     .join("")
     .toUpperCase();
 
@@ -19,7 +19,7 @@ export function getNameInitials(name: string) {
 
 export function parseAltitudeToFlightLevel(altitude: number) {
   return (
-    "F" +
+    "FL" +
     Math.round(altitude / 100)
       .toString()
       .padStart(3, "0")
@@ -41,7 +41,7 @@ export function hexToRGBArray(hex?: string): [number, number, number] {
 
 export function hexToRGBAArray(
   hex?: string,
-  alpha = 255,
+  alpha = 255
 ): [number, number, number, number] {
   const rgb = hexToRGBArray(hex);
   return [...rgb, alpha];
@@ -65,7 +65,7 @@ export function guaranteeFirstLetterCapitalizedInEveryWord(str: string) {
   str = str.toLowerCase();
 
   const words = str.split(" ");
-  const capitalizedWords = words.map((word) => {
+  const capitalizedWords = words.map(word => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   });
 
@@ -82,7 +82,7 @@ export function getVatsimProfileUrl(cid: number): string {
 
 export function getNetworkMemberProfileUrl(
   id: number | string,
-  network: Network,
+  network: Network
 ): string {
   if (typeof id === "string") {
     id = Number(id);

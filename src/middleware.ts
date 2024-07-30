@@ -10,17 +10,15 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: "rewrite",
 });
 
-
 export default async function middleware(request: NextRequest) {
   const response = I18nMiddleware(request);
 
   const accessToken = request.cookies.get(
-    `${COOKIE_PREFIX}access-token`,
+    `${COOKIE_PREFIX}access-token`
   )?.value;
   const refreshToken = request.cookies.get(
-    `${COOKIE_PREFIX}refresh-token`,
+    `${COOKIE_PREFIX}refresh-token`
   )?.value;
-
 
   if (!accessToken && refreshToken) {
     try {
@@ -35,5 +33,4 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
-  
 };

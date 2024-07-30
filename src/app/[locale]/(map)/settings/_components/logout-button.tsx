@@ -12,19 +12,15 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { logout } from "@/lib/auth";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 interface LogoutButtonProps {}
 
 export function LogoutButton({}: LogoutButtonProps) {
-  const router = useRouter();
-
   const handleLogout = async () => {
     toast.promise(logout, {
       loading: "Logging out...",
       success: () => {
-        router.push("/");
         return "Logged out successfully!";
       },
       error: "Failed to logout!",

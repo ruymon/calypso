@@ -12,7 +12,6 @@ import { StoreFlightData } from "./store-flight-data";
 import { Transponder } from "./transponder";
 //@ts-expect-error
 import distance from "@turf/distance";
-//@ts-expect-error
 import { point } from "@turf/helpers";
 import { PlaneIcon } from "lucide-react";
 
@@ -31,19 +30,19 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
   });
 
   const departureCoordinates = point([
-    data?.flightPlan?.departure?.lat,
-    data?.flightPlan?.departure?.lng,
+    data?.flightPlan?.departure?.lat || 0,
+    data?.flightPlan?.departure?.lng || 0,
   ]);
   const arrivalCoordinates = point([
-    data?.flightPlan?.arrival?.lat,
-    data?.flightPlan?.arrival?.lng,
+    data?.flightPlan?.arrival?.lat || 0,
+    data?.flightPlan?.arrival?.lng || 0,
   ]);
   const currentCoordinates = point([data?.position?.lat, data?.position?.lng]);
 
   const directCurrentPositionToArrivalDistance = distance(
     currentCoordinates,
     arrivalCoordinates,
-    { units: "kilometers" },
+    { units: "kilometers" }
   );
 
   const directCurrentPositionToArrivalDistanceInNauticalMiles =
@@ -52,13 +51,13 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
   const directCurrentPositionDepartureDistance = distance(
     departureCoordinates,
     currentCoordinates,
-    { units: "kilometers" },
+    { units: "kilometers" }
   );
 
   const directDepartureArrivalDistance = distance(
     departureCoordinates,
     arrivalCoordinates,
-    { units: "kilometers" },
+    { units: "kilometers" }
   );
 
   const flightProgress =
@@ -67,7 +66,7 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
 
   const formattedFlightProgress = Math.min(
     100,
-    Math.max(0, flightProgress),
+    Math.max(0, flightProgress)
   ).toFixed(0);
 
   return (
@@ -126,7 +125,7 @@ export function FlightTelemetry({ initialData }: FlightTelemetryProps) {
                 className={cn(
                   "h-1 rounded-full",
                   data?.network === "ivao" && "bg-ivao",
-                  data?.network === "vatsim" && "bg-vatsim",
+                  data?.network === "vatsim" && "bg-vatsim"
                 )}
                 style={{
                   width: `${flightProgress}%`,

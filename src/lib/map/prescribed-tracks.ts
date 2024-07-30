@@ -2,7 +2,6 @@ import { MAP_LAYERS } from "@/config/map";
 import { useMapExtraLayersStore } from "@/stores/map-extra-layers-store";
 import { NatTracks } from "@/types/prescribed-tracks";
 import { useQuery } from "@tanstack/react-query";
-//@ts-ignore
 import { feature, featureCollection, multiLineString } from "@turf/helpers";
 import { GeoJsonLayer } from "deck.gl";
 import { teal, yellow, zinc } from "tailwindcss/colors";
@@ -29,14 +28,14 @@ export const getNatLayer = () => {
 
       return acc;
     },
-    { east: [] as NatTracks, west: [] as NatTracks },
+    { east: [] as NatTracks, west: [] as NatTracks }
   );
 
   const getNatTracksInGeoJson = (data: NatTracks) => {
     if (!data) return [];
 
-    const trackLineFeatures = data.map((track) => {
-      const coordinates = track.waypoints.map((waypoint) => [
+    const trackLineFeatures = data.map(track => {
+      const coordinates = track.waypoints.map(waypoint => [
         waypoint.longitude,
         waypoint.latitude,
       ]);
@@ -48,8 +47,8 @@ export const getNatLayer = () => {
       });
     });
 
-    const trackWaypointsFeatures = data.flatMap((track) =>
-      track.waypoints.map((waypoint) =>
+    const trackWaypointsFeatures = data.flatMap(track =>
+      track.waypoints.map(waypoint =>
         feature(
           {
             type: "Point",
@@ -58,12 +57,12 @@ export const getNatLayer = () => {
           {
             ident: waypoint.ident,
             type: waypoint.type,
-          },
-        ),
-      ),
+          }
+        )
+      )
     );
 
-    const trackIdentifiersFeature = data.map((track) => {
+    const trackIdentifiersFeature = data.map(track => {
       const lastWaypointCoordinates = [
         track.waypoints[track.waypoints.length - 1]?.longitude,
         track.waypoints[track.waypoints.length - 1]?.latitude,
@@ -72,12 +71,13 @@ export const getNatLayer = () => {
       return feature(
         {
           type: "Point",
+          // @ts-ignore
           coordinates: lastWaypointCoordinates,
         },
         {
           ident: `NAT ${track.ident}`,
           type: "track-identifier",
-        },
+        }
       );
     });
 
@@ -87,25 +87,26 @@ export const getNatLayer = () => {
       ...trackIdentifiersFeature,
     ];
 
+    // @ts-ignore
     return featureCollection(features);
   };
 
   const eastNatTrackLayer = new GeoJsonLayer({
     id: MAP_LAYERS.NAT_EAST_TRACKS_LAYER_ID,
-    data: splitTracks ? getNatTracksInGeoJson(splitTracks.east) : null,
+    data: splitTracks ? getNatTracksInGeoJson(splitTracks.east) : undefined,
     stroked: true,
     filled: true,
     pointType: "circle+text",
     getText: (d: any) => d.properties.ident,
-    getLineColor: (d) => hexToRGBAArray(teal[600]),
-    getFillColor: (d) => hexToRGBAArray(teal[600]),
-    getTextColor: (d) => {
+    getLineColor: d => hexToRGBAArray(teal[600]),
+    getFillColor: d => hexToRGBAArray(teal[600]),
+    getTextColor: d => {
       if (d.properties.type === "track-identifier") hexToRGBAArray(teal[500]);
       return hexToRGBAArray(zinc[500]);
     },
-    getTextAlignmentBaseline: (d) =>
+    getTextAlignmentBaseline: d =>
       d.properties.type === "track-identifier" ? "center" : "bottom",
-    getTextPixelOffset: (d) =>
+    getTextPixelOffset: d =>
       d.properties.type === "track-identifier" ? [40, 0] : [0, -5],
     getLineWidth: 1,
     lineWidthUnits: "pixels",
@@ -118,20 +119,20 @@ export const getNatLayer = () => {
 
   const westTrackLayer = new GeoJsonLayer({
     id: MAP_LAYERS.NAT_WEST_TRACKS_LAYER_ID,
-    data: splitTracks ? getNatTracksInGeoJson(splitTracks.west) : null,
+    data: splitTracks ? getNatTracksInGeoJson(splitTracks.west) : undefined,
     stroked: true,
     filled: true,
     pointType: "circle+text",
     getText: (d: any) => d.properties.ident,
-    getLineColor: (d) => hexToRGBAArray(yellow[600]),
-    getFillColor: (d) => hexToRGBAArray(yellow[600]),
-    getTextColor: (d) => {
+    getLineColor: d => hexToRGBAArray(yellow[600]),
+    getFillColor: d => hexToRGBAArray(yellow[600]),
+    getTextColor: d => {
       if (d.properties.type === "track-identifier") hexToRGBAArray(yellow[600]);
       return hexToRGBAArray(zinc[500]);
     },
-    getTextAlignmentBaseline: (d) =>
+    getTextAlignmentBaseline: d =>
       d.properties.type === "track-identifier" ? "center" : "top",
-    getTextPixelOffset: (d) =>
+    getTextPixelOffset: d =>
       d.properties.type === "track-identifier" ? [-40, 0] : [0, 5],
     getLineWidth: 1,
     lineWidthUnits: "pixels",
