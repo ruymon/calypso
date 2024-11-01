@@ -70,7 +70,7 @@ export default ({
     },
     themeSwitcher: {
       title: "主题选择",
-      subtitle: "Toggle between light and dark mode"
+      subtitle: "切换浅色/深色模式"
     },
     login: {
       title: "登录",
@@ -104,7 +104,7 @@ export default ({
         },
         theme: {
           title: "同步主题",
-          description: "Switch between light and dark based on your system settings"
+          description: "基于系统设置切换浅色/深色模式"
         }
       },
       networkLayers: {
@@ -113,14 +113,14 @@ export default ({
           description: "Toggle network layers visibility"
         },
         quickActions: {
-          title: "Quick actions",
+          title: "快速操作",
           ivao: {
             title: "IVAO",
-            description: "Only show IVAO flights and ATCs"
+            description: "仅显示 IVAO 的航班和空中交通管制"
           },
           vatsim: {
             title: "VATSIM",
-            description: "Only show Vatsim flights and ATCs"
+            description: "仅显示 VATSIM 的航班和空中交通管制"
           },
           combineNetworks: {
             title: "Combine networks",
@@ -132,7 +132,7 @@ export default ({
           }
         },
         vatsimLayers: {
-          title: "Vatsim layers settings",
+          title: "Vatsim 图层设置",
           showFlights: {
             title: "显示航班",
             description: "地图上会出现绿色的飞机"
@@ -143,7 +143,7 @@ export default ({
           }
         },
         ivaoLayers: {
-          title: "IVAO layers settings",
+          title: "IVAO 图层设置",
           showFlights: {
             title: "显示航班",
             description: "地图上将出现蓝色的飞机"
