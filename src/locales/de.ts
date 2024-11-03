@@ -1,340 +1,344 @@
 import { siteConfig } from "@/config/site";
 export default ({
   common: {
-    open: "Open",
-    close: "Close",
-    joinDiscord: "Join our discord",
-    contactSupport: "Contact support",
-    comingSoon: "Coming soon",
-    active: "Active"
+    open: "Öffnen",
+    close: "Schließen",
+    joinDiscord: "Unserem Discord beitreten",
+    contactSupport: "Support kontaktieren",
+    comingSoon: "Demnächst verfügbar",
+    active: "Aktiv"
   },
   auth: {
     login: {
-      title: "Welcome back!",
-      subtitle: "Log in to your account to continue.",
-      email: "Email",
-      password: "Password",
-      signIn: "Sign in",
-      forgotPassword: "Forgot password?",
-      noAccount: "No account?",
-      join: "Join now",
-      loginError: "Oh no! Something went wrong.",
-      loginErrorDescription: "An unexpected error ocurred while trying to log in. Please try again later or contact support on Discord."
+      title: "Willkommen zurück!",
+      subtitle: "Melden Sie sich bei Ihrem Konto an, um fortzufahren.",
+      email: "E-Mail",
+      password: "Passwort",
+      signIn: "Einloggen",
+      forgotPassword: "Passwort vergessen?",
+      noAccount: "Kein Konto?",
+      join: "Jetzt beitreten",
+      loginError: "Oh nein! Etwas ist schiefgelaufen.",
+      loginErrorDescription: "Ein unerwarteter Fehler ist aufgetreten, beim Versuch Sie einzuloggen. Bitte versuchen Sie es Später nochmals, oder kontaktieren Sie den Support auf Discord."
     },
     join: {
-      inviteOnly: "We're sorry, but unfortunately joining is only available to invited users at this time."
+      inviteOnly: "Leider ist der Zugriff nur auf eingeladene Benutzer derzeit gewährt."
     },
     forgotPassword: {
-      title: "Forgot your password?",
-      subtitle: "Enter your email to reset your password.",
-      email: "Email",
-      sendEmail: "Send recovery email",
-      backToLogin: "Remember your password?",
-      resetError: "An error occurred while trying to reset your password.",
-      resetErrorDescription: "Please try again later or contact support on Discord.",
-      resetEmailSent: "Password reset email sent!",
-      resetEmailSentIfAccountIsValid: "If the email you entered is associated with a valid account, you will receive a password reset link in your email."
+      title: "Haben sie Ihr Passwort vergessen?",
+      subtitle: "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen.",
+      email: "E-Mail",
+      sendEmail: "Wiederherstellungs-E-Mail senden",
+      backToLogin: "Erinnern Sie sich an Ihr Passwort?",
+      resetError: "Beim Versuch Ihr Passwort zurückzusetzen, ist ein Fehler aufgetreten.",
+      resetErrorDescription: "Bitte Versuchen Sie es später nochmals, oder kontaktieren sie den Support auf Discord.",
+      resetEmailSent: "E-Mail zur Wiederherstellung ihres Passwortes gesendet!",
+      resetEmailSentIfAccountIsValid: "Wenn die von Ihnen eingegebene E-Mail mit einem gültigen Konto verknüpft ist, erhalten Sie einen Link zum Zurücksetzen Ihres Passworts per E-Mail."
     },
     supportCard: {
-      title: "Need help?"
+      title: "Brauchen Sie Hilfe?"
     }
   },
   sidebar: {
     map: {
-      title: "World map",
-      subtitle: "Live network connections"
+      title: "Weltkarte",
+      subtitle: "Live-Netzwerkverbindungen"
     },
     events: {
-      title: "Events",
-      subtitle: "See current and upcoming events"
+      title: "Veranstaltungen",
+      subtitle: "Siehe aktuelle und kommende Veranstaltungen"
     },
     friends: {
-      title: "Friends",
-      subtitle: "Manage your friends list"
+      title: "Freunde",
+      subtitle: "Verwalten Sie Ihre Freundesliste"
     },
     feedback: {
       title: "Feedback",
-      subtitle: "Help us improve our service"
+      subtitle: "Helfen Sie uns, unsere Dienstleistung zu verbessern"
     },
     help: {
       title: "Support",
-      subtitle: "Get help with the app"
+      subtitle: "Hilfe mit der App erhalten"
     },
     changelog: {
       title: "Changelog",
-      subtitle: "See what's new in the app"
+      subtitle: "Sehen Sie an, was neu in der App zugefügt worden ist"
     },
     profile: {
-      title: "Profile",
-      subtitle: "Manage your account settings"
+      title: "Profil",
+      subtitle: "Verwalten Sie Ihre Kontoeinstellungen"
     },
     themeSwitcher: {
       title: "Theme switcher",
-      subtitle: "Toggle between light and dark mode"
+      subtitle: "Zwischen Hell- und Dunkelmodus umschalten"
+    },
+    login: {
+      title: "Login",
+      subtitle: "Login to your account"
     }
   },
   map: {
     loading: {
-      title: "Loading map",
-      subtitle: "This should take less than 10 seconds, depending on your connection"
+      title: "Karte wird geladen",
+      subtitle: "Dies sollte weniger als 10 Sekunden dauern, abhängig von Ihrer Netzwerkverbindung"
     },
     toolbar: {
       baseMap: {
         tooltip: {
-          title: "Base map",
-          description: "Switch between different base maps"
+          title: "Basiskarte",
+          description: "Zwischen verschiedenen Basiskarten umschalten"
         },
-        title: "Base map",
-        currentlyActive: "Active",
+        title: "Basiskarte",
+        currentlyActive: "Aktiv",
         satellite: {
-          title: "Satellite",
-          description: "Earth details"
+          title: "Satellitenbild",
+          description: "Weltdetails"
         },
         light: {
-          title: "Light",
-          description: "Minimalistic"
+          title: "Hell",
+          description: "Minimalistisch"
         },
         dark: {
-          title: "Dark",
-          description: "Night mode with airport diagrams"
+          title: "Dunkel",
+          description: "Nachtmodus mit Flughafendiagramme"
         },
         theme: {
           title: "Sync with theme",
-          description: "Switch between light and dark based on your system settings"
+          description: "Umschalten zwischen hell und dunkel je nach Systemeinstellung"
         }
       },
       networkLayers: {
         tooltip: {
-          title: "Network layers",
-          description: "Toggle network layers visibility"
+          title: "Netzwerkebenen",
+          description: "Sichtbarkeit der Netzwerkebenen umschalten"
         },
         quickActions: {
-          title: "Quick actions",
+          title: "Schnellzugriff",
           ivao: {
             title: "IVAO",
-            description: "Only show IVAO flights and ATCs"
+            description: "Nur IVAO-Flüge und -Lotsen anzeigen"
           },
           vatsim: {
-            title: "VATSIM",
-            description: "Only show Vatsim flights and ATCs"
+            title: "VATISM",
+            description: "Nur Vatism Flüge und ATCs anzeigen"
           },
           combineNetworks: {
-            title: "Combine networks",
-            description: "Show flights and ATCs from all networks"
+            title: "Netzwerke kombinieren",
+            description: "Flüge und ATCs von allen Netzwerken anzeigen"
           },
           hideAll: {
-            title: "Hide all",
-            description: "Hide all flights and ATC from all networks"
+            title: "Alle ausblenden",
+            description: "Alle Flüge und ATCs von allen Netzwerken ausblenden"
           }
         },
         vatsimLayers: {
-          title: "Vatsim layers settings",
+          title: "Vatism Ebeneneinstellungen",
           showFlights: {
-            title: "Show flights",
-            description: "Green planes on the map"
+            title: "Flüge anzeigen",
+            description: "Grüne Flugzeuge auf der Karte"
           },
           showAtcs: {
-            title: "Show ATCs",
-            description: "Active air traffic controllers on the network"
+            title: "ATCs anzeigen",
+            description: "Aktive Fluglotsen auf dem Netzwerk"
           }
         },
         ivaoLayers: {
-          title: "IVAO layers settings",
+          title: "IVAO Ebeneneinstellungen",
           showFlights: {
-            title: "Show flights",
-            description: "Blue planes on the map"
+            title: "Flüge anzeigen",
+            description: "Blaue Flugzeuge auf der Karte"
           },
           showAtcs: {
-            title: "Show ATCs",
-            description: "Active air traffic controllers on the network"
+            title: "ATCs anzeigen",
+            description: "Aktive Fluglotsen auf dem Netzwerk"
           }
         }
       },
       extraLayers: {
         tooltip: {
-          title: "Extra layers",
-          description: "Toggle extra layers visibility"
+          title: "Zusätzliche Ebenen",
+          description: "Sichtbarkeit der zusätzlichen Ebenen umschalten"
         },
-        title: "Extra layers",
+        title: "Zusätzliche Ebenen",
         airports: {
-          title: "Airports",
-          description: "Show airports on the map"
+          title: "Flughäfen",
+          description: "Flughäfen auf der Karte anzeigen"
         },
         weatherRadar: {
-          title: "Weather radar",
-          description: "Show weather radar on the map"
+          title: "Wetterradar",
+          description: "Wetterradar auf der Karte anzeigen"
         }
       }
     },
     airacCycleBadge: {
-      airacCycle: "AIRAC cycle",
+      airacCycle: "AIRAC-Zyklus",
       outdatedCycle: {
-        title: "Outdated AIRAC cycle",
-        description: "Integrate a Navigraph account with an active subscription to get the latest cycle."
+        title: "Veralteter AIRAC-Zyklus",
+        description: "Integrieren Sie ein Navigraph-Konto mit einem aktiven Abonnement, um den neuesten Zyklus zu erhalten."
       },
       upToDateCycle: {
-        title: "Your AIRAC cycle is up to date",
+        title: "Ihr AIRAC-Zyklus ist auf dem neuesten Stand",
         description: "This cycle will expire in {distance}."
       },
       unknownCycle: {
-        title: "Unknown AIRAC cycle",
-        description: "Unable to fetch the current cycle."
+        title: "Unbekannter AIRAC-Zyklus",
+        description: "Der aktuelle Zyklus kann nicht abgerufen werden."
       }
     }
   },
   settings: {
     sidebar: {
-      title: "Settings",
-      profile: "Profile",
-      integrations: "Integrations"
+      title: "Einstellungen",
+      profile: "Profil",
+      integrations: "Integrationen"
     },
     profile: {
-      title: "Profile",
-      subtitle: "Manage and update your profile settings",
+      title: "Profil",
+      subtitle: "Verwalten und Aktualisieren Ihrer Profileinstellungen",
       emailCard: {
-        title: "Email",
-        cannotChange: "You cannot change your email address"
+        title: "E-Mail",
+        cannotChange: "Sie können ihre E-Mail-Adresse nicht ändern"
       },
       nameCard: {
         title: "Name",
-        cannotChange: "You cannot change your name",
-        emptyState: "Not set"
+        cannotChange: "Sie können Ihr Name nicht ändern",
+        emptyState: "Nicht festgelegt"
       },
       avatarCard: {
-        title: "Profile picture",
-        subtitle: "Keeping a profile picture helps others recognize you."
+        title: "Profilbild",
+        subtitle: "Ein Profilbild hilft anderen, Sie zu erkennen."
       },
       dangerZone: {
-        title: "Danger zone",
-        deleteAccount: "Delete your account",
-        deleteAccountDescription: "Should you decide to delete your account, you will lose access to all of your data. This action cannot be undone and the process may take up to 24 hours."
+        title: "Gefahrenzone",
+        deleteAccount: "Konto löschen",
+        deleteAccountDescription: "Sollten Sie sich entscheiden, Ihr Konto zu löschen, verlieren Sie den Zugriff auf alle Ihre Daten. Diese Aktion kann nicht rückgängig gemacht werden und der Vorgang kann bis zu 24 Stunden dauern."
       }
     },
     integrations: {
-      title: "Integrations",
-      subtitle: "Connect and sync third-party services to enhance your experience.",
-      comingSoonDescription: "More integrations are coming soon."
+      title: "Integrationen",
+      subtitle: "Verbinden und synchronisieren Sie Dienste von Drittanbietern, um Ihr Erlebnis zu verbessern.",
+      comingSoonDescription: "Weitere Integrationen kommen bald."
     }
   },
   integrations: {
     comum: {
-      connect: "Connect",
-      connected: "Connected",
-      unlink: "Unlink",
-      changeAccount: "Change account",
+      connect: "Verbinden",
+      connected: "Verbunden",
+      unlink: "Trennen",
+      changeAccount: "Konto wechseln",
       callback: {
-        title: "Integrating your {provider} account",
-        subtitle: "This process may take a few seconds."
+        title: "Integration ihres {provider}-Kontos",
+        subtitle: "Dieser Prozess kann einige Sekunden dauern."
       },
-      unstable: "This integration is a recent addition and may not work as expected."
+      unstable: "Diese Integration wurde erst kürzlich zugefügt, und funktioniert möglicherweise nicht wie erwartet."
     },
     integrationDetailsTooltip: {
-      title: "Integration details",
-      accountId: "Account ID"
+      title: "Integrationsdetails",
+      accountId: "Konto ID"
     },
     ivao: {
-      description: "International Virtual Aviation Organisation VZW is a non-profit association which operates a free-of-charge online flight-simulation network"
+      description: "International Virtual Aviation Organisation VZW ist ein gemeinnütziger Verein, der ein kostenloses Online-Flugsimulationsnetz betreibt"
     },
     vatsim: {
-      description: "The Virtual Air Traffic Simulation Network is an online platform that allows flight simulation enthusiasts to connect and fly together."
+      description: "Das Virtual Air Traffic Simulation Network ist eine Online-Plattform, die es Flugsimulationsbegeisterten ermöglicht, sich zu vernetzen und gemeinsam zu fliegen."
     },
     navigraph: {
-      description: "Provider of aeronautical data for the flight-sim community. "
+      description: "Anbieter von aeronautischen Daten für die Flugsimulationsgemeinschaft. "
     }
   },
   onboarding: {
     welcome: {
-      hat: "Getting started",
+      hat: "Erste Schritte",
       title: `Welcome to ${siteConfig.name}!`,
-      subtitle: "We are excited to have you on board. Let's get you started with a few basic details.",
-      getStarted: "Get started"
+      subtitle: "Wir freuen uns, Sie an Bord zu haben. Lassen Sie uns mit ein paar grundlegenden Details beginnen.",
+      getStarted: "Los geht's"
     },
     integrations: {
-      hat: "Sync your details",
-      title: "Sync your details",
-      subtitle: "Connect your accounts to have a seamless experience.",
-      skip: "Continue without syncing"
+      hat: "Synchronisieren Sie Ihre Daten",
+      title: "Synchronisieren Sie Ihre Daten",
+      subtitle: "Verknüpfen Sie Ihre Konten, um ein reibungsloses Erlebnis zu haben.",
+      skip: "Weiter ohne Synchronisierung"
     },
     finish: {
-      hat: "All set!",
-      title: "Let's get started?",
-      subtitle: `You're all set! Click the button below start using ${siteConfig.name}.`,
-      getStarted: "Get started"
+      hat: "Alles startklar!",
+      title: "Fangen wir an?",
+      subtitle: `Sie sind bereit! Klicken Sie auf die Schaltfläche unten und verwenden Sie ${siteConfig.name}.`,
+      getStarted: "Los geht's"
     }
   },
   flightDetails: {
-    unknownAirline: "Unknown airline",
-    unknownCallsign: "Unknown callsign",
+    unknownAirline: "Unbekannte Fluggesellschaft",
+    unknownCallsign: "Unbekanntes Rufzeichen",
     routeDetails: {
       title: "Route",
-      subtitle: "Detailed information about the aircraft's route.",
+      subtitle: "Detaillierte Informationen über die Flugroute des Flugzeugs.",
       airport: {
-        departure: "Departure",
-        arrival: "Arrival",
+        departure: "Abflug",
+        arrival: "Ankunft",
         alternate: "Alternate",
         alternate2: "Second alternate"
       }
     },
     aircraftDetails: {
-      title: "Aircraft details",
-      subtitle: "Detailed information about the aircraft.",
+      title: "Details zum Luftfahrzeug",
+      subtitle: "Detaillierte Informationen über das Flugzeug.",
       aircraft: {
-        registration: "Registration",
+        registration: "Registrierung",
         transponder: "Transponder",
-        wakeTurbulence: "Wake turbulence",
-        photographer: "Photographer"
+        wakeTurbulence: "Wirbelschleppen",
+        photographer: "Fotograf"
       }
     },
     crewDetails: {
-      title: "Flight crew details",
-      subtitle: "Detailed information about the flight crew.",
+      title: "Angaben zur Flugbesatzung",
+      subtitle: "Detaillierte Informationen über die Flugbesatzung.",
       crew: {
-        pilotInCommand: "Pilot in command"
+        pilotInCommand: "Pilot im Kommando"
       }
     },
     analytics: {
       title: "Analytics",
-      subtitle: "Data and statistics about the flight in real-time.",
+      subtitle: "Daten und Statistiken über den Flug in Echtzeit.",
       verticalPathChart: {
-        title: "Vertical path",
-        subtitle: "Altitude and vertical speed",
-        altitude: "Altitude",
-        speed: "Ground speed"
+        title: "Vertikaler Pfad",
+        subtitle: "Höhe und vertikale Geschwindigkeit",
+        altitude: "Höhenlage",
+        speed: "Bodengeschwindigkeit"
       }
     },
     flightPlanDetails: {
-      title: "Flight plan details",
-      subtitle: "Detailed information about the flight plan.",
+      title: "Details zum Flugplan",
+      subtitle: "Detaillierte Informationen über den Flugplan.",
       viewTypes: {
-        simple: "Simple",
-        detailed: "Detailed"
+        simple: "Simpel",
+        detailed: "Detailliert"
       },
-      flightRules: "Flight rules",
-      flightType: "Flight type",
+      flightRules: "Flugregeln",
+      flightType: "Flugtyp",
       route: "Route",
-      remarks: "Remarks",
-      icaoFplFormat: "ICAO FPL format"
+      remarks: "Bemerkungen",
+      icaoFplFormat: "ICAO FPL-Format"
     },
     notFound: {
-      title: "Flight unavailable",
-      subtitle: "We couldn't find the flight you were looking for.",
+      title: "Flug nicht verfügbar",
+      subtitle: "Wir konnten den von Ihnen gesuchten Flug nicht finden.",
       troubleshooting: {
         title: "Troubleshooting",
-        subtitle: "Things you can do to possibly fix it. If this problem persists, please contact our support team.",
+        subtitle: "Was Sie tun können, um das Problem zu beheben. Wenn dieses Problem weiterhin besteht, wenden Sie sich bitte an unser Support-Team.",
         steps: {
-          verifyFlightExists: "Make sure the flight is currently flying in one of the supported networks",
-          refresh: "Refresh the page",
-          checkInternetConnection: "Check your internet connection",
-          checkLoginStatus: "Make sure you are logged in"
+          verifyFlightExists: "Stellen Sie sicher, dass der Flug derzeit in einem der unterstützten Netze stattfindet",
+          refresh: "Aktualisieren Sie die Seite",
+          checkInternetConnection: "Überprüfen Sie Ihre Internetverbindung",
+          checkLoginStatus: "Stellen Sie sicher, dass Sie eingeloggt sind"
         }
       },
       systemLogs: {
-        title: "System logs",
-        subtitle: "The following information might be useful for our support team.",
+        title: "System Logs",
+        subtitle: "Die folgenden Informationen könnten für unser Support-Team nützlich sein.",
         code: "Code",
-        flightId: "Flight id",
-        timestamp: "Timestamp",
-        buildVersion: "Build version"
+        flightId: "Flugnummer",
+        timestamp: "Zeitstempel",
+        buildVersion: "Build-Version"
       }
     }
   }
